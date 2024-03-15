@@ -1,29 +1,4 @@
-/*!
-  * Item: CodeX
-  * Description:  Personal Portfolio / Resume / CV / vCard Template
-  * Author/Developer: Exill
-  * Author/Developer URL: https://themeforest.net/user/exill
-  * Version: v1.0.0
-  * License: Themeforest Standard Licenses: https://themeforest.net/licenses
-  */
 
-/*----------- Table of Contents -----------*/
-/**
- * Globals
- * Preloader
- * Sidebar
- * Home
- * About
- * Services
- * Hire
- * Portfolio
- * Testimonials
- * Blog
- * Contact
- * Footer
- */
-/*----------- Globals -----------*/
-/* Disable outline */
 :focus {
   outline: none;
 }
