@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Modern, FAANG-level personal portfolio for Luis Rodriguez, a Full-Stack Software Engineer based in San Juan, Puerto Rico. Deployed on Netlify.
+Modern personal portfolio for Luis Rodriguez, a Systems Architect & Full-Stack Engineer based in Toa Alta, Puerto Rico. Deployed on Netlify.
 
 ## Technology Stack
 
@@ -57,11 +57,10 @@ Portfolio/
 ```
 
 ### Adding Projects
-Projects are in the `#projects` section. Each project card follows this structure:
-- Image thumbnail
-- Title and status badge
-- Description paragraph
-- Problem/Solution/Impact bullet points
+Projects are in the `#projects` section. Each project card uses a gradient background with Lucide icon (no image thumbnails). Structure:
+- Gradient header with icon
+- Title and status badge (Production / In Development / Available on Request)
+- Subtitle and description paragraph
 - Tech stack badges
 
 ### Contact Form
@@ -71,9 +70,9 @@ Uses Netlify Forms with reCAPTCHA. Form name must match `name="contact"` attribu
 
 1. **Hero** - Name, title, availability status, CTAs
 2. **About** - Bio, location, stats, core strengths
-3. **Tech Stack** - Languages, frameworks, cloud, databases, tools, practices
-4. **Projects** - Portfolio grid with hover effects
-5. **Case Studies** - Detailed project breakdowns
+3. **Tech Stack** - Languages, frontend, backend, mobile/desktop, cloud, databases, architecture, AI & payments
+4. **Projects** - Key stats + 8 project cards (BerriosPay, GoFleetCare, ShaderForge, Lead Response, NEXUS MCU, CDD-HUB, Retail POS, iOS/macOS)
+5. **Case Studies** - BerriosPay deep dive + 3 teaser cards
 6. **Contact** - Form and contact info
 
 ## Important Files
