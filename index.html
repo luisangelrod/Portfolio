@@ -325,20 +325,11 @@
     h1, h2, h3 { letter-spacing: -0.025em; }
     h1 { letter-spacing: -0.04em; }
 
-    /* Sticky section headers — Brittany Chiang style */
+    /* Section headers — clean, no background box */
     .section-header-sticky {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      padding-top: 1.25rem;
-      padding-bottom: 1.25rem;
-      margin-bottom: 2rem;
-      background: rgba(250, 250, 249, 0.85);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-    }
-    .dark .section-header-sticky {
-      background: rgba(10, 10, 15, 0.85);
+      position: relative;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     /* Respect reduced motion preference */
@@ -381,14 +372,14 @@
   <!-- Mouse-following spotlight -->
   <div id="spotlight" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 dark:opacity-100" style="background: radial-gradient(600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(60, 139, 224, 0.07), transparent 80%)"></div>
 
-  <!-- Floating Controls — bottom right -->
-  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2">
-    <button id="theme-toggle" class="flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-slate-800/80 nav-glass border border-black/[0.06] dark:border-white/[0.06] shadow-lg hover:scale-110 transition-all" aria-label="Toggle dark mode">
-      <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
-      <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+  <!-- Floating Controls — top right, compact -->
+  <div class="fixed top-4 right-4 z-50 flex items-center gap-1.5">
+    <button id="theme-toggle" class="flex items-center justify-center w-9 h-9 rounded-full bg-white/70 dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/[0.06] hover:scale-110 transition-all" aria-label="Toggle dark mode">
+      <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-yellow-400"></i>
+      <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-500"></i>
     </button>
-    <a href="#contact" class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-lg shadow-blue-500/25 hover:scale-110 transition-all" aria-label="Contact me">
-      <i data-lucide="mail" class="w-5 h-5"></i>
+    <a href="#contact" class="flex items-center justify-center w-9 h-9 rounded-full bg-blue-500 text-white hover:scale-110 transition-all" aria-label="Contact me">
+      <i data-lucide="mail" class="w-4 h-4"></i>
     </a>
   </div>
 
@@ -486,18 +477,11 @@
         </div>
       </div>
 
-      <!-- Scroll indicator -->
-      <div class="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-        <a href="#about" class="flex flex-col items-center text-slate-400 hover:text-cyan-500 transition-colors">
-          <span class="text-sm mb-2">Scroll to explore</span>
-          <i data-lucide="chevron-down" class="w-6 h-6"></i>
-        </a>
-      </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-24 lg:py-36 relative">
+  <section id="about" class="py-16 lg:py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="section-header-sticky text-center" data-aos="fade-up">
@@ -603,11 +587,9 @@
     </div>
   </section>
 
-  <!-- Seamless Section Fade -->
-  <div class="h-24 lg:h-32"></div>
 
   <!-- Evolution Timeline — The Agentic Engineering Shift -->
-  <section class="py-24 lg:py-36 relative overflow-hidden">
+  <section class="py-16 lg:py-24 relative overflow-hidden">
     <!-- Background accent -->
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent dark:via-blue-950/20"></div>
 
@@ -669,11 +651,9 @@
     </div>
   </section>
 
-  <!-- Seamless Section Fade -->
-  <div class="h-24 lg:h-32"></div>
 
   <!-- Tech Stack Section -->
-  <section id="tech-stack" class="py-24 lg:py-36 relative">
+  <section id="tech-stack" class="py-16 lg:py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="section-header-sticky text-center" data-aos="fade-up">
@@ -835,7 +815,7 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-24 lg:py-36">
+  <section id="projects" class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="section-header-sticky text-center" data-aos="fade-up">
@@ -1177,7 +1157,7 @@
   </section>
 
   <!-- Case Studies Section -->
-  <section id="case-studies" class="py-24 lg:py-36 relative">
+  <section id="case-studies" class="py-16 lg:py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="section-header-sticky text-center" data-aos="fade-up">
@@ -1322,7 +1302,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-24 lg:py-36">
+  <section id="contact" class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Left - Info -->
