@@ -109,10 +109,9 @@
     ::-webkit-scrollbar-thumb { background: #3C8BE0; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
 
-    /* Light mode — warm off-white base + subtle gradient wash */
+    /* Light mode — single warm base, no gradient banding */
     html:not(.dark) body {
-      background: linear-gradient(150deg, #FAFAF9 0%, #F5F0EB 40%, #F0EDF5 100%);
-      background-attachment: fixed;
+      background-color: #FAFAF9;
       color: #0A0A0A;
     }
 
@@ -367,13 +366,13 @@
   </script>
 </head>
 
-<body class="grain bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 overflow-x-hidden">
+<body class="grain bg-[#FAFAF9] dark:bg-[#0A0A0F] text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 overflow-x-hidden">
 
   <!-- Mouse-following spotlight -->
   <div id="spotlight" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 dark:opacity-100" style="background: radial-gradient(600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(60, 139, 224, 0.07), transparent 80%)"></div>
 
-  <!-- Header Bar — static, top of page -->
-  <header class="relative z-50 flex items-center justify-between px-4 sm:px-6 py-4 max-w-7xl mx-auto">
+  <!-- Header Bar — inside hero, transparent -->
+  <header class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-4 max-w-7xl mx-auto">
     <a href="#home" class="flex items-center space-x-2 group">
       <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">LR</div>
       <span class="font-semibold text-sm hidden sm:block">Luis Rodriguez</span>
@@ -421,9 +420,9 @@
   </div>
 
   <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden overflow-x-hidden">
+  <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden overflow-x-hidden pt-16">
     <!-- Background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white to-rose-50/60 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent dark:from-transparent dark:via-blue-950/30 dark:to-transparent"></div>
 
     <!-- Animated background shapes — immersive particles -->
     <div class="absolute inset-0 overflow-hidden">
@@ -625,8 +624,8 @@
 
   <!-- Evolution Timeline — The Agentic Engineering Shift -->
   <section class="py-16 lg:py-24 relative overflow-hidden">
-    <!-- Background accent -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent dark:via-blue-950/20"></div>
+    <!-- Background accent — very subtle, edges are transparent -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent dark:via-blue-950/10"></div>
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="section-header-sticky text-center" data-aos="fade-up">
@@ -1436,7 +1435,7 @@
   <!-- Footer -->
   <footer class="relative py-16 border-t border-transparent">
     <!-- Seamless top fade -->
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/30 dark:via-white/[0.06] to-transparent"></div>
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/20 dark:via-white/[0.04] to-transparent"></div>
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-end justify-between gap-8">
