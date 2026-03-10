@@ -109,13 +109,20 @@
     ::-webkit-scrollbar-thumb { background: #3C8BE0; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
 
+    /* Light mode — warm off-white base + subtle gradient wash */
+    html:not(.dark) body {
+      background: linear-gradient(150deg, #FAFAF9 0%, #F5F0EB 40%, #F0EDF5 100%);
+      background-attachment: fixed;
+      color: #0A0A0A;
+    }
+
     /* Dark mode deep background override */
     html.dark { background-color: #0A0A0F; }
     html.dark body { background-color: #0A0A0F; }
 
     /* Gradient text — PR Blue to Red */
     .gradient-text {
-      background: linear-gradient(135deg, #3C8BE0 0%, #2563eb 50%, #EF0000 100%);
+      background: linear-gradient(135deg, #1d4ed8 0%, #3C8BE0 40%, #DC2626 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -128,24 +135,32 @@
       filter: drop-shadow(0 0 16px rgba(60, 139, 224, 0.5));
     }
 
-    /* Glass morphism */
+    /* Glass morphism — light mode (Apple/Linear style) */
     .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(0, 0, 0, 0.06);
     }
     .dark .glass {
       background: rgba(60, 139, 224, 0.04);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
       border: 1px solid rgba(60, 139, 224, 0.12);
     }
 
-    /* Card hover effect */
+    /* Card hover — layered tinted shadows (Josh Comeau style) */
     .card-hover {
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .card-hover:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(60, 139, 224, 0.15);
+      box-shadow:
+        0 1px 2px rgba(60, 139, 224, 0.04),
+        0 2px 4px rgba(60, 139, 224, 0.04),
+        0 4px 8px rgba(60, 139, 224, 0.06),
+        0 8px 16px rgba(60, 139, 224, 0.08),
+        0 16px 32px rgba(60, 139, 224, 0.10);
     }
     .dark .card-hover:hover {
       box-shadow: 0 20px 40px rgba(60, 139, 224, 0.08), 0 0 0 1px rgba(60, 139, 224, 0.2);
@@ -169,13 +184,21 @@
     .tech-badge { transition: all 0.2s ease; }
     .tech-badge:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(60, 139, 224, 0.3);
+      box-shadow: 0 4px 15px rgba(60, 139, 224, 0.2);
     }
 
     /* Section divider — flag gradient */
     .section-divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(60, 139, 224, 0.4), rgba(239, 0, 0, 0.2), transparent);
+    }
+
+    /* Light mode — refined card borders */
+    .card-hover {
+      border-color: rgba(0, 0, 0, 0.06);
+    }
+    .dark .card-hover {
+      border-color: rgba(255, 255, 255, 0.06);
     }
 
     /* Typing cursor */
@@ -264,10 +287,16 @@
       content: '';
       position: fixed;
       inset: 0;
-      opacity: 0.03;
+      opacity: 0.025;
       pointer-events: none;
       z-index: 9999;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      background-size: 182px;
+    }
+    .dark .grain::after {
+      mix-blend-mode: soft-light;
+      opacity: 0.04;
     }
 
     /* Dark mode card glow border on hover */
@@ -286,11 +315,15 @@
     }
     .dark .card-hover:hover::before { opacity: 1; }
 
-    /* Enhanced glassmorphism navbar */
+    /* Apple-style glass navbar */
     .nav-glass {
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
     }
+
+    /* Tight letter-spacing on headings — "designed" feel */
+    h1, h2, h3 { letter-spacing: -0.025em; }
+    h1 { letter-spacing: -0.04em; }
 
     /* Respect reduced motion preference */
     @media (prefers-reduced-motion: reduce) {
@@ -390,7 +423,7 @@
   <!-- Hero Section -->
   <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 overflow-x-hidden">
     <!-- Background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-red-50 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white to-rose-50/60 dark:from-slate-900 dark:via-slate-900 dark:to-blue-950"></div>
 
     <!-- Animated background shapes — immersive particles -->
     <div class="absolute inset-0 overflow-hidden">
@@ -1534,9 +1567,9 @@
       const currentScroll = window.pageYOffset;
 
       if (currentScroll > 50) {
-        navbar.classList.add('bg-white/80', 'dark:bg-slate-900/80', 'nav-glass', 'shadow-sm');
+        navbar.classList.add('bg-white/72', 'dark:bg-[#0A0A0F]/80', 'nav-glass', 'border-b', 'border-black/[0.06]', 'dark:border-white/[0.06]');
       } else {
-        navbar.classList.remove('bg-white/80', 'dark:bg-slate-900/80', 'nav-glass', 'shadow-sm');
+        navbar.classList.remove('bg-white/72', 'dark:bg-[#0A0A0F]/80', 'nav-glass', 'border-b', 'border-black/[0.06]', 'dark:border-white/[0.06]');
       }
 
       lastScroll = currentScroll;
