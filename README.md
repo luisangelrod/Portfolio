@@ -2,7 +2,7 @@
 
 Systems Architect & Full-Stack Engineer based in Toa Alta, Puerto Rico. 5+ years building enterprise systems from database schema to cloud deployment.
 
-**[View Live Site](https://luisrodriguez.dev)**
+**[View Live Site](https://luisrodriguezdev.netlify.app)**
 
 ## Tech Stack
 
