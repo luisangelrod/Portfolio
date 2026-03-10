@@ -1492,57 +1492,79 @@
     </div>
   </footer>
 
-  <!-- Portal Overlay -->
-  <div id="portal-overlay" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-500">
-    <!-- Starfield canvas (behind everything) -->
+  <!-- Portal Overlay — Full screen takeover -->
+  <div id="portal-overlay" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-700" style="background:#020108;">
+    <!-- Starfield canvas -->
     <canvas id="starfield-canvas" class="absolute inset-0 w-full h-full"></canvas>
 
-    <!-- Portal spark canvas (on top of stars) -->
+    <!-- Portal spark canvas -->
     <canvas id="portal-canvas" class="absolute inset-0 w-full h-full"></canvas>
 
-    <!-- Vertical content cards (centered, on top of canvas) -->
-    <div id="portal-content" class="absolute inset-0 flex flex-col items-center justify-center gap-5 opacity-0 transition-opacity duration-700 delay-700 z-10">
-      <a href="#" class="group block w-72 sm:w-80 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] overflow-hidden hover:bg-white/[0.08] hover:border-amber-400/30 hover:shadow-[0_0_30px_rgba(255,180,50,0.15)] transition-all duration-300 p-5">
-        <div class="flex items-center gap-4 text-white">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0">
-            <i data-lucide="globe" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <span class="text-sm font-semibold block">Coming Soon</span>
-            <span class="text-xs text-slate-400">Project 1</span>
-          </div>
-          <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
+    <!-- Content layer -->
+    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
+      <!-- Title -->
+      <div id="portal-content" class="opacity-0 transition-opacity duration-700 delay-1000 flex flex-col items-center">
+        <p class="text-white/40 text-xs uppercase tracking-[0.3em] mb-8 font-mono">Explore the Multiverse</p>
+
+        <!-- Cards -->
+        <div class="flex flex-col gap-4 w-full max-w-sm px-4">
+          <a href="#" class="portal-link group relative block rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03]">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-blue-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative flex items-center gap-4 p-4 border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm group-hover:border-white/[0.15] transition-all duration-300">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/20">
+                <i data-lucide="globe" class="w-5 h-5 text-white"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-white text-sm font-medium block">Coming Soon</span>
+                <span class="text-white/30 text-xs">Project 1</span>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center group-hover:bg-white/[0.1] transition-colors">
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/30 group-hover:text-white/80 transition-colors"></i>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="portal-link group relative block rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03]">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-600/20 to-red-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative flex items-center gap-4 p-4 border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm group-hover:border-white/[0.15] transition-all duration-300">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/20">
+                <i data-lucide="layout" class="w-5 h-5 text-white"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-white text-sm font-medium block">Coming Soon</span>
+                <span class="text-white/30 text-xs">Project 2</span>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center group-hover:bg-white/[0.1] transition-colors">
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/30 group-hover:text-white/80 transition-colors"></i>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" class="portal-link group relative block rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03]">
+            <div class="absolute inset-0 bg-gradient-to-r from-amber-600/20 to-amber-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="relative flex items-center gap-4 p-4 border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm group-hover:border-white/[0.15] transition-all duration-300">
+              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/20">
+                <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="text-white text-sm font-medium block">Coming Soon</span>
+                <span class="text-white/30 text-xs">Project 3</span>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center group-hover:bg-white/[0.1] transition-colors">
+                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/30 group-hover:text-white/80 transition-colors"></i>
+              </div>
+            </div>
+          </a>
         </div>
-      </a>
-      <a href="#" class="group block w-72 sm:w-80 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] overflow-hidden hover:bg-white/[0.08] hover:border-amber-400/30 hover:shadow-[0_0_30px_rgba(255,180,50,0.15)] transition-all duration-300 p-5">
-        <div class="flex items-center gap-4 text-white">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center flex-shrink-0">
-            <i data-lucide="layout" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <span class="text-sm font-semibold block">Coming Soon</span>
-            <span class="text-xs text-slate-400">Project 2</span>
-          </div>
-          <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
-        </div>
-      </a>
-      <a href="#" class="group block w-72 sm:w-80 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] overflow-hidden hover:bg-white/[0.08] hover:border-amber-400/30 hover:shadow-[0_0_30px_rgba(255,180,50,0.15)] transition-all duration-300 p-5">
-        <div class="flex items-center gap-4 text-white">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center flex-shrink-0">
-            <i data-lucide="zap" class="w-6 h-6"></i>
-          </div>
-          <div>
-            <span class="text-sm font-semibold block">Coming Soon</span>
-            <span class="text-xs text-slate-400">Project 3</span>
-          </div>
-          <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
-        </div>
-      </a>
+
+        <!-- Hint -->
+        <p class="text-white/20 text-xs mt-8">Press <kbd class="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.1] text-white/40 font-mono text-[10px]">ESC</kbd> or tap outside to close</p>
+      </div>
     </div>
 
     <!-- Close button -->
-    <button id="portal-close" class="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all hover:scale-110 z-20">
-      <i data-lucide="x" class="w-6 h-6"></i>
+    <button id="portal-close" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white hover:bg-white/[0.1] transition-all z-20">
+      <i data-lucide="x" class="w-5 h-5"></i>
     </button>
   </div>
 
@@ -1945,11 +1967,15 @@
     function openPortal() {
       if (portalOpen) return;
       portalOpen = true;
+      document.body.style.overflow = 'hidden'; // Lock scroll
       portalOverlay.style.pointerEvents = 'auto';
       portalOverlay.style.opacity = '1';
       initStarfield();
       initPortalEffect();
-      setTimeout(() => { portalContent.style.opacity = '1'; if (typeof lucide !== 'undefined') lucide.createIcons(); }, 1200);
+      setTimeout(() => {
+        portalContent.style.opacity = '1';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      }, 1000);
     }
 
     function closePortal() {
@@ -1958,6 +1984,7 @@
         portalOverlay.style.opacity = '0';
         portalOverlay.style.pointerEvents = 'none';
         portalOpen = false;
+        document.body.style.overflow = ''; // Unlock scroll
         cancelAnimationFrame(animFrame);
         cancelAnimationFrame(starFrame);
         const ctx = portalCanvas.getContext('2d');
@@ -1972,7 +1999,8 @@
     portalTrigger.addEventListener('click', openPortal);
     portalClose.addEventListener('click', closePortal);
     portalOverlay.addEventListener('click', (e) => {
-      if (e.target === portalOverlay || e.target === portalOverlay.querySelector('.absolute.inset-0')) closePortal();
+      // Close only when clicking canvas/backdrop, not cards or close button
+      if (e.target === portalOverlay || e.target.tagName === 'CANVAS') closePortal();
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && portalOpen) closePortal(); });
 
