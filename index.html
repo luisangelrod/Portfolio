@@ -6,6 +6,19 @@
   <title>Luis Rodriguez | Systems Architect & Full-Stack Engineer</title>
   <meta name="description" content="Systems Architect & Full-Stack Engineer specializing in React, .NET, Azure, and AI-augmented development. Based in Toa Alta, Puerto Rico.">
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Luis Rodriguez | Systems Architect & Full-Stack Engineer">
+  <meta property="og:description" content="Systems Architect & Full-Stack Engineer specializing in React, .NET, Azure, and AI-augmented development. Based in Toa Alta, Puerto Rico.">
+  <meta property="og:image" content="/img/favicons/favicon_io (1)/android-chrome-512x512.png">
+  <meta property="og:url" content="https://luisrodriguez.dev">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Luis Rodriguez | Systems Architect & Full-Stack Engineer">
+  <meta name="twitter:description" content="Systems Architect & Full-Stack Engineer — React, .NET, Azure, AI-augmented development.">
+  <meta name="twitter:image" content="/img/favicons/favicon_io (1)/android-chrome-512x512.png">
+
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/favicon_io (1)/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon_io (1)/favicon-32x32.png">
@@ -204,6 +217,30 @@
       }
     }
   </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Luis Rodriguez",
+    "jobTitle": "Systems Architect & Full-Stack Engineer",
+    "url": "https://luisrodriguez.dev",
+    "email": "luisangelrod17@gmail.com",
+    "telephone": "+1-787-980-5868",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Toa Alta",
+      "addressRegion": "PR",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://github.com/luisangelrod",
+      "https://www.linkedin.com/in/luis-rodriguez-515858bb/"
+    ],
+    "knowsAbout": ["React", ".NET", "TypeScript", "Azure", "Systems Architecture", "Full-Stack Development"]
+  }
+  </script>
 </head>
 
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 overflow-x-hidden">
@@ -303,15 +340,25 @@
           </p>
 
           <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6">
             <a href="#projects" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 transition-all">
               <i data-lucide="folder-open" class="w-5 h-5 mr-2"></i>
               View My Work
+            </a>
+            <a href="assets/resume.pdf" download class="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg font-semibold hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all">
+              <i data-lucide="download" class="w-5 h-5 mr-2"></i>
+              Download Resume
             </a>
             <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg font-semibold hover:border-indigo-500 dark:hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all">
               <i data-lucide="send" class="w-5 h-5 mr-2"></i>
               Get in Touch
             </a>
+          </div>
+
+          <!-- Currently Building -->
+          <div class="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 text-sm mb-8 border border-indigo-200 dark:border-indigo-800">
+            <i data-lucide="hammer" class="w-4 h-4 mr-2"></i>
+            Currently building: <strong class="ml-1">BerriosPay</strong>&nbsp;— Enterprise Payment Kiosk System
           </div>
 
           <!-- Social Links -->
@@ -1139,7 +1186,7 @@
           <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
             LR
           </div>
-          <span class="text-slate-600 dark:text-slate-400">© 2025 Luis Rodriguez. All rights reserved.</span>
+          <span class="text-slate-600 dark:text-slate-400">© <span id="copyright-year"></span> Luis Rodriguez. All rights reserved.</span>
         </div>
 
         <div class="flex items-center space-x-4">
@@ -1159,6 +1206,9 @@
 
   <!-- Scripts -->
   <script>
+    // Copyright year
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
