@@ -248,6 +248,58 @@
     .dark .cta-primary:hover {
       box-shadow: 0 0 30px rgba(239, 0, 0, 0.2), 0 10px 40px rgba(60, 139, 224, 0.15);
     }
+
+    /* Animated gradient text — slowly shifting */
+    .gradient-text-animated {
+      background-size: 200% 100%;
+      animation: gradient-shift 6s ease-in-out infinite;
+    }
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Film grain texture — premium tactile depth */
+    .grain::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Dark mode card glow border on hover */
+    .dark .card-hover {
+      position: relative;
+    }
+    .dark .card-hover::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(60, 139, 224, 0.3), rgba(239, 68, 68, 0.15), rgba(60, 139, 224, 0.3));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .dark .card-hover:hover::before { opacity: 1; }
+
+    /* Enhanced glassmorphism navbar */
+    .nav-glass {
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 
   <!-- Structured Data -->
@@ -275,7 +327,10 @@
   </script>
 </head>
 
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 overflow-x-hidden">
+<body class="grain bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 overflow-x-hidden">
+
+  <!-- Mouse-following spotlight -->
+  <div id="spotlight" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 dark:opacity-100" style="background: radial-gradient(600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(60, 139, 224, 0.07), transparent 80%)"></div>
 
   <!-- Navigation -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -358,7 +413,7 @@
           </div>
 
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Hi, I'm <span class="gradient-text">Luis Rodriguez</span>
+            Hi, I'm <span class="gradient-text gradient-text-animated">Luis Rodriguez</span>
           </h1>
 
           <div class="text-xl sm:text-2xl text-slate-600 dark:text-slate-400 mb-8">
@@ -1337,9 +1392,9 @@
       const currentScroll = window.pageYOffset;
 
       if (currentScroll > 50) {
-        navbar.classList.add('bg-white/80', 'dark:bg-slate-900/80', 'backdrop-blur-lg', 'shadow-sm');
+        navbar.classList.add('bg-white/80', 'dark:bg-slate-900/80', 'nav-glass', 'shadow-sm');
       } else {
-        navbar.classList.remove('bg-white/80', 'dark:bg-slate-900/80', 'backdrop-blur-lg', 'shadow-sm');
+        navbar.classList.remove('bg-white/80', 'dark:bg-slate-900/80', 'nav-glass', 'shadow-sm');
       }
 
       lastScroll = currentScroll;
@@ -1358,6 +1413,15 @@
         }
       });
     });
+
+    // Mouse-following spotlight effect
+    const spotlight = document.getElementById('spotlight');
+    if (spotlight && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.addEventListener('mousemove', (e) => {
+        spotlight.style.setProperty('--mouse-x', e.clientX + 'px');
+        spotlight.style.setProperty('--mouse-y', e.clientY + 'px');
+      });
+    }
   </script>
 </body>
 </html>
