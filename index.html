@@ -480,44 +480,9 @@
           </div>
         </div>
 
-        <!-- Right content - Profile/Visual -->
-        <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-          <div class="relative mx-auto w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
-            <!-- Outer glow ring -->
-            <div class="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 via-transparent to-red-500/20 dark:from-blue-500/30 dark:to-red-500/30 animate-spin blur-sm" style="animation-duration: 20s;"></div>
-            <!-- Orbital ring 1 -->
-            <div class="absolute inset-0 rounded-full border border-blue-300/40 dark:border-blue-500/30 animate-spin" style="animation-duration: 25s;"></div>
-            <!-- Orbital ring 2 -->
-            <div class="absolute inset-3 rounded-full border border-red-300/30 dark:border-red-500/20 animate-spin" style="animation-duration: 18s; animation-direction: reverse;"></div>
-            <!-- Orbital ring 3 -->
-            <div class="absolute inset-6 rounded-full border border-blue-200/20 dark:border-blue-400/15 animate-spin" style="animation-duration: 35s;"></div>
-
-            <!-- Profile image -->
-            <div class="absolute inset-10 rounded-full overflow-hidden bg-gradient-to-br from-blue-500 to-red-600 p-1 shadow-2xl dark:shadow-blue-500/20">
-              <div class="w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800">
-                <img src="img/favicons/favicon_io (1)/android-chrome-512x512.png" alt="Luis Rodriguez" class="w-full h-full object-cover">
-              </div>
-            </div>
-
-            <!-- Orbital dots (modern particles on rings) -->
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-blue-400 dark:bg-blue-400 shadow-lg dark:shadow-blue-400/50 animate-spin" style="animation-duration: 25s; transform-origin: 50% 160px;"></div>
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-red-400 dark:bg-red-400 shadow-lg dark:shadow-red-400/50 animate-spin" style="animation-duration: 18s; animation-direction: reverse; transform-origin: 50% 140px;"></div>
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400 dark:bg-amber-400 shadow-lg dark:shadow-amber-400/50 animate-spin" style="animation-duration: 35s; transform-origin: 50% 180px;"></div>
-
-            <!-- Floating tech icons -->
-            <div class="absolute -top-2 sm:-top-4 left-1/4 p-2 sm:p-3 rounded-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur shadow-lg animate-float" style="animation-delay: 0s;">
-              <span class="text-xl sm:text-2xl">⚛️</span>
-            </div>
-            <div class="absolute top-1/4 -right-1 sm:-right-4 p-2 sm:p-3 rounded-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur shadow-lg animate-float" style="animation-delay: 1s;">
-              <span class="text-xl sm:text-2xl">🔷</span>
-            </div>
-            <div class="absolute bottom-1/4 -left-1 sm:-left-4 p-2 sm:p-3 rounded-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur shadow-lg animate-float" style="animation-delay: 2s;">
-              <span class="text-xl sm:text-2xl">☁️</span>
-            </div>
-            <div class="absolute -bottom-2 sm:-bottom-4 right-1/4 p-2 sm:p-3 rounded-xl bg-white/90 dark:bg-slate-800/90 backdrop-blur shadow-lg animate-float" style="animation-delay: 3s;">
-              <span class="text-xl sm:text-2xl">🛢️</span>
-            </div>
-          </div>
+        <!-- Right content - Interactive LR Particle Canvas -->
+        <div class="relative hidden lg:block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <canvas id="lr-canvas" class="w-96 h-96 mx-auto"></canvas>
         </div>
       </div>
 
@@ -544,9 +509,9 @@
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left - Image/Visual -->
         <div class="relative" data-aos="fade-right" data-aos-duration="800">
-          <div class="relative rounded-2xl overflow-hidden">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl">
             <img src="img/PuertoRico.jpg" alt="Puerto Rico" class="w-full h-80 lg:h-96 object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-slate-900/10"></div>
             <div class="absolute bottom-6 left-6 right-6">
               <div class="flex items-center text-white">
                 <i data-lucide="map-pin" class="w-5 h-5 mr-2 text-blue-400"></i>
@@ -638,8 +603,8 @@
     </div>
   </section>
 
-  <!-- Section Divider -->
-  <div class="section-divider max-w-4xl mx-auto"></div>
+  <!-- Seamless Section Fade -->
+  <div class="h-24 lg:h-32"></div>
 
   <!-- Evolution Timeline — The Agentic Engineering Shift -->
   <section class="py-24 lg:py-36 relative overflow-hidden">
@@ -704,11 +669,11 @@
     </div>
   </section>
 
-  <!-- Section Divider -->
-  <div class="section-divider max-w-4xl mx-auto"></div>
+  <!-- Seamless Section Fade -->
+  <div class="h-24 lg:h-32"></div>
 
   <!-- Tech Stack Section -->
-  <section id="tech-stack" class="py-24 lg:py-36 bg-slate-100/50 dark:bg-slate-800/20">
+  <section id="tech-stack" class="py-24 lg:py-36 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="section-header-sticky text-center" data-aos="fade-up">
@@ -1212,7 +1177,7 @@
   </section>
 
   <!-- Case Studies Section -->
-  <section id="case-studies" class="py-24 lg:py-36 bg-slate-100/50 dark:bg-slate-800/20">
+  <section id="case-studies" class="py-24 lg:py-36 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="section-header-sticky text-center" data-aos="fade-up">
@@ -1454,25 +1419,25 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-16 border-t border-slate-200 dark:border-slate-800">
+  <footer class="relative py-16 border-t border-transparent">
+    <!-- Seamless top fade -->
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/30 dark:via-white/[0.06] to-transparent"></div>
+
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
-        <!-- Creative footer text -->
+      <div class="flex items-end justify-between gap-8">
+        <!-- Creative footer text with hyperlinked bold words -->
         <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
-          Architected with <strong class="text-slate-700 dark:text-slate-300">Claude Code</strong> and coded in
-          <strong class="text-slate-700 dark:text-slate-300">VS Code</strong> by yours truly. Built with
-          <strong class="text-slate-700 dark:text-slate-300">Tailwind CSS</strong> and vanilla JS, deployed on
-          <strong class="text-slate-700 dark:text-slate-300">Netlify</strong>. All text is set in the
-          <strong class="text-slate-700 dark:text-slate-300">Inter</strong> typeface. Puerto Rico.
+          Architected with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Claude Code</a> and coded in
+          <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">VS Code</a> by yours truly. Built with
+          <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Tailwind CSS</a> and vanilla JS, deployed on
+          <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Netlify</a>. All text is set in the
+          <a href="https://rsms.me/inter" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Inter</a> typeface. Puerto Rico.
         </p>
 
-        <!-- Portal Easter Egg Button -->
-        <button id="portal-trigger" class="group relative flex-shrink-0 w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 dark:hover:shadow-blue-500/10 hover:scale-110 cursor-pointer" aria-label="Open portal">
+        <!-- Portal Easter Egg Button (right side) -->
+        <button id="portal-trigger" class="group relative flex-shrink-0 w-12 h-12 rounded-xl bg-transparent border border-slate-200/50 dark:border-white/[0.06] hover:border-amber-400/40 transition-all duration-500 hover:scale-110 cursor-pointer opacity-40 hover:opacity-100" aria-label="Open portal">
           <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-8 h-8 rounded-full border-2 border-dashed border-blue-400 dark:border-blue-500 animate-spin opacity-40 group-hover:opacity-100 transition-opacity" style="animation-duration: 8s;"></div>
-          </div>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <i data-lucide="sparkles" class="w-5 h-5 text-blue-500 dark:text-blue-400 group-hover:scale-125 transition-transform"></i>
+            <i data-lucide="sparkles" class="w-4 h-4 text-slate-400 dark:text-white/30 group-hover:text-amber-400 transition-colors"></i>
           </div>
         </button>
       </div>
@@ -1492,8 +1457,8 @@
     </div>
   </footer>
 
-  <!-- Portal Overlay — Full screen takeover -->
-  <div id="portal-overlay" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-700" style="background:#020108;">
+  <!-- Portal Overlay — Full screen takeover (blocks all background interaction) -->
+  <div id="portal-overlay" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-700 overscroll-none touch-none" style="background:#020108;">
     <!-- Starfield canvas -->
     <canvas id="starfield-canvas" class="absolute inset-0 w-full h-full"></canvas>
 
@@ -2003,6 +1968,113 @@
       if (e.target === portalOverlay || e.target.tagName === 'CANVAS') closePortal();
     });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && portalOpen) closePortal(); });
+
+    // LR Particle Canvas — interactive initials with orbiting particles
+    const lrCanvas = document.getElementById('lr-canvas');
+    if (lrCanvas) {
+      const lrCtx = lrCanvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      lrCanvas.width = 384 * dpr;
+      lrCanvas.height = 384 * dpr;
+      lrCtx.scale(dpr, dpr);
+      const LW = 384, LH = 384, lcx = LW / 2, lcy = LH / 2;
+
+      // Get LR text pixel positions
+      const offscreen = document.createElement('canvas');
+      offscreen.width = LW; offscreen.height = LH;
+      const offCtx = offscreen.getContext('2d');
+      offCtx.fillStyle = '#fff';
+      offCtx.font = 'bold 140px Inter, system-ui, sans-serif';
+      offCtx.textAlign = 'center';
+      offCtx.textBaseline = 'middle';
+      offCtx.fillText('LR', lcx, lcy);
+      const imgData = offCtx.getImageData(0, 0, LW, LH).data;
+
+      const textPoints = [];
+      for (let y = 0; y < LH; y += 4) {
+        for (let x = 0; x < LW; x += 4) {
+          if (imgData[(y * LW + x) * 4 + 3] > 128) {
+            textPoints.push({ x, y });
+          }
+        }
+      }
+
+      // Particles that form LR
+      const lrParticles = textPoints.map(p => ({
+        tx: p.x, ty: p.y,
+        x: lcx + (Math.random() - 0.5) * 300,
+        y: lcy + (Math.random() - 0.5) * 300,
+        size: 1 + Math.random() * 1.5,
+        speed: 0.03 + Math.random() * 0.04,
+        phase: Math.random() * Math.PI * 2,
+      }));
+
+      // Orbiting particles
+      const orbiters = [];
+      for (let i = 0; i < 40; i++) {
+        orbiters.push({
+          angle: Math.random() * Math.PI * 2,
+          radius: 120 + Math.random() * 60,
+          speed: (0.005 + Math.random() * 0.015) * (Math.random() > 0.5 ? 1 : -1),
+          size: 1 + Math.random() * 2,
+          hue: Math.random() > 0.5 ? 210 : 0, // blue or red
+        });
+      }
+
+      let lrTime = 0;
+      function animateLR() {
+        lrTime += 0.016;
+        lrCtx.clearRect(0, 0, LW, LH);
+
+        // Draw LR particles
+        const isDark = document.documentElement.classList.contains('dark');
+        lrParticles.forEach(p => {
+          p.x += (p.tx - p.x) * p.speed;
+          p.y += (p.ty - p.y) * p.speed;
+
+          // Subtle breathing motion
+          const bx = Math.sin(lrTime * 1.5 + p.phase) * 1.5;
+          const by = Math.cos(lrTime * 1.2 + p.phase) * 1.5;
+
+          const alpha = isDark ? 0.7 : 0.5;
+          const color = isDark ? `rgba(60, 139, 224, ${alpha})` : `rgba(29, 78, 216, ${alpha})`;
+          lrCtx.beginPath();
+          lrCtx.arc(p.x + bx, p.y + by, p.size, 0, Math.PI * 2);
+          lrCtx.fillStyle = color;
+          lrCtx.fill();
+        });
+
+        // Orbiters
+        orbiters.forEach(o => {
+          o.angle += o.speed;
+          const ox = lcx + Math.cos(o.angle) * o.radius;
+          const oy = lcy + Math.sin(o.angle) * o.radius;
+          const wobble = Math.sin(o.angle * 3 + lrTime) * 8;
+
+          const r = o.hue === 0 ? 239 : 60;
+          const g = o.hue === 0 ? 68 : 139;
+          const b = o.hue === 0 ? 68 : 224;
+
+          // Glow
+          const glow = lrCtx.createRadialGradient(ox + wobble, oy, 0, ox + wobble, oy, o.size * 6);
+          glow.addColorStop(0, `rgba(${r},${g},${b},0.3)`);
+          glow.addColorStop(1, `rgba(${r},${g},${b},0)`);
+          lrCtx.beginPath();
+          lrCtx.arc(ox + wobble, oy, o.size * 6, 0, Math.PI * 2);
+          lrCtx.fillStyle = glow;
+          lrCtx.fill();
+
+          // Core
+          lrCtx.beginPath();
+          lrCtx.arc(ox + wobble, oy, o.size, 0, Math.PI * 2);
+          lrCtx.fillStyle = `rgba(${r},${g},${b},0.8)`;
+          lrCtx.fill();
+        });
+
+        requestAnimationFrame(animateLR);
+      }
+      animateLR();
+    }
 
     // Mouse-following spotlight effect
     const spotlight = document.getElementById('spotlight');
