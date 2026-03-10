@@ -1585,7 +1585,7 @@
       });
     });
 
-    // Portal Easter Egg
+    // Portal Easter Egg — MCU-quality sling ring effect
     const portalTrigger = document.getElementById('portal-trigger');
     const portalOverlay = document.getElementById('portal-overlay');
     const portalRing = document.getElementById('portal-ring');
@@ -1593,83 +1593,185 @@
     const portalClose = document.getElementById('portal-close');
     const portalCanvas = document.getElementById('portal-canvas');
     let portalOpen = false;
-    let particles = [];
     let animFrame;
+    let sparks = [];
+    let embers = [];
+    let time = 0;
 
-    function initParticles() {
-      const ctx = portalCanvas.getContext('2d');
-      portalCanvas.width = window.innerWidth;
-      portalCanvas.height = window.innerHeight;
-      const cx = portalCanvas.width / 2;
-      const cy = portalCanvas.height / 2;
-      particles = [];
+    // MCU color palette: white-hot core → golden → orange → red → dark
+    function sparkColor(life) {
+      if (life > 0.8) return { r: 255, g: 255, b: 220, a: 1 };        // white-hot
+      if (life > 0.6) return { r: 255, g: 210, b: 80, a: 0.95 };      // golden
+      if (life > 0.4) return { r: 255, g: 140, b: 30, a: 0.85 };      // orange
+      if (life > 0.2) return { r: 255, g: 70, b: 0, a: 0.6 };         // red-orange
+      return { r: 180, g: 30, b: 0, a: life * 2 };                      // dying ember
+    }
 
-      // Create particles that converge to center forming a circle
-      for (let i = 0; i < 200; i++) {
+    function initPortalEffect() {
+      const canvas = portalCanvas;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+      const R = Math.min(canvas.width, canvas.height) * 0.28; // portal radius
+      sparks = [];
+      embers = [];
+      time = 0;
+
+      // Ring sparks — the primary sling ring particles
+      for (let i = 0; i < 350; i++) {
+        sparks.push({
+          angle: Math.random() * Math.PI * 2,
+          angularVel: (0.015 + Math.random() * 0.035) * (Math.random() > 0.5 ? 1 : -1),
+          radius: R + (Math.random() - 0.5) * 12,
+          radialDrift: (Math.random() - 0.5) * 0.3,
+          size: 0.5 + Math.random() * 2.5,
+          life: 0.3 + Math.random() * 0.7,
+          maxLife: 0.3 + Math.random() * 0.7,
+          prevX: 0, prevY: 0, x: 0, y: 0,
+          gravity: Math.random() < 0.15 ? 0.02 + Math.random() * 0.04 : 0, // 15% drip
+          driftY: 0,
+        });
+      }
+
+      function spawnEmber() {
         const angle = Math.random() * Math.PI * 2;
-        const dist = 200 + Math.random() * 300;
-        particles.push({
-          x: cx + Math.cos(angle) * (dist + Math.random() * 400),
-          y: cy + Math.sin(angle) * (dist + Math.random() * 400),
-          tx: cx + Math.cos(angle) * dist * 0.6,
-          ty: cy + Math.sin(angle) * dist * 0.6,
-          size: Math.random() * 2.5 + 0.5,
-          speed: 0.02 + Math.random() * 0.03,
-          progress: 0,
-          color: i % 3 === 0 ? '60, 139, 224' : i % 3 === 1 ? '239, 68, 68' : '245, 158, 11',
-          ox: 0, oy: 0,
+        embers.push({
+          x: cx + Math.cos(angle) * R,
+          y: cy + Math.sin(angle) * R,
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2 + 0.5,
+          life: 1,
+          decay: 0.008 + Math.random() * 0.015,
+          size: 0.5 + Math.random() * 1.5,
         });
       }
 
       function animate() {
-        ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
-        let allDone = true;
+        time += 0.016;
 
-        particles.forEach(p => {
-          if (p.progress < 1) {
-            p.progress = Math.min(1, p.progress + p.speed);
-            allDone = false;
+        // Trail persistence — semi-transparent black fill (NOT full clear)
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Soft ambient glow behind ring
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        const ambientGlow = ctx.createRadialGradient(cx, cy, R * 0.6, cx, cy, R * 1.4);
+        ambientGlow.addColorStop(0, 'rgba(200, 80, 0, 0.03)');
+        ambientGlow.addColorStop(0.5, 'rgba(255, 140, 30, 0.04)');
+        ambientGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = ambientGlow;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Wide glow ring (soft bloom layer)
+        ctx.beginPath();
+        ctx.arc(cx, cy, R, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(255, 150, 40, 0.08)';
+        ctx.lineWidth = 40;
+        ctx.shadowBlur = 60;
+        ctx.shadowColor = 'rgba(255, 120, 20, 0.3)';
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Medium glow ring
+        ctx.beginPath();
+        ctx.arc(cx, cy, R, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(255, 180, 60, 0.12)';
+        ctx.lineWidth = 12;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = 'rgba(255, 140, 30, 0.5)';
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Update and draw ring sparks
+        sparks.forEach(s => {
+          s.prevX = s.x;
+          s.prevY = s.y;
+          s.angle += s.angularVel;
+          s.radius += s.radialDrift;
+          s.driftY += s.gravity;
+
+          // Noise-like wobble
+          const wobble = Math.sin(s.angle * 8 + time * 3) * 3;
+          s.x = cx + Math.cos(s.angle) * (s.radius + wobble);
+          s.y = cy + Math.sin(s.angle) * (s.radius + wobble) + s.driftY;
+
+          // Respawn if life depleted
+          s.life -= 0.003 + (s.gravity > 0 ? 0.005 : 0);
+          if (s.life <= 0) {
+            s.angle = Math.random() * Math.PI * 2;
+            s.radius = R + (Math.random() - 0.5) * 12;
+            s.life = s.maxLife;
+            s.driftY = 0;
+            s.prevX = cx + Math.cos(s.angle) * s.radius;
+            s.prevY = cy + Math.sin(s.angle) * s.radius;
           }
-          const ease = 1 - Math.pow(1 - p.progress, 3); // ease-out cubic
-          const x = p.ox + (p.tx - p.ox) * ease;
-          const y = p.oy + (p.ty - p.oy) * ease;
 
-          ctx.beginPath();
-          ctx.arc(x, y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${p.color}, ${0.3 + ease * 0.5})`;
-          ctx.fill();
+          const c = sparkColor(s.life);
+          const dx = s.x - s.prevX;
+          const dy = s.y - s.prevY;
+          const speed = Math.sqrt(dx * dx + dy * dy);
 
-          // Trail
-          if (p.progress < 0.8) {
-            const tx = p.ox + (p.tx - p.ox) * Math.max(0, ease - 0.1);
-            const ty = p.oy + (p.ty - p.oy) * Math.max(0, ease - 0.1);
+          if (speed > 0.5) {
+            // Velocity-stretched spark with gradient
+            const streakLen = Math.min(speed * 3, 25);
+            const nx = dx / speed;
+            const ny = dy / speed;
+            const tailX = s.x - nx * streakLen;
+            const tailY = s.y - ny * streakLen;
+
+            const grad = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
+            grad.addColorStop(0, `rgba(${c.r}, ${Math.max(0, c.g - 80)}, 0, 0)`);
+            grad.addColorStop(0.6, `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a * 0.6})`);
+            grad.addColorStop(1, `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a})`);
+
             ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(tx, ty);
-            ctx.strokeStyle = `rgba(${p.color}, ${0.15})`;
-            ctx.lineWidth = p.size * 0.5;
+            ctx.moveTo(tailX, tailY);
+            ctx.lineTo(s.x, s.y);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = s.size * (s.life / s.maxLife);
+            ctx.lineCap = 'round';
             ctx.stroke();
+
+            // Hot core glow at head
+            if (s.life > 0.5) {
+              ctx.beginPath();
+              ctx.arc(s.x, s.y, s.size * 0.8, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(255, 255, 220, ${s.life * 0.4})`;
+              ctx.fill();
+            }
           }
         });
 
-        // Rotating glow ring
-        const time = Date.now() * 0.002;
-        for (let i = 0; i < 60; i++) {
-          const a = (i / 60) * Math.PI * 2 + time;
-          const r = 180;
-          const gx = cx + Math.cos(a) * r;
-          const gy = cy + Math.sin(a) * r;
+        // Spawn and draw embers (secondary particles)
+        if (Math.random() < 0.4) spawnEmber();
+        embers = embers.filter(e => e.life > 0);
+        embers.forEach(e => {
+          e.x += e.vx;
+          e.y += e.vy;
+          e.vy += 0.03; // gravity
+          e.life -= e.decay;
+          const c = sparkColor(e.life * 0.6);
           ctx.beginPath();
-          ctx.arc(gx, gy, 1.5, 0, Math.PI * 2);
-          ctx.fillStyle = i % 2 === 0 ? 'rgba(60, 139, 224, 0.5)' : 'rgba(239, 68, 68, 0.3)';
+          ctx.arc(e.x, e.y, e.size * e.life, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a * e.life})`;
           ctx.fill();
-        }
+        });
 
+        ctx.restore();
         animFrame = requestAnimationFrame(animate);
       }
 
-      // Store original positions for animation
-      particles.forEach(p => { p.ox = p.x; p.oy = p.y; });
+      // Initialize positions
+      sparks.forEach(s => {
+        s.x = cx + Math.cos(s.angle) * s.radius;
+        s.y = cy + Math.sin(s.angle) * s.radius;
+        s.prevX = s.x;
+        s.prevY = s.y;
+      });
+
       animate();
     }
 
@@ -1678,17 +1780,17 @@
       portalOpen = true;
       portalOverlay.style.pointerEvents = 'auto';
       portalOverlay.style.opacity = '1';
-      initParticles();
+      initPortalEffect();
 
       setTimeout(() => {
-        portalRing.style.width = '500px';
-        portalRing.style.height = '500px';
-      }, 300);
+        portalRing.style.width = '520px';
+        portalRing.style.height = '520px';
+      }, 400);
 
       setTimeout(() => {
         portalContent.style.opacity = '1';
         if (typeof lucide !== 'undefined') lucide.createIcons();
-      }, 1000);
+      }, 1200);
     }
 
     function closePortal() {
@@ -1703,6 +1805,8 @@
         cancelAnimationFrame(animFrame);
         const ctx = portalCanvas.getContext('2d');
         ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
+        sparks = [];
+        embers = [];
       }, 600);
     }
 
