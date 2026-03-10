@@ -1494,46 +1494,54 @@
 
   <!-- Portal Overlay -->
   <div id="portal-overlay" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-500">
-    <!-- Dark backdrop -->
-    <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+    <!-- Starfield canvas (behind everything) -->
+    <canvas id="starfield-canvas" class="absolute inset-0 w-full h-full"></canvas>
 
-    <!-- Particle canvas -->
+    <!-- Portal spark canvas (on top of stars) -->
     <canvas id="portal-canvas" class="absolute inset-0 w-full h-full"></canvas>
 
-    <!-- Portal ring -->
-    <div id="portal-ring" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 transition-all duration-1000 ease-out">
-      <div class="absolute inset-0 rounded-full border-2 border-blue-400 shadow-[0_0_60px_rgba(60,139,224,0.4),inset_0_0_60px_rgba(60,139,224,0.1)] animate-spin" style="animation-duration: 6s;"></div>
-      <div class="absolute inset-2 rounded-full border border-red-400/40 animate-spin" style="animation-duration: 4s; animation-direction: reverse;"></div>
-      <div class="absolute inset-4 rounded-full border border-blue-300/20 animate-spin" style="animation-duration: 8s;"></div>
-
-      <!-- Inner content — preview cards -->
-      <div id="portal-content" class="absolute inset-8 flex items-center justify-center gap-6 opacity-0 transition-opacity duration-500 delay-700">
-        <a href="#" class="portal-card group block w-48 h-32 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 border border-blue-400/30 overflow-hidden shadow-2xl shadow-blue-500/20 hover:scale-105 hover:shadow-blue-500/40 transition-all duration-300">
-          <div class="w-full h-full flex flex-col items-center justify-center text-white p-4">
-            <i data-lucide="globe" class="w-8 h-8 mb-2 opacity-80"></i>
-            <span class="text-sm font-medium">Coming Soon</span>
-            <span class="text-xs text-blue-300 mt-1">Project 1</span>
+    <!-- Vertical content cards (centered, on top of canvas) -->
+    <div id="portal-content" class="absolute inset-0 flex flex-col items-center justify-center gap-5 opacity-0 transition-opacity duration-700 delay-700 z-10">
+      <a href="#" class="group block w-72 sm:w-80 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] overflow-hidden hover:bg-white/[0.08] hover:border-amber-400/30 hover:shadow-[0_0_30px_rgba(255,180,50,0.15)] transition-all duration-300 p-5">
+        <div class="flex items-center gap-4 text-white">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="globe" class="w-6 h-6"></i>
           </div>
-        </a>
-        <a href="#" class="portal-card group block w-48 h-32 rounded-xl bg-gradient-to-br from-red-600 to-red-800 border border-red-400/30 overflow-hidden shadow-2xl shadow-red-500/20 hover:scale-105 hover:shadow-red-500/40 transition-all duration-300">
-          <div class="w-full h-full flex flex-col items-center justify-center text-white p-4">
-            <i data-lucide="layout" class="w-8 h-8 mb-2 opacity-80"></i>
-            <span class="text-sm font-medium">Coming Soon</span>
-            <span class="text-xs text-red-300 mt-1">Project 2</span>
+          <div>
+            <span class="text-sm font-semibold block">Coming Soon</span>
+            <span class="text-xs text-slate-400">Project 1</span>
           </div>
-        </a>
-        <a href="#" class="portal-card group block w-48 h-32 rounded-xl bg-gradient-to-br from-amber-600 to-amber-800 border border-amber-400/30 overflow-hidden shadow-2xl shadow-amber-500/20 hover:scale-105 hover:shadow-amber-500/40 transition-all duration-300">
-          <div class="w-full h-full flex flex-col items-center justify-center text-white p-4">
-            <i data-lucide="zap" class="w-8 h-8 mb-2 opacity-80"></i>
-            <span class="text-sm font-medium">Coming Soon</span>
-            <span class="text-xs text-amber-300 mt-1">Project 3</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
+        </div>
+      </a>
+      <a href="#" class="group block w-72 sm:w-80 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] overflow-hidden hover:bg-white/[0.08] hover:border-amber-400/30 hover:shadow-[0_0_30px_rgba(255,180,50,0.15)] transition-all duration-300 p-5">
+        <div class="flex items-center gap-4 text-white">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="layout" class="w-6 h-6"></i>
           </div>
-        </a>
-      </div>
+          <div>
+            <span class="text-sm font-semibold block">Coming Soon</span>
+            <span class="text-xs text-slate-400">Project 2</span>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
+        </div>
+      </a>
+      <a href="#" class="group block w-72 sm:w-80 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/[0.08] overflow-hidden hover:bg-white/[0.08] hover:border-amber-400/30 hover:shadow-[0_0_30px_rgba(255,180,50,0.15)] transition-all duration-300 p-5">
+        <div class="flex items-center gap-4 text-white">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="zap" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <span class="text-sm font-semibold block">Coming Soon</span>
+            <span class="text-xs text-slate-400">Project 3</span>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-amber-400"></i>
+        </div>
+      </a>
     </div>
 
     <!-- Close button -->
-    <button id="portal-close" class="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all hover:scale-110">
+    <button id="portal-close" class="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all hover:scale-110 z-20">
       <i data-lucide="x" class="w-6 h-6"></i>
     </button>
   </div>
@@ -1585,15 +1593,117 @@
       });
     });
 
-    // Portal Easter Egg — MCU Sling Ring (ILM multi-pass glow + additive blending)
+    // Portal Easter Egg — MCU Sling Ring + Starfield Universe
     const portalTrigger = document.getElementById('portal-trigger');
     const portalOverlay = document.getElementById('portal-overlay');
-    const portalRing = document.getElementById('portal-ring');
     const portalContent = document.getElementById('portal-content');
     const portalClose = document.getElementById('portal-close');
     const portalCanvas = document.getElementById('portal-canvas');
+    const starfieldCanvas = document.getElementById('starfield-canvas');
     let portalOpen = false;
     let animFrame;
+    let starFrame;
+
+    function initStarfield() {
+      const c = starfieldCanvas;
+      const ctx = c.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      c.width = window.innerWidth * dpr;
+      c.height = window.innerHeight * dpr;
+      c.style.width = window.innerWidth + 'px';
+      c.style.height = window.innerHeight + 'px';
+      ctx.scale(dpr, dpr);
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+
+      // Generate stars
+      const stars = [];
+      for (let i = 0; i < 600; i++) {
+        stars.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: Math.random() * 1.8 + 0.2,
+          bright: Math.random(),
+          twinkleSpeed: 0.005 + Math.random() * 0.02,
+          twinklePhase: Math.random() * Math.PI * 2,
+        });
+      }
+
+      // Generate nebula clouds (large soft colored blobs)
+      const nebulae = [];
+      const nebulaColors = [
+        { r: 40, g: 20, b: 80 },   // deep purple
+        { r: 10, g: 30, b: 80 },   // deep blue
+        { r: 60, g: 10, b: 30 },   // dark crimson
+        { r: 10, g: 40, b: 60 },   // teal-navy
+        { r: 50, g: 30, b: 10 },   // warm brown (dust)
+      ];
+      for (let i = 0; i < 8; i++) {
+        const col = nebulaColors[i % nebulaColors.length];
+        nebulae.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          rx: 100 + Math.random() * 250,
+          ry: 80 + Math.random() * 200,
+          color: col,
+          alpha: 0.015 + Math.random() * 0.03,
+          drift: (Math.random() - 0.5) * 0.1,
+        });
+      }
+
+      let st = 0;
+      function animateStars() {
+        st += 0.016;
+        ctx.fillStyle = '#020108';
+        ctx.fillRect(0, 0, W, H);
+
+        // Nebula clouds
+        nebulae.forEach(n => {
+          n.x += n.drift;
+          const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.rx);
+          g.addColorStop(0, `rgba(${n.color.r}, ${n.color.g}, ${n.color.b}, ${n.alpha * 2})`);
+          g.addColorStop(0.5, `rgba(${n.color.r}, ${n.color.g}, ${n.color.b}, ${n.alpha})`);
+          g.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.ellipse(n.x, n.y, n.rx, n.ry, 0, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Stars with twinkling
+        stars.forEach(s => {
+          const twinkle = 0.4 + 0.6 * Math.abs(Math.sin(st * s.twinkleSpeed * 60 + s.twinklePhase));
+          const alpha = s.bright * twinkle;
+
+          // Star glow
+          if (s.r > 1) {
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(200, 220, 255, ${alpha * 0.08})`;
+            ctx.fill();
+          }
+
+          // Star core
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          const warmth = s.bright > 0.8 ? '255,240,220' : s.bright > 0.5 ? '220,230,255' : '180,200,255';
+          ctx.fillStyle = `rgba(${warmth}, ${alpha})`;
+          ctx.fill();
+        });
+
+        // Subtle central galaxy glow (where the portal will be)
+        const cx = W / 2, cy = H / 2;
+        const galaxyGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.4);
+        galaxyGlow.addColorStop(0, 'rgba(60, 40, 100, 0.06)');
+        galaxyGlow.addColorStop(0.5, 'rgba(30, 20, 60, 0.03)');
+        galaxyGlow.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = galaxyGlow;
+        ctx.fillRect(0, 0, W, H);
+
+        starFrame = requestAnimationFrame(animateStars);
+      }
+      animateStars();
+    }
 
     function initPortalEffect() {
       const canvas = portalCanvas;
@@ -1837,23 +1947,25 @@
       portalOpen = true;
       portalOverlay.style.pointerEvents = 'auto';
       portalOverlay.style.opacity = '1';
+      initStarfield();
       initPortalEffect();
-      setTimeout(() => { portalRing.style.width = '520px'; portalRing.style.height = '520px'; }, 400);
       setTimeout(() => { portalContent.style.opacity = '1'; if (typeof lucide !== 'undefined') lucide.createIcons(); }, 1200);
     }
 
     function closePortal() {
       portalContent.style.opacity = '0';
-      portalRing.style.width = '0';
-      portalRing.style.height = '0';
       setTimeout(() => {
         portalOverlay.style.opacity = '0';
         portalOverlay.style.pointerEvents = 'none';
         portalOpen = false;
         cancelAnimationFrame(animFrame);
+        cancelAnimationFrame(starFrame);
         const ctx = portalCanvas.getContext('2d');
         ctx.setTransform(1,0,0,1,0,0);
         ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
+        const sCtx = starfieldCanvas.getContext('2d');
+        sCtx.setTransform(1,0,0,1,0,0);
+        sCtx.clearRect(0, 0, starfieldCanvas.width, starfieldCanvas.height);
       }, 600);
     }
 
