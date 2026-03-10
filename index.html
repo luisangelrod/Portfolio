@@ -27,17 +27,14 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts (preloaded for instant text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Lucide Icons (deferred — not render-blocking) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <script>
     tailwind.config = {
@@ -331,6 +328,43 @@
       margin-bottom: 1rem;
     }
 
+    /* === PERFORMANCE === */
+
+    /* Skip rendering off-screen sections */
+    section:not(#home) {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 600px;
+    }
+
+    /* Prevent scrollbar layout shift */
+    html { scrollbar-gutter: stable; }
+
+    /* Card isolation + snappy spring hover */
+    .card-hover {
+      contain: content;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card-hover:hover { will-change: transform; }
+    .card-hover:not(:hover) { will-change: auto; }
+
+    /* Native scroll-driven reveal (replaces AOS — runs on compositor, zero JS) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: revealUp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 30%;
+    }
+    @keyframes revealUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Fallback for browsers without scroll-driven animations */
+    @supports not (animation-timeline: view()) {
+      .reveal { opacity: 1; transform: none; }
+    }
+
     /* Respect reduced motion preference */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -377,9 +411,15 @@
       <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">LR</div>
       <span class="font-semibold text-sm hidden sm:block">Luis Rodriguez</span>
     </a>
-    <button id="menu-btn" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors" aria-label="Open menu" aria-expanded="false">
-      <i data-lucide="menu" class="w-5 h-5"></i>
-    </button>
+    <div class="flex items-center gap-1">
+      <button id="header-theme-toggle" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors" aria-label="Toggle dark mode">
+        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+        <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-500"></i>
+      </button>
+      <button id="menu-btn" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
   </header>
 
   <!-- Slide-out Menu -->
@@ -447,7 +487,7 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left content -->
-        <div class="text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
+        <div class="text-center lg:text-left">
           <!-- Status badge -->
           <div class="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium mb-6">
             <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
@@ -498,7 +538,7 @@
         </div>
 
         <!-- Right content - Interactive LR Particle Canvas -->
-        <div class="relative hidden lg:block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <div class="relative hidden lg:block">
           <canvas id="lr-canvas" class="w-96 h-96 mx-auto"></canvas>
         </div>
       </div>
@@ -510,7 +550,7 @@
   <section id="about" class="py-16 lg:py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="section-header-sticky text-center" data-aos="fade-up">
+      <div class="section-header-sticky text-center">
         <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">About Me</span>
         <h2 class="text-3xl sm:text-4xl font-bold mb-2">About <span class="gradient-text">Me</span></h2>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">Full-stack engineer building production systems end-to-end</p>
@@ -518,9 +558,9 @@
 
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left - Image/Visual -->
-        <div class="relative" data-aos="fade-right" data-aos-duration="800">
+        <div class="relative">
           <div class="relative rounded-2xl overflow-hidden shadow-xl">
-            <img src="img/PuertoRico.jpg" alt="Puerto Rico" class="w-full h-80 lg:h-96 object-cover">
+            <img src="img/PuertoRico.jpg" alt="Puerto Rico" class="w-full h-80 lg:h-96 object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-slate-900/10"></div>
             <div class="absolute bottom-6 left-6 right-6">
               <div class="flex items-center text-white">
@@ -546,7 +586,7 @@
         </div>
 
         <!-- Right - Content -->
-        <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+        <div>
           <h3 class="text-2xl font-bold mb-6">Hello! I'm Luis Rodriguez</h3>
 
           <div class="prose prose-slate dark:prose-invert max-w-none">
@@ -620,14 +660,14 @@
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent dark:via-blue-950/10"></div>
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="section-header-sticky text-center" data-aos="fade-up">
+      <div class="section-header-sticky text-center">
         <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">The Shift</span>
         <h2 class="text-3xl sm:text-4xl font-bold mb-2">From Code Writer to <span class="gradient-text gradient-text-animated">System Architect</span></h2>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">The agentic engineering revolution isn't replacing developers — it's elevating us</p>
       </div>
 
       <!-- Timeline -->
-      <div class="relative" data-aos="fade-up" data-aos-delay="200">
+      <div class="relative" class="reveal">
         <!-- Timeline line — blue to red gradient -->
         <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-red-500 hidden md:block"></div>
 
@@ -682,7 +722,7 @@
   <section id="tech-stack" class="py-16 lg:py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="section-header-sticky text-center" data-aos="fade-up">
+      <div class="section-header-sticky text-center">
         <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">Tech Stack</span>
         <h2 class="text-3xl sm:text-4xl font-bold mb-2">Technologies I <span class="gradient-text">Work With</span></h2>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">A comprehensive toolkit for building modern, scalable applications</p>
@@ -692,7 +732,7 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
         <!-- Languages -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="0">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white mr-4">
               <i data-lucide="code-2" class="w-6 h-6"></i>
@@ -711,7 +751,7 @@
         </div>
 
         <!-- Frontend -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mr-4">
               <i data-lucide="layout" class="w-6 h-6"></i>
@@ -734,7 +774,7 @@
         </div>
 
         <!-- Backend -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mr-4">
               <i data-lucide="server" class="w-6 h-6"></i>
@@ -752,7 +792,7 @@
         </div>
 
         <!-- Mobile/Desktop -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 text-white mr-4">
               <i data-lucide="smartphone" class="w-6 h-6"></i>
@@ -768,7 +808,7 @@
         </div>
 
         <!-- Cloud & DevOps -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="400">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-red-600 text-white mr-4">
               <i data-lucide="cloud" class="w-6 h-6"></i>
@@ -787,7 +827,7 @@
         </div>
 
         <!-- Databases -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="500">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white mr-4">
               <i data-lucide="database" class="w-6 h-6"></i>
@@ -804,7 +844,7 @@
         </div>
 
         <!-- Architecture -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="600">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 text-white mr-4">
               <i data-lucide="git-branch" class="w-6 h-6"></i>
@@ -821,7 +861,7 @@
         </div>
 
         <!-- AI & Payments -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="700">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="flex items-center mb-6">
             <div class="p-3 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600 text-white mr-4">
               <i data-lucide="zap" class="w-6 h-6"></i>
@@ -844,14 +884,14 @@
   <section id="projects" class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="section-header-sticky text-center" data-aos="fade-up">
+      <div class="section-header-sticky text-center">
         <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">Portfolio</span>
         <h2 class="text-3xl sm:text-4xl font-bold mb-2">Featured <span class="gradient-text">Projects</span></h2>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">Production systems I've architected and shipped — most as sole engineer</p>
       </div>
 
       <!-- Key Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" data-aos="fade-up" data-aos-delay="100">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" class="reveal">
         <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
           <div class="text-3xl font-bold gradient-text mb-1">10+</div>
           <div class="text-sm text-slate-500 dark:text-slate-400">Production Systems</div>
@@ -874,12 +914,12 @@
       <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
 
         <!-- Project 1: BerriosPay -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="0">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover">
           <div class="relative overflow-hidden h-56 sm:h-64 bg-gradient-to-br from-blue-600 to-blue-800">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]"></div>
             <div class="flex items-center justify-center h-full pt-2">
               <div class="phone-frame transform -rotate-3 translate-y-8 sm:translate-y-6 group-hover:rotate-0 group-hover:translate-y-4 transition-all duration-500">
-                <img src="img/projects/berriospay.png" alt="BerriosPay kiosk interface">
+                <img src="img/projects/berriospay.png" alt="BerriosPay kiosk interface" loading="lazy" decoding="async">
               </div>
             </div>
             <div class="absolute bottom-3 left-5 text-white z-10">
@@ -905,12 +945,12 @@
         </div>
 
         <!-- Project 2: GoFleetCare -->
-        <div id="project-gofleetcare" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="100">
+        <div id="project-gofleetcare" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-56 sm:h-64 bg-gradient-to-br from-emerald-600 to-teal-700">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]"></div>
             <div class="flex items-center justify-center h-full pt-2">
               <div class="phone-frame transform rotate-3 translate-y-8 sm:translate-y-6 group-hover:rotate-0 group-hover:translate-y-4 transition-all duration-500">
-                <img src="img/projects/gofleetcare.png" alt="GoFleetCare driver app">
+                <img src="img/projects/gofleetcare.png" alt="GoFleetCare driver app" loading="lazy" decoding="async">
               </div>
             </div>
             <div class="absolute bottom-3 left-5 text-white z-10">
@@ -937,7 +977,7 @@
         </div>
 
         <!-- Project 3: ShaderForge Studio -->
-        <div id="project-shaderforge" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="200">
+        <div id="project-shaderforge" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-pink-600 to-violet-700 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="palette" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -963,7 +1003,7 @@
         </div>
 
         <!-- Project 4: Lead Response SaaS -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="300">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-amber-600 to-orange-700 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="bot" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -989,7 +1029,7 @@
         </div>
 
         <!-- Project 5: NEXUS MCU Explorer -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="400">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-blue-600 to-cyan-800 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="orbit" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -1015,12 +1055,12 @@
         </div>
 
         <!-- Project 6: CDD-HUB -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="500">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-56 sm:h-64 bg-gradient-to-br from-teal-600 to-cyan-700">
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]"></div>
             <div class="flex items-center justify-center h-full pt-2">
               <div class="phone-frame transform -rotate-2 translate-y-8 sm:translate-y-6 group-hover:rotate-0 group-hover:translate-y-4 transition-all duration-500">
-                <img src="img/projects/cddhub.png" alt="CDD-HUB driver portal">
+                <img src="img/projects/cddhub.png" alt="CDD-HUB driver portal" loading="lazy" decoding="async">
               </div>
             </div>
             <div class="absolute bottom-3 left-5 text-white z-10">
@@ -1046,7 +1086,7 @@
         </div>
 
         <!-- Project 7: Salud Medica -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="550">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-cyan-600 to-blue-800 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="heart-pulse" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -1072,7 +1112,7 @@
         </div>
 
         <!-- Project 8: Retail POS Ecosystem -->
-        <div id="project-retailpos" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="600">
+        <div id="project-retailpos" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-slate-600 to-gray-800 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="shopping-cart" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -1096,7 +1136,7 @@
         </div>
 
         <!-- Project 9: PostGenius -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="650">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-violet-600 to-fuchsia-700 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="sparkles" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -1122,7 +1162,7 @@
         </div>
 
         <!-- Project 10: TravelBot -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="700">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-sky-600 to-emerald-700 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="plane" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -1148,7 +1188,7 @@
         </div>
 
         <!-- Project 11: Additional Projects (macOS) -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" data-aos="fade-up" data-aos-delay="700">
+        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
           <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-rose-600 to-pink-700 flex items-center justify-center">
             <div class="text-center text-white">
               <i data-lucide="apple" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
@@ -1173,7 +1213,7 @@
       </div>
 
       <!-- View More -->
-      <div class="text-center mt-12" data-aos="fade-up">
+      <div class="text-center mt-12">
         <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg font-semibold hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all">
           <i data-lucide="github" class="w-5 h-5 mr-2"></i>
           View More on GitHub
@@ -1186,14 +1226,14 @@
   <section id="case-studies" class="py-16 lg:py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="section-header-sticky text-center" data-aos="fade-up">
+      <div class="section-header-sticky text-center">
         <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">Deep Dive</span>
         <h2 class="text-3xl sm:text-4xl font-bold mb-2">Case <span class="gradient-text">Studies</span></h2>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">Detailed breakdowns of my approach to solving real-world problems</p>
       </div>
 
       <!-- Case Study: BerriosPay -->
-      <div id="case-study-berriospay" class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 mb-12" data-aos="fade-up">
+      <div id="case-study-berriospay" class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 mb-12">
         <div class="grid lg:grid-cols-2">
           <!-- Left - Visual -->
           <div class="relative bg-gradient-to-br from-blue-500 to-blue-700 p-5 sm:p-8 lg:p-12">
@@ -1290,7 +1330,7 @@
       </div>
 
       <!-- More Case Studies Teaser -->
-      <div class="grid md:grid-cols-3 gap-6" data-aos="fade-up">
+      <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 card-hover">
           <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white mb-4">
             <i data-lucide="truck" class="w-6 h-6"></i>
@@ -1332,7 +1372,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12">
         <!-- Left - Info -->
-        <div data-aos="fade-right">
+        <div>
           <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-sm font-medium mb-4">Contact</span>
           <h2 class="text-3xl sm:text-4xl font-bold mb-4">Let's Work <span class="gradient-text">Together</span></h2>
           <p class="text-slate-600 dark:text-slate-400 mb-8">Available for engineering roles, architecture contracts, and remote opportunities. If you have a system that needs building end-to-end, let's talk.</p>
@@ -1385,7 +1425,7 @@
         </div>
 
         <!-- Right - Form -->
-        <div data-aos="fade-left" data-aos-delay="200">
+        <div>
           <form name="contact" data-netlify="true" class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-700">
             <h3 class="text-xl font-semibold mb-6">Send me a message</h3>
 
@@ -1544,13 +1584,6 @@
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      easing: 'ease-out',
-      once: true,
-      offset: 100,
-    });
 
     // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
@@ -1565,12 +1598,16 @@
     }
     if (themeLabel) themeLabel.textContent = html.classList.contains('dark') ? 'Light mode' : 'Dark mode';
 
-    themeToggle.addEventListener('click', () => {
+    function toggleTheme() {
       html.classList.toggle('dark');
       localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
       if (themeLabel) themeLabel.textContent = html.classList.contains('dark') ? 'Light mode' : 'Dark mode';
       if (typeof lucide !== 'undefined') lucide.createIcons();
-    });
+    }
+
+    themeToggle.addEventListener('click', toggleTheme);
+    const headerThemeToggle = document.getElementById('header-theme-toggle');
+    if (headerThemeToggle) headerThemeToggle.addEventListener('click', toggleTheme);
 
     // Slide Menu
     const menuBtn = document.getElementById('menu-btn');
