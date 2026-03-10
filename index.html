@@ -1454,36 +1454,92 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm">
-            LR
-          </div>
-          <span class="text-slate-600 dark:text-slate-400">© <span id="copyright-year"></span> Luis Rodriguez. All rights reserved.</span>
-        </div>
+  <footer class="py-16 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
+        <!-- Creative footer text -->
+        <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
+          Architected with <strong class="text-slate-700 dark:text-slate-300">Claude Code</strong> and coded in
+          <strong class="text-slate-700 dark:text-slate-300">VS Code</strong> by yours truly. Built with
+          <strong class="text-slate-700 dark:text-slate-300">Tailwind CSS</strong> and vanilla JS, deployed on
+          <strong class="text-slate-700 dark:text-slate-300">Netlify</strong>. All text is set in the
+          <strong class="text-slate-700 dark:text-slate-300">Inter</strong> typeface. Puerto Rico.
+        </p>
 
-        <div class="flex items-center space-x-4">
-          <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-            <i data-lucide="github" class="w-5 h-5"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-            <i data-lucide="linkedin" class="w-5 h-5"></i>
-          </a>
-          <a href="mailto:luisangelrod17@gmail.com" class="text-slate-500 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-            <i data-lucide="mail" class="w-5 h-5"></i>
-          </a>
-        </div>
+        <!-- Portal Easter Egg Button -->
+        <button id="portal-trigger" class="group relative flex-shrink-0 w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20 dark:hover:shadow-blue-500/10 hover:scale-110 cursor-pointer" aria-label="Open portal">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-8 h-8 rounded-full border-2 border-dashed border-blue-400 dark:border-blue-500 animate-spin opacity-40 group-hover:opacity-100 transition-opacity" style="animation-duration: 8s;"></div>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5 text-blue-500 dark:text-blue-400 group-hover:scale-125 transition-transform"></i>
+          </div>
+        </button>
+      </div>
+
+      <!-- Social links -->
+      <div class="flex items-center space-x-4 mt-8">
+        <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+          <i data-lucide="github" class="w-5 h-5"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+          <i data-lucide="linkedin" class="w-5 h-5"></i>
+        </a>
+        <a href="mailto:luisangelrod17@gmail.com" class="text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+          <i data-lucide="mail" class="w-5 h-5"></i>
+        </a>
       </div>
     </div>
   </footer>
 
+  <!-- Portal Overlay -->
+  <div id="portal-overlay" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-500">
+    <!-- Dark backdrop -->
+    <div class="absolute inset-0 bg-black/90 backdrop-blur-sm"></div>
+
+    <!-- Particle canvas -->
+    <canvas id="portal-canvas" class="absolute inset-0 w-full h-full"></canvas>
+
+    <!-- Portal ring -->
+    <div id="portal-ring" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 transition-all duration-1000 ease-out">
+      <div class="absolute inset-0 rounded-full border-2 border-blue-400 shadow-[0_0_60px_rgba(60,139,224,0.4),inset_0_0_60px_rgba(60,139,224,0.1)] animate-spin" style="animation-duration: 6s;"></div>
+      <div class="absolute inset-2 rounded-full border border-red-400/40 animate-spin" style="animation-duration: 4s; animation-direction: reverse;"></div>
+      <div class="absolute inset-4 rounded-full border border-blue-300/20 animate-spin" style="animation-duration: 8s;"></div>
+
+      <!-- Inner content — preview cards -->
+      <div id="portal-content" class="absolute inset-8 flex items-center justify-center gap-6 opacity-0 transition-opacity duration-500 delay-700">
+        <a href="#" class="portal-card group block w-48 h-32 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 border border-blue-400/30 overflow-hidden shadow-2xl shadow-blue-500/20 hover:scale-105 hover:shadow-blue-500/40 transition-all duration-300">
+          <div class="w-full h-full flex flex-col items-center justify-center text-white p-4">
+            <i data-lucide="globe" class="w-8 h-8 mb-2 opacity-80"></i>
+            <span class="text-sm font-medium">Coming Soon</span>
+            <span class="text-xs text-blue-300 mt-1">Project 1</span>
+          </div>
+        </a>
+        <a href="#" class="portal-card group block w-48 h-32 rounded-xl bg-gradient-to-br from-red-600 to-red-800 border border-red-400/30 overflow-hidden shadow-2xl shadow-red-500/20 hover:scale-105 hover:shadow-red-500/40 transition-all duration-300">
+          <div class="w-full h-full flex flex-col items-center justify-center text-white p-4">
+            <i data-lucide="layout" class="w-8 h-8 mb-2 opacity-80"></i>
+            <span class="text-sm font-medium">Coming Soon</span>
+            <span class="text-xs text-red-300 mt-1">Project 2</span>
+          </div>
+        </a>
+        <a href="#" class="portal-card group block w-48 h-32 rounded-xl bg-gradient-to-br from-amber-600 to-amber-800 border border-amber-400/30 overflow-hidden shadow-2xl shadow-amber-500/20 hover:scale-105 hover:shadow-amber-500/40 transition-all duration-300">
+          <div class="w-full h-full flex flex-col items-center justify-center text-white p-4">
+            <i data-lucide="zap" class="w-8 h-8 mb-2 opacity-80"></i>
+            <span class="text-sm font-medium">Coming Soon</span>
+            <span class="text-xs text-amber-300 mt-1">Project 3</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Close button -->
+    <button id="portal-close" class="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all hover:scale-110">
+      <i data-lucide="x" class="w-6 h-6"></i>
+    </button>
+  </div>
+
   <!-- Scripts -->
   <script>
-    // Copyright year
-    document.getElementById('copyright-year').textContent = new Date().getFullYear();
-
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -1528,6 +1584,134 @@
         }
       });
     });
+
+    // Portal Easter Egg
+    const portalTrigger = document.getElementById('portal-trigger');
+    const portalOverlay = document.getElementById('portal-overlay');
+    const portalRing = document.getElementById('portal-ring');
+    const portalContent = document.getElementById('portal-content');
+    const portalClose = document.getElementById('portal-close');
+    const portalCanvas = document.getElementById('portal-canvas');
+    let portalOpen = false;
+    let particles = [];
+    let animFrame;
+
+    function initParticles() {
+      const ctx = portalCanvas.getContext('2d');
+      portalCanvas.width = window.innerWidth;
+      portalCanvas.height = window.innerHeight;
+      const cx = portalCanvas.width / 2;
+      const cy = portalCanvas.height / 2;
+      particles = [];
+
+      // Create particles that converge to center forming a circle
+      for (let i = 0; i < 200; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 200 + Math.random() * 300;
+        particles.push({
+          x: cx + Math.cos(angle) * (dist + Math.random() * 400),
+          y: cy + Math.sin(angle) * (dist + Math.random() * 400),
+          tx: cx + Math.cos(angle) * dist * 0.6,
+          ty: cy + Math.sin(angle) * dist * 0.6,
+          size: Math.random() * 2.5 + 0.5,
+          speed: 0.02 + Math.random() * 0.03,
+          progress: 0,
+          color: i % 3 === 0 ? '60, 139, 224' : i % 3 === 1 ? '239, 68, 68' : '245, 158, 11',
+          ox: 0, oy: 0,
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
+        let allDone = true;
+
+        particles.forEach(p => {
+          if (p.progress < 1) {
+            p.progress = Math.min(1, p.progress + p.speed);
+            allDone = false;
+          }
+          const ease = 1 - Math.pow(1 - p.progress, 3); // ease-out cubic
+          const x = p.ox + (p.tx - p.ox) * ease;
+          const y = p.oy + (p.ty - p.oy) * ease;
+
+          ctx.beginPath();
+          ctx.arc(x, y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color}, ${0.3 + ease * 0.5})`;
+          ctx.fill();
+
+          // Trail
+          if (p.progress < 0.8) {
+            const tx = p.ox + (p.tx - p.ox) * Math.max(0, ease - 0.1);
+            const ty = p.oy + (p.ty - p.oy) * Math.max(0, ease - 0.1);
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(tx, ty);
+            ctx.strokeStyle = `rgba(${p.color}, ${0.15})`;
+            ctx.lineWidth = p.size * 0.5;
+            ctx.stroke();
+          }
+        });
+
+        // Rotating glow ring
+        const time = Date.now() * 0.002;
+        for (let i = 0; i < 60; i++) {
+          const a = (i / 60) * Math.PI * 2 + time;
+          const r = 180;
+          const gx = cx + Math.cos(a) * r;
+          const gy = cy + Math.sin(a) * r;
+          ctx.beginPath();
+          ctx.arc(gx, gy, 1.5, 0, Math.PI * 2);
+          ctx.fillStyle = i % 2 === 0 ? 'rgba(60, 139, 224, 0.5)' : 'rgba(239, 68, 68, 0.3)';
+          ctx.fill();
+        }
+
+        animFrame = requestAnimationFrame(animate);
+      }
+
+      // Store original positions for animation
+      particles.forEach(p => { p.ox = p.x; p.oy = p.y; });
+      animate();
+    }
+
+    function openPortal() {
+      if (portalOpen) return;
+      portalOpen = true;
+      portalOverlay.style.pointerEvents = 'auto';
+      portalOverlay.style.opacity = '1';
+      initParticles();
+
+      setTimeout(() => {
+        portalRing.style.width = '500px';
+        portalRing.style.height = '500px';
+      }, 300);
+
+      setTimeout(() => {
+        portalContent.style.opacity = '1';
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      }, 1000);
+    }
+
+    function closePortal() {
+      portalContent.style.opacity = '0';
+      portalRing.style.width = '0';
+      portalRing.style.height = '0';
+
+      setTimeout(() => {
+        portalOverlay.style.opacity = '0';
+        portalOverlay.style.pointerEvents = 'none';
+        portalOpen = false;
+        cancelAnimationFrame(animFrame);
+        const ctx = portalCanvas.getContext('2d');
+        ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
+      }, 600);
+    }
+
+    portalTrigger.addEventListener('click', openPortal);
+    portalClose.addEventListener('click', closePortal);
+    portalOverlay.addEventListener('click', (e) => {
+      if (e.target === portalOverlay || e.target === portalOverlay.querySelector('.absolute.inset-0')) closePortal();
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && portalOpen) closePortal(); });
 
     // Mouse-following spotlight effect
     const spotlight = document.getElementById('spotlight');
