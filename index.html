@@ -3,2161 +3,297 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luis Rodriguez | Systems Architect & Full-Stack Engineer</title>
-  <meta name="description" content="Systems Architect & Full-Stack Engineer specializing in React, .NET, Azure, and AI-augmented development. Based in Puerto Rico.">
-
-  <!-- Open Graph -->
+  <title>Luis Rodriguez | Senior Full-Stack Engineer and Systems Architect</title>
+  <meta name="description" content="Senior Full-Stack Engineer and Systems Architect building production systems across React, .NET, SQL Server, and Azure. Based in Puerto Rico and available for remote U.S. roles.">
+  <meta name="theme-color" content="#0c1324">
+  <link rel="canonical" href="https://luisrodriguezdev.netlify.app/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Luis Rodriguez | Systems Architect & Full-Stack Engineer">
-  <meta property="og:description" content="Systems Architect & Full-Stack Engineer specializing in React, .NET, Azure, and AI-augmented development. Based in Puerto Rico.">
+  <meta property="og:title" content="Luis Rodriguez | Senior Full-Stack Engineer and Systems Architect">
+  <meta property="og:description" content="Production systems for payments, logistics, healthcare, and retail. React, .NET, SQL Server, Azure.">
+  <meta property="og:url" content="https://luisrodriguezdev.netlify.app/">
   <meta property="og:image" content="https://luisrodriguezdev.netlify.app/img/og-image.png">
-  <meta property="og:url" content="https://luisrodriguezdev.netlify.app">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Luis Rodriguez | Systems Architect & Full-Stack Engineer">
-  <meta name="twitter:description" content="Systems Architect & Full-Stack Engineer — React, .NET, Azure, AI-augmented development.">
+  <meta name="twitter:title" content="Luis Rodriguez | Senior Full-Stack Engineer and Systems Architect">
+  <meta name="twitter:description" content="Senior engineer shipping production systems across React, .NET, SQL Server, and Azure.">
   <meta name="twitter:image" content="https://luisrodriguezdev.netlify.app/img/og-image.png">
-
-  <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/favicon_io (1)/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon_io (1)/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon_io (1)/favicon-16x16.png">
-
-  <!-- Tailwind CSS CDN -->
+  <link rel="manifest" href="img/favicons/favicon_io (1)/site.webmanifest">
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts (preloaded for instant text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Lucide Icons (deferred — not render-blocking) -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest" defer></script>
-
   <script>
     tailwind.config = {
-      darkMode: 'class',
+      darkMode: "class",
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            primary: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              200: '#bfdbfe',
-              300: '#93c5fd',
-              400: '#60a5fa',
-              500: '#3C8BE0',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a8a',
-            },
-            accent: {
-              DEFAULT: '#EF0000',
-              light: '#F87171',
-              dark: '#B91C1C',
-            },
-            pr: {
-              blue: '#3C8BE0',
-              red: '#EF0000',
-              gold: '#F59E0B',
-            }
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'glow': 'glow 2s ease-in-out infinite alternate',
-            'slide-up': 'slideUp 0.5s ease-out',
-            'fade-in': 'fadeIn 0.5s ease-out',
-            'bounce-slow': 'bounce 3s infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-20px)' },
-            },
-            glow: {
-              '0%': { boxShadow: '0 0 5px rgba(60, 139, 224, 0.5)' },
-              '100%': { boxShadow: '0 0 20px rgba(60, 139, 224, 0.8)' },
-            },
-            slideUp: {
-              '0%': { transform: 'translateY(20px)', opacity: '0' },
-              '100%': { transform: 'translateY(0)', opacity: '1' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-          },
-        },
-      },
-    }
+          fontFamily: { sans: ["Sora", "system-ui", "sans-serif"], mono: ["IBM Plex Mono", "monospace"] },
+          colors: { ink: "#09111f", shell: "#f6f1e8", tide: "#155eef", ember: "#d94841", forest: "#176b53" }
+        }
+      }
+    };
   </script>
-
   <style>
-    /* Custom scrollbar — PR Blue */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #3C8BE0; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
-
-    /* Light mode — single warm base, no gradient banding */
-    html:not(.dark) body {
-      background-color: #FAFAF9;
-      color: #0A0A0A;
-    }
-
-    /* Dark mode deep background override */
-    html.dark { background-color: #0A0A0F; }
-    html.dark body { background-color: #0A0A0F; }
-
-    /* Gradient text — PR Blue to Red */
-    .gradient-text {
-      background: linear-gradient(135deg, #1d4ed8 0%, #3C8BE0 40%, #DC2626 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .dark .gradient-text {
-      background: linear-gradient(135deg, #60a5fa 0%, #3C8BE0 40%, #EF4444 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 16px rgba(60, 139, 224, 0.5));
-    }
-
-    /* Glass morphism — light mode (Apple/Linear style) */
-    .glass {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-    }
-    .dark .glass {
-      background: rgba(60, 139, 224, 0.04);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      border: 1px solid rgba(60, 139, 224, 0.12);
-    }
-
-    /* Card hover — layered tinted shadows (Josh Comeau style) */
-    .card-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .card-hover:hover {
-      transform: translateY(-8px);
-      box-shadow:
-        0 1px 2px rgba(60, 139, 224, 0.04),
-        0 2px 4px rgba(60, 139, 224, 0.04),
-        0 4px 8px rgba(60, 139, 224, 0.06),
-        0 8px 16px rgba(60, 139, 224, 0.08),
-        0 16px 32px rgba(60, 139, 224, 0.10);
-    }
-    .dark .card-hover:hover {
-      box-shadow: 0 20px 40px rgba(60, 139, 224, 0.08), 0 0 0 1px rgba(60, 139, 224, 0.2);
-    }
-
-    /* Link underline animation — blue to red */
-    .link-underline { position: relative; }
-    .link-underline::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -2px;
-      left: 0;
-      background: linear-gradient(90deg, #3C8BE0, #EF0000);
-      transition: width 0.3s ease;
-    }
-    .link-underline:hover::after { width: 100%; }
-
-    /* Tech badge pulse */
-    .tech-badge { transition: all 0.2s ease; }
-    .tech-badge:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(60, 139, 224, 0.2);
-    }
-
-    /* Section divider — flag gradient */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(60, 139, 224, 0.4), rgba(239, 0, 0, 0.2), transparent);
-    }
-
-    /* Light mode — refined card borders */
-    .card-hover {
-      border-color: rgba(0, 0, 0, 0.06);
-    }
-    .dark .card-hover {
-      border-color: rgba(255, 255, 255, 0.06);
-    }
-
-    /* Typing cursor */
-    .typing-cursor::after { content: '|'; animation: blink 1s infinite; }
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-
-    /* Mobile responsiveness fixes */
-    html, body { overflow-x: hidden; max-width: 100vw; }
-
-    @media (max-width: 640px) {
-      .card-hover:hover { transform: translateY(-4px); }
-      .animate-float { animation-duration: 8s; }
-    }
-
-    img { max-width: 100%; height: auto; }
-
-    @media (max-width: 768px) {
-      nav a, button, a.inline-flex { min-height: 44px; min-width: 44px; }
-    }
-
-    /* Phone mockup frame */
-    .phone-frame {
-      width: 130px;
-      height: 265px;
-      border-radius: 18px;
-      border: 3px solid rgba(255, 255, 255, 0.25);
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
-      background: #000;
-      position: relative;
-    }
-    .phone-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-    .phone-frame::before {
-      content: '';
-      position: absolute;
-      top: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 32px;
-      height: 3px;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.15);
-      z-index: 10;
-    }
-    @media (min-width: 640px) {
-      .phone-frame {
-        width: 170px;
-        height: 340px;
-        border-radius: 22px;
-        border-width: 4px;
-      }
-      .phone-frame::before { top: 8px; width: 40px; height: 4px; }
-    }
-
-    /* Dark mode — phone frame glow */
-    .dark .phone-frame {
-      border-color: rgba(60, 139, 224, 0.3);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(60, 139, 224, 0.15);
-    }
-
-    /* Dark mode — subtle red accent on CTA hover */
-    .dark .cta-primary:hover {
-      box-shadow: 0 0 30px rgba(239, 0, 0, 0.2), 0 10px 40px rgba(60, 139, 224, 0.15);
-    }
-
-    /* Animated gradient text — slowly shifting */
-    .gradient-text-animated {
-      background-size: 200% 100%;
-      animation: gradient-shift 6s ease-in-out infinite;
-    }
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    /* Film grain texture — premium tactile depth */
-    .grain::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      opacity: 0.025;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: multiply;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-      background-size: 182px;
-    }
-    .dark .grain::after {
-      mix-blend-mode: soft-light;
-      opacity: 0.04;
-    }
-
-    /* Dark mode card glow border on hover */
-    .dark .card-hover {
-      position: relative;
-    }
-    .dark .card-hover::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(60, 139, 224, 0.3), rgba(239, 68, 68, 0.15), rgba(60, 139, 224, 0.3));
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .dark .card-hover:hover::before { opacity: 1; }
-
-    /* Apple-style glass navbar */
-    .nav-glass {
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-    }
-
-    /* Tight letter-spacing on headings — "designed" feel */
-    h1, h2, h3 { letter-spacing: -0.025em; }
-    h1 { letter-spacing: -0.04em; }
-
-    /* Section headers — clean, no background box */
-    .section-header-sticky {
-      position: relative;
-      padding-bottom: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    /* === PERFORMANCE === */
-
-    /* Skip rendering off-screen sections */
-    section:not(#home) {
-      content-visibility: auto;
-      contain-intrinsic-size: auto 600px;
-    }
-
-    /* Prevent scrollbar layout shift */
-    html { scrollbar-gutter: stable; }
-
-    /* Card isolation + snappy spring hover */
-    .card-hover {
-      contain: content;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .card-hover:hover { will-change: transform; }
-    .card-hover:not(:hover) { will-change: auto; }
-
-    /* Native scroll-driven reveal (replaces AOS — runs on compositor, zero JS) */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      animation: revealUp linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 30%;
-    }
-    @keyframes revealUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Fallback for browsers without scroll-driven animations */
-    @supports not (animation-timeline: view()) {
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    /* Respect reduced motion preference */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
+    :root { --bg:#f6f1e8; --bg2:#fffdfa; --panel:rgba(255,255,255,.72); --line:rgba(12,19,36,.1); --text:#09111f; --muted:#52606d; --accent:#155eef; --accent2:#d94841; }
+    html.dark { --bg:#09111f; --bg2:#101a2c; --panel:rgba(16,26,44,.8); --line:rgba(255,255,255,.09); --text:#eff3fb; --muted:#b7c1d1; --accent:#7cb0ff; --accent2:#ff8f85; }
+    body { background:radial-gradient(circle at top left,rgba(21,94,239,.14),transparent 28%),radial-gradient(circle at top right,rgba(217,72,65,.12),transparent 22%),linear-gradient(180deg,var(--bg2),var(--bg)); color:var(--text); }
+    .panel { background:var(--panel); border:1px solid var(--line); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 24px 80px rgba(12,19,36,.12); }
+    .chip { border:1px solid var(--line); background:rgba(255,255,255,.58); }
+    html.dark .chip { background:rgba(255,255,255,.04); }
+    .headline-fill { background:linear-gradient(135deg,var(--text) 0%,var(--accent) 60%,var(--accent2) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .eyebrow { letter-spacing:.24em; text-transform:uppercase; }
+    .lift { transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .lift:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(12,19,36,.16); border-color:rgba(21,94,239,.26); }
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity .5s ease, transform .5s ease; }
+    .reveal.is-visible { opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; } }
   </style>
-
-  <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Luis Rodriguez",
-    "jobTitle": "Systems Architect & Full-Stack Engineer",
-    "url": "https://luisrodriguezdev.netlify.app",
-    "email": "luisangelrod17@gmail.com",
-    "telephone": "+1-787-980-5868",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Puerto Rico",
-      "addressRegion": "PR",
-      "addressCountry": "US"
-    },
-    "sameAs": [
-      "https://github.com/luisangelrod",
-      "https://www.linkedin.com/in/luis-rodriguez-515858bb/"
-    ],
-    "knowsAbout": ["React", ".NET", "TypeScript", "Azure", "Systems Architecture", "Full-Stack Development"]
-  }
+  {"@context":"https://schema.org","@type":"Person","name":"Luis Rodriguez","jobTitle":"Senior Full-Stack Engineer and Systems Architect","url":"https://luisrodriguezdev.netlify.app/","email":"mailto:luisangelrod17@gmail.com","telephone":"+1-787-980-5868","address":{"@type":"PostalAddress","addressRegion":"PR","addressCountry":"US"},"sameAs":["https://github.com/luisangelrod","https://www.linkedin.com/in/luis-rodriguez-515858bb/"],"knowsAbout":["React",".NET","TypeScript","C#","SQL Server","Azure","Systems Architecture","Payments","Retail POS","Healthcare Logistics"]}
   </script>
 </head>
+<body class="font-sans selection:bg-tide/20 selection:text-ink">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink">Skip to content</a>
 
-<body class="grain bg-[#FAFAF9] dark:bg-[#0A0A0F] text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 overflow-x-hidden">
-
-  <!-- Mouse-following spotlight -->
-  <div id="spotlight" class="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 opacity-0 dark:opacity-100" style="background: radial-gradient(600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(60, 139, 224, 0.07), transparent 80%)"></div>
-
-  <!-- Header Bar — inside hero, transparent -->
-  <header class="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-4 max-w-7xl mx-auto">
-    <a href="#home" class="flex items-center space-x-2 group">
-      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform">LR</div>
-      <span class="font-semibold text-sm hidden sm:block">Luis Rodriguez</span>
-    </a>
-    <div class="flex items-center gap-1">
-      <button id="header-theme-toggle" class="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100/80 dark:bg-white/[0.1] border border-slate-200 dark:border-white/[0.1] hover:bg-slate-200 dark:hover:bg-white/[0.2] transition-colors" aria-label="Toggle dark mode">
-        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
-        <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-500"></i>
-      </button>
-      <button id="menu-btn" class="flex items-center justify-center w-10 h-10 rounded-lg bg-slate-100/80 dark:bg-white/[0.1] border border-slate-200 dark:border-white/[0.1] hover:bg-slate-200 dark:hover:bg-white/[0.2] transition-colors" aria-label="Open menu" aria-expanded="false">
-        <i data-lucide="menu" class="w-5 h-5"></i>
-      </button>
-    </div>
-  </header>
-
-  <!-- Slide-out Menu -->
-  <div id="slide-menu" class="fixed inset-0 z-[90] pointer-events-none">
-    <!-- Backdrop -->
-    <div id="menu-backdrop" class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300"></div>
-    <!-- Panel -->
-    <div id="menu-panel" class="absolute top-0 right-0 h-full w-72 sm:w-80 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-white/[0.06] translate-x-full transition-transform duration-300 ease-out shadow-2xl">
-      <div class="flex items-center justify-between p-4 border-b border-slate-200 dark:border-white/[0.06]">
-        <span class="text-sm font-medium text-slate-500 dark:text-slate-400">Menu</span>
-        <button id="menu-close" class="flex items-center justify-center w-9 h-9 rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      <nav class="p-4 space-y-1">
-        <a href="#about" class="menu-link block px-4 py-3 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors">About</a>
-        <a href="#tech-stack" class="menu-link block px-4 py-3 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors">Tech Stack</a>
-        <a href="#projects" class="menu-link block px-4 py-3 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors">Projects</a>
-        <a href="#case-studies" class="menu-link block px-4 py-3 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors">Case Studies</a>
-        <a href="#contact" class="menu-link block px-4 py-3 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors">Contact</a>
+  <div class="fixed inset-x-0 top-0 z-40 border-b border-black/5 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-ink/70">
+    <header class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-3">
+        <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-ink text-sm font-bold text-white dark:bg-white dark:text-ink">LR</span>
+        <div>
+          <div class="text-sm font-semibold">Luis Rodriguez</div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Senior Engineer</div>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm font-medium lg:flex">
+        <a href="#work" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Work</a>
+        <a href="#expertise" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Expertise</a>
+        <a href="#experience" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Experience</a>
+        <a href="#contact" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Contact</a>
       </nav>
-      <div class="p-4 border-t border-slate-200 dark:border-white/[0.06] space-y-3">
-        <button id="theme-toggle" class="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors text-slate-700 dark:text-slate-300">
-          <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
-          <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-500"></i>
-          <span class="text-sm" id="theme-label">Dark mode</span>
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" type="button" class="flex h-11 w-11 items-center justify-center rounded-2xl border border-black/10 bg-white/70 text-slate-700 transition hover:border-tide/40 hover:text-tide dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/30 dark:hover:text-white" aria-label="Toggle theme">
+          <i data-lucide="moon" class="h-5 w-5 dark:hidden"></i>
+          <i data-lucide="sun" class="hidden h-5 w-5 dark:block"></i>
         </button>
-        <a href="assets/resume.pdf" download class="flex items-center gap-3 w-full px-4 py-3 rounded-lg hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors text-slate-700 dark:text-slate-300">
-          <i data-lucide="download" class="w-5 h-5"></i>
-          <span class="text-sm">Download Resume</span>
-        </a>
-        <a href="#contact" class="menu-link flex items-center justify-center gap-2 w-full px-4 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-medium text-sm hover:shadow-lg hover:shadow-blue-500/25 transition-all">
-          <i data-lucide="mail" class="w-4 h-4"></i>
-          Hire Me
-        </a>
+        <a href="assets/LA_Resume_.docx" download class="hidden rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-tide lg:inline-flex dark:bg-white dark:text-ink dark:hover:bg-slate-200">Download resume</a>
+        <button id="mobile-menu-button" type="button" class="flex h-11 w-11 items-center justify-center rounded-2xl border border-black/10 bg-white/70 text-slate-700 transition hover:border-tide/40 hover:text-tide lg:hidden dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/30 dark:hover:text-white" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
       </div>
+    </header>
+    <div id="mobile-menu" class="hidden border-t border-black/5 bg-white/85 px-4 py-4 dark:border-white/10 dark:bg-ink/95 lg:hidden">
+      <nav class="mx-auto flex max-w-7xl flex-col gap-2 text-sm font-medium">
+        <a href="#work" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Work</a>
+        <a href="#expertise" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Expertise</a>
+        <a href="#experience" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Experience</a>
+        <a href="#contact" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Contact</a>
+        <a href="assets/LA_Resume_.docx" download class="rounded-2xl bg-ink px-4 py-3 text-center text-white dark:bg-white dark:text-ink">Download resume</a>
+      </nav>
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center relative overflow-x-hidden pt-16">
-    <!-- Background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/30 to-transparent dark:from-transparent dark:via-blue-950/30 dark:to-transparent"></div>
-
-    <!-- Animated background shapes — immersive particles -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute -top-40 -right-40 w-80 h-80 bg-red-300 dark:bg-red-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 animate-float"></div>
-      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 animate-float" style="animation-delay: 2s;"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-300 dark:bg-amber-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-float" style="animation-delay: 4s;"></div>
-      <!-- Extra particles for depth -->
-      <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-400 dark:bg-blue-800 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-15 animate-float" style="animation-delay: 1s;"></div>
-      <div class="absolute bottom-1/3 right-1/3 w-48 h-48 bg-red-400 dark:bg-red-800 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-10 animate-float" style="animation-delay: 3s;"></div>
-      <div class="absolute top-2/3 left-1/4 w-56 h-56 bg-blue-200 dark:bg-blue-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-15 animate-float" style="animation-delay: 5s;"></div>
-      <!-- Floating micro particles -->
-      <div class="hidden dark:block absolute top-[15%] left-[10%] w-1 h-1 rounded-full bg-blue-400 opacity-60 animate-float" style="animation-delay: 0.5s;"></div>
-      <div class="hidden dark:block absolute top-[25%] right-[15%] w-1.5 h-1.5 rounded-full bg-red-400 opacity-40 animate-float" style="animation-delay: 1.5s;"></div>
-      <div class="hidden dark:block absolute top-[60%] left-[20%] w-1 h-1 rounded-full bg-blue-300 opacity-50 animate-float" style="animation-delay: 2.5s;"></div>
-      <div class="hidden dark:block absolute top-[40%] right-[25%] w-0.5 h-0.5 rounded-full bg-white opacity-30 animate-float" style="animation-delay: 3.5s;"></div>
-      <div class="hidden dark:block absolute top-[75%] left-[60%] w-1 h-1 rounded-full bg-amber-400 opacity-40 animate-float" style="animation-delay: 4.5s;"></div>
-      <div class="hidden dark:block absolute top-[10%] left-[70%] w-0.5 h-0.5 rounded-full bg-white opacity-20 animate-float" style="animation-delay: 0s;"></div>
-      <div class="hidden dark:block absolute top-[85%] right-[40%] w-1 h-1 rounded-full bg-blue-400 opacity-30 animate-float" style="animation-delay: 2s;"></div>
-    </div>
-
-
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Left content -->
-        <div class="text-center lg:text-left">
-          <!-- Status badge -->
-          <div class="inline-flex items-center px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium mb-6">
-            <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-            Available for opportunities
+  <main id="main">
+    <section id="home" class="px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pb-24">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:items-end">
+        <div class="reveal">
+          <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-xs font-medium uppercase tracking-[.24em] text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
+            <span class="h-2 w-2 rounded-full bg-forest"></span>
+            Available for senior full-stack and systems roles
           </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Hi, I'm <span class="gradient-text gradient-text-animated">Luis Rodriguez</span>
-          </h1>
-
-          <p class="text-xl sm:text-2xl text-slate-600 dark:text-slate-400 mb-8">
-            Systems Architect & Full-Stack Engineer
-          </p>
-
-          <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-xl mx-auto lg:mx-0">
-            I build and operate production systems end-to-end — payments, logistics, retail.
-            Puerto Rico. Bilingual EN/ES.
-          </p>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6">
-            <a href="#projects" class="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 transition-all">
-              <i data-lucide="folder-open" class="w-5 h-5 mr-2"></i>
-              View My Work
-            </a>
-            <a href="assets/resume.pdf" download class="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg font-semibold hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all">
-              <i data-lucide="download" class="w-5 h-5 mr-2"></i>
-              Download Resume
-            </a>
-            <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg font-semibold hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all">
-              <i data-lucide="send" class="w-5 h-5 mr-2"></i>
-              Get in Touch
-            </a>
+          <p class="eyebrow mb-5 font-mono text-[11px] text-slate-500 dark:text-slate-400">Puerto Rico | Remote U.S. | English and Spanish</p>
+          <h1 class="max-w-4xl text-5xl font-extrabold leading-[.96] text-ink dark:text-white sm:text-6xl lg:text-7xl">Production systems <span class="headline-fill">that hold up</span> when people actually use them.</h1>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 sm:text-xl">I design and ship payment, logistics, retail, and healthcare software end to end across React, TypeScript, C#, .NET, SQL Server, and Azure. I am strongest where reliability, hardware integration, compliance pressure, and delivery speed all matter at once.</p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#work" class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-tide dark:bg-white dark:text-ink dark:hover:bg-slate-200">View selected work</a>
+            <a href="mailto:luisangelrod17@gmail.com?subject=Portfolio%20Inquiry" class="inline-flex items-center justify-center rounded-full border border-black/10 bg-white/70 px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-tide/40 hover:text-tide dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-white/30">Email Luis</a>
+            <a href="assets/LA_Resume_.docx" download class="inline-flex items-center justify-center rounded-full border border-black/10 px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-tide/40 hover:text-tide dark:border-white/10 dark:text-slate-200 dark:hover:border-white/30 dark:hover:text-white">Download resume</a>
           </div>
-
-          <!-- Social Links -->
-          <div class="flex items-center justify-center lg:justify-start space-x-4">
-            <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="p-3 rounded-lg bg-slate-100 dark:bg-white/[0.08] border border-transparent dark:border-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] hover:text-blue-500 dark:hover:text-blue-400 transition-all group">
-              <i data-lucide="github" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-lg bg-slate-100 dark:bg-white/[0.08] border border-transparent dark:border-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] hover:text-blue-500 dark:hover:text-blue-400 transition-all group">
-              <i data-lucide="linkedin" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-            </a>
-            <a href="mailto:luisangelrod17@gmail.com" class="p-3 rounded-lg bg-slate-100 dark:bg-white/[0.08] border border-transparent dark:border-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] hover:text-blue-500 dark:hover:text-blue-400 transition-all group">
-              <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-            </a>
+          <div class="mt-8 flex flex-wrap gap-3 text-sm">
+            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">Senior Full-Stack Engineer</span>
+            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">Systems Architect</span>
+            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">React + .NET + Azure</span>
+            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">Payments + Logistics + Retail</span>
           </div>
         </div>
+        <aside class="reveal panel rounded-[2rem] p-6 sm:p-8">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Snapshot</p>
+              <h2 class="mt-2 text-2xl font-bold text-ink dark:text-white">Why recruiters keep reading</h2>
+            </div>
+            <span class="rounded-full bg-forest/10 px-3 py-1 text-xs font-semibold text-forest dark:bg-forest/20 dark:text-green-300">Actively interviewing</span>
+          </div>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Impact</div><div class="mt-3 text-3xl font-extrabold text-ink dark:text-white">4</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Production systems shipped in 6 months as a sole engineer.</p></div>
+            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Scale</div><div class="mt-3 text-3xl font-extrabold text-ink dark:text-white">50+</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">POS integrations across payment, pharmacy, and e-commerce ecosystems.</p></div>
+            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Stack</div><div class="mt-3 text-xl font-bold text-ink dark:text-white">React, .NET, SQL Server, Azure</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Modern product engineering with enterprise systems depth.</p></div>
+            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Fit</div><div class="mt-3 text-xl font-bold text-ink dark:text-white">Remote-first since 2021</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Fluent English and Spanish. Strong with ownership, async delivery, and production support.</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-        <!-- Right content - Interactive LR Particle Canvas -->
-        <div class="relative hidden lg:block">
-          <canvas id="lr-canvas" class="w-96 h-96 mx-auto"></canvas>
+    <section id="expertise" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div><p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">What teams hire me for</p><h2 class="mt-4 text-4xl font-bold text-ink dark:text-white sm:text-5xl">The work behind the title.</h2></div>
+          <p class="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">I am most useful to teams that need someone to reduce ambiguity, shape the architecture, ship the product, and still care about supportability after launch.</p>
+        </div>
+        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-tide/10 text-tide dark:bg-tide/15 dark:text-blue-200"><i data-lucide="layers-3" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Architecture ownership</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">API design, database modeling, client architecture, cloud deployment, reliability controls, and sane delivery structure.</p></article>
+          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-ember/10 text-ember dark:bg-ember/15 dark:text-red-200"><i data-lucide="credit-card" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Operational software</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Payments, kiosks, drivers, dispatch, pharmacy workflows, and software that breaks if details are wrong.</p></article>
+          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-forest/10 text-forest dark:bg-forest/15 dark:text-green-200"><i data-lucide="shield-check" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Reliability and compliance</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Idempotency, offline recovery, JWT and RBAC, accessibility, rate limiting, and systems built under compliance pressure.</p></article>
+          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:text-white"><i data-lucide="rocket" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Fast end-to-end delivery</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">AI-assisted implementation and review workflows used as leverage, not as a substitute for engineering judgment.</p></article>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-16 lg:py-24 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div class="section-header-sticky text-center">
-        <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">About Me</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-2">About <span class="gradient-text">Me</span></h2>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">Full-stack engineer building production systems end-to-end</p>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Left - Image/Visual -->
-        <div class="relative">
-          <div class="relative rounded-2xl overflow-hidden shadow-xl">
-            <img src="img/PuertoRico.jpg" alt="Puerto Rico" class="w-full h-80 lg:h-96 object-cover" loading="lazy" decoding="async">
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-slate-900/10"></div>
-            <div class="absolute bottom-6 left-6 right-6">
-              <div class="flex items-center text-white">
-                <i data-lucide="map-pin" class="w-5 h-5 mr-2 text-blue-400"></i>
-                <span>Puerto Rico</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Stats cards -->
-          <div class="relative mt-4 sm:absolute sm:-bottom-6 sm:-right-6 bg-white dark:bg-slate-800 rounded-xl shadow-xl p-4 sm:p-6 border border-slate-200 dark:border-slate-700">
-            <div class="grid grid-cols-2 gap-4 sm:gap-6">
-              <div class="text-center">
-                <div class="text-2xl sm:text-3xl font-bold gradient-text">5+</div>
-                <div class="text-xs sm:text-sm text-slate-500">Years Exp.</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl sm:text-3xl font-bold gradient-text">10+</div>
-                <div class="text-xs sm:text-sm text-slate-500">Production Systems</div>
-              </div>
-            </div>
-          </div>
+    <section id="work" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div><p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Selected work</p><h2 class="mt-4 text-4xl font-bold text-ink dark:text-white sm:text-5xl">The proof is in the shipped systems.</h2></div>
+          <p class="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">This portfolio now prioritizes the work most likely to get you to a serious engineering conversation.</p>
         </div>
 
-        <!-- Right - Content -->
-        <div>
-          <h3 class="text-2xl font-bold mb-6">Hello! I'm Luis Rodriguez</h3>
-
-          <div class="prose prose-slate dark:prose-invert max-w-none">
-            <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
-              I'm a full-stack engineer in Puerto Rico who builds and operates <strong class="text-slate-800 dark:text-white">production
-              systems end-to-end</strong> — from architecture and implementation to deployment and ongoing reliability. The
-              systems I've shipped process real payments, coordinate medical transport logistics, and run retail operations.
-            </p>
-
-            <p class="text-slate-600 dark:text-slate-400 mb-6">
-              My stack is <strong class="text-slate-800 dark:text-white">React/TypeScript</strong> and
-              <strong class="text-slate-800 dark:text-white">.NET/C#</strong> on Azure, and AI development tools are a core
-              part of how I work. I make the architecture and design decisions; AI accelerates the implementation. The result
-              is that I ship complete systems as a solo engineer — not because I work 80-hour weeks, but because I've built
-              a workflow that makes it possible.
-            </p>
-
-            <p class="text-slate-600 dark:text-slate-400 mb-8">
-              US-based, Eastern time. Bilingual <strong class="text-slate-800 dark:text-white">English and Spanish</strong>.
-            </p>
-          </div>
-
-          <!-- Core strengths -->
-          <div class="grid grid-cols-2 gap-4 mb-8">
-            <div class="flex items-center space-x-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800">
-              <div class="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
-                <i data-lucide="layers" class="w-5 h-5 text-blue-500 dark:text-blue-400"></i>
-              </div>
-              <span class="font-medium">Systems Architecture</span>
+        <article class="reveal panel mt-10 overflow-hidden rounded-[2.25rem]">
+          <div class="grid gap-0 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
+            <div class="flex min-h-[340px] items-center justify-center bg-gradient-to-br from-tide/20 via-transparent to-ember/10 px-8 py-10">
+              <div class="max-w-[260px] rounded-[2rem] border border-white/15 bg-white/10 p-3 shadow-2xl"><img src="img/projects/berriospay.png" alt="BerriosPay kiosk interface" class="rounded-[1.35rem]"></div>
             </div>
-            <div class="flex items-center space-x-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800">
-              <div class="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
-                <i data-lucide="cloud" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
+            <div class="bg-white/55 p-8 dark:bg-white/5 lg:p-10">
+              <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-forest/10 px-3 py-1 text-xs font-semibold uppercase tracking-[.18em] text-forest dark:bg-forest/20 dark:text-green-200">Production</span><span class="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-[.18em] text-slate-600 dark:bg-white/5 dark:text-slate-300">Featured case</span></div>
+              <h3 class="mt-5 text-3xl font-bold text-ink dark:text-white">BerriosPay</h3>
+              <p class="mt-3 text-base leading-7 text-slate-600 dark:text-slate-300">Enterprise payment kiosk platform delivered as a sole engineer. I owned the full stack: React frontend, .NET backend, WPF kiosk shell, Azure SQL, cloud deployment, and the hardware bridge for payment and printing flows.</p>
+              <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-3xl border border-black/10 bg-white/65 p-4 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Delivered</div><div class="mt-2 text-xl font-bold text-ink dark:text-white">3 days</div></div>
+                <div class="rounded-3xl border border-black/10 bg-white/65 p-4 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Deployment</div><div class="mt-2 text-xl font-bold text-ink dark:text-white">25+ kiosks</div></div>
+                <div class="rounded-3xl border border-black/10 bg-white/65 p-4 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Controls</div><div class="mt-2 text-xl font-bold text-ink dark:text-white">Offline + idempotent</div></div>
               </div>
-              <span class="font-medium">Azure Cloud</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800">
-              <div class="p-2 rounded-lg bg-pink-100 dark:bg-pink-900/30">
-                <i data-lucide="monitor" class="w-5 h-5 text-pink-600 dark:text-pink-400"></i>
-              </div>
-              <span class="font-medium">AI-Augmented Dev</span>
-            </div>
-            <div class="flex items-center space-x-3 p-3 rounded-lg bg-slate-100 dark:bg-slate-800">
-              <div class="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/30">
-                <i data-lucide="globe" class="w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
-              </div>
-              <span class="font-medium">Bilingual EN/ES</span>
+              <ul class="mt-6 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+                <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-tide"></span><span>Integrated PAX POSLink, Epson TM-M30II, and Touch Dynamic kiosk hardware without expanding PCI scope unnecessarily.</span></li>
+                <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember"></span><span>Built idempotency, retries, circuit breakers, and offline recovery to prevent duplicate transactions and preserve uptime.</span></li>
+                <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-forest"></span><span>Shipped bilingual, kiosk-friendly UX with accessibility considerations and production support ownership after launch.</span></li>
+              </ul>
             </div>
           </div>
+        </article>
 
-          <!-- Contact info -->
-          <div class="flex flex-wrap gap-4">
-            <a href="mailto:luisangelrod17@gmail.com" class="inline-flex items-center text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-              <i data-lucide="mail" class="w-4 h-4 mr-2"></i>
-              luisangelrod17@gmail.com
-            </a>
-            <a href="tel:+17879805868" class="inline-flex items-center text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-              <i data-lucide="phone" class="w-4 h-4 mr-2"></i>
-              +1 787-980-5868
-            </a>
-          </div>
+        <div class="mt-8 grid gap-5 lg:grid-cols-2">
+          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">GoFleetCare</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Medical transport driver app built for unreliable mobile conditions with real-time trip management, geofencing, Firebase notifications, signature capture, and offline mutation sync.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">React</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">TypeScript</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Firebase</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Offline-first</span></div></article>
+          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">CDD-HUB</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Driver operations portal shipped from first commit to production in 3.5 weeks. Included status workflows, PDF exports, bilingual UX, and a test suite expanded to 215 automated tests.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">React</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">TanStack Query</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Vitest</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Playwright</span></div></article>
+          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">Salud Medica</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Tablet-based POS application for pharmacy field operations with cash checkout, membership management, idempotent payment handling, signature capture, and native printer and cash drawer integration.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Ionic</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Angular</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">.NET</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Android hardware</span></div></article>
+          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">Retail POS Ecosystem</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Maintained and extended 50+ integrations spanning payment gateways, pharmacy systems, and e-commerce platforms with modular .NET services, RMS extensions, and production support.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">C#</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">SQL Server</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Payments</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Production support</span></div></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <!-- Evolution Timeline — The Agentic Engineering Shift -->
-  <section class="py-16 lg:py-24 relative overflow-hidden">
-    <!-- Background accent — very subtle, edges are transparent -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent dark:via-blue-950/10"></div>
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="section-header-sticky text-center">
-        <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">The Shift</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-2">From Code Writer to <span class="gradient-text gradient-text-animated">System Architect</span></h2>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">The agentic engineering revolution isn't replacing developers — it's elevating us</p>
+    <section id="experience" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(320px,.82fr)]">
+        <div class="reveal rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
+          <p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Experience</p>
+          <h2 class="mt-4 text-4xl font-bold text-ink dark:text-white sm:text-5xl">A concise track record.</h2>
+          <div class="mt-8 space-y-8">
+            <div><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">2025 - Present</div><h3 class="mt-2 text-2xl font-semibold text-ink dark:text-white">Business Computer POS</h3><p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Systems Architect and Engineering Lead</p><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Promoted into architecture ownership within 3 months. Led technical direction for 50+ active projects while still delivering code, infrastructure, QA, and support hands on.</p></div>
+            <div><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">2025</div><h3 class="mt-2 text-2xl font-semibold text-ink dark:text-white">Highspring Digital</h3><p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Frontend Engineer</p><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Angular and TypeScript delivery in client-facing web products, including a 30% page-load improvement through lazy loading and state optimization.</p></div>
+            <div><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">2022 - 2025</div><h3 class="mt-2 text-2xl font-semibold text-ink dark:text-white">Department of Health of Puerto Rico</h3><p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Software Developer</p><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Built Angular and SQL-backed public health features under HIPAA-adjacent requirements, JWT and RBAC security patterns, and CI/CD participation with GitLab.</p></div>
+          </div>
+        </div>
+        <aside class="reveal rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
+          <p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Core stack</p>
+          <div class="mt-6 space-y-6">
+            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Frontend</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">React, TypeScript, Angular, Ionic, Tailwind CSS, TanStack Query, Zustand, Zod, i18next</p></div>
+            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Backend</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">C#, .NET, ASP.NET Core, Entity Framework Core, REST API design, SQL Server, Azure SQL</p></div>
+            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Systems</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Azure App Service, Bicep, GitHub Actions, GitLab CI/CD, WPF + WebView2, hardware-integrated POS and kiosk flows</p></div>
+            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Priorities</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Reliability, offline support, idempotency, security, accessibility, testing, and maintainability under production pressure.</p></div>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <!-- Timeline -->
-      <div class="relative" class="reveal">
-        <!-- Timeline line — blue to red gradient -->
-        <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-red-500 hidden md:block"></div>
-
-        <!-- Phase 1: Traditional Dev -->
-        <div class="relative md:grid md:grid-cols-2 md:gap-12 mb-16">
-          <div class="md:text-right md:pr-12">
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-400 text-xs font-mono mb-3">2019 — 2023</div>
-            <h3 class="text-xl font-bold mb-2">Software Developer</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm">Writing every line. Debugging every bug. Manually building features from scratch. Valuable, but limited by hours in the day.</p>
-          </div>
-          <div class="hidden md:flex items-center">
-            <div class="w-4 h-4 rounded-full bg-blue-500 border-4 border-white dark:border-slate-900 shadow-lg absolute left-1/2 -translate-x-1/2 dark:shadow-blue-500/50"></div>
+    <section id="contact" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="mx-auto max-w-7xl panel grid gap-10 rounded-[2.5rem] p-8 sm:p-10 lg:grid-cols-[minmax(0,.92fr)_minmax(320px,1fr)]">
+        <div class="reveal">
+          <p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Contact</p>
+          <h2 class="mt-4 max-w-xl text-4xl font-bold text-ink dark:text-white sm:text-5xl">If you need someone who can own the system, start here.</h2>
+          <p class="mt-5 max-w-xl text-base leading-7 text-slate-600 dark:text-slate-300">I am open to senior full-stack, technical lead, and systems architecture roles. Remote-first is ideal. Hybrid conversation is fine for the right team.</p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <a href="mailto:luisangelrod17@gmail.com" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Email</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">luisangelrod17@gmail.com</div></a>
+            <a href="tel:+17879805868" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Phone</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">+1 787-980-5868</div></a>
+            <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">LinkedIn</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">luis-rodriguez-515858bb</div></a>
+            <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">GitHub</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">github.com/luisangelrod</div></a>
           </div>
         </div>
-
-        <!-- Phase 2: AI-Augmented -->
-        <div class="relative md:grid md:grid-cols-2 md:gap-12 mb-16">
-          <div class="hidden md:block"></div>
-          <div class="md:pl-12">
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-purple-200 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-xs font-mono mb-3">2023 — 2025</div>
-            <h3 class="text-xl font-bold mb-2">AI-Augmented Engineer</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm">Copilot assists. Claude reviews. Speed doubles. Still writing most of the code, but with a powerful collaborator. The shift begins.</p>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="reveal rounded-[2rem] border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>Do not fill this out if you are human: <input name="bot-field"></label></p>
+          <h3 class="text-2xl font-semibold text-ink dark:text-white">Send a direct message</h3>
+          <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Short intro, role, company, and hiring timeline is enough.</p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div><label for="name" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Name</label><input id="name" name="name" type="text" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="Your name"></div>
+            <div><label for="email" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Email</label><input id="email" name="email" type="email" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="you@company.com"></div>
           </div>
-          <div class="hidden md:flex items-center">
-            <div class="w-4 h-4 rounded-full bg-purple-500 border-4 border-white dark:border-slate-900 shadow-lg absolute left-1/2 -translate-x-1/2 dark:shadow-purple-500/50"></div>
-          </div>
-        </div>
-
-        <!-- Phase 3: Agentic Architecture (NOW) -->
-        <div class="relative md:grid md:grid-cols-2 md:gap-12">
-          <div class="md:text-right md:pr-12">
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-red-500 text-white text-xs font-mono mb-3 shadow-lg dark:shadow-blue-500/20">2025 — NOW</div>
-            <h3 class="text-xl font-bold mb-2 gradient-text">Systems Architect + Agentic Engineering</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Claude Code writes the implementation. I architect the system, define the contracts, review the output, QA the product, and own the decisions. One engineer shipping what used to take a team.</p>
-            <div class="flex flex-wrap gap-2 justify-end">
-              <span class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">Architect</span>
-              <span class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-medium">QA</span>
-              <span class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">Product Owner</span>
-              <span class="px-2 py-1 rounded bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-medium">DevOps</span>
-            </div>
-          </div>
-          <div class="hidden md:flex items-center">
-            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-red-500 border-4 border-white dark:border-slate-900 shadow-lg absolute left-1/2 -translate-x-1/2 dark:shadow-red-500/30 animate-pulse"></div>
-          </div>
-        </div>
+          <div class="mt-4"><label for="subject" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Subject</label><input id="subject" name="subject" type="text" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="Senior full-stack opportunity"></div>
+          <div class="mt-4"><label for="message" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Message</label><textarea id="message" name="message" rows="5" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="Tell me about the role, team, and what you need built."></textarea></div>
+          <div class="mt-4" data-netlify-recaptcha="true"></div>
+          <button type="submit" class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-tide dark:bg-white dark:text-ink dark:hover:bg-slate-200">Send message</button>
+        </form>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-
-  <!-- Tech Stack Section -->
-  <section id="tech-stack" class="py-16 lg:py-24 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div class="section-header-sticky text-center">
-        <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">Tech Stack</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-2">Technologies I <span class="gradient-text">Work With</span></h2>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">A comprehensive toolkit for building modern, scalable applications</p>
-      </div>
-
-      <!-- Tech Categories -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-
-        <!-- Languages -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white mr-4">
-              <i data-lucide="code-2" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">Languages</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">TypeScript</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 text-sm font-medium">JavaScript</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">C#</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">SQL</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-sm font-medium">HTML5</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">CSS3</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 text-sm font-medium">Swift</span>
-          </div>
-        </div>
-
-        <!-- Frontend -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white mr-4">
-              <i data-lucide="layout" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">Frontend</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">React 19</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium">Angular 19</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium">Next.js 15</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Ionic 8</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400 text-sm font-medium">Vite</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 text-sm font-medium">TailwindCSS</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-sm font-medium">Three.js</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-400 text-sm font-medium">React Three Fiber</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">GSAP</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-sm font-medium">D3.js</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">Framer Motion</span>
-          </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white mr-4">
-              <i data-lucide="server" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">Backend</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">.NET 10</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">ASP.NET Core</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium">NestJS</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">Node.js</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Entity Framework Core</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 text-sm font-medium">Prisma</span>
-          </div>
-        </div>
-
-        <!-- Mobile/Desktop -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 text-white mr-4">
-              <i data-lucide="smartphone" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">Mobile & Desktop</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Ionic + Capacitor</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">WPF + WebView2</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-sm font-medium">SwiftUI</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">PWA</span>
-          </div>
-        </div>
-
-        <!-- Cloud & DevOps -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-orange-500 to-red-600 text-white mr-4">
-              <i data-lucide="cloud" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">Cloud & DevOps</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Azure (App Service, SQL, Static Web Apps, Bicep IaC)</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-sm font-medium">AWS</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Docker</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium">GitHub Actions</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">GitLab CI/CD</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 text-sm font-medium">Vercel</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">Netlify</span>
-          </div>
-        </div>
-
-        <!-- Databases -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white mr-4">
-              <i data-lucide="database" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">Databases</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">SQL Server</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Azure SQL</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">PostgreSQL</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">MongoDB</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-sm font-medium">Firebase</span>
-          </div>
-        </div>
-
-        <!-- Architecture -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 text-white mr-4">
-              <i data-lucide="git-branch" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">Architecture</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Clean Architecture</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">Microservices</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">Offline-First</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Event-Driven</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-sm font-medium">Circuit Breaker/Retry (Polly)</span>
-          </div>
-        </div>
-
-        <!-- AI & Payments -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="flex items-center mb-6">
-            <div class="p-3 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600 text-white mr-4">
-              <i data-lucide="zap" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-xl font-semibold">AI & Payments</h3>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">Claude API</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Stripe</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-sm font-medium">Twilio</span>
-            <span class="tech-badge px-3 py-1.5 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-sm font-medium">Resend</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div class="section-header-sticky text-center">
-        <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">Portfolio</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-2">Featured <span class="gradient-text">Projects</span></h2>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">Production systems I've architected and shipped — most as sole engineer</p>
-      </div>
-
-      <!-- Key Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16" class="reveal">
-        <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
-          <div class="text-3xl font-bold gradient-text mb-1">10+</div>
-          <div class="text-sm text-slate-500 dark:text-slate-400">Production Systems</div>
-        </div>
-        <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
-          <div class="text-3xl font-bold gradient-text mb-1">50+</div>
-          <div class="text-sm text-slate-500 dark:text-slate-400">POS Integrations</div>
-        </div>
-        <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
-          <div class="text-3xl font-bold gradient-text mb-1">5+</div>
-          <div class="text-sm text-slate-500 dark:text-slate-400">Years Experience</div>
-        </div>
-        <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
-          <div class="text-3xl font-bold gradient-text mb-1">EN/ES</div>
-          <div class="text-sm text-slate-500 dark:text-slate-400">Bilingual</div>
-        </div>
-      </div>
-
-      <!-- Projects Grid -->
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-
-        <!-- Project 1: BerriosPay -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover">
-          <div class="relative overflow-hidden h-56 sm:h-64 bg-gradient-to-br from-blue-600 to-blue-800">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]"></div>
-            <div class="flex items-center justify-center h-full pt-2">
-              <div class="phone-frame transform -rotate-3 translate-y-8 sm:translate-y-6 group-hover:rotate-0 group-hover:translate-y-4 transition-all duration-500">
-                <img src="img/projects/berriospay.png" alt="BerriosPay kiosk interface" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="absolute bottom-3 left-5 text-white z-10">
-              <span class="text-xl sm:text-2xl font-bold drop-shadow-lg">BerriosPay</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">BerriosPay</h3>
-              <span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">Production</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Enterprise Payment Kiosk System — Sole Engineer</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Empresas Berrios needed to modernize payment collection across their locations. I designed and delivered the complete system: kiosk hardware integration (PAX A920 terminal + Epson printer + Touch Dynamic QK22), React 19 frontend, .NET 10 API with clean architecture, WPF kiosk shell. Built resilience-first with Polly circuit breaker, idempotency layer preventing duplicate payments, and offline queue with automatic sync recovery. Bilingual ES/EN, WCAG 2.1 AA accessible.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">React 19</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">.NET 10</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">WPF</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Azure SQL</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">TypeScript</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">TailwindCSS</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2: GoFleetCare -->
-        <div id="project-gofleetcare" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-56 sm:h-64 bg-gradient-to-br from-emerald-600 to-teal-700">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]"></div>
-            <div class="flex items-center justify-center h-full pt-2">
-              <div class="phone-frame transform rotate-3 translate-y-8 sm:translate-y-6 group-hover:rotate-0 group-hover:translate-y-4 transition-all duration-500">
-                <img src="img/projects/gofleetcare.png" alt="GoFleetCare driver app" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="absolute bottom-3 left-5 text-white z-10">
-              <span class="text-xl sm:text-2xl font-bold drop-shadow-lg">GoFleetCare</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">GoFleetCare</h3>
-              <span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">Production</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Medical Transport Driver App — Sole Engineer</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Medical transport company needed a mobile app for drivers to manage daily trip assignments. I delivered the complete system: dispatch assigns trips, drivers select vehicles, manage assignments, chat with dispatch in real-time, and review trip history with completion tracking. Built offline-first with mutation queue for unreliable mobile connectivity. Firebase push notifications, signature capture, geofencing, bilingual EN/ES.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">React 19</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Vite</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">TypeScript</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">TanStack Query</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Zustand</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Firebase</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Zod</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: ShaderForge Studio -->
-        <div id="project-shaderforge" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-pink-600 to-violet-700 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="palette" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">ShaderForge</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">ShaderForge Studio</h3>
-              <span class="px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">In Development</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Visual Shader Editor</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Browser-based visual shader editor for game developers. Monorepo (Turborepo/pnpm) with React frontend featuring node-based editor (ReactFlow) and Monaco code editor. NestJS API, Prisma/PostgreSQL, Docker. Custom GLSL/HLSL/ShaderLab compiler. Real-time 3D preview via React Three Fiber. Community gallery with cloud sync.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">React</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">NestJS</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Prisma</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Three.js</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Docker</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Turborepo</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4: Lead Response SaaS -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-amber-600 to-orange-700 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="bot" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">Lead Response</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">Lead Response SaaS</h3>
-              <span class="px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">In Development</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">AI-Powered Lead Conversion</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">AI-powered pre-consultation conversion platform for medical spas. Next.js 15 App Router, Stripe subscriptions, Twilio SMS (A2P 10DLC), Claude API conversation automation, Clerk multi-tenant auth, QStash durable jobs, Neon PostgreSQL with Prisma 7. HIPAA-aware with PHI detection/redaction.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Next.js 15</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Stripe</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Twilio</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Claude API</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Prisma</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 5: NEXUS MCU Explorer -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-blue-600 to-cyan-800 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="orbit" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">NEXUS MCU</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">NEXUS MCU Explorer</h3>
-              <span class="px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">In Development</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">3D Interactive Experience</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Cinematic 3D web experience visualizing the Marvel multiverse. Three.js with WebGPU renderer, custom TSL shaders (WGSL/GLSL), React Three Fiber, GSAP ScrollTrigger, D3.js force-directed graphs, Framer Motion, spatial audio with Howler.js.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">React 19</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Three.js</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">WebGPU</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">GSAP</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">D3.js</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Framer Motion</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 6: CDD-HUB -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-56 sm:h-64 bg-gradient-to-br from-teal-600 to-cyan-700">
-            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.08)_0%,_transparent_70%)]"></div>
-            <div class="flex items-center justify-center h-full pt-2">
-              <div class="phone-frame transform -rotate-2 translate-y-8 sm:translate-y-6 group-hover:rotate-0 group-hover:translate-y-4 transition-all duration-500">
-                <img src="img/projects/cddhub.png" alt="CDD-HUB driver portal" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="absolute bottom-3 left-5 text-white z-10">
-              <span class="text-xl sm:text-2xl font-bold drop-shadow-lg">CDD-HUB</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">CDD-HUB</h3>
-              <span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">Production</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Driver Management Portal — Sole Engineer</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Built a driver management portal tracking daily trips with real-time completion stats, activity history with filtering/pagination, and detailed trip progress with pickup/drop-off tracking. Comprehensive test coverage with Vitest and Playwright E2E. Dark/light mode, bilingual EN/ES (i18next), lazy-loaded pages, PDF report exports.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">React 19</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Vite</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">TypeScript</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">TanStack Query</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Playwright</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">i18next</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 7: Salud Medica -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-cyan-600 to-blue-800 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="heart-pulse" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">Salud Medica</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">Salud Medica</h3>
-              <span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">Production</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Pharmacy POS & Order Distribution — Lead Engineer</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Pharmacy needed a mobile POS system for field operations. I built the complete cash register module: session management with EOD variance reporting, payment processing with idempotency protection against duplicate charges, membership enrollment with signature capture, and Star thermal printer integration. Offline-first architecture with automatic sync queue for unreliable connectivity. Eliminated manual reconciliation errors.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Ionic 8</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Angular 18</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">.NET 8</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">SQL Server</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Capacitor</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">TypeScript</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 8: Retail POS Ecosystem -->
-        <div id="project-retailpos" class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-slate-600 to-gray-800 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="shopping-cart" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">Retail POS</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">Retail POS Ecosystem</h3>
-              <span class="px-2 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium">Production</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">50+ Integrations</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Maintain and extend 50+ retail POS integrations processing transactions across payment gateways (Evertec, Cayan, DynaPay), campus payment systems, and e-commerce platforms (BigCommerce). Clean architecture patterns ensuring each integration is testable and deployable independently.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">.NET Core</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">C#</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">SQL Server</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Azure DevOps</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 9: PostGenius -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-violet-600 to-fuchsia-700 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="sparkles" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">PostGenius</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">PostGenius</h3>
-              <span class="px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">Ready to Deploy</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">AI-Powered Twitter/X Content Platform</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">SaaS for Twitter/X creators. Claude API content generation, "Reply Guy Mode" with gamification (streaks, XP, achievements), algorithm analyzer, AI coach chat, voice-to-text. Stripe subscriptions, Twitter OAuth 2.0, Supabase, bilingual EN/ES, PWA. Demo Mode with full mock data.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Next.js 16</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Claude API</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Stripe</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Twitter API</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Supabase</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">shadcn/ui</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 10: TravelBot -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-sky-600 to-emerald-700 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="plane" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">TravelBot</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">TravelBot</h3>
-              <span class="px-2 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-xs font-medium">MVP</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">Travel Search Aggregator</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">Multi-source travel search aggregating Google Flights, Skyscanner, Kayak, Booking.com, Expedia, and Airbnb simultaneously. Playwright browser automation, seasonality analysis, travel advisories, cost calculator, SQLite persistence, interactive CLI + React frontend.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Node.js</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">React 18</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Playwright</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Express</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">SQLite</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Recharts</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 11: Additional Projects (macOS) -->
-        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700 card-hover" class="reveal">
-          <div class="relative overflow-hidden h-40 sm:h-56 bg-gradient-to-br from-rose-600 to-pink-700 flex items-center justify-center">
-            <div class="text-center text-white">
-              <i data-lucide="apple" class="w-10 h-10 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 opacity-80"></i>
-              <span class="text-2xl font-bold">iOS / macOS</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xl font-semibold">Additional Projects</h3>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 text-xs font-medium">Available on Request</span>
-            </div>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">macOS Development</p>
-            <p class="text-slate-600 dark:text-slate-400 mb-4">SwiftUI iOS applications and additional personal projects available on request. Developed on macOS environment.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">SwiftUI</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">iOS</span>
-              <span class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-700 text-xs font-medium">Xcode</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- View More -->
-      <div class="text-center mt-12">
-        <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-lg font-semibold hover:border-blue-500 dark:hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all">
-          <i data-lucide="github" class="w-5 h-5 mr-2"></i>
-          View More on GitHub
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies Section -->
-  <section id="case-studies" class="py-16 lg:py-24 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Section Header -->
-      <div class="section-header-sticky text-center">
-        <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-xs font-medium uppercase tracking-widest mb-3">Deep Dive</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mb-2">Case <span class="gradient-text">Studies</span></h2>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm">Detailed breakdowns of my approach to solving real-world problems</p>
-      </div>
-
-      <!-- Case Study: BerriosPay -->
-      <div id="case-study-berriospay" class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 mb-12">
-        <div class="grid lg:grid-cols-2">
-          <!-- Left - Visual -->
-          <div class="relative bg-gradient-to-br from-blue-500 to-blue-700 p-5 sm:p-8 lg:p-12">
-            <div class="absolute inset-0 bg-black/10"></div>
-            <div class="relative z-10">
-              <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium mb-4">Featured Case Study</span>
-              <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">BerriosPay</h3>
-              <p class="text-white/80 mb-6 text-sm sm:text-base">Enterprise payment kiosk system for Empresas Berrios Inc. — full hardware/software integration with resilience-first architecture.</p>
-
-              <!-- Architecture Diagram Description -->
-              <div class="bg-white/10 backdrop-blur rounded-xl p-4 sm:p-6 overflow-hidden">
-                <h4 class="text-white font-semibold mb-3 flex items-center">
-                  <i data-lucide="git-branch" class="w-5 h-5 mr-2"></i>
-                  Architecture Overview
-                </h4>
-                <!-- Mobile-friendly stack view -->
-                <div class="space-y-3">
-                  <div class="bg-white/10 rounded-lg p-3">
-                    <div class="text-white font-semibold text-sm">Presentation Layer</div>
-                    <div class="text-white/70 text-xs sm:text-sm">React 19 + TypeScript + TailwindCSS</div>
-                  </div>
-                  <div class="flex justify-center"><i data-lucide="chevron-down" class="w-4 h-4 text-white/50"></i></div>
-                  <div class="bg-white/10 rounded-lg p-3">
-                    <div class="text-white font-semibold text-sm">Kiosk Shell</div>
-                    <div class="text-white/70 text-xs sm:text-sm">WPF + WebView2 (Hardware Bridge)</div>
-                  </div>
-                  <div class="flex justify-center"><i data-lucide="chevron-down" class="w-4 h-4 text-white/50"></i></div>
-                  <div class="bg-white/10 rounded-lg p-3">
-                    <div class="text-white font-semibold text-sm">API Layer</div>
-                    <div class="text-white/70 text-xs sm:text-sm">.NET 10 Minimal APIs + Clean Arch</div>
-                  </div>
-                  <div class="flex justify-center"><i data-lucide="chevron-down" class="w-4 h-4 text-white/50"></i></div>
-                  <div class="bg-white/10 rounded-lg p-3">
-                    <div class="text-white font-semibold text-sm">Data + Cloud</div>
-                    <div class="text-white/70 text-xs sm:text-sm">Azure SQL + App Service + Bicep IaC</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right - Content -->
-          <div class="p-5 sm:p-8 lg:p-12">
-            <div class="space-y-5 sm:space-y-6">
-              <!-- Overview -->
-              <div>
-                <h4 class="text-base sm:text-lg font-semibold mb-2 flex items-center">
-                  <i data-lucide="info" class="w-5 h-5 mr-2 text-cyan-500 flex-shrink-0"></i>
-                  The Challenge
-                </h4>
-                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400">Empresas Berrios needed to modernize payment collection — replacing manual processes with a unified system across kiosk, web, and mobile. The system had to integrate three hardware devices, work offline, prevent duplicate payments, and serve bilingual customers. I was the sole engineer.</p>
-              </div>
-
-              <!-- Key Features -->
-              <div>
-                <h4 class="text-lg font-semibold mb-2 flex items-center">
-                  <i data-lucide="star" class="w-5 h-5 mr-2 text-cyan-500"></i>
-                  Architecture Decisions
-                </h4>
-                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
-                  <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Polly circuit breaker + retry for hardware resilience</li>
-                  <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Idempotency layer preventing duplicate payments</li>
-                  <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>Offline queue with automatic sync recovery</li>
-                  <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500"></i>WPF shell bridging web app to native hardware</li>
-                </ul>
-              </div>
-
-              <!-- What I Built -->
-              <div>
-                <h4 class="text-lg font-semibold mb-2 flex items-center">
-                  <i data-lucide="hammer" class="w-5 h-5 mr-2 text-cyan-500"></i>
-                  Sole Engineer
-                </h4>
-                <ul class="space-y-2 text-slate-600 dark:text-slate-400">
-                  <li>Owned the entire engineering lifecycle — frontend, backend, kiosk shell, database schema, cloud infrastructure (Azure), and hardware integration layer. Delivered a scope that enterprise teams typically staff with 4-6 engineers.</li>
-                </ul>
-              </div>
-
-              <!-- Tech Stack -->
-              <div>
-                <h4 class="text-lg font-semibold mb-2">Tech Stack</h4>
-                <div class="flex flex-wrap gap-2">
-                  <span class="px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">React 19</span>
-                  <span class="px-3 py-1.5 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-medium">.NET 10</span>
-                  <span class="px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">WPF + WebView2</span>
-                  <span class="px-3 py-1.5 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-sm font-medium">Azure SQL</span>
-                  <span class="px-3 py-1.5 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 text-sm font-medium">TailwindCSS</span>
-                  <span class="px-3 py-1.5 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-sm font-medium">Polly</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- More Case Studies Teaser -->
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white mb-4">
-            <i data-lucide="truck" class="w-6 h-6"></i>
-          </div>
-          <h4 class="font-semibold mb-2">GoFleetCare</h4>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Medical transport logistics with real-time trip management, geofencing, and offline-first architecture.</p>
-          <a href="#project-gofleetcare" class="text-blue-500 dark:text-blue-400 text-sm font-medium inline-flex items-center hover:underline">
-            View Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white mb-4">
-            <i data-lucide="palette" class="w-6 h-6"></i>
-          </div>
-          <h4 class="font-semibold mb-2">ShaderForge Studio</h4>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Browser-based visual shader editor with node graph, Monaco editor, and real-time 3D preview.</p>
-          <a href="#project-shaderforge" class="text-blue-500 dark:text-blue-400 text-sm font-medium inline-flex items-center hover:underline">
-            View Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-
-        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 card-hover">
-          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white mb-4">
-            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
-          </div>
-          <h4 class="font-semibold mb-2">Retail POS Ecosystem</h4>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">50+ POS integrations with payment gateways, campus systems, and e-commerce platforms.</p>
-          <a href="#project-retailpos" class="text-blue-500 dark:text-blue-400 text-sm font-medium inline-flex items-center hover:underline">
-            View Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Left - Info -->
-        <div>
-          <span class="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 text-sm font-medium mb-4">Contact</span>
-          <h2 class="text-3xl sm:text-4xl font-bold mb-4">Let's Work <span class="gradient-text">Together</span></h2>
-          <p class="text-slate-600 dark:text-slate-400 mb-8">Available for engineering roles, architecture contracts, and remote opportunities. If you have a system that needs building end-to-end, let's talk.</p>
-
-          <!-- Contact Info -->
-          <div class="space-y-4 mb-8">
-            <a href="mailto:luisangelrod17@gmail.com" class="flex items-center p-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors group">
-              <div class="p-3 rounded-lg bg-blue-100 dark:bg-blue-900/30 mr-4 group-hover:bg-cyan-200 dark:group-hover:bg-blue-900/50 transition-colors">
-                <i data-lucide="mail" class="w-5 h-5 text-blue-500 dark:text-blue-400"></i>
-              </div>
-              <div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">Email</div>
-                <div class="font-medium">luisangelrod17@gmail.com</div>
-              </div>
-            </a>
-
-            <a href="tel:+17879805868" class="flex items-center p-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors group">
-              <div class="p-3 rounded-lg bg-purple-100 dark:bg-purple-900/30 mr-4 group-hover:bg-purple-200 dark:group-hover:bg-purple-900/50 transition-colors">
-                <i data-lucide="phone" class="w-5 h-5 text-purple-600 dark:text-purple-400"></i>
-              </div>
-              <div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">Phone</div>
-                <div class="font-medium">+1 787-980-5868</div>
-              </div>
-            </a>
-
-            <a href="https://www.google.com/maps/place/Puerto+Rico" target="_blank" rel="noopener noreferrer" class="flex items-center p-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors group">
-              <div class="p-3 rounded-lg bg-pink-100 dark:bg-pink-900/30 mr-4 group-hover:bg-pink-200 dark:group-hover:bg-pink-900/50 transition-colors">
-                <i data-lucide="map-pin" class="w-5 h-5 text-pink-600 dark:text-pink-400"></i>
-              </div>
-              <div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">Location</div>
-                <div class="font-medium">Puerto Rico</div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Social Links -->
-          <div>
-            <h4 class="font-semibold mb-4">Connect with me</h4>
-            <div class="flex space-x-3">
-              <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-100 dark:bg-white/[0.08] border border-transparent dark:border-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] hover:text-blue-500 dark:hover:text-blue-400 transition-all">
-                <i data-lucide="github" class="w-6 h-6"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-100 dark:bg-white/[0.08] border border-transparent dark:border-white/[0.08] hover:bg-slate-200 dark:hover:bg-white/[0.15] hover:text-blue-500 dark:hover:text-blue-400 transition-all">
-                <i data-lucide="linkedin" class="w-6 h-6"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right - Form -->
-        <div>
-          <form name="contact" data-netlify="true" class="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-slate-200 dark:border-slate-700">
-            <h3 class="text-xl font-semibold mb-6">Send me a message</h3>
-
-            <div class="space-y-4">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                  <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all" placeholder="Your name">
-                </div>
-                <div>
-                  <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                  <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all" placeholder="your@email.com">
-                </div>
-              </div>
-
-              <div>
-                <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
-                <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all" placeholder="Project inquiry">
-              </div>
-
-              <div>
-                <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent outline-none transition-all resize-none" placeholder="Tell me about your project..."></textarea>
-              </div>
-
-              <div data-netlify-recaptcha="true" class="mb-4"></div>
-
-              <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-0.5 transition-all flex items-center justify-center">
-                <i data-lucide="send" class="w-5 h-5 mr-2"></i>
-                Send Message
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="relative py-16 border-t border-transparent">
-    <!-- Seamless top fade -->
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300/20 dark:via-white/[0.04] to-transparent"></div>
-
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-end justify-between gap-8">
-        <!-- Creative footer text with hyperlinked bold words -->
-        <p class="text-sm text-slate-500 dark:text-slate-400 max-w-md leading-relaxed">
-          Architected with <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Claude Code</a> and coded in
-          <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">VS Code</a> by yours truly. Built with
-          <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Tailwind CSS</a> and vanilla JS, deployed on
-          <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Netlify</a>. All text is set in the
-          <a href="https://rsms.me/inter" target="_blank" rel="noopener noreferrer" class="text-slate-700 dark:text-slate-300 font-semibold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Inter</a> typeface. Puerto Rico.
-        </p>
-
-        <!-- Portal Easter Egg Button (right side) -->
-        <button id="portal-trigger" class="group relative flex-shrink-0 w-12 h-12 rounded-xl bg-transparent border border-slate-200/50 dark:border-white/[0.06] hover:border-amber-400/40 transition-all duration-500 hover:scale-110 cursor-pointer opacity-40 hover:opacity-100" aria-label="Open portal">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <i data-lucide="sparkles" class="w-4 h-4 text-slate-400 dark:text-white/30 group-hover:text-amber-400 transition-colors"></i>
-          </div>
-        </button>
-      </div>
-
-      <!-- Social links -->
-      <div class="flex items-center space-x-4 mt-8">
-        <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-          <i data-lucide="github" class="w-5 h-5"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-          <i data-lucide="linkedin" class="w-5 h-5"></i>
-        </a>
-        <a href="mailto:luisangelrod17@gmail.com" class="text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-          <i data-lucide="mail" class="w-5 h-5"></i>
-        </a>
+  <footer class="px-4 pb-10 pt-2 sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 border-t border-black/10 pt-6 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+      <p>Built and maintained by Luis Rodriguez. Portfolio focused on shipped work, not filler.</p>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="transition hover:text-tide dark:hover:text-white">GitHub</a>
+        <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="transition hover:text-tide dark:hover:text-white">LinkedIn</a>
+        <a href="mailto:luisangelrod17@gmail.com" class="transition hover:text-tide dark:hover:text-white">Email</a>
       </div>
     </div>
   </footer>
 
-  <!-- Portal Overlay — Full screen takeover (blocks all background interaction) -->
-  <div id="portal-overlay" class="fixed inset-0 z-[100] pointer-events-none opacity-0 transition-opacity duration-700 overscroll-none touch-none" style="background:#020108;">
-    <!-- Starfield canvas -->
-    <canvas id="starfield-canvas" class="absolute inset-0 w-full h-full"></canvas>
-
-    <!-- Portal spark canvas -->
-    <canvas id="portal-canvas" class="absolute inset-0 w-full h-full"></canvas>
-
-    <!-- Content layer -->
-    <div class="absolute inset-0 z-10 flex flex-col items-center justify-center">
-      <!-- Title -->
-      <div id="portal-content" class="opacity-0 transition-opacity duration-700 delay-1000 flex flex-col items-center">
-        <p class="text-white/40 text-xs uppercase tracking-[0.3em] mb-8 font-mono">Explore the Multiverse</p>
-
-        <!-- Cards -->
-        <div class="flex flex-col gap-4 w-full max-w-sm px-4">
-          <a href="#" class="portal-link group relative block rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03]">
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-blue-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="relative flex items-center gap-4 p-4 border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm group-hover:border-white/[0.15] transition-all duration-300">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/20">
-                <i data-lucide="globe" class="w-5 h-5 text-white"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <span class="text-white text-sm font-medium block">Coming Soon</span>
-                <span class="text-white/30 text-xs">Project 1</span>
-              </div>
-              <div class="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center group-hover:bg-white/[0.1] transition-colors">
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/30 group-hover:text-white/80 transition-colors"></i>
-              </div>
-            </div>
-          </a>
-
-          <a href="#" class="portal-link group relative block rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03]">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-600/20 to-red-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="relative flex items-center gap-4 p-4 border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm group-hover:border-white/[0.15] transition-all duration-300">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/20">
-                <i data-lucide="layout" class="w-5 h-5 text-white"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <span class="text-white text-sm font-medium block">Coming Soon</span>
-                <span class="text-white/30 text-xs">Project 2</span>
-              </div>
-              <div class="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center group-hover:bg-white/[0.1] transition-colors">
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/30 group-hover:text-white/80 transition-colors"></i>
-              </div>
-            </div>
-          </a>
-
-          <a href="#" class="portal-link group relative block rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03]">
-            <div class="absolute inset-0 bg-gradient-to-r from-amber-600/20 to-amber-800/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="relative flex items-center gap-4 p-4 border border-white/[0.06] rounded-2xl bg-white/[0.03] backdrop-blur-sm group-hover:border-white/[0.15] transition-all duration-300">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-500/20">
-                <i data-lucide="zap" class="w-5 h-5 text-white"></i>
-              </div>
-              <div class="flex-1 min-w-0">
-                <span class="text-white text-sm font-medium block">Coming Soon</span>
-                <span class="text-white/30 text-xs">Project 3</span>
-              </div>
-              <div class="w-8 h-8 rounded-full bg-white/[0.05] flex items-center justify-center group-hover:bg-white/[0.1] transition-colors">
-                <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/30 group-hover:text-white/80 transition-colors"></i>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Hint -->
-        <p class="text-white/20 text-xs mt-8">Press <kbd class="px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/[0.1] text-white/40 font-mono text-[10px]">ESC</kbd> or tap outside to close</p>
-      </div>
-    </div>
-
-    <!-- Close button -->
-    <button id="portal-close" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.08] flex items-center justify-center text-white/40 hover:text-white hover:bg-white/[0.1] transition-all z-20">
-      <i data-lucide="x" class="w-5 h-5"></i>
-    </button>
-  </div>
-
-  <!-- Scripts -->
   <script>
-    // Initialize Lucide icons
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (storedTheme === "dark" || (!storedTheme && prefersDark)) root.classList.add("dark");
 
-
-    // Theme Toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeLabel = document.getElementById('theme-label');
-    const html = document.documentElement;
-
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-      html.classList.add('dark');
-    }
-    if (themeLabel) themeLabel.textContent = html.classList.contains('dark') ? 'Light mode' : 'Dark mode';
-
-    function toggleTheme() {
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-      if (themeLabel) themeLabel.textContent = html.classList.contains('dark') ? 'Light mode' : 'Dark mode';
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-    }
-
-    themeToggle.addEventListener('click', toggleTheme);
-    const headerThemeToggle = document.getElementById('header-theme-toggle');
-    if (headerThemeToggle) headerThemeToggle.addEventListener('click', toggleTheme);
-
-    // Slide Menu
-    const menuBtn = document.getElementById('menu-btn');
-    const menuPanel = document.getElementById('menu-panel');
-    const menuBackdrop = document.getElementById('menu-backdrop');
-    const menuClose = document.getElementById('menu-close');
-    const slideMenu = document.getElementById('slide-menu');
-
-    function openMenu() {
-      slideMenu.style.pointerEvents = 'auto';
-      menuPanel.classList.remove('translate-x-full');
-      menuBackdrop.style.opacity = '1';
-      menuBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    }
-    function closeMenu() {
-      menuPanel.classList.add('translate-x-full');
-      menuBackdrop.style.opacity = '0';
-      menuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-      setTimeout(() => { slideMenu.style.pointerEvents = 'none'; }, 300);
-    }
-
-    menuBtn.addEventListener('click', openMenu);
-    menuClose.addEventListener('click', closeMenu);
-    menuBackdrop.addEventListener('click', closeMenu);
-    document.querySelectorAll('.menu-link').forEach(link => {
-      link.addEventListener('click', closeMenu);
+    const themeToggle = document.getElementById("theme-toggle");
+    themeToggle?.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
+      if (window.lucide) window.lucide.createIcons();
     });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    mobileMenuButton?.addEventListener("click", () => {
+      const isOpen = !mobileMenu.classList.contains("hidden");
+      mobileMenu.classList.toggle("hidden");
+      mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
+    });
+    document.querySelectorAll("#mobile-menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        mobileMenuButton?.setAttribute("aria-expanded", "false");
       });
     });
 
-    // Portal Easter Egg — MCU Sling Ring + Starfield Universe
-    const portalTrigger = document.getElementById('portal-trigger');
-    const portalOverlay = document.getElementById('portal-overlay');
-    const portalContent = document.getElementById('portal-content');
-    const portalClose = document.getElementById('portal-close');
-    const portalCanvas = document.getElementById('portal-canvas');
-    const starfieldCanvas = document.getElementById('starfield-canvas');
-    let portalOpen = false;
-    let animFrame;
-    let starFrame;
-
-    function initStarfield() {
-      const c = starfieldCanvas;
-      const ctx = c.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      c.width = window.innerWidth * dpr;
-      c.height = window.innerHeight * dpr;
-      c.style.width = window.innerWidth + 'px';
-      c.style.height = window.innerHeight + 'px';
-      ctx.scale(dpr, dpr);
-      const W = window.innerWidth;
-      const H = window.innerHeight;
-
-      // Generate stars
-      const stars = [];
-      for (let i = 0; i < 600; i++) {
-        stars.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          r: Math.random() * 1.8 + 0.2,
-          bright: Math.random(),
-          twinkleSpeed: 0.005 + Math.random() * 0.02,
-          twinklePhase: Math.random() * Math.PI * 2,
-        });
-      }
-
-      // Generate nebula clouds (large soft colored blobs)
-      const nebulae = [];
-      const nebulaColors = [
-        { r: 40, g: 20, b: 80 },   // deep purple
-        { r: 10, g: 30, b: 80 },   // deep blue
-        { r: 60, g: 10, b: 30 },   // dark crimson
-        { r: 10, g: 40, b: 60 },   // teal-navy
-        { r: 50, g: 30, b: 10 },   // warm brown (dust)
-      ];
-      for (let i = 0; i < 8; i++) {
-        const col = nebulaColors[i % nebulaColors.length];
-        nebulae.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          rx: 100 + Math.random() * 250,
-          ry: 80 + Math.random() * 200,
-          color: col,
-          alpha: 0.015 + Math.random() * 0.03,
-          drift: (Math.random() - 0.5) * 0.1,
-        });
-      }
-
-      let st = 0;
-      function animateStars() {
-        st += 0.016;
-        ctx.fillStyle = '#020108';
-        ctx.fillRect(0, 0, W, H);
-
-        // Nebula clouds
-        nebulae.forEach(n => {
-          n.x += n.drift;
-          const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.rx);
-          g.addColorStop(0, `rgba(${n.color.r}, ${n.color.g}, ${n.color.b}, ${n.alpha * 2})`);
-          g.addColorStop(0.5, `rgba(${n.color.r}, ${n.color.g}, ${n.color.b}, ${n.alpha})`);
-          g.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.fillStyle = g;
-          ctx.beginPath();
-          ctx.ellipse(n.x, n.y, n.rx, n.ry, 0, 0, Math.PI * 2);
-          ctx.fill();
-        });
-
-        // Stars with twinkling
-        stars.forEach(s => {
-          const twinkle = 0.4 + 0.6 * Math.abs(Math.sin(st * s.twinkleSpeed * 60 + s.twinklePhase));
-          const alpha = s.bright * twinkle;
-
-          // Star glow
-          if (s.r > 1) {
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(200, 220, 255, ${alpha * 0.08})`;
-            ctx.fill();
-          }
-
-          // Star core
-          ctx.beginPath();
-          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-          const warmth = s.bright > 0.8 ? '255,240,220' : s.bright > 0.5 ? '220,230,255' : '180,200,255';
-          ctx.fillStyle = `rgba(${warmth}, ${alpha})`;
-          ctx.fill();
-        });
-
-        // Subtle central galaxy glow (where the portal will be)
-        const cx = W / 2, cy = H / 2;
-        const galaxyGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W, H) * 0.4);
-        galaxyGlow.addColorStop(0, 'rgba(60, 40, 100, 0.06)');
-        galaxyGlow.addColorStop(0.5, 'rgba(30, 20, 60, 0.03)');
-        galaxyGlow.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = galaxyGlow;
-        ctx.fillRect(0, 0, W, H);
-
-        starFrame = requestAnimationFrame(animateStars);
-      }
-      animateStars();
-    }
-
-    function initPortalEffect() {
-      const canvas = portalCanvas;
-      const ctx = canvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      canvas.style.width = window.innerWidth + 'px';
-      canvas.style.height = window.innerHeight + 'px';
-      ctx.scale(dpr, dpr);
-      const W = window.innerWidth;
-      const H = window.innerHeight;
-      const cx = W / 2;
-      const cy = H / 2;
-      const R = Math.min(W, H) * 0.26;
-
-      // Spark pool
-      const sparks = [];
-      const embers = [];
-      let t = 0;
-
-      for (let i = 0; i < 450; i++) {
-        sparks.push(makeSpark(R));
-      }
-
-      function makeSpark(radius) {
-        const a = Math.random() * Math.PI * 2;
-        const spd = (0.012 + Math.random() * 0.04);
-        const dir = Math.random() > 0.3 ? 1 : -1;
-        return {
-          a, r: radius + (Math.random() - 0.5) * 14,
-          av: spd * dir,
-          sz: 0.4 + Math.random() * 3.2,
-          life: Math.random(), maxLife: 0.4 + Math.random() * 0.6,
-          px: 0, py: 0, x: 0, y: 0,
-          grav: Math.random() < 0.12 ? 0.015 + Math.random() * 0.04 : 0,
-          dy: 0, phase: Math.random() * 100,
-        };
-      }
-
-      function spawnEmber() {
-        const a = Math.random() * Math.PI * 2;
-        const outward = 0.5 + Math.random() * 2;
-        embers.push({
-          x: cx + Math.cos(a) * R, y: cy + Math.sin(a) * R,
-          vx: Math.cos(a) * outward + (Math.random() - 0.5),
-          vy: Math.sin(a) * outward + (Math.random() - 0.5),
-          life: 1, decay: 0.006 + Math.random() * 0.02,
-          sz: 0.3 + Math.random() * 2,
-        });
-      }
-
-      // Multi-pass glow ring (the ILM/Framestore technique)
-      function drawGlowRing(ctx, cx, cy, radius) {
-        ctx.save();
-        ctx.globalCompositeOperation = 'lighter';
-        const passes = [
-          { w: 50, color: 'rgba(200, 80, 0, 0.04)' },
-          { w: 35, color: 'rgba(255, 120, 20, 0.06)' },
-          { w: 22, color: 'rgba(255, 150, 40, 0.08)' },
-          { w: 12, color: 'rgba(255, 180, 60, 0.12)' },
-          { w: 5,  color: 'rgba(255, 210, 100, 0.2)' },
-          { w: 1.5, color: 'rgba(255, 255, 220, 0.6)' },
-        ];
-        passes.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-          ctx.strokeStyle = p.color;
-          ctx.lineWidth = p.w;
-          ctx.stroke();
-        });
-        ctx.restore();
-      }
-
-      // Sacred geometry mandala (faint rotating inner pattern)
-      function drawMandala(ctx, cx, cy, radius, time) {
-        ctx.save();
-        ctx.globalAlpha = 0.06;
-        ctx.strokeStyle = 'rgba(255, 200, 80, 0.3)';
-        ctx.lineWidth = 0.5;
-
-        // Concentric circles
-        for (let i = 1; i <= 4; i++) {
-          ctx.beginPath();
-          ctx.arc(cx, cy, radius * (i * 0.2), 0, Math.PI * 2);
-          ctx.stroke();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
-
-        // Rotating spokes
-        const spokes = 12;
-        ctx.rotate(time * 0.3);
-        for (let i = 0; i < spokes; i++) {
-          const angle = (i / spokes) * Math.PI * 2;
-          ctx.beginPath();
-          ctx.moveTo(cx + Math.cos(angle) * radius * 0.15, cy + Math.sin(angle) * radius * 0.15);
-          ctx.lineTo(cx + Math.cos(angle) * radius * 0.85, cy + Math.sin(angle) * radius * 0.85);
-          ctx.stroke();
-        }
-
-        // Inner rotating triangle
-        ctx.beginPath();
-        for (let i = 0; i < 3; i++) {
-          const angle = (i / 3) * Math.PI * 2 - time * 0.5;
-          const method = i === 0 ? 'moveTo' : 'lineTo';
-          ctx[method](cx + Math.cos(angle) * radius * 0.5, cy + Math.sin(angle) * radius * 0.5);
-        }
-        ctx.closePath();
-        ctx.stroke();
-
-        ctx.restore();
-      }
-
-      function animate() {
-        t += 0.016;
-
-        // SLOW trail fade — longer trails = more cinematic
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.045)';
-        ctx.fillRect(0, 0, W, H);
-
-        // Ambient radial warmth
-        ctx.save();
-        ctx.globalCompositeOperation = 'lighter';
-        const glow = ctx.createRadialGradient(cx, cy, R * 0.3, cx, cy, R * 1.8);
-        glow.addColorStop(0, 'rgba(255, 140, 30, 0.025)');
-        glow.addColorStop(0.5, 'rgba(200, 60, 0, 0.015)');
-        glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-        ctx.fillStyle = glow;
-        ctx.fillRect(0, 0, W, H);
-
-        // Multi-pass glow ring (6 layers: wide soft → thin white-hot core)
-        drawGlowRing(ctx, cx, cy, R);
-
-        // Sacred geometry (faint mandala inside ring)
-        drawMandala(ctx, cx, cy, R, t);
-
-        // ADDITIVE BLENDING for all sparks
-        ctx.globalCompositeOperation = 'lighter';
-
-        // Ring sparks
-        sparks.forEach(s => {
-          s.px = s.x; s.py = s.y;
-          s.a += s.av;
-          s.dy += s.grav;
-
-          const wobble = Math.sin(s.a * 6 + s.phase + t * 2.5) * 4;
-          s.x = cx + Math.cos(s.a) * (s.r + wobble);
-          s.y = cy + Math.sin(s.a) * (s.r + wobble) + s.dy;
-
-          s.life -= 0.0025 + (s.grav > 0 ? 0.004 : 0);
-          if (s.life <= 0) {
-            Object.assign(s, makeSpark(R));
-            s.x = cx + Math.cos(s.a) * s.r;
-            s.y = cy + Math.sin(s.a) * s.r;
-            s.px = s.x; s.py = s.y;
-            return;
-          }
-
-          const lifeRatio = s.life / s.maxLife;
-          const dx = s.x - s.px;
-          const dy = s.y - s.py;
-          const spd = Math.sqrt(dx * dx + dy * dy);
-          if (spd < 0.3) return;
-
-          // Velocity-stretched spark
-          const len = Math.min(spd * 4, 30);
-          const nx = dx / spd;
-          const ny = dy / spd;
-          const tx = s.x - nx * len;
-          const ty = s.y - ny * len;
-
-          // Color based on life: white → gold → orange → red
-          let r, g, b, a;
-          if (lifeRatio > 0.7) { r=255; g=255; b=210; a=1; }
-          else if (lifeRatio > 0.5) { r=255; g=200; b=60; a=0.9; }
-          else if (lifeRatio > 0.3) { r=255; g=130; b=20; a=0.75; }
-          else if (lifeRatio > 0.15) { r=255; g=60; b=0; a=0.5; }
-          else { r=160; g=20; b=0; a=lifeRatio * 4; }
-
-          const grad = ctx.createLinearGradient(tx, ty, s.x, s.y);
-          grad.addColorStop(0, `rgba(${r},${Math.max(g-100,0)},0,0)`);
-          grad.addColorStop(0.5, `rgba(${r},${g},${b},${a*0.5})`);
-          grad.addColorStop(1, `rgba(${r},${g},${b},${a})`);
-
-          const w = s.sz * lifeRatio;
-          ctx.beginPath();
-          ctx.moveTo(tx, ty);
-          ctx.lineTo(s.x, s.y);
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = w;
-          ctx.lineCap = 'round';
-          ctx.stroke();
-
-          // Hot white-core glow blob at spark head
-          if (lifeRatio > 0.4 && s.sz > 1) {
-            const coreGrad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, w * 3);
-            coreGrad.addColorStop(0, `rgba(255,255,230,${lifeRatio * 0.5})`);
-            coreGrad.addColorStop(0.4, `rgba(255,200,80,${lifeRatio * 0.2})`);
-            coreGrad.addColorStop(1, 'rgba(255,120,0,0)');
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, w * 3, 0, Math.PI * 2);
-            ctx.fillStyle = coreGrad;
-            ctx.fill();
-          }
-        });
-
-        // Embers — break off from ring, drift with gravity
-        if (Math.random() < 0.5) spawnEmber();
-        for (let i = embers.length - 1; i >= 0; i--) {
-          const e = embers[i];
-          e.x += e.vx; e.y += e.vy;
-          e.vy += 0.025;
-          e.vx *= 0.99;
-          e.life -= e.decay;
-          if (e.life <= 0) { embers.splice(i, 1); continue; }
-
-          const ea = e.life;
-          const eGrad = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.sz * ea * 4);
-          eGrad.addColorStop(0, `rgba(255,200,60,${ea * 0.8})`);
-          eGrad.addColorStop(0.5, `rgba(255,100,10,${ea * 0.3})`);
-          eGrad.addColorStop(1, 'rgba(200,30,0,0)');
-          ctx.beginPath();
-          ctx.arc(e.x, e.y, e.sz * ea * 4, 0, Math.PI * 2);
-          ctx.fillStyle = eGrad;
-          ctx.fill();
-        }
-
-        ctx.restore();
-        animFrame = requestAnimationFrame(animate);
-      }
-
-      sparks.forEach(s => {
-        s.x = cx + Math.cos(s.a) * s.r;
-        s.y = cy + Math.sin(s.a) * s.r;
-        s.px = s.x; s.py = s.y;
       });
-      animate();
-    }
+    }, { threshold: 0.14 });
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
-    function openPortal() {
-      if (portalOpen) return;
-      portalOpen = true;
-      document.body.style.overflow = 'hidden'; // Lock scroll
-      portalOverlay.style.pointerEvents = 'auto';
-      portalOverlay.style.opacity = '1';
-      initStarfield();
-      initPortalEffect();
-      setTimeout(() => {
-        portalContent.style.opacity = '1';
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-      }, 1000);
-    }
-
-    function closePortal() {
-      portalContent.style.opacity = '0';
-      setTimeout(() => {
-        portalOverlay.style.opacity = '0';
-        portalOverlay.style.pointerEvents = 'none';
-        portalOpen = false;
-        document.body.style.overflow = ''; // Unlock scroll
-        cancelAnimationFrame(animFrame);
-        cancelAnimationFrame(starFrame);
-        const ctx = portalCanvas.getContext('2d');
-        ctx.setTransform(1,0,0,1,0,0);
-        ctx.clearRect(0, 0, portalCanvas.width, portalCanvas.height);
-        const sCtx = starfieldCanvas.getContext('2d');
-        sCtx.setTransform(1,0,0,1,0,0);
-        sCtx.clearRect(0, 0, starfieldCanvas.width, starfieldCanvas.height);
-      }, 600);
-    }
-
-    portalTrigger.addEventListener('click', openPortal);
-    portalClose.addEventListener('click', closePortal);
-    portalOverlay.addEventListener('click', (e) => {
-      // Close only when clicking canvas/backdrop, not cards or close button
-      if (e.target === portalOverlay || e.target.tagName === 'CANVAS') closePortal();
-    });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && portalOpen) closePortal(); });
-
-    // LR Particle Canvas — interactive initials with orbiting particles
-    const lrCanvas = document.getElementById('lr-canvas');
-    if (lrCanvas) {
-      const lrCtx = lrCanvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      lrCanvas.width = 384 * dpr;
-      lrCanvas.height = 384 * dpr;
-      lrCtx.scale(dpr, dpr);
-      const LW = 384, LH = 384, lcx = LW / 2, lcy = LH / 2;
-
-      // Get LR text pixel positions
-      const offscreen = document.createElement('canvas');
-      offscreen.width = LW; offscreen.height = LH;
-      const offCtx = offscreen.getContext('2d');
-      offCtx.fillStyle = '#fff';
-      offCtx.font = 'bold 140px Inter, system-ui, sans-serif';
-      offCtx.textAlign = 'center';
-      offCtx.textBaseline = 'middle';
-      offCtx.fillText('LR', lcx, lcy);
-      const imgData = offCtx.getImageData(0, 0, LW, LH).data;
-
-      const textPoints = [];
-      for (let y = 0; y < LH; y += 4) {
-        for (let x = 0; x < LW; x += 4) {
-          if (imgData[(y * LW + x) * 4 + 3] > 128) {
-            textPoints.push({ x, y });
-          }
-        }
-      }
-
-      // Particles that form LR
-      const lrParticles = textPoints.map(p => ({
-        tx: p.x, ty: p.y,
-        x: lcx + (Math.random() - 0.5) * 300,
-        y: lcy + (Math.random() - 0.5) * 300,
-        size: 1 + Math.random() * 1.5,
-        speed: 0.03 + Math.random() * 0.04,
-        phase: Math.random() * Math.PI * 2,
-      }));
-
-      // Orbiting particles
-      const orbiters = [];
-      for (let i = 0; i < 40; i++) {
-        orbiters.push({
-          angle: Math.random() * Math.PI * 2,
-          radius: 120 + Math.random() * 60,
-          speed: (0.005 + Math.random() * 0.015) * (Math.random() > 0.5 ? 1 : -1),
-          size: 1 + Math.random() * 2,
-          hue: Math.random() > 0.5 ? 210 : 0, // blue or red
-        });
-      }
-
-      let lrTime = 0;
-      function animateLR() {
-        lrTime += 0.016;
-        lrCtx.clearRect(0, 0, LW, LH);
-
-        // Draw LR particles
-        const isDark = document.documentElement.classList.contains('dark');
-        lrParticles.forEach(p => {
-          p.x += (p.tx - p.x) * p.speed;
-          p.y += (p.ty - p.y) * p.speed;
-
-          // Subtle breathing motion
-          const bx = Math.sin(lrTime * 1.5 + p.phase) * 1.5;
-          const by = Math.cos(lrTime * 1.2 + p.phase) * 1.5;
-
-          const alpha = isDark ? 0.7 : 0.5;
-          const color = isDark ? `rgba(60, 139, 224, ${alpha})` : `rgba(29, 78, 216, ${alpha})`;
-          lrCtx.beginPath();
-          lrCtx.arc(p.x + bx, p.y + by, p.size, 0, Math.PI * 2);
-          lrCtx.fillStyle = color;
-          lrCtx.fill();
-        });
-
-        // Orbiters
-        orbiters.forEach(o => {
-          o.angle += o.speed;
-          const ox = lcx + Math.cos(o.angle) * o.radius;
-          const oy = lcy + Math.sin(o.angle) * o.radius;
-          const wobble = Math.sin(o.angle * 3 + lrTime) * 8;
-
-          const r = o.hue === 0 ? 239 : 60;
-          const g = o.hue === 0 ? 68 : 139;
-          const b = o.hue === 0 ? 68 : 224;
-
-          // Glow
-          const glow = lrCtx.createRadialGradient(ox + wobble, oy, 0, ox + wobble, oy, o.size * 6);
-          glow.addColorStop(0, `rgba(${r},${g},${b},0.3)`);
-          glow.addColorStop(1, `rgba(${r},${g},${b},0)`);
-          lrCtx.beginPath();
-          lrCtx.arc(ox + wobble, oy, o.size * 6, 0, Math.PI * 2);
-          lrCtx.fillStyle = glow;
-          lrCtx.fill();
-
-          // Core
-          lrCtx.beginPath();
-          lrCtx.arc(ox + wobble, oy, o.size, 0, Math.PI * 2);
-          lrCtx.fillStyle = `rgba(${r},${g},${b},0.8)`;
-          lrCtx.fill();
-        });
-
-        requestAnimationFrame(animateLR);
-      }
-      animateLR();
-    }
-
-    // Mouse-following spotlight effect
-    const spotlight = document.getElementById('spotlight');
-    if (spotlight && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.addEventListener('mousemove', (e) => {
-        spotlight.style.setProperty('--mouse-x', e.clientX + 'px');
-        spotlight.style.setProperty('--mouse-y', e.clientY + 'px');
-      });
-    }
+    if (window.lucide) window.lucide.createIcons();
+    window.addEventListener("load", () => { if (window.lucide) window.lucide.createIcons(); });
   </script>
 </body>
 </html>
