@@ -15,3 +15,15 @@ CLAUDE.md
 # Env
 .env
 .env.local
+
+# Playwright MCP logs
+.playwright-mcp/
+
+# Dev screenshots (root-level previews)
+*.png
+*.jpeg
+!img/**/*.png
+
+# Generated HTML drafts
+assets/project-portfolio.html
+assets/resume.html

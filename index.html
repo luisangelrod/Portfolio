@@ -1,299 +1,256 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luis Rodriguez | Senior Full-Stack Engineer and Systems Architect</title>
-  <meta name="description" content="Senior Full-Stack Engineer and Systems Architect building production systems across React, .NET, SQL Server, and Azure. Based in Puerto Rico and available for remote U.S. roles.">
-  <meta name="theme-color" content="#0c1324">
+  <title>Luis Rodr&iacute;guez | Systems Architect</title>
+  <meta name="description" content="Systems architect and full-stack engineer shipping production systems across React, .NET, SQL Server, and Azure. Based in Puerto Rico.">
+  <meta name="theme-color" content="#0d1726">
   <link rel="canonical" href="https://luisrodriguezdev.netlify.app/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Luis Rodriguez | Senior Full-Stack Engineer and Systems Architect">
+  <meta property="og:title" content="Luis Rodr&iacute;guez | Systems Architect">
   <meta property="og:description" content="Production systems for payments, logistics, healthcare, and retail. React, .NET, SQL Server, Azure.">
   <meta property="og:url" content="https://luisrodriguezdev.netlify.app/">
   <meta property="og:image" content="https://luisrodriguezdev.netlify.app/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Luis Rodriguez | Senior Full-Stack Engineer and Systems Architect">
-  <meta name="twitter:description" content="Senior engineer shipping production systems across React, .NET, SQL Server, and Azure.">
+  <meta name="twitter:title" content="Luis Rodr&iacute;guez | Systems Architect">
+  <meta name="twitter:description" content="Systems architect shipping production systems across React, .NET, SQL Server, and Azure.">
   <meta name="twitter:image" content="https://luisrodriguezdev.netlify.app/img/og-image.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/favicon_io (1)/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon_io (1)/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon_io (1)/favicon-16x16.png">
-  <link rel="manifest" href="img/favicons/favicon_io (1)/site.webmanifest">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest" defer></script>
-  <script>
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          fontFamily: { sans: ["Sora", "system-ui", "sans-serif"], mono: ["IBM Plex Mono", "monospace"] },
-          colors: { ink: "#09111f", shell: "#f6f1e8", tide: "#155eef", ember: "#d94841", forest: "#176b53" }
-        }
-      }
-    };
-  </script>
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+  <link rel="manifest" href="img/favicons/site.webmanifest">
   <style>
-    :root { --bg:#f6f1e8; --bg2:#fffdfa; --panel:rgba(255,255,255,.72); --line:rgba(12,19,36,.1); --text:#09111f; --muted:#52606d; --accent:#155eef; --accent2:#d94841; }
-    html.dark { --bg:#09111f; --bg2:#101a2c; --panel:rgba(16,26,44,.8); --line:rgba(255,255,255,.09); --text:#eff3fb; --muted:#b7c1d1; --accent:#7cb0ff; --accent2:#ff8f85; }
-    body { background:radial-gradient(circle at top left,rgba(21,94,239,.14),transparent 28%),radial-gradient(circle at top right,rgba(217,72,65,.12),transparent 22%),linear-gradient(180deg,var(--bg2),var(--bg)); color:var(--text); }
-    .panel { background:var(--panel); border:1px solid var(--line); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 24px 80px rgba(12,19,36,.12); }
-    .chip { border:1px solid var(--line); background:rgba(255,255,255,.58); }
-    html.dark .chip { background:rgba(255,255,255,.04); }
-    .headline-fill { background:linear-gradient(135deg,var(--text) 0%,var(--accent) 60%,var(--accent2) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .eyebrow { letter-spacing:.24em; text-transform:uppercase; }
-    .lift { transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-    .lift:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(12,19,36,.16); border-color:rgba(21,94,239,.26); }
-    .reveal { opacity:0; transform:translateY(20px); transition:opacity .5s ease, transform .5s ease; }
-    .reveal.is-visible { opacity:1; transform:translateY(0); }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; } }
+    :root{--bg:#dfe7ee;--paper:#f9fbfd;--bar:#c7dcec;--ink:#101828;--muted:#475467;--line:#d6e0e7;--chip:#ecf3f8;--dark:#0d1726;--darkline:#223042;--accent:#0f2742}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.55 "Aptos","Segoe UI","Calibri",sans-serif;color:var(--ink);background:linear-gradient(180deg,#e8eef3,#dbe4eb)}a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
+    .skip{position:absolute;left:16px;top:-60px;padding:10px 14px;border-radius:10px;background:#fff;font-weight:700}.skip:focus{top:16px}
+    .page{max-width:1120px;margin:24px auto;padding:0 14px}.sheet{background:var(--paper);border:1px solid rgba(15,23,42,.08);box-shadow:0 24px 54px rgba(15,23,42,.1);overflow:hidden}
+    .hero{background:var(--bar);padding:22px 24px 0}.hero-main{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:start}.identity{display:flex;gap:18px;align-items:center;min-width:0}.mark{width:82px;height:82px;border-radius:14px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(15,23,42,.1);overflow:hidden;flex:0 0 82px}#lr-canvas{width:100%;height:100%;display:block}.eyebrow{margin:0 0 4px;color:#23415f;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.name{margin:0;font-size:clamp(2.2rem,5vw,3.5rem);line-height:.95;font-weight:900;letter-spacing:-.04em}.role{margin:8px 0 0;color:#223d5b;font-size:1.02rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.headline{margin:10px 0 0;max-width:640px;color:#213547}
+    .contact{display:grid;gap:10px}.contact-row{display:flex;align-items:center;justify-content:flex-end;gap:10px;font-weight:700;color:var(--accent);max-width:360px;justify-self:end;text-align:right}.contact-row span:last-child{overflow-wrap:anywhere}.icon{width:34px;height:34px;border-radius:999px;background:var(--dark);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:0 0 34px}.icon svg{width:16px;height:16px}.chips{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px}.chip,.cta{display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.chip{background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(15,23,42,.1)}
+    .nav{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;padding:16px 0 18px;border-top:1px solid rgba(15,39,66,.1)}.nav a{padding-bottom:4px;border-bottom:2px solid transparent;color:#28435f;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.nav a:hover,.nav a.active{color:var(--ink);border-color:var(--ink)}
+    .content{padding:24px}.section{margin-bottom:28px}.bar{background:var(--bar);padding:8px 16px;margin-bottom:14px;font-size:1.15rem;font-weight:900;letter-spacing:-.02em}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+    .summary{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.95fr);gap:14px}.lead{margin:0;color:var(--muted)}.lead+.lead{margin-top:14px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}.stat{background:#eef4f8;border-radius:10px;padding:12px}.stat b{display:block;font-size:1.65rem;line-height:1}.stat span{display:block;margin-top:6px;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.points{display:grid;gap:10px;margin:0;padding:0;list-style:none}.points li{padding:12px 12px 12px 14px;border-left:4px solid #b7cde1;background:#f5f8fb;color:var(--muted)}
+    .jobs{display:grid;gap:12px}.job{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}.jobhead{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}.job h3{margin:0;font-size:1rem;font-weight:900}.date{color:var(--muted);font-size:.88rem;font-weight:700}.job .title{margin:4px 0 10px;color:#28435f;font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.job p{margin:0;color:var(--muted)}.tags,.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.tag{background:var(--chip);border-radius:999px;padding:5px 10px;color:#243b53;font-size:.74rem;font-weight:800}
+    .project{margin-bottom:22px}.project:last-child{margin-bottom:0}.project .titlebar{background:var(--bar);padding:8px 16px;font-size:1.28rem;font-weight:900;letter-spacing:-.02em}.project .body{padding:16px 2px 0}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.mixed{display:grid;grid-template-columns:minmax(270px,.95fr) minmax(0,1.35fr);gap:16px;align-items:start}.stack{display:grid;gap:14px}.card{min-width:0}.media{display:flex;align-items:center;justify-content:center;min-height:180px;margin-bottom:12px;padding:14px;border:1px solid var(--darkline);border-radius:8px;background:var(--dark);color:#dae6f2;overflow:hidden}.media img{width:100%;height:100%;object-fit:cover;border-radius:4px}.metric{flex-direction:column;align-items:flex-start;gap:10px;text-align:left}.metric small{color:#9bc2de;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.metric strong{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1;letter-spacing:-.04em}.metric p{margin:0;color:#d0dceb;font-size:.92rem}.label{margin:0 0 4px;font-size:1rem;font-weight:900}.copy{margin:0;color:var(--muted)}.block+.block{margin-top:12px}
+    .skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.skill{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}.skill h3{margin:0 0 8px;color:#28435f;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.skill p,.contactbox p{margin:0;color:var(--muted)}.contactbox{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}.cta{background:var(--accent);color:#fff;box-shadow:0 8px 18px rgba(15,39,66,.18)}
+    @media (max-width:920px){.hero-main,.summary,.mixed,.skills,.contactbox{grid-template-columns:1fr}.contact-row,.chips{justify-content:flex-start}.contact-row{text-align:left;justify-self:start}.nav{flex-wrap:nowrap;overflow:auto;padding-bottom:14px}.nav a{white-space:nowrap}.grid3{grid-template-columns:1fr}}
+    @media (max-width:640px){.page{padding:0 8px;margin:14px auto}.hero,.content{padding-left:16px;padding-right:16px}.identity{align-items:flex-start}.mark{width:68px;height:68px;flex-basis:68px}.role{font-size:.92rem}.headline,.copy,.job p,.skill p,.lead{font-size:.93rem}.stats{grid-template-columns:1fr}.media{min-height:160px}.bar,.project .titlebar{font-size:1.05rem}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Person","name":"Luis Rodriguez","jobTitle":"Senior Full-Stack Engineer and Systems Architect","url":"https://luisrodriguezdev.netlify.app/","email":"mailto:luisangelrod17@gmail.com","telephone":"+1-787-980-5868","address":{"@type":"PostalAddress","addressRegion":"PR","addressCountry":"US"},"sameAs":["https://github.com/luisangelrod","https://www.linkedin.com/in/luis-rodriguez-515858bb/"],"knowsAbout":["React",".NET","TypeScript","C#","SQL Server","Azure","Systems Architecture","Payments","Retail POS","Healthcare Logistics"]}
-  </script>
 </head>
-<body class="font-sans selection:bg-tide/20 selection:text-ink">
-  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink">Skip to content</a>
-
-  <div class="fixed inset-x-0 top-0 z-40 border-b border-black/5 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-ink/70">
-    <header class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-      <a href="#home" class="flex items-center gap-3">
-        <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-ink text-sm font-bold text-white dark:bg-white dark:text-ink">LR</span>
-        <div>
-          <div class="text-sm font-semibold">Luis Rodriguez</div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Senior Engineer</div>
-        </div>
-      </a>
-      <nav class="hidden items-center gap-6 text-sm font-medium lg:flex">
-        <a href="#work" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Work</a>
-        <a href="#expertise" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Expertise</a>
-        <a href="#experience" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Experience</a>
-        <a href="#contact" class="text-slate-600 transition-colors hover:text-tide dark:text-slate-300 dark:hover:text-white">Contact</a>
-      </nav>
-      <div class="flex items-center gap-2">
-        <button id="theme-toggle" type="button" class="flex h-11 w-11 items-center justify-center rounded-2xl border border-black/10 bg-white/70 text-slate-700 transition hover:border-tide/40 hover:text-tide dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/30 dark:hover:text-white" aria-label="Toggle theme">
-          <i data-lucide="moon" class="h-5 w-5 dark:hidden"></i>
-          <i data-lucide="sun" class="hidden h-5 w-5 dark:block"></i>
-        </button>
-        <a href="assets/LA_Resume_.docx" download class="hidden rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-tide lg:inline-flex dark:bg-white dark:text-ink dark:hover:bg-slate-200">Download resume</a>
-        <button id="mobile-menu-button" type="button" class="flex h-11 w-11 items-center justify-center rounded-2xl border border-black/10 bg-white/70 text-slate-700 transition hover:border-tide/40 hover:text-tide lg:hidden dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/30 dark:hover:text-white" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
-          <i data-lucide="menu" class="h-5 w-5"></i>
-        </button>
-      </div>
-    </header>
-    <div id="mobile-menu" class="hidden border-t border-black/5 bg-white/85 px-4 py-4 dark:border-white/10 dark:bg-ink/95 lg:hidden">
-      <nav class="mx-auto flex max-w-7xl flex-col gap-2 text-sm font-medium">
-        <a href="#work" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Work</a>
-        <a href="#expertise" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Expertise</a>
-        <a href="#experience" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Experience</a>
-        <a href="#contact" class="rounded-2xl px-4 py-3 text-slate-700 transition hover:bg-tide/10 hover:text-tide dark:text-slate-200 dark:hover:bg-white/5 dark:hover:text-white">Contact</a>
-        <a href="assets/LA_Resume_.docx" download class="rounded-2xl bg-ink px-4 py-3 text-center text-white dark:bg-white dark:text-ink">Download resume</a>
-      </nav>
-    </div>
-  </div>
-
-  <main id="main">
-    <section id="home" class="px-4 pb-16 pt-28 sm:px-6 sm:pt-32 lg:px-8 lg:pb-24">
-      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:items-end">
-        <div class="reveal">
-          <div class="mb-6 inline-flex items-center gap-3 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-xs font-medium uppercase tracking-[.24em] text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
-            <span class="h-2 w-2 rounded-full bg-forest"></span>
-            Available for senior full-stack and systems roles
-          </div>
-          <p class="eyebrow mb-5 font-mono text-[11px] text-slate-500 dark:text-slate-400">Puerto Rico | Remote U.S. | English and Spanish</p>
-          <h1 class="max-w-4xl text-5xl font-extrabold leading-[.96] text-ink dark:text-white sm:text-6xl lg:text-7xl">Production systems <span class="headline-fill">built to last</span> from day one.</h1>
-          <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-700 dark:text-slate-300 sm:text-xl">I design and ship payment, logistics, retail, and healthcare software end to end across React, TypeScript, C#, .NET, SQL Server, and Azure. I am strongest where reliability, hardware integration, compliance pressure, and delivery speed all matter at once.</p>
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="#work" class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-tide dark:bg-white dark:text-ink dark:hover:bg-slate-200">View selected work</a>
-            <a href="mailto:luisangelrod17@gmail.com?subject=Portfolio%20Inquiry" class="inline-flex items-center justify-center rounded-full border border-black/10 bg-white/70 px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-tide/40 hover:text-tide dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-white/30">Email Luis</a>
-            <a href="assets/LA_Resume_.docx" download class="inline-flex items-center justify-center rounded-full border border-black/10 px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-tide/40 hover:text-tide dark:border-white/10 dark:text-slate-200 dark:hover:border-white/30 dark:hover:text-white">Download resume</a>
-          </div>
-          <div class="mt-8 flex flex-wrap gap-3 text-sm">
-            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">Senior Full-Stack Engineer</span>
-            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">Systems Architect</span>
-            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">React + .NET + Azure</span>
-            <span class="chip rounded-full px-4 py-2 font-medium text-slate-700 dark:text-slate-200">Payments + Logistics + Retail</span>
-          </div>
-        </div>
-        <aside class="reveal panel rounded-[2rem] p-6 sm:p-8">
-          <div class="flex items-center justify-between">
+<body>
+  <a href="#content" class="skip">Skip to content</a>
+  <div class="page">
+    <main class="sheet" id="home">
+      <header class="hero">
+        <div class="hero-main">
+          <div class="identity">
+            <div class="mark" aria-hidden="true"><canvas id="lr-canvas"></canvas></div>
             <div>
-              <p class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Snapshot</p>
-              <h2 class="mt-2 text-2xl font-bold text-ink dark:text-white">At a glance</h2>
+              <p class="eyebrow">Systems Architect and Full-Stack Engineer</p>
+              <h1 class="name">Luis Rodr&iacute;guez</h1>
+              <p class="role">Production Systems for Payments, Logistics, Retail, and Healthcare</p>
+              <p class="headline">I design and ship production software end to end, from schema and infrastructure to frontend, automation, hardware integration, and deployment.</p>
             </div>
-            <span class="rounded-full bg-forest/10 px-3 py-1 text-xs font-semibold text-forest dark:bg-forest/20 dark:text-green-300">Actively interviewing</span>
           </div>
-          <div class="mt-6 grid gap-4 sm:grid-cols-2">
-            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Impact</div><div class="mt-3 text-3xl font-extrabold text-ink dark:text-white">4</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Production systems shipped in 6 months as a sole engineer.</p></div>
-            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Scale</div><div class="mt-3 text-3xl font-extrabold text-ink dark:text-white">50+</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">POS integrations across payment, pharmacy, and e-commerce ecosystems.</p></div>
-            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Stack</div><div class="mt-3 text-xl font-bold text-ink dark:text-white">React, .NET, SQL Server, Azure</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Modern product engineering with enterprise systems depth.</p></div>
-            <div class="rounded-3xl border border-black/10 bg-white/65 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-xs uppercase tracking-[.2em] text-slate-500 dark:text-slate-400">Fit</div><div class="mt-3 text-xl font-bold text-ink dark:text-white">Remote-first since 2021</div><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Fluent English and Spanish. Strong with ownership, async delivery, and production support.</p></div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="expertise" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div><p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">What teams hire me for</p><h2 class="mt-4 text-4xl font-bold text-ink dark:text-white sm:text-5xl">How I help teams ship.</h2></div>
-          <p class="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">I am most useful to teams that need someone to reduce ambiguity, shape the architecture, ship the product, and still care about supportability after launch.</p>
-        </div>
-        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-tide/10 text-tide dark:bg-tide/15 dark:text-blue-200"><i data-lucide="layers-3" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Architecture ownership</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">API design, database modeling, client architecture, cloud deployment, reliability controls, and sane delivery structure.</p></article>
-          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-ember/10 text-ember dark:bg-ember/15 dark:text-red-200"><i data-lucide="credit-card" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Operational software</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Payments, kiosks, drivers, dispatch, pharmacy workflows, and software that breaks if details are wrong.</p></article>
-          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-forest/10 text-forest dark:bg-forest/15 dark:text-green-200"><i data-lucide="shield-check" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Reliability and compliance</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Idempotency, offline recovery, JWT and RBAC, accessibility, rate limiting, and systems built under compliance pressure.</p></article>
-          <article class="reveal lift rounded-[1.75rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:text-white"><i data-lucide="rocket" class="h-6 w-6"></i></div><h3 class="text-xl font-semibold text-ink dark:text-white">Fast end-to-end delivery</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">AI-assisted implementation and review workflows used as leverage, not as a substitute for engineering judgment.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="work" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div class="mx-auto max-w-7xl">
-        <div class="reveal flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div><p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Selected work</p><h2 class="mt-4 text-4xl font-bold text-ink dark:text-white sm:text-5xl">Systems I have shipped.</h2></div>
-          <p class="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">Each project below was delivered end to end and is running in production today.</p>
-        </div>
-
-        <article class="reveal panel mt-10 overflow-hidden rounded-[2.25rem]">
-          <div class="grid gap-0 lg:grid-cols-[minmax(0,.95fr)_minmax(0,1.05fr)]">
-            <div class="flex min-h-[340px] items-center justify-center bg-gradient-to-br from-tide/20 via-transparent to-ember/10 px-8 py-10">
-              <div class="max-w-[260px] rounded-[2rem] border border-white/15 bg-white/10 p-3 shadow-2xl"><img src="img/projects/berriospay.png" alt="BerriosPay kiosk interface" class="rounded-[1.35rem]"></div>
+          <div class="contact" aria-label="Contact information">
+            <a href="mailto:luisangelrod17@gmail.com" class="contact-row"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span><span>luisangelrod17@gmail.com</span></a>
+            <a href="tel:+17879805868" class="contact-row"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72l.34 2.57a2 2 0 0 1-.57 1.68L7.1 9.76a16 16 0 0 0 7.14 7.14l1.79-1.78a2 2 0 0 1 1.68-.57l2.57.34A2 2 0 0 1 22 16.92z"></path></svg></span><span>(787) 980-5868</span></a>
+            <div class="chips">
+              <a class="chip" href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="chip" href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="chip" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
-            <div class="bg-white/55 p-8 dark:bg-white/5 lg:p-10">
-              <div class="flex flex-wrap items-center gap-3"><span class="rounded-full bg-forest/10 px-3 py-1 text-xs font-semibold uppercase tracking-[.18em] text-forest dark:bg-forest/20 dark:text-green-200">Production</span><span class="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold uppercase tracking-[.18em] text-slate-600 dark:bg-white/5 dark:text-slate-300">Featured case</span></div>
-              <h3 class="mt-5 text-3xl font-bold text-ink dark:text-white">BerriosPay</h3>
-              <p class="mt-3 text-base leading-7 text-slate-600 dark:text-slate-300">Enterprise payment kiosk platform delivered as a sole engineer. I owned the full stack: React frontend, .NET backend, WPF kiosk shell, Azure SQL, cloud deployment, and the hardware bridge for payment and printing flows.</p>
-              <div class="mt-6 grid gap-4 sm:grid-cols-3">
-                <div class="rounded-3xl border border-black/10 bg-white/65 p-4 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Delivered</div><div class="mt-2 text-xl font-bold text-ink dark:text-white">3 days</div></div>
-                <div class="rounded-3xl border border-black/10 bg-white/65 p-4 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Deployment</div><div class="mt-2 text-xl font-bold text-ink dark:text-white">25+ kiosks</div></div>
-                <div class="rounded-3xl border border-black/10 bg-white/65 p-4 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Controls</div><div class="mt-2 text-xl font-bold text-ink dark:text-white">Offline + idempotent</div></div>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Section navigation">
+          <a href="#about" class="active">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+      <div class="content" id="content">
+        <section class="section" id="about">
+          <div class="bar">Professional Summary</div>
+          <div class="summary">
+            <div class="panel">
+              <p class="lead">I built an AI-directed engineering workflow that lets one engineer move at the pace of a small team. Using structured project context and disciplined delivery phases, I shipped four production systems in six months as the sole engineer.</p>
+              <p class="lead">My work spans React, .NET, Azure, SQL Server, hardware-connected kiosks, offline-first flows, payment infrastructure, and HIPAA-adjacent logistics. I am based in Puerto Rico and available for remote U.S. roles.</p>
+              <div class="stats" aria-label="Key metrics">
+                <div class="stat"><b>4</b><span>Systems in 6 months</span></div>
+                <div class="stat"><b>50+</b><span>POS integrations</span></div>
+                <div class="stat"><b>6x</b><span>Delivery velocity</span></div>
               </div>
-              <ul class="mt-6 space-y-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
-                <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-tide"></span><span>Integrated PAX POSLink, Epson TM-M30II, and Touch Dynamic kiosk hardware without expanding PCI scope unnecessarily.</span></li>
-                <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-ember"></span><span>Built idempotency, retries, circuit breakers, and offline recovery to prevent duplicate transactions and preserve uptime.</span></li>
-                <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-forest"></span><span>Shipped bilingual, kiosk-friendly UX with accessibility considerations and production support ownership after launch.</span></li>
+            </div>
+            <div class="panel">
+              <ul class="points">
+                <li><strong>Architecture ownership:</strong> frontend, backend, database, cloud infrastructure, QA, and production support.</li>
+                <li><strong>Systems focus:</strong> payment kiosks, retail POS, logistics platforms, healthcare operations, and field tooling.</li>
+                <li><strong>Delivery model:</strong> compact build plans, AI-assisted implementation, code review loops, and production hardening.</li>
               </ul>
             </div>
           </div>
-        </article>
-
-        <div class="mt-8 grid gap-5 lg:grid-cols-2">
-          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">GoFleetCare</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Medical transport driver app built for unreliable mobile conditions with real-time trip management, geofencing, Firebase notifications, signature capture, and offline mutation sync.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">React</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">TypeScript</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Firebase</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Offline-first</span></div></article>
-          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">CDD-HUB</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Driver operations portal shipped from first commit to production in 3.5 weeks. Included status workflows, PDF exports, bilingual UX, and a test suite expanded to 215 automated tests.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">React</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">TanStack Query</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Vitest</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Playwright</span></div></article>
-          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">Salud Medica</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Tablet-based POS application for pharmacy field operations with cash checkout, membership management, idempotent payment handling, signature capture, and native printer and cash drawer integration.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Ionic</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Angular</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">.NET</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Android hardware</span></div></article>
-          <article class="reveal lift rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5"><h3 class="text-2xl font-semibold text-ink dark:text-white">Retail POS Ecosystem</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Maintained and extended 50+ integrations spanning payment gateways, pharmacy systems, and e-commerce platforms with modular .NET services, RMS extensions, and production support.</p><div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[.12em] text-slate-500 dark:text-slate-400"><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">C#</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">SQL Server</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Payments</span><span class="rounded-full border border-black/10 px-3 py-2 dark:border-white/10">Production support</span></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div class="mx-auto grid max-w-7xl gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(320px,.82fr)]">
-        <div class="reveal rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
-          <p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Experience</p>
-          <h2 class="mt-4 text-4xl font-bold text-ink dark:text-white sm:text-5xl">A concise track record.</h2>
-          <div class="mt-8 space-y-8">
-            <div><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">2025 - Present</div><h3 class="mt-2 text-2xl font-semibold text-ink dark:text-white">Business Computer POS</h3><p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Systems Architect and Engineering Lead</p><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Promoted into architecture ownership within 3 months. Led technical direction for 50+ active projects while still delivering code, infrastructure, QA, and support hands on.</p></div>
-            <div><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">2025</div><h3 class="mt-2 text-2xl font-semibold text-ink dark:text-white">Highspring Digital</h3><p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Frontend Engineer</p><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Angular and TypeScript delivery in client-facing web products, including a 30% page-load improvement through lazy loading and state optimization.</p></div>
-            <div><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">2022 - 2025</div><h3 class="mt-2 text-2xl font-semibold text-ink dark:text-white">Department of Health of Puerto Rico</h3><p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Software Developer</p><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Built Angular and SQL-backed public health features under HIPAA-adjacent requirements, JWT and RBAC security patterns, and CI/CD participation with GitLab.</p></div>
+        </section>
+        <section class="section" id="experience">
+          <div class="bar">Professional Experience</div>
+          <div class="jobs">
+            <article class="job">
+              <div class="jobhead"><h3>BCPOS</h3><div class="date">September 2025 to Present</div></div>
+              <p class="title">Systems Architect and Engineering Lead</p>
+              <p>Promoted from mid-level to architect in three months. Sole engineer across architecture, frontend, backend, database, cloud, QA, and production support for 50+ active projects.</p>
+              <div class="tags"><span class="tag">React 19</span><span class="tag">.NET 10</span><span class="tag">Azure</span><span class="tag">SQL Server</span><span class="tag">WPF</span></div>
+            </article>
+            <article class="job">
+              <div class="jobhead"><h3>Highspring Digital</h3><div class="date">March 2025 to August 2025</div></div>
+              <p class="title">Frontend Engineer</p>
+              <p>Built Angular and TypeScript applications in agile client engagements, improved performance, and delivered responsive WCAG-conscious interfaces.</p>
+              <div class="tags"><span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">Accessibility</span></div>
+            </article>
+            <article class="job">
+              <div class="jobhead"><h3>Department of Health of Puerto Rico</h3><div class="date">2022 to March 2025</div></div>
+              <p class="title">Software Developer</p>
+              <p>Built Angular features for public health platforms, implemented JWT and RBAC, and automated epidemiological reporting with SQL Server.</p>
+              <div class="tags"><span class="tag">Angular</span><span class="tag">SQL Server</span><span class="tag">GitLab CI</span><span class="tag">JWT and RBAC</span></div>
+            </article>
           </div>
-        </div>
-        <aside class="reveal rounded-[2rem] border border-black/10 bg-white/60 p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
-          <p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Core stack</p>
-          <div class="mt-6 space-y-6">
-            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Frontend</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">React, TypeScript, Angular, Ionic, Tailwind CSS, TanStack Query, Zustand, Zod, i18next</p></div>
-            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Backend</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">C#, .NET, ASP.NET Core, Entity Framework Core, REST API design, SQL Server, Azure SQL</p></div>
-            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Systems</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Azure App Service, Bicep, GitHub Actions, GitLab CI/CD, WPF + WebView2, hardware-integrated POS and kiosk flows</p></div>
-            <div><h3 class="text-lg font-semibold text-ink dark:text-white">Priorities</h3><p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Reliability, offline support, idempotency, security, accessibility, testing, and maintainability under production pressure.</p></div>
+        </section>
+        <section class="section" id="projects">
+          <div class="bar">Selected Projects</div>
+          <article class="project">
+            <div class="titlebar">AI QA Agent <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live Project</span></div>
+            <div class="body">
+              <div class="mixed">
+                <div class="stack">
+                  <div class="media"><img src="img/projects/ai-qa-agent.png" alt="AI QA Agent interface"></div>
+                  <div class="media metric" aria-hidden="true"><small>Architecture</small><strong>Agentic Loop</strong><p>Claude decides which checks to run, executes them server-side, and synthesizes a graded report.</p></div>
+                </div>
+                <div>
+                  <div class="block"><h4 class="label">What?</h4><p class="copy">A web app where users paste a URL and an AI agent autonomously tests the site for accessibility, SEO, performance, security headers, and broken links, streaming its reasoning in real time.</p></div>
+                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a multi-step agentic loop using Claude tool_use with 6 server-side analysis modules. Results stream to the browser via SSE, showing the agent's thinking, tool calls, and findings as they happen.</p></div>
+                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://ai-qa-agent.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">ai-qa-agent.vercel.app</a>. Produces structured reports with letter grades (A-F), categorized issues, and actionable recommendations across 6 QA dimensions.</p></div>
+                  <div class="meta"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Claude API</span><span class="tag">SSE Streaming</span><span class="tag">Cheerio</span><span class="tag">Vercel</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="titlebar">Dep Scanner <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live Project</span></div>
+            <div class="body">
+              <div class="mixed">
+                <div class="stack">
+                  <div class="media"><img src="img/projects/dep-scanner.png" alt="Dep Scanner interface"></div>
+                  <div class="media metric" aria-hidden="true"><small>Analysis</small><strong>6 Data Sources</strong><p>npm registry, OSV.dev vulnerabilities, and download statistics combined into a composite health score.</p></div>
+                </div>
+                <div>
+                  <div class="block"><h4 class="label">What?</h4><p class="copy">A dependency health scanner where users paste a package.json or enter a GitHub URL and get instant health scores, vulnerability reports, and upgrade recommendations for every npm package.</p></div>
+                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a server-side analysis pipeline that concurrently queries the npm registry, OSV.dev, and npm downloads API, then computes composite health scores with a custom grading algorithm. Includes a treemap visualization and exportable reports.</p></div>
+                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://dep-scanner.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">dep-scanner.vercel.app</a>. Scans up to 80 packages per analysis with letter grades (A-F), categorized vulnerabilities, and auto-generated fix commands. Exports to JSON and CSV.</p></div>
+                  <div class="meta"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">shadcn/ui</span><span class="tag">OSV.dev</span><span class="tag">npm Registry</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="titlebar">DevStatus <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live Project</span></div>
+            <div class="body">
+              <div class="mixed">
+                <div class="stack">
+                  <div class="media"><img src="img/projects/devstatus.png" alt="DevStatus mission control dashboard"></div>
+                  <div class="media metric" aria-hidden="true"><small>Monitoring</small><strong>15 Services</strong><p>Real-time status checks across AI, hosting, databases, dev tools, and registries.</p></div>
+                </div>
+                <div>
+                  <div class="block"><h4 class="label">What?</h4><p class="copy">A real-time status monitoring dashboard tracking 15 developer services with a mission control aesthetic. Aggregates live status, active incidents, and tech news into a single NOC-style view.</p></div>
+                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built with ISR-powered data fetching from Statuspage.io APIs, RSS feeds, and Hacker News. Features a 3-panel layout with an interactive SVG world map, incident timeline, scrolling ticker bar, and client-side polling.</p></div>
+                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://devstatus-lilac.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">devstatus-lilac.vercel.app</a>. Monitors OpenAI, Anthropic, GitHub, Vercel, Cloudflare, Netlify, and more with 60-second refresh cycles and zero API keys required.</p></div>
+                  <div class="meta"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">ISR</span><span class="tag">Statuspage.io</span><span class="tag">RSS</span><span class="tag">SVG Maps</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="titlebar">BerriosPay - BCPOS</div>
+            <div class="body">
+              <div class="grid3">
+                <div class="card"><div class="media metric" aria-hidden="true"><small>Scale</small><strong>25+ Kiosks</strong><p>Bilingual self-service payment collection across retail locations.</p></div><h4 class="label">What?</h4><p class="copy">Enterprise payment kiosk platform for bilingual self-service payment collection across 25+ retail locations.</p></div>
+                <div class="card"><div class="media metric" aria-hidden="true"><small>Build</small><strong>3-Day MVP</strong><p>React 19, .NET 10, WPF, WebView2, Azure SQL, SHA256 idempotency, and offline recovery.</p></div><h4 class="label">How?</h4><p class="copy">Architected and shipped solo with clean architecture, kiosk hardware integration, auto-sync queues, and transaction safety protections.</p></div>
+                <div class="card"><div class="media metric" aria-hidden="true"><small>Results</small><strong>0 Duplicates</strong><p>PCI DSS SAQ A, 43 automated tests, and 11 vulnerabilities resolved.</p></div><h4 class="label">Results</h4><p class="copy">Delivered a stable production rollout with resilient payment handling and operational reliability across a live retail footprint.</p></div>
+              </div>
+              <div class="meta"><span class="tag">React 19</span><span class="tag">.NET 10</span><span class="tag">WPF / WebView2</span><span class="tag">Azure SQL</span><span class="tag">PAX POSLink</span><span class="tag">Polly</span></div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="titlebar">GoFleetCare - BCPOS</div>
+            <div class="body">
+              <div class="mixed">
+                <div class="stack">
+                  <div class="media metric" aria-hidden="true"><small>Platform</small><strong>Mobile-First</strong><p>Driver and dispatcher portals for medical transport in a HIPAA-adjacent environment.</p></div>
+                  <div class="media metric" aria-hidden="true"><small>Workflow</small><strong>13 States</strong><p>Trip status orchestration with debounce, rate limiting, offline sync, and real-time user feedback.</p></div>
+                </div>
+                <div>
+                  <div class="block"><h4 class="label">What?</h4><p class="copy">A medical transport logistics platform for distinct driver personas in a HIPAA-adjacent environment, requiring mobile-first trip execution, signatures, geofencing, and clear status updates.</p></div>
+                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built React portals with Firebase messaging, WebSocket updates, mutation queuing, and a guarded backend state machine. Added mutex-based token refresh to eliminate race conditions.</p></div>
+                  <div class="block"><h4 class="label">Results</h4><p class="copy">Created a reliable logistics workflow that survives connectivity loss, keeps drivers synchronized in the field, and supports production-ready dispatch operations.</p></div>
+                  <div class="meta"><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">WebSocket</span><span class="tag">Offline Sync</span><span class="tag">Geofencing</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="titlebar">CDD-HUB - BCPOS</div>
+            <div class="body">
+              <div class="mixed">
+                <div class="stack">
+                  <div class="media metric" aria-hidden="true"><small>Timeline</small><strong>3.5 Weeks</strong><p>First commit to production deployment with full test coverage.</p></div>
+                  <div class="media metric" aria-hidden="true"><small>QA</small><strong>215 Tests</strong><p>Unit, integration, and end-to-end coverage added while the product moved from first commit to production.</p></div>
+                </div>
+                <div>
+                  <div class="block"><h4 class="label">What?</h4><p class="copy">An operations portal for dispatch and transport coordination that needed real-time communication, reporting, and reliable production delivery in a compressed timeline.</p></div>
+                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built as a React PWA with WebSocket messaging, PDF generation, and a steadily expanded automated test suite using Vitest and Playwright.</p></div>
+                  <div class="block"><h4 class="label">Results</h4><p class="copy">Went from first commit to production deployment in 3.5 weeks with 215 tests, PDF reporting, and stable real-time interactions.</p></div>
+                  <div class="meta"><span class="tag">React</span><span class="tag">Vitest</span><span class="tag">Playwright</span><span class="tag">PWA</span><span class="tag">PDF Generation</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="titlebar">Salud Medica - BCPOS</div>
+            <div class="body">
+              <div class="grid3">
+                <div class="card"><div class="media metric" aria-hidden="true"><small>Platform</small><strong>Tablet POS</strong><p>Built for Android devices used in healthcare retail operations.</p></div><h4 class="label">What?</h4><p class="copy">A tablet-based point of sale for cash checkout, membership workflows, and receipt printing in a healthcare retail environment.</p></div>
+                <div class="card"><div class="media metric" aria-hidden="true"><small>Hardware</small><strong>Native Drivers</strong><p>Star Micronics printer and cash drawer integration through Ionic and Capacitor.</p></div><h4 class="label">How?</h4><p class="copy">Delivered an Ionic and Capacitor application with native Android hardware support to bridge web UI speed with reliable physical device control.</p></div>
+                <div class="card"><div class="media metric" aria-hidden="true"><small>Outcome</small><strong>Field Ready</strong><p>Checkout, membership handling, and receipt generation unified into a portable retail workflow.</p></div><h4 class="label">Results</h4><p class="copy">Provided a dependable tablet POS flow with hardware-backed printing and drawer operations suited for day-to-day store use.</p></div>
+              </div>
+              <div class="meta"><span class="tag">Ionic</span><span class="tag">Capacitor</span><span class="tag">Android</span><span class="tag">Star Micronics</span><span class="tag">Cash Drawer</span></div>
+            </div>
+          </article>
+        </section>
+        <section class="section" id="skills">
+          <div class="bar">Core Skills</div>
+          <div class="skills">
+            <article class="skill"><h3>Frontend</h3><p>React 19, TypeScript, Angular, Vite, Tailwind CSS, TanStack Query, Zustand, Zod, i18next, responsive UI architecture.</p></article>
+            <article class="skill"><h3>Backend</h3><p>.NET 10, C#, ASP.NET Core, Entity Framework Core, REST APIs, SQL Server, Azure SQL, and clean architecture.</p></article>
+            <article class="skill"><h3>Cloud and Delivery</h3><p>Azure App Service, Azure SQL, Azure Static Web Apps, GitHub Actions, GitLab CI and CD, Azure DevOps, and Bicep.</p></article>
+            <article class="skill"><h3>Testing and Reliability</h3><p>Vitest, Playwright, Jest, Cypress, offline-first sync flows, idempotency controls, RBAC, JWT auth, and accessibility-conscious implementations.</p></article>
+            <article class="skill"><h3>Platform Work</h3><p>WPF with WebView2, Ionic with Capacitor, kiosks, payment terminals, thermal printers, cash drawers, and field device integrations.</p></article>
+            <article class="skill"><h3>AI-Augmented Engineering</h3><p>Claude Code, ChatGPT, Gemini, structured project memory, build sequencing, automated review loops, and context-driven implementation workflows.</p></article>
           </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="contact" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-      <div class="mx-auto max-w-7xl panel grid gap-10 rounded-[2.5rem] p-8 sm:p-10 lg:grid-cols-[minmax(0,.92fr)_minmax(320px,1fr)]">
-        <div class="reveal">
-          <p class="eyebrow font-mono text-[11px] text-slate-500 dark:text-slate-400">Contact</p>
-          <h2 class="mt-4 max-w-xl text-4xl font-bold text-ink dark:text-white sm:text-5xl">Let's build something reliable together.</h2>
-          <p class="mt-5 max-w-xl text-base leading-7 text-slate-600 dark:text-slate-300">I am open to senior full-stack, technical lead, and systems architecture roles. Remote-first is ideal. Hybrid conversation is fine for the right team.</p>
-          <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <a href="mailto:luisangelrod17@gmail.com" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Email</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">luisangelrod17@gmail.com</div></a>
-            <a href="tel:+17879805868" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">Phone</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">+1 787-980-5868</div></a>
-            <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">LinkedIn</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">luis-rodriguez-515858bb</div></a>
-            <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="lift rounded-[1.75rem] border border-black/10 bg-white/60 p-5 dark:border-white/10 dark:bg-white/5"><div class="font-mono text-[11px] uppercase tracking-[.22em] text-slate-500 dark:text-slate-400">GitHub</div><div class="mt-3 text-lg font-semibold text-ink dark:text-white">github.com/luisangelrod</div></a>
+        </section>
+        <section class="section" id="contact">
+          <div class="bar">Contact</div>
+          <div class="panel contactbox">
+            <p>I am open to senior engineering and systems architecture roles where end-to-end ownership, delivery speed, and production reliability matter.</p>
+            <a href="mailto:luisangelrod17@gmail.com" class="cta">Start a Conversation</a>
           </div>
-        </div>
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="reveal rounded-[2rem] border border-black/10 bg-white/70 p-6 dark:border-white/10 dark:bg-white/5 sm:p-8">
-          <input type="hidden" name="form-name" value="contact">
-          <p class="hidden"><label>Do not fill this out if you are human: <input name="bot-field"></label></p>
-          <h3 class="text-2xl font-semibold text-ink dark:text-white">Send a direct message</h3>
-          <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Short intro, role, company, and hiring timeline is enough.</p>
-          <div class="mt-6 grid gap-4 sm:grid-cols-2">
-            <div><label for="name" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Name</label><input id="name" name="name" type="text" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="Your name"></div>
-            <div><label for="email" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Email</label><input id="email" name="email" type="email" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="you@company.com"></div>
-          </div>
-          <div class="mt-4"><label for="subject" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Subject</label><input id="subject" name="subject" type="text" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="Senior full-stack opportunity"></div>
-          <div class="mt-4"><label for="message" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Message</label><textarea id="message" name="message" rows="5" required class="w-full rounded-2xl border border-black/10 bg-white/85 px-4 py-3 text-sm text-ink outline-none transition focus:border-tide dark:border-white/10 dark:bg-ink/40 dark:text-white" placeholder="Tell me about the role, team, and what you need built."></textarea></div>
-          <div class="mt-4" data-netlify-recaptcha="true"></div>
-          <button type="submit" class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:translate-y-[-1px] hover:bg-tide dark:bg-white dark:text-ink dark:hover:bg-slate-200">Send message</button>
-        </form>
+        </section>
       </div>
-    </section>
-  </main>
-
-  <footer class="px-4 pb-10 pt-2 sm:px-6 lg:px-8">
-    <div class="mx-auto flex max-w-7xl flex-col gap-4 border-t border-black/10 pt-6 text-sm text-slate-500 dark:border-white/10 dark:text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-      <p>Built by Luis Rodriguez. All projects shown are live production systems.</p>
-      <div class="flex items-center gap-4">
-        <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="transition hover:text-tide dark:hover:text-white">GitHub</a>
-        <a href="https://www.linkedin.com/in/luis-rodriguez-515858bb/" target="_blank" rel="noopener noreferrer" class="transition hover:text-tide dark:hover:text-white">LinkedIn</a>
-        <a href="mailto:luisangelrod17@gmail.com" class="transition hover:text-tide dark:hover:text-white">Email</a>
-      </div>
-    </div>
-  </footer>
-
+    </main>
+  </div>
   <script>
-    const root = document.documentElement;
-    const storedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (storedTheme === "dark" || (!storedTheme && prefersDark)) root.classList.add("dark");
-
-    const themeToggle = document.getElementById("theme-toggle");
-    themeToggle?.addEventListener("click", () => {
-      root.classList.toggle("dark");
-      localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
-      if (window.lucide) window.lucide.createIcons();
-    });
-
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenuButton?.addEventListener("click", () => {
-      const isOpen = !mobileMenu.classList.contains("hidden");
-      mobileMenu.classList.toggle("hidden");
-      mobileMenuButton.setAttribute("aria-expanded", String(!isOpen));
-    });
-    document.querySelectorAll("#mobile-menu a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-        mobileMenuButton?.setAttribute("aria-expanded", "false");
-      });
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.14 });
-    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-
-    if (window.lucide) window.lucide.createIcons();
-    window.addEventListener("load", () => { if (window.lucide) window.lucide.createIcons(); });
+    const links=[...document.querySelectorAll(".nav a")],sections=[...document.querySelectorAll("section[id]")];
+    if(sections.length){const spy=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){links.forEach((link)=>link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id));}});},{rootMargin:"-42% 0px -42% 0px",threshold:0});sections.forEach((section)=>spy.observe(section));}
+    (()=>{const c=document.getElementById("lr-canvas");if(!c)return;const x=c.getContext("2d"),reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;let pts=[],w=0,h=0,m={x:-999,y:-999};function resize(){const r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;w=Math.max(1,r.width);h=Math.max(1,r.height);c.width=w*d;c.height=h*d;x.setTransform(1,0,0,1,0,0);x.scale(d,d);pts=build()}function build(){const o=document.createElement("canvas"),g=o.getContext("2d");o.width=w;o.height=h;g.fillStyle="#0f2742";g.font="900 "+Math.min(w*.5,h*.54)+"px Segoe UI";g.textAlign="center";g.textBaseline="middle";g.fillText("LR",w/2,h/2+h*.03);const data=g.getImageData(0,0,w,h).data,out=[],gap=w<80?3:4;for(let y=0;y<h;y+=gap){for(let z=0;z<w;z+=gap){const i=(y*w+z)*4;if(data[i+3]>140)out.push({x:z,y,ox:z,oy:y,vx:0,vy:0,s:w<80?1.5:1.8});}}return out}function draw(){x.clearRect(0,0,w,h);x.fillStyle="#0f2742";x.font="900 "+Math.min(w*.5,h*.54)+"px Segoe UI";x.textAlign="center";x.textBaseline="middle";x.fillText("LR",w/2,h/2+h*.03)}function anim(){x.clearRect(0,0,w,h);pts.forEach((p)=>{const dx=m.x-p.x,dy=m.y-p.y,dist=Math.sqrt(dx*dx+dy*dy),r=w<80?24:30;if(dist<r){const f=(r-dist)/r,a=Math.atan2(dy,dx);p.vx-=Math.cos(a)*f*1.2;p.vy-=Math.sin(a)*f*1.2}p.vx+=(p.ox-p.x)*.08;p.vy+=(p.oy-p.y)*.08;p.vx*=.86;p.vy*=.86;p.x+=p.vx;p.y+=p.vy;x.beginPath();x.arc(p.x,p.y,p.s,0,Math.PI*2);x.fillStyle="#0f2742";x.fill()});requestAnimationFrame(anim)}c.addEventListener("mousemove",(e)=>{const r=c.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});c.addEventListener("mouseleave",()=>{m.x=-999;m.y=-999});addEventListener("resize",resize);document.fonts?.ready?.then(resize);resize();reduce?draw():anim()})();
   </script>
 </body>
 </html>
