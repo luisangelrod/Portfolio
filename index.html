@@ -192,10 +192,10 @@
                   <div class="media metric" aria-hidden="true"><small>Architecture</small><strong>Zero API Calls</strong><p>Entire scoring engine, animations, and multilingual detection run client-side with no backend.</p></div>
                 </div>
                 <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">An interactive recruiter assistant embedded directly in this portfolio. A floating robot prompts visitors to paste a job description, then runs a real-time skill match analysis with animated results, honest scoring, and multilingual support. Try it — click the robot in the bottom-right corner.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a client-side scoring engine with 11 weighted skill categories, 24 transferable skill mappings, and word-boundary regex matching to prevent false positives across languages. Includes a 4-step wizard with typing animations, SVG robot character, animated progress ring, category bars, confetti effects, and language-aware narrative generation that pivots between languages mid-report.</p></div>
+                  <div class="block"><h4 class="label">What?</h4><p class="copy">An interactive recruiter assistant embedded directly in this portfolio. A floating robot prompts visitors to paste a job description, then runs a real-time skill match analysis with animated results and honest scoring. Understands both English and Spanish job descriptions. Try it — click the robot in the bottom-right corner.</p></div>
+                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a client-side scoring engine with 11 weighted skill categories, 24 transferable skill mappings, and word-boundary regex matching to prevent false positives across languages. Includes a 4-step wizard with typing animations, SVG robot character, animated progress ring, category bars, confetti effects, and bilingual narrative generation (English/Spanish) that responds in the detected language.</p></div>
                   <div class="block"><h4 class="label">Results</h4><p class="copy">Live on this page with zero API calls or backend dependencies. Honestly scores matching roles at 80-95% with green/blue themes and domain mismatches at 15-40% with red themes. Detects Spanish construction jobs just as accurately as English senior engineer postings.</p></div>
-                  <div class="meta"><span class="tag">Vanilla JavaScript</span><span class="tag">SVG Animation</span><span class="tag">CSS Keyframes</span><span class="tag">Regex NLP</span><span class="tag">Multilingual</span><span class="tag">Zero Dependencies</span></div>
+                  <div class="meta"><span class="tag">Vanilla JavaScript</span><span class="tag">SVG Animation</span><span class="tag">CSS Keyframes</span><span class="tag">Regex NLP</span><span class="tag">Bilingual EN/ES</span><span class="tag">Zero Dependencies</span></div>
                 </div>
               </div>
             </div>
@@ -412,19 +412,14 @@
     };
     var LANG={
       en:{excellent:'Excellent Match',strong:'Strong Match',partial:'Partial Match',low:'Different Domain',strengths:'Key Strengths',growth:'Growth Areas',mismatch:'This role focuses on a different domain. Luis specializes in software engineering, systems architecture, and production system delivery.',note:''},
-      es:{excellent:'Coincidencia Excelente',strong:'Buena Coincidencia',partial:'Coincidencia Parcial',low:'Dominio Diferente',strengths:'Fortalezas Clave',growth:'\u00c1reas de Crecimiento',mismatch:'Este puesto se enfoca en un dominio diferente. Luis se especializa en ingenier\u00eda de software, arquitectura de sistemas y entrega de productos en producci\u00f3n.',note:'An\u00e1lisis realizado en espa\u00f1ol \u2014 Luis es biling\u00fce (ingl\u00e9s/espa\u00f1ol)'},
-      pt:{excellent:'Correspond\u00eancia Excelente',strong:'Boa Correspond\u00eancia',partial:'Correspond\u00eancia Parcial',low:'Dom\u00ednio Diferente',strengths:'Pontos Fortes',growth:'\u00c1reas de Crescimento',mismatch:'Esta vaga foca em um dom\u00ednio diferente. Luis \u00e9 especializado em engenharia de software, arquitetura de sistemas e entrega de produtos em produ\u00e7\u00e3o.',note:'An\u00e1lise realizada em portugu\u00eas \u2014 Luis \u00e9 bil\u00edngue (ingl\u00eas/espanhol)'},
-      fr:{excellent:'Excellente Correspondance',strong:'Bonne Correspondance',partial:'Correspondance Partielle',low:'Domaine Diff\u00e9rent',strengths:'Points Forts',growth:'Axes de D\u00e9veloppement',mismatch:'Ce poste se concentre sur un domaine diff\u00e9rent. Luis est sp\u00e9cialis\u00e9 en g\u00e9nie logiciel, architecture syst\u00e8mes et livraison de produits en production.',note:'Analyse r\u00e9alis\u00e9e en fran\u00e7ais \u2014 Luis est bilingue (anglais/espagnol)'}
+      es:{excellent:'Coincidencia Excelente',strong:'Buena Coincidencia',partial:'Coincidencia Parcial',low:'Dominio Diferente',strengths:'Fortalezas Clave',growth:'\u00c1reas de Crecimiento',mismatch:'Este puesto se enfoca en un dominio diferente. Luis se especializa en ingenier\u00eda de software, arquitectura de sistemas y entrega de productos en producci\u00f3n.',note:'An\u00e1lisis realizado en espa\u00f1ol \u2014 Luis es biling\u00fce (ingl\u00e9s/espa\u00f1ol)'}
     };
     function detectLang(text){
-      var words=text.toLowerCase().split(/\s+/),es=0,pt=0,fr=0;
-      for(var i=0;i<words.length;i++){var w=words[i];
-        if(/^(los|las|del|tambi\u00e9n|a\u00f1os|trabajo|empresa|experiencia|requisitos|debe|tener|conocimiento|habilidades|puesto|funciones|salario|jornada|disponibilidad)$/.test(w))es++;
-        if(/^(do|da|dos|das|tamb\u00e9m|anos|trabalho|empresa|experi\u00eancia|requisitos|deve|ter|constru\u00e7\u00e3o|conhecimento|habilidades|vaga|fun\u00e7\u00f5es|sal\u00e1rio)$/.test(w))pt++;
-        if(/^(du|les|des|aussi|ans|travail|entreprise|exp\u00e9rience|exigences|doit|avoir|construction|connaissance|comp\u00e9tences|poste|fonctions|salaire)$/.test(w))fr++;
+      var words=text.toLowerCase().split(/\s+/),es=0;
+      for(var i=0;i<words.length;i++){
+        if(/^(los|las|del|tambi\u00e9n|a\u00f1os|trabajo|empresa|experiencia|requisitos|debe|tener|conocimiento|habilidades|puesto|funciones|salario|jornada|disponibilidad)$/.test(words[i]))es++;
       }
-      var max=Math.max(es,pt,fr);if(max<5)return 'en';
-      if(es>=pt&&es>=fr)return 'es';if(pt>=es&&pt>=fr)return 'pt';return 'fr';
+      return es>=5?'es':'en';
     }
 
     function score(jd){
