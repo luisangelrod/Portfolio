@@ -82,7 +82,14 @@
     .rw-narrative{width:100%;text-align:left;margin-top:16px;padding:14px;background:#f8fafc;border-radius:12px;border:1px solid var(--line)}.rw-narrative h4{margin:0 0 8px;font-size:.85rem;font-weight:800;color:var(--ink)}.rw-narrative ul{margin:0;padding:0 0 0 18px;color:var(--muted);font-size:.85rem;line-height:1.65}.rw-narrative li{margin-bottom:4px}
     .rw-cta-row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;justify-content:center}
     .rw-confetti{pointer-events:none;position:absolute;inset:0;overflow:hidden}.rw-confetti i{position:absolute;width:6px;height:6px;border-radius:2px;top:-10px;animation:rw-fall linear forwards}
-    @media(max-width:640px){.rw-trigger{bottom:16px;right:16px}.rw-trigger-btn{width:52px;height:52px}.rw-trigger-btn svg{width:30px;height:30px}.rw-bubble{font-size:.8rem;padding:8px 12px;bottom:60px}.rw-modal{padding:20px;border-radius:16px}.rw-robot{width:64px;height:64px}.rw-cat{grid-template-columns:90px 1fr auto;font-size:.78rem}}
+    .rw-report-title{margin:0 0 4px;font-size:1.1rem;font-weight:900;color:var(--ink);text-align:center}
+    .rw-match-count{margin:0 0 14px;font-size:.82rem;font-weight:700;color:#059669;text-align:center;letter-spacing:.04em}
+    .rw-comparison{width:100%;display:grid;gap:8px;text-align:left;max-height:52vh;overflow-y:auto;padding-right:4px}
+    .rw-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;align-items:start}
+    .rw-req{font-size:.84rem;color:var(--muted);line-height:1.5}.rw-check{color:#059669;font-weight:900;margin-right:6px}
+    .rw-ev{font-size:.84rem;color:var(--ink);line-height:1.5}.rw-ev strong{display:block;color:#2563eb;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+    .rw-no-match{color:var(--muted);text-align:center;padding:20px;font-size:.92rem;line-height:1.6}
+    @media(max-width:640px){.rw-trigger{bottom:16px;right:16px}.rw-trigger-btn{width:52px;height:52px}.rw-trigger-btn svg{width:30px;height:30px}.rw-bubble{font-size:.8rem;padding:8px 12px;bottom:60px}.rw-modal{padding:20px;border-radius:16px}.rw-robot{width:64px;height:64px}.rw-cat{grid-template-columns:90px 1fr auto;font-size:.78rem}.rw-row{grid-template-columns:1fr;gap:6px}}
   </style>
   <!-- ========== RECRUITER WIZARD STYLES — END ========== -->
 </head>
@@ -371,14 +378,9 @@
         <p class="rw-status" id="rw-status">Reading requirements...</p>
       </div>
       <div class="rw-step" data-step="4">
-        <div class="rw-score-wrap" id="rw-score-wrap">
-          <div class="rw-confetti" id="rw-confetti"></div>
-          <svg class="rw-ring" viewBox="0 0 120 120"><circle class="rw-ring-bg" cx="60" cy="60" r="52"/><circle class="rw-ring-fill" id="rw-ring" cx="60" cy="60" r="52"/></svg>
-          <div class="rw-pct"><span id="rw-pct-num">0</span><small>%</small></div>
-        </div>
-        <h3 class="rw-verdict" id="rw-verdict"></h3>
-        <div class="rw-cats" id="rw-cats"></div>
-        <div class="rw-narrative" id="rw-narrative"></div>
+        <h3 class="rw-report-title" id="rw-report-title"></h3>
+        <p class="rw-match-count" id="rw-match-count" style="display:none"></p>
+        <div class="rw-comparison" id="rw-comparison"></div>
         <div class="rw-cta-row">
           <a href="mailto:luisangelrod17@gmail.com" class="rw-btn rw-btn-primary">Contact Luis</a>
           <button class="rw-btn rw-btn-ghost" onclick="rwReset()">Try Another</button>
@@ -416,9 +418,18 @@
       'mongo':{c:'database',v:.6},'redis':{c:'database',v:.55},'dynamo':{c:'database',v:.55},'docker':{c:'cloud',v:.6},
       'jenkins':{c:'cloud',v:.6},'sass':{c:'frontend',v:.85},'webpack':{c:'frontend',v:.8},'figma':{c:'frontend',v:.5}
     };
-    var LANG={
-      en:{excellent:'Excellent Match',strong:'Strong Match',partial:'Partial Match',low:'Different Domain',strengths:'Key Strengths',growth:'Growth Areas',mismatch:'This role focuses on a different domain. Luis specializes in software engineering, systems architecture, and production system delivery.',note:''},
-      es:{excellent:'Coincidencia Excelente',strong:'Buena Coincidencia',partial:'Coincidencia Parcial',low:'Dominio Diferente',strengths:'Fortalezas Clave',growth:'\u00c1reas de Crecimiento',mismatch:'Este puesto se enfoca en un dominio diferente. Luis se especializa en ingenier\u00eda de software, arquitectura de sistemas y entrega de productos en producci\u00f3n.',note:'An\u00e1lisis realizado en espa\u00f1ol \u2014 Luis es biling\u00fce (ingl\u00e9s/espa\u00f1ol)'}
+    var EVIDENCE={
+      frontend:'LeadFlow, AI QA Agent, BerriosPay \u2014 React 19 & TypeScript across enterprise SaaS and kiosk systems',
+      backend:'LeadFlow (Node.js + Prisma), BerriosPay (.NET 10, ASP.NET Core, EF Core)',
+      database:'BerriosPay (Azure SQL), LeadFlow (PostgreSQL + Prisma), PR Health Dept (SQL Server)',
+      cloud:'LeadFlow (Vercel), BerriosPay (Azure App Service), CDD-HUB (GitHub Actions CI/CD)',
+      testing:'CDD-HUB \u2014 215 tests with Vitest & Playwright. BerriosPay \u2014 43 automated tests',
+      architecture:'4 production systems shipped solo in 6 months \u2014 schema to deployment, end to end',
+      mobile:'Salud Medica (Ionic/Capacitor Android POS), CDD-HUB (offline-first PWA)',
+      ai:'LeadFlow (Claude API for SMS conversations), AI QA Agent (agentic tool_use loop with SSE)',
+      payments:'BerriosPay \u2014 PCI DSS, PAX terminals, Stripe, 25+ kiosks, zero duplicate transactions',
+      healthcare:'GoFleetCare (HIPAA-adjacent medical transport), PR Department of Health platforms',
+      comms:'Sole engineer coordinating across dispatch, finance, compliance, and operations'
     };
     function detectLang(text){
       var words=text.toLowerCase().split(/\s+/),es=0;
@@ -427,33 +438,37 @@
       }
       return es>=5?'es':'en';
     }
-
-    function score(jd){
-      var text=jd.toLowerCase(),lang=detectLang(text),results={},tw=0,ts=0,mc=0;
-      for(var key in PROFILE){
-        var cat=PROFILE[key],matches=0,matched=[];
-        for(var i=0;i<cat.skills.length;i++){var sk=cat.skills[i];if(sk.length<=4&&/^[a-z]+$/.test(sk)?new RegExp('\\b'+sk+'\\b').test(text):text.includes(sk)){matches++;matched.push(sk);}}
-        var pct=cat.skills.length>0?matches/Math.min(cat.skills.length,5):0;
-        pct=Math.min(pct,1);
-        for(var term in TRANSFER){var t=TRANSFER[term];if(t.c===key&&text.includes(term)&&matched.indexOf(term)===-1){pct=Math.min(1,pct+t.v*0.2);if(!matched.length)matched.push(term+' (transferable)');}}
-        if(matches>=3&&pct<0.6)pct=0.6;else if(matches>=1&&pct<0.4)pct=0.4;
-        if(key==='architecture'&&/senior|lead|staff|principal|architect|manager/i.test(text))pct=Math.max(pct,0.7);
-        results[key]={pct:Math.round(pct*100),matched:matched,label:cat.label,str:cat.str,w:cat.w};
-        if(matches>0||(key==='architecture'&&/senior|lead|full.?stack/i.test(text))){tw+=cat.w;ts+=pct*cat.w;mc++;}
+    function extractReqs(text){
+      var lines=text.split(/\n/),reqs=[],inSec=false;
+      for(var i=0;i<lines.length;i++){
+        var l=lines[i].trim();
+        if(/^(requirements|qualifications|skills|must.have|nice.to.have|what you|you.will|responsibilit|experienc|requisitos|habilidades|funciones|perfil|competencias)/i.test(l)){inSec=true;continue;}
+        var bullet=l.match(/^[-*\u2022\u00b7\u25b8\u25aa\u25e6\u2713\u2714\u2610\u2192\u203a\u00bb\d]+[.):\s]\s*(.*)/);
+        if(bullet&&bullet[1].length>8){reqs.push(bullet[1]);}
+        else if(inSec&&l.length>15&&!/^(about|we |our |the |join|description|overview|company|location|salary|benefits|acerca|empresa|ubicaci|salario|beneficios)/i.test(l)){reqs.push(l);}
+        if(l===''&&inSec)inSec=false;
       }
-      var overall=tw>0?(ts/tw)*100:15;
-      if(mc>=6&&overall<72)overall=72;
-      else if(mc>=4&&overall<60)overall=60;
-      overall=Math.min(Math.round(overall),98);
-      var theme,verdict,L=LANG[lang]||LANG.en;
-      if(overall>=85){theme='green';verdict=L.excellent;}
-      else if(overall>=72){theme='blue';verdict=L.strong;}
-      else if(overall>=45){theme='amber';verdict=L.partial;}
-      else{theme='red';verdict=L.low;}
-      return{overall:overall,theme:theme,verdict:verdict,categories:results,lang:lang,mc:mc};
+      var seen={},unique=[];
+      for(var j=0;j<reqs.length;j++){var k=reqs[j].toLowerCase().substring(0,30);if(!seen[k]){seen[k]=true;unique.push(reqs[j]);}}
+      return unique.slice(0,15);
+    }
+    function extractTitle(text){
+      var lines=text.split(/\n/);
+      for(var i=0;i<lines.length;i++){var l=lines[i].trim();if(l.length>3&&l.length<80&&!/^(about|we are|our|the|join|description|overview|summary|requirements|qualifications)/i.test(l))return l;}
+      return '';
+    }
+    function matchReq(reqText){
+      var text=reqText.toLowerCase(),best=null,bestScore=0;
+      for(var key in PROFILE){
+        var cat=PROFILE[key],sc=0;
+        for(var i=0;i<cat.skills.length;i++){var sk=cat.skills[i];if(sk.length<=4&&/^[a-z]+$/.test(sk)?new RegExp('\\b'+sk+'\\b').test(text):text.includes(sk))sc++;}
+        for(var term in TRANSFER){if(TRANSFER[term].c===key&&text.includes(term))sc+=0.5;}
+        if(sc>bestScore){bestScore=sc;best=key;}
+      }
+      return bestScore>0?best:null;
     }
 
-    var curStep=1,_ci=null;
+    var curStep=1;
     function open(){
       document.getElementById('rw-overlay').classList.add('rw-open');
       document.getElementById('rw-bubble').style.display='none';
@@ -484,81 +499,65 @@
       if(!jd){document.getElementById('rw-jd').style.borderColor='#dc2626';return;}
       goTo(3);
       var bar=document.getElementById('rw-bar'),status=document.getElementById('rw-status');
-      var stages=['Reading requirements...','Matching technical skills...','Evaluating experience...','Assessing architecture fit...','Generating report...'];
+      var stages=['Reading job description...','Extracting requirements...','Matching experience...','Building comparison...'];
       var i=0;
       function next(){
-        if(i>=stages.length){var r=score(jd);setTimeout(function(){showResults(r);},300);return;}
+        if(i>=stages.length){
+          var lang=detectLang(jd),reqs=extractReqs(jd),title=extractTitle(jd);
+          setTimeout(function(){showComparison(jd,reqs,title,lang);},300);return;
+        }
         status.textContent=stages[i];bar.style.width=((i+1)/stages.length*100)+'%';
-        i++;setTimeout(next,500+Math.random()*200);
+        i++;setTimeout(next,450+Math.random()*200);
       }
       next();
     }
 
-    function showResults(r){
+    function showComparison(jd,reqs,title,lang){
       goTo(4);
-      var ring=document.getElementById('rw-ring'),pctEl=document.getElementById('rw-pct-num');
-      var verdict=document.getElementById('rw-verdict'),cats=document.getElementById('rw-cats');
-      var narr=document.getElementById('rw-narrative'),confetti=document.getElementById('rw-confetti');
-      var color=r.theme==='green'?'#059669':r.theme==='blue'?'#2563eb':r.theme==='red'?'#dc2626':'#d97706';
-      ring.style.stroke=color;verdict.style.color=color;verdict.textContent=r.verdict;
-      var offset=327-(327*r.overall/100);
-      setTimeout(function(){ring.style.strokeDashoffset=offset;},100);
-      if(_ci)clearInterval(_ci);var count=0,step=r.overall>50?2:1;
-      _ci=setInterval(function(){count+=step;if(count>=r.overall){count=r.overall;clearInterval(_ci);_ci=null;}pctEl.textContent=count;},20);
-      var sorted=[];
-      for(var k in r.categories){var v=r.categories[k];if(v.pct>0)sorted.push([k,v]);}
-      sorted.sort(function(a,b){return b[1].pct-a[1].pct;});
-      sorted=sorted.slice(0,8);
-      cats.innerHTML='';
-      for(var j=0;j<sorted.length;j++){
-        var cat=sorted[j][1];
-        var fc=cat.pct>=75?'#059669':cat.pct>=50?'#2563eb':cat.pct>=40?'#d97706':'#dc2626';
-        var row=document.createElement('div');row.className='rw-cat';
-        row.style.animation='rw-fadeUp .4s '+(j*0.08)+'s both';
-        row.innerHTML='<span class="rw-cat-name">'+esc(cat.label)+'</span><div class="rw-cat-track"><div class="rw-cat-fill" style="background:'+fc+'"></div></div><span class="rw-cat-pct" style="color:'+fc+'">'+cat.pct+'%</span>';
-        cats.appendChild(row);
-        (function(el,pct){setTimeout(function(){el.querySelector('.rw-cat-fill').style.width=pct+'%';},200+j*80);})(row,cat.pct);
+      var titleEl=document.getElementById('rw-report-title');
+      var countEl=document.getElementById('rw-match-count');
+      var comp=document.getElementById('rw-comparison');
+      var isEs=lang==='es';
+      titleEl.textContent=title||(isEs?'An\u00e1lisis del Puesto':'Experience Match');
+      comp.innerHTML='';
+      var matches=[],text=jd.toLowerCase();
+      for(var i=0;i<reqs.length;i++){
+        var cat=matchReq(reqs[i]);
+        if(cat)matches.push({req:reqs[i],cat:cat});
       }
-      var L=LANG[r.lang]||LANG.en,html='';
-      if(r.mc<2){
-        html+='<p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 0 14px">'+L.mismatch+'</p>';
-        html+='<h4 style="margin:0 0 8px">Where Luis Excels</h4><ul>';
-        html+='<li><strong>Software Architecture:</strong> Sole engineer shipping 4+ production systems in 6 months</li>';
-        html+='<li><strong>Full-Stack Engineering:</strong> React, .NET, TypeScript, SQL Server, Azure end-to-end</li>';
-        html+='<li><strong>Live SaaS Products:</strong> AI-powered lead response platform serving med spas across the US and Latin America</li>';
-        html+='<li><strong>Enterprise Systems:</strong> Payment kiosks, logistics platforms, healthcare operations</li>';
-        html+='</ul>';
+      if(matches.length<3){
+        for(var key in PROFILE){
+          var c=PROFILE[key],sc=0;
+          for(var s=0;s<c.skills.length;s++){var sk=c.skills[s];if(sk.length<=4&&/^[a-z]+$/.test(sk)?new RegExp('\\b'+sk+'\\b').test(text):text.includes(sk))sc++;}
+          for(var t in TRANSFER){if(TRANSFER[t].c===key&&text.includes(t))sc+=0.5;}
+          if(sc>0){var already=false;for(var m=0;m<matches.length;m++){if(matches[m].cat===key)already=true;}if(!already)matches.push({req:c.label+' skills detected',cat:key});}
+        }
+      }
+      if(matches.length>0){
+        countEl.textContent=matches.length+(isEs?' requisitos compatibles':' requirements matched');
+        countEl.style.display='';
+        for(var j=0;j<matches.length;j++){
+          var row=document.createElement('div');row.className='rw-row';
+          row.style.animation='rw-fadeUp .35s '+(j*0.06)+'s both';
+          row.innerHTML='<div class="rw-req"><span class="rw-check">\u2713</span>'+esc(matches[j].req)+'</div><div class="rw-ev"><strong>'+esc(PROFILE[matches[j].cat].label)+'</strong>'+esc(EVIDENCE[matches[j].cat])+'</div>';
+          comp.appendChild(row);
+        }
       } else {
-        var strengths='',growth='';
-        for(var s=0;s<sorted.length;s++){
-          var c=sorted[s][1];
-          if(c.pct>=60)strengths+='<li><strong>'+esc(c.label)+':</strong> '+esc(c.str)+'</li>';
-          else growth+='<li><strong>'+esc(c.label)+':</strong> Transferable foundations from adjacent experience</li>';
-        }
-        if(strengths)html+='<h4>'+L.strengths+'</h4><ul>'+strengths+'</ul>';
-        if(growth)html+='<h4 style="margin-top:12px">'+L.growth+'</h4><ul>'+growth+'</ul>';
-        if(!strengths&&!growth)html='<p style="color:var(--muted)">Paste a more detailed job description for deeper analysis.</p>';
+        countEl.style.display='none';
+        comp.innerHTML='<p class="rw-no-match">'+(isEs?'Este puesto se enfoca en un dominio diferente. Luis se especializa en ingenier\u00eda de software full-stack \u2014 React, .NET, TypeScript, Azure.':'This role focuses on a different domain. Luis specializes in full-stack software engineering \u2014 React, .NET, TypeScript, Azure.')+'</p>';
       }
-      if(r.lang!=='en'&&L.note){
-        html+='<div style="margin-top:12px;padding:8px 12px;background:#f0f9ff;border:1px solid #bfdbfe;border-radius:8px;font-size:.78rem;color:#2563eb;font-weight:600;text-align:center">'+L.note+'</div>';
-      }
-      narr.innerHTML=html;
-      confetti.innerHTML='';
-      if(r.overall>=75){
-        var colors=['#059669','#3b82f6','#8b5cf6','#f59e0b','#ec4899'];
-        for(var p=0;p<40;p++){
-          var dot=document.createElement('i');
-          dot.style.cssText='left:'+Math.random()*100+'%;background:'+colors[p%colors.length]+';animation-duration:'+(0.6+Math.random()*0.8)+'s;animation-delay:'+Math.random()*0.3+'s;width:'+(4+Math.random()*4)+'px;height:'+(4+Math.random()*4)+'px';
-          confetti.appendChild(dot);
-        }
+      if(isEs){
+        var note=document.createElement('div');
+        note.style.cssText='margin-top:12px;padding:8px 12px;background:#f0f9ff;border:1px solid #bfdbfe;border-radius:8px;font-size:.78rem;color:#2563eb;font-weight:600;text-align:center';
+        note.textContent='An\u00e1lisis realizado en espa\u00f1ol \u2014 Luis es biling\u00fce (ingl\u00e9s/espa\u00f1ol)';
+        comp.appendChild(note);
       }
     }
 
     function reset(){
       document.getElementById('rw-jd').value='';
       document.getElementById('rw-bar').style.width='0';
-      document.getElementById('rw-ring').style.strokeDashoffset=327;
-      document.getElementById('rw-confetti').innerHTML='';
+      document.getElementById('rw-comparison').innerHTML='';
       goTo(1);
     }
 
