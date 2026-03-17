@@ -37,6 +37,54 @@
     @media (max-width:640px){.page{padding:0 8px;margin:14px auto}.hero,.content{padding-left:16px;padding-right:16px}.identity{align-items:flex-start}.mark{width:68px;height:68px;flex-basis:68px}.role{font-size:.92rem}.headline,.copy,.job p,.skill p,.lead{font-size:.93rem}.stats{grid-template-columns:1fr}.media{min-height:160px}.bar,.project .titlebar{font-size:1.05rem}}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
+  <!-- ========== RECRUITER WIZARD STYLES — START ========== -->
+  <style>
+    .rw-trigger{position:fixed;bottom:24px;right:24px;z-index:9000;cursor:pointer;animation:rw-slideUp .6s .5s both}
+    .rw-trigger-btn{width:60px;height:60px;border-radius:50%;background:var(--dark);border:2px solid rgba(59,130,246,.35);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(15,39,66,.3);transition:transform .2s,box-shadow .2s}
+    .rw-trigger-btn:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(15,39,66,.4)}
+    .rw-trigger-btn svg{width:36px;height:36px}
+    .rw-badge{position:absolute;top:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:#3b82f6;border:2px solid var(--dark);z-index:1}
+    .rw-badge::after{content:'';position:absolute;inset:0;border-radius:50%;background:#3b82f6;animation:rw-ping 1.5s ease-out infinite}
+    .rw-bubble{position:absolute;bottom:68px;right:0;background:#fff;border-radius:14px;padding:10px 16px;box-shadow:0 4px 24px rgba(0,0,0,.12);font-size:.88rem;font-weight:700;color:var(--ink);white-space:nowrap;opacity:0;animation:rw-pop .4s 1.2s both}
+    .rw-bubble::after{content:'';position:absolute;bottom:-6px;right:24px;width:12px;height:12px;background:#fff;transform:rotate(45deg);border-radius:2px}
+    @keyframes rw-slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes rw-pop{from{opacity:0;transform:scale(.8) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    @keyframes rw-ping{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.5);opacity:0}}
+    @keyframes rw-fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes rw-blink{50%{opacity:0}}
+    @keyframes rw-eyeBlink{0%,42%,46%,100%{ry:6px}44%{ry:1px}}
+    @keyframes rw-fall{to{top:110%;opacity:0}}
+    .rw-overlay{position:fixed;inset:0;z-index:9999;background:rgba(13,23,38,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s}
+    .rw-overlay.rw-open{opacity:1;pointer-events:auto}
+    .rw-modal{background:#fff;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.18);width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:32px;position:relative;transform:scale(.92);transition:transform .4s cubic-bezier(.34,1.56,.64,1)}
+    .rw-overlay.rw-open .rw-modal{transform:scale(1)}
+    .rw-x{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:none;background:#f1f5f9;color:#64748b;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}.rw-x:hover{background:#e2e8f0}
+    .rw-step{display:none;flex-direction:column;align-items:center;text-align:center;gap:16px}
+    .rw-step.rw-active{display:flex;animation:rw-fadeUp .45s ease both}
+    .rw-robot{width:80px;height:80px}.rw-robot-sm{width:52px;height:52px}
+    .rw-eye-blink{animation:rw-eyeBlink 3.5s ease infinite}
+    .rw-msg{margin:0;font-size:1.05rem;color:var(--ink);line-height:1.5}.rw-msg-sub{color:var(--muted);font-size:.92rem}
+    .rw-typing::after{content:'▋';color:#3b82f6;animation:rw-blink .5s step-end infinite}
+    .rw-actions{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap;justify-content:center}
+    .rw-btn{padding:12px 26px;border-radius:999px;border:none;font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+    .rw-btn:active{transform:scale(.96)}
+    .rw-btn-primary{background:var(--dark);color:#fff;box-shadow:0 4px 16px rgba(15,39,66,.25)}.rw-btn-primary:hover{box-shadow:0 6px 24px rgba(15,39,66,.35)}
+    .rw-btn-ghost{background:transparent;color:var(--muted);border:1.5px solid var(--line)}.rw-btn-ghost:hover{border-color:var(--muted)}
+    .rw-textarea{width:100%;min-height:150px;padding:14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;font-size:.95rem;color:var(--ink);resize:vertical;transition:border-color .15s}.rw-textarea:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.1)}.rw-textarea::placeholder{color:#94a3b8}
+    .rw-progress{width:100%;height:6px;background:#e5e7eb;border-radius:999px;overflow:hidden}.rw-progress-fill{height:100%;background:linear-gradient(90deg,#3b82f6,#6366f1);border-radius:999px;transition:width .5s ease;width:0}
+    .rw-status{margin:0;color:var(--muted);font-size:.88rem;font-weight:600;min-height:1.4em}
+    .rw-thinking .rw-eye{animation:rw-thinkEye .8s ease infinite alternate}@keyframes rw-thinkEye{0%{transform:translateX(-1.5px)}100%{transform:translateX(1.5px)}}
+    .rw-score-wrap{position:relative;width:140px;height:140px;margin:0 auto 8px}.rw-ring{width:100%;height:100%;transform:rotate(-90deg)}.rw-ring-bg{fill:none;stroke:#e5e7eb;stroke-width:8}.rw-ring-fill{fill:none;stroke-width:8;stroke-linecap:round;stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1),stroke .3s}
+    .rw-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:900;letter-spacing:-.04em;color:var(--ink)}.rw-pct small{font-size:1rem;font-weight:700;margin-left:1px}
+    .rw-verdict{margin:0;font-size:1.2rem;font-weight:900}
+    .rw-cats{display:grid;gap:10px;width:100%;text-align:left;margin-top:12px}
+    .rw-cat{display:grid;grid-template-columns:110px 1fr auto;gap:8px;align-items:center;font-size:.82rem}.rw-cat-name{font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rw-cat-track{height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden}.rw-cat-fill{height:100%;border-radius:999px;width:0;transition:width .8s cubic-bezier(.4,0,.2,1)}.rw-cat-pct{font-weight:800;font-size:.78rem;min-width:32px;text-align:right}
+    .rw-narrative{width:100%;text-align:left;margin-top:16px;padding:14px;background:#f8fafc;border-radius:12px;border:1px solid var(--line)}.rw-narrative h4{margin:0 0 8px;font-size:.85rem;font-weight:800;color:var(--ink)}.rw-narrative ul{margin:0;padding:0 0 0 18px;color:var(--muted);font-size:.85rem;line-height:1.65}.rw-narrative li{margin-bottom:4px}
+    .rw-cta-row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+    .rw-confetti{pointer-events:none;position:absolute;inset:0;overflow:hidden}.rw-confetti i{position:absolute;width:6px;height:6px;border-radius:2px;top:-10px;animation:rw-fall linear forwards}
+    @media(max-width:640px){.rw-trigger{bottom:16px;right:16px}.rw-trigger-btn{width:52px;height:52px}.rw-trigger-btn svg{width:30px;height:30px}.rw-bubble{font-size:.8rem;padding:8px 12px;bottom:60px}.rw-modal{padding:20px;border-radius:16px}.rw-robot{width:64px;height:64px}.rw-cat{grid-template-columns:90px 1fr auto;font-size:.78rem}}
+  </style>
+  <!-- ========== RECRUITER WIZARD STYLES — END ========== -->
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
@@ -118,6 +166,23 @@
         </section>
         <section class="section" id="projects">
           <div class="bar">Selected Projects</div>
+          <article class="project">
+            <div class="titlebar">LeadFlow <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live SaaS Product</span></div>
+            <div class="body">
+              <div class="mixed">
+                <div class="stack">
+                  <div class="media"><img src="img/projects/lead-response-landing.png" alt="LeadFlow landing page"></div>
+                  <div class="media metric" aria-hidden="true"><small>Response Time</small><strong>&lt; 60 Seconds</strong><p>AI engages new leads via SMS around the clock, 24/7/365.</p></div>
+                </div>
+                <div>
+                  <div class="block"><h4 class="label">What?</h4><p class="copy">An AI-powered lead response platform for med spas. Engages new leads via SMS in under 60 seconds, handles intelligent conversations, books consultations, and escalates to humans when needed. HIPAA-aware message handling with automatic PHI detection and redaction.</p></div>
+                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a multi-tenant SaaS with Clerk auth, Stripe subscriptions, Twilio A2P 10DLC-compliant SMS, and Claude-powered conversational AI. Includes a real-time analytics dashboard, lead source tracking, smart escalation logic, and Google Calendar booking integration.</p></div>
+                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://lead-response-saas.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">lead-response-saas.vercel.app</a>. Currently servicing med spas across the United States, Puerto Rico, and Latin America with paying subscribers on monthly plans.</p></div>
+                  <div class="meta"><span class="tag">Next.js 16</span><span class="tag">TypeScript</span><span class="tag">Claude API</span><span class="tag">Twilio SMS</span><span class="tag">Stripe</span><span class="tag">Clerk</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span></div>
+                </div>
+              </div>
+            </div>
+          </article>
           <article class="project">
             <div class="titlebar">AI QA Agent <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live Project</span></div>
             <div class="body">
@@ -247,10 +312,255 @@
       </div>
     </main>
   </div>
+  <!-- ========== RECRUITER WIZARD HTML — START ========== -->
+  <div id="rw-trigger" class="rw-trigger" style="display:none">
+    <div class="rw-bubble" id="rw-bubble">Are you a recruiter?</div>
+    <div class="rw-trigger-btn" onclick="rwOpen()" aria-label="Open recruiter match assistant">
+      <span class="rw-badge"></span>
+      <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="6" r="4" fill="#3b82f6"><animate attributeName="opacity" values="1;.5;1" dur="2s" repeatCount="indefinite"/></circle><line x1="32" y1="10" x2="32" y2="18" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round"/><rect x="8" y="18" width="48" height="38" rx="12" fill="#e2e8f0"/><ellipse cx="24" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye-blink"/><ellipse cx="40" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye-blink"/><circle cx="26.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><circle cx="42.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><path d="M24 47 Q32 52 40 47" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <div id="rw-overlay" class="rw-overlay" onclick="if(event.target===this)rwClose()">
+    <div class="rw-modal">
+      <button class="rw-x" onclick="rwClose()" aria-label="Close">&times;</button>
+      <div class="rw-step rw-active" data-step="1">
+        <svg class="rw-robot" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="6" r="4" fill="#3b82f6"><animate attributeName="opacity" values="1;.5;1" dur="2s" repeatCount="indefinite"/></circle><line x1="32" y1="10" x2="32" y2="18" stroke="#0f2742" stroke-width="2.5" stroke-linecap="round"/><rect x="8" y="18" width="48" height="38" rx="12" fill="#0f2742"/><ellipse cx="24" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye rw-eye-blink"/><ellipse cx="40" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye rw-eye-blink"/><circle cx="26.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><circle cx="42.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><path d="M24 47 Q32 52 40 47" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+        <p class="rw-msg" id="rw-msg1"></p>
+        <p class="rw-msg rw-msg-sub" id="rw-msg2" style="display:none"></p>
+        <div class="rw-actions" id="rw-actions1" style="display:none">
+          <button class="rw-btn rw-btn-primary" onclick="rwGoTo(2)">Yes, I am</button>
+          <button class="rw-btn rw-btn-ghost" onclick="rwClose()">Just browsing</button>
+        </div>
+      </div>
+      <div class="rw-step" data-step="2">
+        <svg class="rw-robot-sm" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="6" r="4" fill="#3b82f6"/><line x1="32" y1="10" x2="32" y2="18" stroke="#0f2742" stroke-width="2.5" stroke-linecap="round"/><rect x="8" y="18" width="48" height="38" rx="12" fill="#0f2742"/><ellipse cx="24" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye-blink"/><ellipse cx="40" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye-blink"/><circle cx="26.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><circle cx="42.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><path d="M24 47 Q32 52 40 47" stroke="#3b82f6" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+        <p class="rw-msg">Paste the job description below</p>
+        <p class="rw-msg rw-msg-sub">I'll analyze how Luis matches up to this role.</p>
+        <textarea class="rw-textarea" id="rw-jd" placeholder="Paste the full job description here..."></textarea>
+        <div class="rw-actions">
+          <button class="rw-btn rw-btn-primary" onclick="rwAnalyze()">Analyze Match</button>
+          <button class="rw-btn rw-btn-ghost" onclick="rwGoTo(1)">Back</button>
+        </div>
+      </div>
+      <div class="rw-step" data-step="3">
+        <svg class="rw-robot rw-thinking" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="6" r="4" fill="#3b82f6"><animate attributeName="opacity" values="1;.4;1" dur=".8s" repeatCount="indefinite"/></circle><line x1="32" y1="10" x2="32" y2="18" stroke="#0f2742" stroke-width="2.5" stroke-linecap="round"/><rect x="8" y="18" width="48" height="38" rx="12" fill="#0f2742"/><ellipse cx="24" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye"/><ellipse cx="40" cy="34" rx="6" ry="6" fill="#3b82f6" class="rw-eye"/><circle cx="26.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><circle cx="42.5" cy="32" r="2.2" fill="#fff" opacity=".85"/><rect x="24" y="46" width="16" height="3" rx="1.5" fill="#3b82f6"/></svg>
+        <div class="rw-progress"><div class="rw-progress-fill" id="rw-bar"></div></div>
+        <p class="rw-status" id="rw-status">Reading requirements...</p>
+      </div>
+      <div class="rw-step" data-step="4">
+        <div class="rw-score-wrap" id="rw-score-wrap">
+          <div class="rw-confetti" id="rw-confetti"></div>
+          <svg class="rw-ring" viewBox="0 0 120 120"><circle class="rw-ring-bg" cx="60" cy="60" r="52"/><circle class="rw-ring-fill" id="rw-ring" cx="60" cy="60" r="52"/></svg>
+          <div class="rw-pct"><span id="rw-pct-num">0</span><small>%</small></div>
+        </div>
+        <h3 class="rw-verdict" id="rw-verdict"></h3>
+        <div class="rw-cats" id="rw-cats"></div>
+        <div class="rw-narrative" id="rw-narrative"></div>
+        <div class="rw-cta-row">
+          <a href="mailto:luisangelrod17@gmail.com" class="rw-btn rw-btn-primary">Contact Luis</a>
+          <button class="rw-btn rw-btn-ghost" onclick="rwReset()">Try Another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ========== RECRUITER WIZARD HTML — END ========== -->
   <script>
     const links=[...document.querySelectorAll(".nav a")],sections=[...document.querySelectorAll("section[id]")];
     if(sections.length){const spy=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){links.forEach((link)=>link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id));}});},{rootMargin:"-42% 0px -42% 0px",threshold:0});sections.forEach((section)=>spy.observe(section));}
     (()=>{const c=document.getElementById("lr-canvas");if(!c)return;const x=c.getContext("2d"),reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;let pts=[],w=0,h=0,m={x:-999,y:-999};function resize(){const r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;w=Math.max(1,r.width);h=Math.max(1,r.height);c.width=w*d;c.height=h*d;x.setTransform(1,0,0,1,0,0);x.scale(d,d);pts=build()}function build(){const o=document.createElement("canvas"),g=o.getContext("2d");o.width=w;o.height=h;g.fillStyle="#0f2742";g.font="900 "+Math.min(w*.5,h*.54)+"px Segoe UI";g.textAlign="center";g.textBaseline="middle";g.fillText("LR",w/2,h/2+h*.03);const data=g.getImageData(0,0,w,h).data,out=[],gap=w<80?3:4;for(let y=0;y<h;y+=gap){for(let z=0;z<w;z+=gap){const i=(y*w+z)*4;if(data[i+3]>140)out.push({x:z,y,ox:z,oy:y,vx:0,vy:0,s:w<80?1.5:1.8});}}return out}function draw(){x.clearRect(0,0,w,h);x.fillStyle="#0f2742";x.font="900 "+Math.min(w*.5,h*.54)+"px Segoe UI";x.textAlign="center";x.textBaseline="middle";x.fillText("LR",w/2,h/2+h*.03)}function anim(){x.clearRect(0,0,w,h);pts.forEach((p)=>{const dx=m.x-p.x,dy=m.y-p.y,dist=Math.sqrt(dx*dx+dy*dy),r=w<80?24:30;if(dist<r){const f=(r-dist)/r,a=Math.atan2(dy,dx);p.vx-=Math.cos(a)*f*1.2;p.vy-=Math.sin(a)*f*1.2}p.vx+=(p.ox-p.x)*.08;p.vy+=(p.oy-p.y)*.08;p.vx*=.86;p.vy*=.86;p.x+=p.vx;p.y+=p.vy;x.beginPath();x.arc(p.x,p.y,p.s,0,Math.PI*2);x.fillStyle="#0f2742";x.fill()});requestAnimationFrame(anim)}c.addEventListener("mousemove",(e)=>{const r=c.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});c.addEventListener("mouseleave",()=>{m.x=-999;m.y=-999});addEventListener("resize",resize);document.fonts?.ready?.then(resize);resize();reduce?draw():anim()})();
   </script>
+  <!-- ========== RECRUITER WIZARD SCRIPT — START ========== -->
+  <script>
+  (function(){
+    var PROFILE={
+      frontend:{w:1,label:'Frontend',skills:['react','typescript','javascript','angular','next.js','nextjs','vite','tailwind','css','html','responsive','tanstack','zustand','zod','spa','ui','ux','frontend','front-end','front end','shadcn','component','jsx','tsx','state management'],str:'4+ years React & TypeScript in production across enterprise and SaaS systems'},
+      backend:{w:1,label:'Backend',skills:['.net','dotnet','c#','csharp','asp.net','entity framework','ef core','rest','api','backend','back-end','back end','server','microservices','node','node.js','express','middleware','endpoint'],str:'.NET 10/C# and Node.js powering payment kiosks, logistics, and live SaaS products'},
+      database:{w:.9,label:'Database',skills:['sql','sql server','postgresql','postgres','database','azure sql','schema','migration','query','stored procedure','orm','prisma','relational','data model'],str:'SQL Server, PostgreSQL, Prisma, EF Core across production systems'},
+      cloud:{w:.9,label:'Cloud & DevOps',skills:['azure','cloud','vercel','netlify','deploy','infrastructure','devops','ci/cd','cicd','github actions','gitlab','pipeline','bicep','app service'],str:'Azure PaaS, Vercel, Netlify, GitHub Actions in daily use'},
+      testing:{w:.8,label:'Testing & QA',skills:['test','testing','vitest','playwright','jest','cypress','qa','quality','e2e','unit test','integration test','tdd','automation','coverage'],str:'215+ tests on a single project — Vitest, Playwright, Jest, Cypress'},
+      architecture:{w:1,label:'Architecture',skills:['architect','architecture','system design','clean architecture','design pattern','scalab','full-stack','fullstack','full stack','end to end','end-to-end','ownership','lead','senior','principal','staff','technical lead','tech lead'],str:'Systems architect — sole engineer shipping 4+ production systems in 6 months'},
+      mobile:{w:.65,label:'Mobile',skills:['mobile','ionic','capacitor','pwa','progressive web','android','ios','tablet','cross-platform','hybrid'],str:'Ionic/Capacitor Android apps, PWAs, WPF/WebView2 kiosk software'},
+      ai:{w:.85,label:'AI & Automation',skills:['ai','artificial intelligence','machine learning','ml','llm','claude','openai','gpt','nlp','natural language','prompt','agent','agentic','automation','intelligent'],str:'Live AI SaaS product (LeadFlow), Claude API tool_use, agentic loops'},
+      payments:{w:.7,label:'Payments',skills:['payment','stripe','pci','transaction','billing','subscription','kiosk','pos','point of sale','fintech','financial','checkout','commerce','e-commerce'],str:'Enterprise payment kiosks — PCI DSS, Stripe, PAX terminals, 0 duplicate transactions'},
+      healthcare:{w:.6,label:'Healthcare',skills:['health','healthcare','hipaa','medical','clinical','patient','pharma','ehr','emr','wellness','med spa','medspa'],str:'HIPAA-aware systems, medical transport logistics, PR health department platforms'},
+      comms:{w:.7,label:'Communication',skills:['agile','scrum','team','collaborate','communication','stakeholder','cross-functional','remote','documentation','mentor','jira','kanban'],str:'Sole engineer coordinating across dispatch, finance, compliance, and ops teams'}
+    };
+    var TRANSFER={
+      'aws':{c:'cloud',v:.7},'gcp':{c:'cloud',v:.6},'vue':{c:'frontend',v:.75},'svelte':{c:'frontend',v:.7},
+      'python':{c:'backend',v:.5},'java':{c:'backend',v:.55},'go':{c:'backend',v:.5},'ruby':{c:'backend',v:.45},
+      'php':{c:'backend',v:.4},'react native':{c:'mobile',v:.8},'flutter':{c:'mobile',v:.5},'swift':{c:'mobile',v:.4},
+      'kotlin':{c:'mobile',v:.45},'kubernetes':{c:'cloud',v:.5},'terraform':{c:'cloud',v:.6},'graphql':{c:'backend',v:.65},
+      'mongo':{c:'database',v:.6},'redis':{c:'database',v:.55},'dynamo':{c:'database',v:.55},'docker':{c:'cloud',v:.6},
+      'jenkins':{c:'cloud',v:.6},'sass':{c:'frontend',v:.85},'webpack':{c:'frontend',v:.8},'figma':{c:'frontend',v:.5}
+    };
+    var LANG={
+      en:{excellent:'Excellent Match',strong:'Strong Match',partial:'Partial Match',low:'Different Domain',strengths:'Key Strengths',growth:'Growth Areas',mismatch:'This role focuses on a different domain. Luis specializes in software engineering, systems architecture, and production system delivery.',note:''},
+      es:{excellent:'Coincidencia Excelente',strong:'Buena Coincidencia',partial:'Coincidencia Parcial',low:'Dominio Diferente',strengths:'Fortalezas Clave',growth:'\u00c1reas de Crecimiento',mismatch:'Este puesto se enfoca en un dominio diferente. Luis se especializa en ingenier\u00eda de software, arquitectura de sistemas y entrega de productos en producci\u00f3n.',note:'An\u00e1lisis realizado en espa\u00f1ol \u2014 Luis es biling\u00fce (ingl\u00e9s/espa\u00f1ol)'},
+      pt:{excellent:'Correspond\u00eancia Excelente',strong:'Boa Correspond\u00eancia',partial:'Correspond\u00eancia Parcial',low:'Dom\u00ednio Diferente',strengths:'Pontos Fortes',growth:'\u00c1reas de Crescimento',mismatch:'Esta vaga foca em um dom\u00ednio diferente. Luis \u00e9 especializado em engenharia de software, arquitetura de sistemas e entrega de produtos em produ\u00e7\u00e3o.',note:'An\u00e1lise realizada em portugu\u00eas \u2014 Luis \u00e9 bil\u00edngue (ingl\u00eas/espanhol)'},
+      fr:{excellent:'Excellente Correspondance',strong:'Bonne Correspondance',partial:'Correspondance Partielle',low:'Domaine Diff\u00e9rent',strengths:'Points Forts',growth:'Axes de D\u00e9veloppement',mismatch:'Ce poste se concentre sur un domaine diff\u00e9rent. Luis est sp\u00e9cialis\u00e9 en g\u00e9nie logiciel, architecture syst\u00e8mes et livraison de produits en production.',note:'Analyse r\u00e9alis\u00e9e en fran\u00e7ais \u2014 Luis est bilingue (anglais/espagnol)'}
+    };
+    function detectLang(text){
+      var words=text.toLowerCase().split(/\s+/),es=0,pt=0,fr=0;
+      for(var i=0;i<words.length;i++){var w=words[i];
+        if(/^(los|las|del|tambi\u00e9n|a\u00f1os|trabajo|empresa|experiencia|requisitos|debe|tener|conocimiento|habilidades|puesto|funciones|salario|jornada|disponibilidad)$/.test(w))es++;
+        if(/^(do|da|dos|das|tamb\u00e9m|anos|trabalho|empresa|experi\u00eancia|requisitos|deve|ter|constru\u00e7\u00e3o|conhecimento|habilidades|vaga|fun\u00e7\u00f5es|sal\u00e1rio)$/.test(w))pt++;
+        if(/^(du|les|des|aussi|ans|travail|entreprise|exp\u00e9rience|exigences|doit|avoir|construction|connaissance|comp\u00e9tences|poste|fonctions|salaire)$/.test(w))fr++;
+      }
+      var max=Math.max(es,pt,fr);if(max<5)return 'en';
+      if(es>=pt&&es>=fr)return 'es';if(pt>=es&&pt>=fr)return 'pt';return 'fr';
+    }
+
+    function score(jd){
+      var text=jd.toLowerCase(),lang=detectLang(text),results={},tw=0,ts=0,mc=0;
+      for(var key in PROFILE){
+        var cat=PROFILE[key],matches=0,matched=[];
+        for(var i=0;i<cat.skills.length;i++){var sk=cat.skills[i];if(sk.length<=4&&/^[a-z]+$/.test(sk)?new RegExp('\\b'+sk+'\\b').test(text):text.includes(sk)){matches++;matched.push(sk);}}
+        var pct=cat.skills.length>0?matches/Math.min(cat.skills.length,5):0;
+        pct=Math.min(pct,1);
+        for(var term in TRANSFER){var t=TRANSFER[term];if(t.c===key&&text.includes(term)&&matched.indexOf(term)===-1){pct=Math.min(1,pct+t.v*0.2);if(!matched.length)matched.push(term+' (transferable)');}}
+        if(matches>=3&&pct<0.6)pct=0.6;else if(matches>=1&&pct<0.4)pct=0.4;
+        if(key==='architecture'&&/senior|lead|staff|principal|architect|manager/i.test(text))pct=Math.max(pct,0.7);
+        results[key]={pct:Math.round(pct*100),matched:matched,label:cat.label,str:cat.str,w:cat.w};
+        if(matches>0||(key==='architecture'&&/senior|lead|full.?stack/i.test(text))){tw+=cat.w;ts+=pct*cat.w;mc++;}
+      }
+      var overall=tw>0?(ts/tw)*100:15;
+      if(mc>=6&&overall<72)overall=72;
+      else if(mc>=4&&overall<60)overall=60;
+      overall=Math.min(Math.round(overall),98);
+      var theme,verdict,L=LANG[lang]||LANG.en;
+      if(overall>=85){theme='green';verdict=L.excellent;}
+      else if(overall>=72){theme='blue';verdict=L.strong;}
+      else if(overall>=45){theme='amber';verdict=L.partial;}
+      else{theme='red';verdict=L.low;}
+      return{overall:overall,theme:theme,verdict:verdict,categories:results,lang:lang,mc:mc};
+    }
+
+    var curStep=1,_ci=null;
+    function open(){
+      document.getElementById('rw-overlay').classList.add('rw-open');
+      document.getElementById('rw-bubble').style.display='none';
+      if(curStep===1)typeIntro();
+    }
+    function close(){document.getElementById('rw-overlay').classList.remove('rw-open');}
+    function goTo(step){
+      var steps=document.querySelectorAll('.rw-step');
+      for(var i=0;i<steps.length;i++)steps[i].classList.remove('rw-active');
+      document.querySelector('.rw-step[data-step="'+step+'"]').classList.add('rw-active');
+      curStep=step;
+      if(step===1)typeIntro();
+    }
+
+    function typeIntro(){
+      var m1=document.getElementById('rw-msg1'),m2=document.getElementById('rw-msg2'),a1=document.getElementById('rw-actions1');
+      m1.textContent='';m2.style.display='none';a1.style.display='none';
+      typeText(m1,"Hey! I'm Luis's portfolio assistant.",28).then(function(){
+        m2.style.display='';
+        return typeText(m2,'Are you a recruiter evaluating Luis for a role?',22);
+      }).then(function(){
+        a1.style.display='';a1.style.animation='rw-fadeUp .3s ease both';
+      });
+    }
+
+    function analyze(){
+      var jd=document.getElementById('rw-jd').value.trim();
+      if(!jd){document.getElementById('rw-jd').style.borderColor='#dc2626';return;}
+      goTo(3);
+      var bar=document.getElementById('rw-bar'),status=document.getElementById('rw-status');
+      var stages=['Reading requirements...','Matching technical skills...','Evaluating experience...','Assessing architecture fit...','Generating report...'];
+      var i=0;
+      function next(){
+        if(i>=stages.length){var r=score(jd);setTimeout(function(){showResults(r);},300);return;}
+        status.textContent=stages[i];bar.style.width=((i+1)/stages.length*100)+'%';
+        i++;setTimeout(next,500+Math.random()*200);
+      }
+      next();
+    }
+
+    function showResults(r){
+      goTo(4);
+      var ring=document.getElementById('rw-ring'),pctEl=document.getElementById('rw-pct-num');
+      var verdict=document.getElementById('rw-verdict'),cats=document.getElementById('rw-cats');
+      var narr=document.getElementById('rw-narrative'),confetti=document.getElementById('rw-confetti');
+      var color=r.theme==='green'?'#059669':r.theme==='blue'?'#2563eb':r.theme==='red'?'#dc2626':'#d97706';
+      ring.style.stroke=color;verdict.style.color=color;verdict.textContent=r.verdict;
+      var offset=327-(327*r.overall/100);
+      setTimeout(function(){ring.style.strokeDashoffset=offset;},100);
+      if(_ci)clearInterval(_ci);var count=0,step=r.overall>50?2:1;
+      _ci=setInterval(function(){count+=step;if(count>=r.overall){count=r.overall;clearInterval(_ci);_ci=null;}pctEl.textContent=count;},20);
+      var sorted=[];
+      for(var k in r.categories){var v=r.categories[k];if(v.pct>0)sorted.push([k,v]);}
+      sorted.sort(function(a,b){return b[1].pct-a[1].pct;});
+      sorted=sorted.slice(0,8);
+      cats.innerHTML='';
+      for(var j=0;j<sorted.length;j++){
+        var cat=sorted[j][1];
+        var fc=cat.pct>=75?'#059669':cat.pct>=50?'#2563eb':cat.pct>=40?'#d97706':'#dc2626';
+        var row=document.createElement('div');row.className='rw-cat';
+        row.style.animation='rw-fadeUp .4s '+(j*0.08)+'s both';
+        row.innerHTML='<span class="rw-cat-name">'+esc(cat.label)+'</span><div class="rw-cat-track"><div class="rw-cat-fill" style="background:'+fc+'"></div></div><span class="rw-cat-pct" style="color:'+fc+'">'+cat.pct+'%</span>';
+        cats.appendChild(row);
+        (function(el,pct){setTimeout(function(){el.querySelector('.rw-cat-fill').style.width=pct+'%';},200+j*80);})(row,cat.pct);
+      }
+      var L=LANG[r.lang]||LANG.en,html='';
+      if(r.mc<2){
+        html+='<p style="color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 0 14px">'+L.mismatch+'</p>';
+        html+='<h4 style="margin:0 0 8px">Where Luis Excels</h4><ul>';
+        html+='<li><strong>Software Architecture:</strong> Sole engineer shipping 4+ production systems in 6 months</li>';
+        html+='<li><strong>Full-Stack Engineering:</strong> React, .NET, TypeScript, SQL Server, Azure end-to-end</li>';
+        html+='<li><strong>Live SaaS Products:</strong> AI-powered lead response platform serving med spas across the US and Latin America</li>';
+        html+='<li><strong>Enterprise Systems:</strong> Payment kiosks, logistics platforms, healthcare operations</li>';
+        html+='</ul>';
+      } else {
+        var strengths='',growth='';
+        for(var s=0;s<sorted.length;s++){
+          var c=sorted[s][1];
+          if(c.pct>=60)strengths+='<li><strong>'+esc(c.label)+':</strong> '+esc(c.str)+'</li>';
+          else growth+='<li><strong>'+esc(c.label)+':</strong> Transferable foundations from adjacent experience</li>';
+        }
+        if(strengths)html+='<h4>'+L.strengths+'</h4><ul>'+strengths+'</ul>';
+        if(growth)html+='<h4 style="margin-top:12px">'+L.growth+'</h4><ul>'+growth+'</ul>';
+        if(!strengths&&!growth)html='<p style="color:var(--muted)">Paste a more detailed job description for deeper analysis.</p>';
+      }
+      if(r.lang!=='en'&&L.note){
+        html+='<div style="margin-top:12px;padding:8px 12px;background:#f0f9ff;border:1px solid #bfdbfe;border-radius:8px;font-size:.78rem;color:#2563eb;font-weight:600;text-align:center">'+L.note+'</div>';
+      }
+      narr.innerHTML=html;
+      confetti.innerHTML='';
+      if(r.overall>=75){
+        var colors=['#059669','#3b82f6','#8b5cf6','#f59e0b','#ec4899'];
+        for(var p=0;p<40;p++){
+          var dot=document.createElement('i');
+          dot.style.cssText='left:'+Math.random()*100+'%;background:'+colors[p%colors.length]+';animation-duration:'+(0.6+Math.random()*0.8)+'s;animation-delay:'+Math.random()*0.3+'s;width:'+(4+Math.random()*4)+'px;height:'+(4+Math.random()*4)+'px';
+          confetti.appendChild(dot);
+        }
+      }
+    }
+
+    function reset(){
+      document.getElementById('rw-jd').value='';
+      document.getElementById('rw-bar').style.width='0';
+      document.getElementById('rw-ring').style.strokeDashoffset=327;
+      document.getElementById('rw-confetti').innerHTML='';
+      goTo(1);
+    }
+
+    function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+    function typeText(el,text,speed){
+      return new Promise(function(resolve){
+        var i=0;el.textContent='';el.classList.add('rw-typing');
+        var iv=setInterval(function(){el.textContent+=text[i];i++;if(i>=text.length){clearInterval(iv);el.classList.remove('rw-typing');resolve();}},speed||28);
+      });
+    }
+
+    setTimeout(function(){document.getElementById('rw-trigger').style.display='';},3000);
+    setTimeout(function(){
+      var b=document.getElementById('rw-bubble');
+      if(b){b.style.transition='opacity .5s';b.style.opacity='0';setTimeout(function(){if(b)b.style.display='none';},500);}
+    },12000);
+
+    window.rwOpen=open;window.rwClose=close;window.rwGoTo=goTo;window.rwAnalyze=analyze;window.rwReset=reset;
+  })();
+  </script>
+  <!-- ========== RECRUITER WIZARD SCRIPT — END ========== -->
 </body>
 </html>
