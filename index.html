@@ -1117,5 +1117,481 @@
   })();
   </script>
   <!-- ========== GAME ENGINE — END ========== -->
+  <!-- ========== TERMINAL MODE — START ========== -->
+  <style>
+    .term-hint{position:fixed;bottom:92px;right:24px;z-index:8990;background:rgba(0,0,0,.75);border:1px solid rgba(0,200,80,.18);border-radius:6px;padding:5px 10px;font:9px 'Press Start 2P',monospace;color:rgba(0,200,80,.45);letter-spacing:.05em;pointer-events:none;opacity:0;transition:opacity .6s}
+    .term-hint.term-hint-show{opacity:1}
+    .term-overlay{position:fixed;inset:0;z-index:9500;background:#080e08;display:none;flex-direction:column;font-family:'Cascadia Code','Fira Code','JetBrains Mono','Consolas',monospace;overflow:hidden}
+    .term-overlay.term-open{display:flex}
+    .term-titlebar{display:flex;align-items:center;gap:8px;padding:8px 16px;background:#0f160f;border-bottom:1px solid #152215;flex:0 0 auto;user-select:none}
+    .term-dots{display:flex;gap:6px}
+    .term-dot{width:12px;height:12px;border-radius:50%;cursor:pointer}
+    .term-dot-r{background:#ff5f57}.term-dot-r:hover{filter:brightness(1.25)}
+    .term-dot-y{background:#ffbd2e}.term-dot-g{background:#28c840}
+    .term-title{font-size:.74rem;color:#2a5a2a;margin-left:6px;letter-spacing:.05em}
+    .term-body{flex:1;overflow-y:auto;padding:16px 20px;color:#00cc55;font-size:.86rem;line-height:1.72;scroll-behavior:smooth}
+    .term-body::-webkit-scrollbar{width:6px}.term-body::-webkit-scrollbar-track{background:#080e08}.term-body::-webkit-scrollbar-thumb{background:#183018;border-radius:3px}
+    .term-line{display:block;white-space:pre-wrap;word-break:break-all;min-height:.5em}
+    .term-prompt{color:#00ff66;font-weight:700}.term-cmd{color:#e8f0e8}
+    .term-success{color:#00cc55}.term-info{color:#60a5fa}.term-warn{color:#fbbf24}.term-error{color:#ef4444}.term-muted{color:#3a5e3a}.term-art{color:#00ff66;line-height:1.3}
+    .term-bold{font-weight:700}
+    .term-input-row{display:flex;align-items:center;padding:10px 20px;border-top:1px solid #101e10;background:#060c06;flex:0 0 auto}
+    .term-ps1{color:#00ff66;font-size:.86rem;white-space:nowrap;user-select:none;font-weight:700}
+    .term-input{flex:1;background:transparent;border:none;outline:none;color:#e8f0e8;font:inherit;font-size:.86rem;caret-color:#00ff66}
+    .term-scanline{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.04) 2px,rgba(0,0,0,.04) 4px);pointer-events:none;z-index:1}
+    .term-glow{text-shadow:0 0 8px rgba(0,255,80,.3)}
+    @media(max-width:640px){.term-body{font-size:.76rem;padding:10px 12px}.term-input{font-size:.76rem}.term-input-row{padding:8px 12px}.term-hint{display:none}}
+  </style>
+  <div id="term-overlay" class="term-overlay" role="dialog" aria-label="Developer terminal">
+    <div class="term-scanline" aria-hidden="true"></div>
+    <div class="term-titlebar">
+      <div class="term-dots">
+        <div class="term-dot term-dot-r" onclick="termClose()" title="Close terminal"></div>
+        <div class="term-dot term-dot-y"></div>
+        <div class="term-dot term-dot-g"></div>
+      </div>
+      <span class="term-title">luis@portfolio: ~ — bash — 80&times;24</span>
+    </div>
+    <div class="term-body" id="term-body"></div>
+    <div class="term-input-row">
+      <span class="term-ps1" aria-hidden="true">luis@portfolio:~$&nbsp;</span>
+      <input class="term-input" id="term-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Terminal input — type help for commands">
+    </div>
+  </div>
+  <div class="term-hint" id="term-hint" aria-hidden="true">` for terminal mode</div>
+  <script>
+  (function(){
+    'use strict';
+    var BOOT=[
+      {cls:'art',text:' _          _      ___  ___\n| |   _   _(_)___ / _ \\/ __|\n| |  | | | | / __| | | \\__ \\\n| |__| |_| | \\__ \\ |_| |__/ |\n|_____\\__,_|_|___/\\___/|___/ '},
+      {cls:'info',text:'Portfolio OS v2.6.0  --  LuisOS / Darwin 26.0 x86_64'},
+      {cls:'muted',text:'Type `help` for commands. ESC or `exit` to return to visual mode.\n'},
+    ];
+    var loadStart=Date.now();
+    var hist=[],histIdx=-1,tempInput='',booted=false;
+    var ov=document.getElementById('term-overlay');
+    var tb=document.getElementById('term-body');
+    var inp=document.getElementById('term-input');
+
+    function print(cls,text){
+      var el=document.createElement('span');
+      el.className='term-line'+(cls?' term-'+cls:'');
+      if(cls==='art')el.classList.add('term-art');
+      el.textContent=(text==null)?'':text;
+      tb.appendChild(el);
+      tb.scrollTop=tb.scrollHeight;
+    }
+    function println(cls,text){print(cls,(text==null?'':text));}
+    function blank(){print('','');}
+
+    function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+    function boot(){
+      if(booted)return;booted=true;
+      var i=0;
+      function next(){
+        if(i>=BOOT.length){blank();inp.focus();return;}
+        var b=BOOT[i++];println(b.cls,b.text);
+        setTimeout(next,110);
+      }
+      next();
+    }
+
+    function open(){
+      ov.classList.add('term-open');
+      boot();
+      setTimeout(function(){inp.focus();},120);
+    }
+    function close(){ov.classList.remove('term-open');}
+    window.termClose=close;
+
+    function printPromptLine(raw){
+      var el=document.createElement('span');
+      el.className='term-line';
+      el.innerHTML='<span class="term-prompt">luis@portfolio:~$</span> <span class="term-cmd">'+esc(raw)+'</span>';
+      tb.appendChild(el);tb.scrollTop=tb.scrollHeight;
+    }
+
+    function execute(raw){
+      var cmd=raw.trim();
+      if(!cmd)return;
+      hist.unshift(cmd);if(hist.length>80)hist.pop();
+      histIdx=-1;tempInput='';
+      printPromptLine(cmd);
+      var c=cmd.toLowerCase().trim();
+      if(c==='help')doHelp();
+      else if(c==='whoami'||c==='about'||c==='cat about.md')doWhoami();
+      else if(c==='ls'||c==='ls -la'||c==='ls -l'||c==='projects'||c==='ls projects')doProjects();
+      else if(c==='skills'||c==='stack'||c==='cat skills.md')doSkills();
+      else if(c==='contact'||c==='hire')doContact();
+      else if(c==='github'||c==='open github')doGithub();
+      else if(c==='resume'||c==='cat resume.pdf'||c==='open resume')doResume();
+      else if(c==='clear'||c==='cls')doClear();
+      else if(c==='exit'||c==='quit'||c==='q')close();
+      else if(c==='history')doHistory();
+      else if(c==='uptime')doUptime();
+      else if(c.startsWith('ping'))doPing(cmd);
+      else if(c==='game'||c==='./play'||c==='./game'||c==='easter-egg')doGame();
+      else if(c==='matrix'||c==='matrix -t')doMatrix();
+      else if(c.startsWith('sudo hire')||c==='sudo hire-luis')doSudoHire();
+      else if(c.startsWith('npm install'))doNpm(cmd);
+      else if(c==='git log'||c==='git log --oneline'||c==='git log --pretty=oneline')doGitLog();
+      else if(c==='cat resume.md')doCatResume();
+      else if(c.startsWith('curl'))doCurl();
+      else if(c==='neofetch'||c==='fastfetch')doNeofetch();
+      else if(c==='date'||c==='date +%s')println('success',new Date().toString());
+      else if(c==='pwd')println('success','/home/luis/portfolio');
+      else if(c==='hostname')println('success','luisrodriguezdev.netlify.app');
+      else if(c.startsWith('uname'))println('success','LuisOS 26.0.0 Portfolio x86_64 Darwin');
+      else if(c.startsWith('rm -rf')||c.startsWith('sudo rm'))doRmRf();
+      else if(c==='echo $path'||c==='echo $shell')println('success','/usr/local/bin/luis');
+      else if(c==='open .'||c==='start .')println('info','Already here. You\'re looking at it.');
+      else if(c==='cat package.json')doPkgJson();
+      else if(c.startsWith('cd'))println('muted','You are already exactly where you need to be.');
+      else if(c===''||c===' '){}
+      else println('error','command not found: '+esc(cmd.split(' ')[0])+'. Try `help`.');
+      blank();
+    }
+
+    var CMDS_META=[
+      ['whoami / about','Who is Luis?'],
+      ['ls / projects','List all projects'],
+      ['skills / stack','View tech stack'],
+      ['contact / hire','Get in touch'],
+      ['github','Open GitHub profile'],
+      ['resume','Download resume PDF'],
+      ['git log','Commit history — the fun version'],
+      ['neofetch','System info card'],
+      ['uptime','Time since page load'],
+      ['ping [host]','Ping a hostname'],
+      ['matrix','See the matrix'],
+      ['game','Launch hidden arcade game'],
+      ['cat package.json','View dependencies'],
+      ['history','Command history'],
+      ['clear','Clear terminal'],
+      ['exit / ESC','Return to visual mode'],
+      ['',''],
+      ['Tip:','Up/Down arrows for history. Tab to autocomplete.'],
+    ];
+
+    function doHelp(){
+      println('warn','Available commands:');blank();
+      for(var i=0;i<CMDS_META.length;i++){
+        var row=CMDS_META[i];
+        if(!row[0]){blank();continue;}
+        var el=document.createElement('span');el.className='term-line';
+        el.innerHTML='  <span class="term-info term-bold">'+esc(row[0])+'</span>  <span class="term-muted">-- '+esc(row[1])+'</span>';
+        tb.appendChild(el);tb.scrollTop=tb.scrollHeight;
+      }
+    }
+
+    function doWhoami(){
+      println('info','+-------------------------------------------------+');
+      println('info','|  Luis Rodriguez -- Senior Full-Stack Engineer   |');
+      println('info','+-------------------------------------------------+');blank();
+      var rows=[
+        ['Name','Luis Rodriguez'],
+        ['Role','Senior Full-Stack Engineer & Technical Lead'],
+        ['Location','Puerto Rico, US Citizen'],
+        ['Target','Remote roles -- $130k+'],
+        ['Stack','React  .NET  Azure  TypeScript  AI APIs'],
+        ['Game Dev','Seeking AAA studio partners (Three.js / WebGPU)'],
+      ];
+      for(var i=0;i<rows.length;i++){
+        var el=document.createElement('span');el.className='term-line';
+        el.innerHTML='  <span class="term-warn">'+esc(rows[i][0])+'</span>  <span class="term-success">'+esc(rows[i][1])+'</span>';
+        tb.appendChild(el);tb.scrollTop=tb.scrollHeight;
+      }
+      blank();
+      println('success','  Shipped 4 production systems as sole engineer in 6 months.');
+      println('success','  Schema to cloud. Frontend to hardware. Start to deploy.');
+    }
+
+    function doProjects(){
+      println('muted','total 9');blank();
+      var projects=[
+        ['leadflow/','info','AI lead-response SaaS -- live at lead-response-saas.vercel.app'],
+        ['ai-qa-agent/','info','Agentic site auditor with SSE streaming -- live'],
+        ['dep-scanner/','info','npm dependency health scanner -- live'],
+        ['devstatus/','info','Real-time developer status NOC dashboard -- live'],
+        ['berriospay/','success','25-kiosk payment platform (BCPOS) -- production'],
+        ['gofleetcare/','success','Medical transport logistics, HIPAA-aware -- production'],
+        ['cdd-hub/','success','Ops portal: 215 tests, shipped in 3.5 weeks -- production'],
+        ['salud-medica/','success','Android tablet POS with hardware drivers -- production'],
+        ['operation-ship-it/','warn','[EASTER EGG] Type `game` to play'],
+      ];
+      for(var i=0;i<projects.length;i++){
+        var p=projects[i];
+        var el=document.createElement('span');el.className='term-line';
+        el.innerHTML='  drwxr-xr-x  <span class="term-'+p[1]+' term-bold">'+esc(p[0])+'</span>  <span class="term-muted"># '+esc(p[2])+'</span>';
+        tb.appendChild(el);tb.scrollTop=tb.scrollHeight;
+      }
+    }
+
+    function doSkills(){
+      println('info','# Luis\'s Tech Stack');blank();
+      var cats=[
+        ['Frontend','React 19  TypeScript  Angular  Vite  TanStack  Zustand  Tailwind'],
+        ['Backend','.NET 10  C#  ASP.NET Core  Entity Framework  REST APIs  Node.js'],
+        ['Database','SQL Server  PostgreSQL  Azure SQL  Prisma  EF Core migrations'],
+        ['Cloud/DevOps','Azure  Vercel  Netlify  GitHub Actions  GitLab CI  Bicep'],
+        ['Testing','Vitest  Playwright  Jest  Cypress  (215-test suites)'],
+        ['AI/LLM','Claude API  tool_use  SSE streaming  agentic loops  NLP regex'],
+        ['Hardware','WPF/WebView2  Ionic/Capacitor  PAX terminals  thermal printers'],
+        ['Payments','Stripe  PCI DSS  kiosk payment flows  idempotency controls'],
+        ['3D/WebGL','Three.js  Canvas 2D  WebGPU (exploring)  custom game engines'],
+      ];
+      for(var i=0;i<cats.length;i++){
+        var el=document.createElement('span');el.className='term-line';
+        el.innerHTML='  <span class="term-warn term-bold">'+esc(cats[i][0])+'</span>  <span class="term-success">'+esc(cats[i][1])+'</span>';
+        tb.appendChild(el);tb.scrollTop=tb.scrollHeight;
+      }
+    }
+
+    function doContact(){
+      println('info','-- Contact Info --');blank();
+      println('success','  Email    luisangelrod17@gmail.com');
+      println('success','  Phone    (787) 980-5868');
+      println('success','  GitHub   github.com/luisangelrod');
+      println('success','  Site     luisrodriguezdev.netlify.app');
+      blank();
+      println('muted','  Open to senior/lead remote roles ($130k+).');
+      println('muted','  Also looking for AAA game dev studio collaborators.');
+    }
+
+    function doGithub(){
+      println('success','Opening GitHub profile...');
+      setTimeout(function(){window.open('https://github.com/luisangelrod','_blank');},400);
+    }
+
+    function doResume(){
+      println('success','Fetching resume...');
+      setTimeout(function(){window.open('assets/resume.pdf','_blank');},400);
+    }
+
+    function doClear(){tb.innerHTML='';}
+
+    function doHistory(){
+      if(!hist.length){println('muted','No commands yet.');return;}
+      for(var i=hist.length-1;i>=0;i--){
+        println('muted','  '+(hist.length-i)+'  '+hist[i]);
+      }
+    }
+
+    function doUptime(){
+      var ms=Date.now()-loadStart,s=Math.floor(ms/1000),m=Math.floor(s/60),h=Math.floor(m/60);
+      println('success','up '+h+'h '+(m%60)+'m '+(s%60)+'s,  load average: 0.00 0.00 0.00');
+      println('muted','(You\'ve been on this portfolio for '+s+' seconds. That\'s a good sign.)');
+    }
+
+    function doPing(cmd){
+      var parts=cmd.split(' '),host=parts[1]||'luisrodriguezdev.netlify.app';
+      println('success','PING '+host+' (104.21.42.99): 56 data bytes');
+      var ts=[12,14,11,13],i=0;
+      function next(){
+        if(i>=ts.length){blank();println('muted','--- '+host+' ping statistics ---');println('success','4 packets transmitted, 4 received, 0.0% packet loss');println('success','round-trip min/avg/max = 11/12.5/14 ms');return;}
+        println('success','64 bytes from 104.21.42.99: icmp_seq='+i+' ttl=56 time='+ts[i]+' ms');i++;setTimeout(next,280);
+      }
+      setTimeout(next,200);
+    }
+
+    function doGame(){
+      println('success','Launching Operation: Ship IT...');
+      println('muted','(Exiting terminal mode)');
+      setTimeout(function(){close();if(window.startMSGame)startMSGame();},700);
+    }
+
+    function doMatrix(){
+      println('warn','Initializing neural interface...');
+      var chars='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホ01アイウエオ';
+      var lines=10,i=0;
+      function nextLine(){
+        if(i>=lines)return;
+        var line='  ';for(var j=0;j<58;j++)line+=chars[Math.floor(Math.random()*chars.length)];
+        println('success',line);i++;setTimeout(nextLine,70);
+      }
+      setTimeout(nextLine,200);
+      setTimeout(function(){blank();println('warn','Wake up, Luis. The Matrix has you...');},1000);
+      setTimeout(function(){println('muted','(Trick question. Luis built the Matrix with React 19 and Canvas 2D.)');blank();},1700);
+    }
+
+    function doSudoHire(){
+      println('warn','[sudo] password for recruiter: ');
+      setTimeout(function(){
+        println('muted','Sorry, try again.');
+        setTimeout(function(){
+          println('warn','[sudo] password for recruiter: ');
+          setTimeout(function(){
+            println('success','Access granted. Escalating privileges...');
+            setTimeout(function(){
+              println('info','  Luis Rodriguez is now available for hire.');
+              println('success','  Forwarding to: luisangelrod17@gmail.com');
+              blank();
+              println('muted','  (Or just scroll down and click the contact button. It\'s easier.)');
+              setTimeout(function(){window.location.href='mailto:luisangelrod17@gmail.com';},1800);
+            },600);
+          },1000);
+        },700);
+      },900);
+    }
+
+    function doNpm(cmd){
+      var pkg=cmd.replace(/npm\s+install\s*/i,'').trim()||'luis-rodriguez';
+      println('muted','npm warn deprecated legacy-dev@0.0.1: Use luis@2.6.0');
+      println('success','npm notice Installing '+pkg+'@latest...');
+      setTimeout(function(){
+        println('success','\nadded 1 package in 0.042s');blank();
+        println('info','  Package: '+pkg+'@2.6.0');
+        println('success','  Skills: React .NET Azure TypeScript AI');
+        println('success','  Projects: 9 | Tests: 215+ | Weekly downloads: (priceless)');
+        blank();
+      },900);
+    }
+
+    function doGitLog(){
+      var commits=[
+        ['a1b2c3d','2026-03-18','feat: add terminal mode easter egg -- press backtick'],
+        ['9f8e7d6','2026-03-11','feat: Operation: Ship IT -- 4-level arcade game w/ bosses'],
+        ['5c4b3a2','2026-03-04','feat: recruiter wizard + bilingual NLP engine (EN/ES)'],
+        ['1e0d9c8','2026-02-25','feat: ship LeadFlow AI SaaS to production'],
+        ['b7a6c5d','2026-02-17','fix: BerriosPay -- resolve duplicate txn edge case (#47)'],
+        ['e4f3g2h','2026-02-08','test: add 215-test suite to CDD-HUB'],
+        ['i1j0k9l','2026-01-28','feat: GoFleetCare v1 -- medical transport platform'],
+        ['m8n7o6p','2026-01-15','feat: AI QA Agent with agentic loop + SSE streaming'],
+        ['q5r4s3t','2025-12-20','milestone: promoted to Technical Lead at BCPOS'],
+        ['u2v1w0x','2025-09-01','chore: initial commit -- let\'s build something great'],
+      ];
+      for(var i=0;i<commits.length;i++){
+        var c=commits[i];var el=document.createElement('span');el.className='term-line';
+        el.innerHTML='<span class="term-warn">'+esc(c[0])+'</span> <span class="term-muted">('+esc(c[1])+')</span> '+esc(c[2]);
+        tb.appendChild(el);tb.scrollTop=tb.scrollHeight;
+      }
+    }
+
+    function doCatResume(){
+      println('info','# Luis Rodriguez -- Senior Full-Stack Engineer');blank();
+      println('success','## Experience');
+      println('muted','  BCPOS (Sep 2025-Present)         Senior Full-Stack Engineer & Technical Lead');
+      println('muted','  Highspring Digital (Mar-Aug 2025) Frontend Engineer (Angular/TypeScript)');
+      println('muted','  PR Dept of Health (2022-Mar 2025) Software Developer (Angular/.NET/SQL)');
+      blank();
+      println('success','## Key Stats');
+      println('muted','  4 production systems shipped solo in 6 months');
+      println('muted','  50+ POS integrations | 215 automated tests | 25+ kiosks in production');blank();
+      println('info','  Run `resume` to download the full PDF.');
+    }
+
+    function doCurl(){
+      println('muted','  % Total    % Received % Xferd  Average Speed');
+      println('muted','100  1337  100  1337    0     0   9001      0  --:--:-- --:--:--');
+      setTimeout(function(){
+        var json=[
+          '{',
+          '  "name": "Luis Rodriguez",',
+          '  "version": "2.6.0",',
+          '  "role": "Senior Full-Stack Engineer",',
+          '  "skills": {',
+          '    "frontend": ["React 19", "TypeScript", "Angular"],',
+          '    "backend": [".NET 10", "C#", "Node.js"],',
+          '    "cloud": ["Azure", "Vercel", "GitHub Actions"],',
+          '    "ai": ["Claude API", "tool_use", "agentic loops"]',
+          '  },',
+          '  "availability": "open",',
+          '  "targetSalary": "$130,000+",',
+          '  "location": "Puerto Rico (remote-ready)",',
+          '  "fun_facts": ["ships solo at team velocity", "builds arcade games in spare time"]',
+          '}',
+        ];
+        for(var i=0;i<json.length;i++)println('success',json[i]);
+      },400);
+    }
+
+    function doNeofetch(){
+      var art=[
+        '       .oPYo.          luis@portfolio',
+        '       8    8          ─────────────────────────',
+        '      o8YooP\'          OS:     LuisOS 2.6.0 (Portfolio Edition)',
+        '      8    `b.         Host:   luisrodriguezdev.netlify.app',
+        '      8     8          Shell:  bash 5.2  |  also zsh, pwsh',
+        '      8    .P          Stack:  React .NET Azure TypeScript AI',
+        '      `YooP\'           Games:  Canvas 2D engine (4 bosses, 3 lives)',
+        '      ::::..           Secret: Press backtick for this terminal',
+        '      ::::..           Status: Open to remote -- $130k+',
+      ];
+      for(var i=0;i<art.length;i++){
+        println(i<2?'success':i<5?'info':'muted',art[i]);
+      }
+    }
+
+    function doPkgJson(){
+      var lines=[
+        '{',
+        '  "name": "luis-rodriguez-portfolio",',
+        '  "version": "2.6.0",',
+        '  "author": "Luis Rodriguez <luisangelrod17@gmail.com>",',
+        '  "dependencies": {',
+        '    "react": "^19.0.0",',
+        '    "dotnet": "^10.0.0",',
+        '    "azure": "latest",',
+        '    "claude-api": "^3.7.0",',
+        '    "three-js": "^0.173.0",',
+        '    "hustle": "*"',
+        '  },',
+        '  "devDependencies": {',
+        '    "coffee": "black, no sugar",',
+        '    "sleep": "^7.0.0"',
+        '  },',
+        '  "scripts": {',
+        '    "ship": "git push && pray",',
+        '    "test": "vitest && playwright",',
+        '    "hire-luis": "mailto:luisangelrod17@gmail.com"',
+        '  }',
+        '}',
+      ];
+      for(var i=0;i<lines.length;i++)println('success',lines[i]);
+    }
+
+    function doRmRf(){
+      println('warn','rm: /: Operation not permitted');
+      println('muted','(Protected by 215 automated tests and sheer audacity.)');
+    }
+
+    // Tab autocomplete list
+    var AC=['help','whoami','about','ls','projects','skills','stack','contact','hire','github','resume','clear','exit','quit','history','uptime','ping luisrodriguezdev.netlify.app','game','matrix','neofetch','date','git log','npm install luis-rodriguez','sudo hire-luis','cat resume.md','cat skills.md','cat about.md','cat package.json','curl -s luis.dev/api/v1/skills | jq','pwd','hostname'];
+
+    inp.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){var v=inp.value;inp.value='';execute(v);return;}
+      if(e.key==='Escape'){close();return;}
+      if(e.key==='ArrowUp'){e.preventDefault();
+        if(histIdx===-1)tempInput=inp.value;
+        if(histIdx<hist.length-1){histIdx++;inp.value=hist[histIdx];inp.setSelectionRange(inp.value.length,inp.value.length);}return;}
+      if(e.key==='ArrowDown'){e.preventDefault();
+        if(histIdx>0){histIdx--;inp.value=hist[histIdx];}
+        else if(histIdx===0){histIdx=-1;inp.value=tempInput;}return;}
+      if(e.key==='Tab'){e.preventDefault();
+        var v=inp.value.toLowerCase();
+        var matches=AC.filter(function(c){return c.startsWith(v);});
+        if(matches.length===1){inp.value=matches[0];}
+        else if(matches.length>1){blank();println('muted',matches.join('   '));blank();}return;}
+      if(e.key==='l'&&e.ctrlKey){e.preventDefault();doClear();return;}
+      if(e.key==='c'&&e.ctrlKey){blank();inp.value='';return;}
+    });
+
+    // Global shortcut: backtick opens/closes terminal
+    document.addEventListener('keydown',function(e){
+      if(e.target===inp||e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+      if(ov.classList.contains('term-open')){if(e.key==='Escape')close();return;}
+      if(e.key==='`'||e.key==='Backquote'){e.preventDefault();open();}
+    });
+
+    // Show hint after 8 seconds
+    setTimeout(function(){var h=document.getElementById('term-hint');if(h)h.classList.add('term-hint-show');},8000);
+    // Fade hint out after 16 seconds
+    setTimeout(function(){var h=document.getElementById('term-hint');if(h){h.style.opacity='0';setTimeout(function(){if(h)h.style.display='none';},700);}},16000);
+
+    window.termOpen=open;
+  })();
+  </script>
+  <!-- ========== TERMINAL MODE — END ========== -->
 </body>
 </html>
