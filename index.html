@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
   <title>Luis Rodr&iacute;guez | Senior Full-Stack Engineer</title>
   <meta name="description" content="Senior full-stack engineer shipping production systems across React, .NET, SQL Server, and Azure. Based in Puerto Rico.">
   <meta name="theme-color" content="#0d1726">
@@ -73,17 +73,18 @@
     .gbc-pad{font-size:10px;color:rgba(255,255,255,.2);line-height:1}
     .gbc-ab{display:flex;gap:3px;transform:rotate(-25deg)}.gbc-ab i{display:block;width:7px;height:7px;background:rgba(255,255,255,.12);border-radius:50%}
     @media(max-width:640px){.gbc-widget{bottom:16px;left:16px}.gbc-body{width:56px;height:88px}.gbc-screen{width:44px;height:38px}}
-    #ms-game{display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center;flex-direction:column}
-    #ms-canvas{image-rendering:pixelated;image-rendering:crisp-edges}
+    #ms-game{display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:center;justify-content:center;flex-direction:column;touch-action:none;overflow:hidden}
+    #ms-canvas{image-rendering:pixelated;image-rendering:crisp-edges;width:100vw;height:100vh;touch-action:none}
     #ms-exit{position:absolute;top:12px;right:12px;padding:8px 14px;background:linear-gradient(180deg,#e84040,#c02020);color:#fff;border:3px solid #801010;border-radius:0;font-family:'Press Start 2P',monospace;font-size:8px;cursor:pointer;z-index:1;box-shadow:3px 3px 0 rgba(0,0,0,.4)}
     #ms-exit:active{transform:translate(1px,1px);box-shadow:1px 1px 0 rgba(0,0,0,.4)}
     .ms-dpad{position:absolute;bottom:24px;left:24px;display:grid;grid-template:auto auto auto/auto auto auto;gap:4px;z-index:1}
-    .ms-dpad button{width:48px;height:48px;background:rgba(0,0,0,.5);color:#fff;border:2px solid rgba(255,255,255,.2);border-radius:0;font-size:18px;cursor:pointer;touch-action:manipulation;-webkit-touch-callout:none;user-select:none}
+    .ms-dpad button{width:48px;height:48px;background:rgba(0,0,0,.5);color:#fff;border:2px solid rgba(255,255,255,.2);border-radius:0;font-size:18px;cursor:pointer;touch-action:none;-webkit-touch-callout:none;user-select:none}
     .ms-dpad button:active{background:rgba(59,130,246,.6)}
     .ms-up{grid-area:1/2}.ms-left{grid-area:2/1}.ms-right{grid-area:2/3}.ms-down{grid-area:3/2}
-    .ms-btn-a,.ms-btn-b{position:absolute;bottom:40px;width:52px;height:52px;border-radius:50%;color:#fff;border:3px solid rgba(255,255,255,.3);font-family:'Press Start 2P',monospace;font-size:14px;cursor:pointer;touch-action:manipulation;-webkit-touch-callout:none;user-select:none;z-index:1}
+    .ms-btn-a,.ms-btn-b{position:absolute;bottom:40px;width:52px;height:52px;border-radius:50%;color:#fff;border:3px solid rgba(255,255,255,.3);font-family:'Press Start 2P',monospace;font-size:14px;cursor:pointer;touch-action:none;-webkit-touch-callout:none;user-select:none;z-index:1}
     .ms-btn-a{right:24px;background:rgba(224,49,49,.6)}.ms-btn-a:active{background:rgba(224,49,49,.9)}
     .ms-btn-b{right:88px;background:rgba(59,130,246,.6)}.ms-btn-b:active{background:rgba(59,130,246,.9)}
+    @media(max-width:768px){.ms-dpad{bottom:20px;left:16px;gap:2px}.ms-dpad button{width:72px;height:72px;font-size:24px}.ms-btn-a,.ms-btn-b{width:72px;height:72px;font-size:16px;bottom:32px}.ms-btn-a{right:16px}.ms-btn-b{right:100px}}
     #ms-scoreboard{display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);border:2px solid #ffd700;padding:20px 30px;z-index:2;font-family:'Press Start 2P',monospace;color:#fff;text-align:center;min-width:280px}
     #ms-scoreboard h3{color:#ffd700;font-size:10px;margin:0 0 12px}
     #ms-scoreboard .sb-row{display:flex;justify-content:space-between;padding:4px 0;font-size:7px;color:#ccc;border-bottom:1px solid rgba(255,255,255,.1)}
@@ -1154,23 +1155,25 @@ function drawMenu(c){
 
 function drawCreator(c){
   c.fillStyle='#0a0f2e';c.fillRect(0,0,cv.width,cv.height);
-  c.fillStyle='#ffd700';c.font='12px "Press Start 2P",monospace';c.textAlign='center';
+  var narrow=cv.width<500,titleFs=narrow?9:12;
+  c.fillStyle='#ffd700';c.font=titleFs+'px "Press Start 2P",monospace';c.textAlign='center';
   c.fillText('CREATE YOUR CHARACTER',cv.width/2,40);
-  var lx=cv.width/2-200,rx=cv.width/2+80;
+  var lx,rx,swSz=narrow?18:22,swGap=narrow?24:30,lblFs=narrow?7:8;
+  if(narrow){lx=12;rx=cv.width-90;}else{lx=cv.width/2-200;rx=cv.width/2+80;}
   // Preview
-  drawCharPreview(c,rx+40,100);
+  drawCharPreview(c,narrow?rx:rx+40,narrow?60:100,narrow?2.5:4);
   // Name
-  c.fillStyle='#fff';c.font='8px "Press Start 2P",monospace';c.textAlign='left';c.fillText('NAME:',lx,90);
-  c.fillStyle='#1e3a5f';c.fillRect(lx+60,76,150,22);c.strokeStyle='#3b82f6';c.strokeRect(lx+60,76,150,22);
+  c.fillStyle='#fff';c.font=lblFs+'px "Press Start 2P",monospace';c.textAlign='left';c.fillText('NAME:',lx,90);
+  var nameW=narrow?110:150;c.fillStyle='#1e3a5f';c.fillRect(lx+60,76,nameW,22);c.strokeStyle='#3b82f6';c.strokeRect(lx+60,76,nameW,22);
   c.fillStyle='#fff';c.fillText(creatorName+(frame%40<20?'_':''),lx+66,92);
   var cats=[{l:'HAIR:',cols:HAIRS,k:'hair',y:130},{l:'SHIRT:',cols:SHIRTS,k:'shirt',y:175},
     {l:'PANTS:',cols:PANTS,k:'pants',y:220},{l:'SKIN:',cols:SKINS,k:'skin',y:265}];
   creatorSwatches=[];
   for(var ci=0;ci<cats.length;ci++){
-    var cat=cats[ci];c.fillStyle='#fff';c.font='8px "Press Start 2P",monospace';c.textAlign='left';c.fillText(cat.l,lx,cat.y);
+    var cat=cats[ci];c.fillStyle='#fff';c.font=lblFs+'px "Press Start 2P",monospace';c.textAlign='left';c.fillText(cat.l,lx,cat.y);
     for(var si=0;si<cat.cols.length;si++){
-      var sx=lx+60+si*30,sy=cat.y-12;c.fillStyle=cat.cols[si];c.fillRect(sx,sy,22,22);
-      if(charCfg[cat.k]===cat.cols[si]){c.strokeStyle='#ffd700';c.lineWidth=2;c.strokeRect(sx-2,sy-2,26,26);c.lineWidth=1;}
+      var sx=lx+60+si*swGap,sy=cat.y-12;c.fillStyle=cat.cols[si];c.fillRect(sx,sy,swSz,swSz);
+      if(charCfg[cat.k]===cat.cols[si]){c.strokeStyle='#ffd700';c.lineWidth=2;c.strokeRect(sx-2,sy-2,swSz+4,swSz+4);c.lineWidth=1;}
     }
     creatorSwatches[ci]={k:cat.k,cols:cat.cols,y:cat.y-12,x:lx+60};
   }
@@ -1181,8 +1184,8 @@ function drawCreator(c){
   creatorPlayBtn={x:pX,y:pY,w:120,h:40};
 }
 
-function drawCharPreview(c,x,y){
-  var s=4;
+function drawCharPreview(c,x,y,s){
+  s=s||4;
   c.fillStyle='rgba(0,0,0,.2)';c.fillRect(x+2*s,y+32*s,16*s,3*s);
   c.fillStyle=charCfg.pants;c.fillRect(x+2*s,y+24*s,7*s,8*s);c.fillRect(x+11*s,y+24*s,7*s,8*s);
   c.fillStyle=charCfg.shirt;c.fillRect(x+2*s,y+12*s,16*s,14*s);
@@ -1276,8 +1279,9 @@ function onClick(e){
   if(gameState==='menu'){for(var i=0;i<menuBtns.length;i++){var b=menuBtns[i];if(mx>=b.x&&mx<=b.x+b.w&&my>=b.y&&my<=b.y+b.h){
     if(b.a==='new')gameState='creator';else if(b.a==='cont')contGame();else if(b.a==='sb')gameState='scoreboard';}}}
   if(gameState==='creator'){
+    var _narrow=cv.width<500,_swSz=_narrow?18:22,_swGap=_narrow?24:30;
     if(creatorSwatches)for(var ci=0;ci<creatorSwatches.length;ci++){var cat=creatorSwatches[ci];
-      for(var si=0;si<cat.cols.length;si++){var sx=cat.x+si*30,sy=cat.y;if(mx>=sx&&mx<=sx+22&&my>=sy&&my<=sy+22)charCfg[cat.k]=cat.cols[si];}}
+      for(var si=0;si<cat.cols.length;si++){var sx=cat.x+si*_swGap,sy=cat.y;if(mx>=sx&&mx<=sx+_swSz&&my>=sy&&my<=sy+_swSz)charCfg[cat.k]=cat.cols[si];}}
     if(creatorPlayBtn){var pb=creatorPlayBtn;if(mx>=pb.x&&mx<=pb.x+pb.w&&my>=pb.y&&my<=pb.y+pb.h){if(!creatorName)creatorName='Luis';charCfg.name=creatorName;startNew();}}
   }
 }
@@ -1291,7 +1295,10 @@ function onMouseMove(e){
 // ===== PUBLIC API =====
 window.startShipIT=function(){
   cv=document.getElementById('ms-canvas');ctx=cv.getContext('2d');
-  cv.width=Math.min(window.innerWidth,1280);cv.height=Math.min(window.innerHeight,720);
+  function resizeGameCanvas(){cv.width=window.innerWidth;cv.height=window.innerHeight;}
+  resizeGameCanvas();
+  window._shipItResize=function(){if(on)resizeGameCanvas();};
+  window.addEventListener('resize',window._shipItResize);
   gameState='menu';stT=0;menuHover=-1;menuBtns=[];creatorName='Luis';charCfg.name='Luis';
   initMenuAnim();
   document.getElementById('ms-game').style.display='flex';
@@ -1301,11 +1308,15 @@ window.startShipIT=function(){
   var gb=document.getElementById('gbc-widget');if(gb)gb.style.display='none';
   on=true;document.addEventListener('keydown',onKeyDown);document.addEventListener('keyup',onKeyUp);
   cv.addEventListener('click',onClick);cv.addEventListener('mousemove',onMouseMove);
+  cv.addEventListener('touchstart',function(e){e.preventDefault();},{ passive:false });
+  cv.addEventListener('touchmove',function(e){e.preventDefault();},{ passive:false });
+  cv.addEventListener('touchend',function(e){e.preventDefault();if(e.changedTouches.length){var t=e.changedTouches[0];onClick({clientX:t.clientX,clientY:t.clientY});}},{ passive:false });
   loop();
 };
 
 window.stopShipIT=function(){
   on=false;if(af)cancelAnimationFrame(af);
+  if(window._shipItResize)window.removeEventListener('resize',window._shipItResize);
   document.getElementById('ms-game').style.display='none';
   document.querySelector('.page').style.display='';
   var tt=document.querySelector('.theme-toggle');if(tt)tt.style.display='';
