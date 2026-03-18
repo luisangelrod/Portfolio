@@ -149,40 +149,81 @@
     @media(max-width:640px){.rw-trigger{bottom:16px;right:16px}.rw-trigger-btn{width:52px;height:52px}.rw-trigger-btn svg{width:30px;height:30px}.rw-bubble{font-size:.8rem;padding:8px 12px;bottom:60px}.rw-modal{padding:20px;border-radius:16px}.rw-robot{width:64px;height:64px}.rw-cat{grid-template-columns:90px 1fr auto;font-size:.78rem}.rw-row{grid-template-columns:1fr;gap:6px}}
   </style>
   <!-- ========== RECRUITER WIZARD STYLES — END ========== -->
-  <!-- ========== ORBITAL SOLAR SYSTEM DEPS ========== -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- ========== BRITTANY CHIANG PROJECTS STYLES ========== -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    #solar-system{position:relative;width:100%;aspect-ratio:16/10;min-height:420px;max-height:75vh;border-radius:12px;overflow:hidden;border:1px solid var(--line);cursor:grab;background:#020408}
-    #solar-system:active{cursor:grabbing}
-    #solar-system canvas{display:block}
-    #planet-label{position:absolute;pointer-events:none;padding:8px 14px;background:rgba(10,15,26,.88);border:1px solid rgba(59,130,246,.3);border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:600;color:#e5e7eb;white-space:nowrap;opacity:0;transition:opacity .2s;z-index:10;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-    #planet-label .pl-tech{font-size:.7rem;color:var(--accent-light,#93c5fd);margin-top:3px;font-weight:500}
-    #solar-hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.05em;text-align:center;pointer-events:none;z-index:10;transition:opacity 1s}
-    #project-overlay{position:fixed;inset:0;z-index:9800;background:rgba(2,4,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;padding:24px}
-    #po-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:32px;position:relative}
-    #po-card h2{margin:0 0 6px;font-size:1.5rem;font-weight:900;color:var(--heading);font-family:'Space Grotesk',sans-serif}
-    .po-desc{color:var(--accent-light,#93c5fd);font-size:.88rem;font-weight:600;margin:0 0 16px}
-    .po-img{width:100%;border-radius:8px;border:1px solid var(--line);margin-bottom:16px}
-    .po-details{color:var(--muted);line-height:1.65;margin:0 0 16px}
-    .po-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-    .po-tech span{padding:5px 12px;border-radius:999px;font-size:.74rem;font-weight:700;background:var(--chip);border:1px solid var(--line);color:var(--accent-light,#93c5fd)}
-    .po-actions{display:flex;gap:10px;flex-wrap:wrap}
-    .po-actions .chip,.po-actions .cta{cursor:pointer}
-    #po-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,.08);color:var(--muted);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
-    #po-close:hover{background:rgba(255,255,255,.15)}
-    .solar-clock{position:absolute;bottom:12px;right:12px;font:.7rem 'Space Grotesk',sans-serif;color:rgba(255,255,255,.25);z-index:10;letter-spacing:.05em}
-    @media(max-width:640px){#solar-system{min-height:300px;aspect-ratio:4/3}#po-card{padding:20px;border-radius:12px}}
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    .bc-projects{background:#0a0a0f;padding:80px 0;position:relative;overflow:hidden;border-radius:0}
+    .bc-projects *{box-sizing:border-box}
+    .bc-container{max-width:1120px;margin:0 auto;padding:0 24px}
+    .bc-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;padding-bottom:16px;border-bottom:1px solid rgba(100,255,218,.15)}
+    .bc-header h2{margin:0;font-family:'Inter',sans-serif;font-size:clamp(1.6rem,3vw,2rem);font-weight:900;color:#ccd6f6;letter-spacing:-.03em}
+    .bc-header h2 span{color:#64ffda;margin-right:10px;font-family:'Fira Code',monospace;font-size:.85em;font-weight:400}
+    .bc-view-all{color:#64ffda;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-decoration:none;transition:color .2s}
+    .bc-view-all:hover{color:#9efce5}
+    .bc-layout{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start}
+    .bc-sidebar{position:sticky;top:100px}
+    .bc-filters{display:flex;flex-direction:column;gap:4px}
+    .bc-filter-btn{background:none;border:none;padding:10px 16px;text-align:left;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;color:#8892b0;cursor:pointer;border-radius:6px;transition:all .2s;display:flex;align-items:center;justify-content:space-between}
+    .bc-filter-btn:hover{color:#ccd6f6;background:rgba(100,255,218,.05)}
+    .bc-filter-btn.bc-active{color:#64ffda;background:rgba(100,255,218,.1)}
+    .bc-filter-count{font-family:'Fira Code',monospace;font-size:.72rem;padding:2px 8px;border-radius:999px;background:rgba(100,255,218,.08);color:#64ffda;min-width:24px;text-align:center}
+    .bc-filter-btn:not(.bc-active) .bc-filter-count{background:rgba(136,146,176,.1);color:#8892b0}
+    .bc-cards{display:grid;gap:24px}
+    .bc-card{background:rgba(17,34,64,.4);border:1px solid rgba(100,255,218,.1);border-radius:8px;padding:24px 28px;transition:all .2s ease;cursor:pointer;position:relative;opacity:0;transform:translateY(20px)}
+    .bc-card.bc-visible{opacity:1;transform:translateY(0)}
+    .bc-card:hover{background:rgba(17,34,64,.7);border-color:rgba(100,255,218,.3);transform:translateY(-2px)}
+    .bc-card.bc-visible:hover{transform:translateY(-2px)}
+    .bc-card-year{font-family:'Fira Code',monospace;font-size:.75rem;color:#64ffda;margin-bottom:8px;letter-spacing:.02em}
+    .bc-card-title{font-family:'Inter',sans-serif;font-size:1.2rem;font-weight:700;color:#ccd6f6;margin:0 0 4px;transition:color .2s}
+    .bc-card:hover .bc-card-title{color:#64ffda}
+    .bc-card-context{font-size:.78rem;color:#8892b0;margin:0 0 12px;font-weight:500}
+    .bc-card-desc{font-size:.9rem;color:#8892b0;margin:0 0 16px;line-height:1.6}
+    .bc-card-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .bc-pill{font-family:'Fira Code',monospace;font-size:.7rem;padding:4px 12px;border-radius:999px;border:1px solid rgba(100,255,218,.25);color:#64ffda;background:transparent;white-space:nowrap}
+    .bc-card-links{display:flex;gap:12px;opacity:0;transition:opacity .2s}
+    .bc-card:hover .bc-card-links{opacity:1}
+    .bc-card-link{color:#8892b0;transition:color .2s;display:flex;align-items:center}
+    .bc-card-link:hover{color:#64ffda}
+    .bc-card-link svg{width:18px;height:18px}
+
+    /* Slide panel */
+    .bc-panel-overlay{position:fixed;inset:0;z-index:9800;background:rgba(10,10,15,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+    .bc-panel-overlay.bc-panel-open{opacity:1;pointer-events:auto}
+    .bc-panel{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:90vw;z-index:9801;background:#0a0a0f;border-left:1px solid rgba(100,255,218,.15);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:32px 28px}
+    .bc-panel-open .bc-panel,.bc-panel.bc-panel-active{transform:translateX(0)}
+    .bc-panel-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(100,255,218,.2);background:transparent;color:#8892b0;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .bc-panel-close:hover{color:#64ffda;border-color:#64ffda}
+    .bc-panel-year{font-family:'Fira Code',monospace;font-size:.78rem;color:#64ffda;margin-bottom:8px}
+    .bc-panel h2{font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:800;color:#ccd6f6;margin:0 0 6px}
+    .bc-panel-context{font-size:.82rem;color:#8892b0;margin:0 0 20px;font-weight:500}
+    .bc-panel-img{width:100%;border-radius:8px;border:1px solid rgba(100,255,218,.15);margin-bottom:20px}
+    .bc-panel-desc{color:#8892b0;line-height:1.7;font-size:.92rem;margin:0 0 20px}
+    .bc-panel-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+    .bc-panel-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .bc-panel-btn{padding:10px 22px;border-radius:6px;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+    .bc-panel-btn-primary{background:transparent;border:1px solid #64ffda;color:#64ffda}
+    .bc-panel-btn-primary:hover{background:rgba(100,255,218,.1)}
+    .bc-panel-btn-ghost{background:transparent;border:1px solid rgba(136,146,176,.3);color:#8892b0}
+    .bc-panel-btn-ghost:hover{border-color:#8892b0;color:#ccd6f6}
+
+    /* Filter transition */
+    .bc-card.bc-hiding{opacity:0;transform:translateY(10px);pointer-events:none;position:absolute;visibility:hidden}
+
+    @media(max-width:860px){
+      .bc-layout{grid-template-columns:1fr;gap:24px}
+      .bc-sidebar{position:static}
+      .bc-filters{flex-direction:row;flex-wrap:wrap;gap:6px}
+      .bc-filter-btn{padding:8px 14px;font-size:.82rem}
+      .bc-card-links{opacity:1}
     }
-  }
-  </script>
-  <!-- ========== ORBITAL SOLAR SYSTEM DEPS END ========== -->
+    @media(max-width:640px){
+      .bc-projects{padding:48px 0}
+      .bc-container{padding:0 16px}
+      .bc-card{padding:20px}
+      .bc-panel{width:100%;max-width:100%}
+    }
+  </style>
+  <!-- ========== BRITTANY CHIANG PROJECTS STYLES END ========== -->
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
@@ -268,13 +309,41 @@
             </article>
           </div>
         </section>
-                <section class="section" id="projects">
-          <div class="bar">Selected Projects</div>
-          <div id="solar-system">
-            <div id="planet-label"><span id="pl-name"></span><div class="pl-tech" id="pl-tech"></div></div>
-            <div id="solar-hint">Drag to orbit &middot; Click a planet to explore &middot; Scroll to zoom</div>
-          </div>
-        </section>
+      </div>
+    </main>
+  </div>
+  <!-- ========== BRITTANY CHIANG PROJECTS SECTION ========== -->
+  <section class="bc-projects" id="projects">
+    <div class="bc-container">
+      <div class="bc-header">
+        <h2><span>03.</span> Selected Work</h2>
+      </div>
+      <div class="bc-layout">
+        <aside class="bc-sidebar">
+          <nav class="bc-filters" role="tablist" aria-label="Project filters">
+            <button class="bc-filter-btn bc-active" data-filter="all" role="tab" aria-selected="true">All <span class="bc-filter-count">8</span></button>
+            <button class="bc-filter-btn" data-filter="professional" role="tab" aria-selected="false">Professional <span class="bc-filter-count">3</span></button>
+            <button class="bc-filter-btn" data-filter="opensource" role="tab" aria-selected="false">Open Source <span class="bc-filter-count">3</span></button>
+            <button class="bc-filter-btn" data-filter="games" role="tab" aria-selected="false">Games <span class="bc-filter-count">2</span></button>
+          </nav>
+        </aside>
+        <div class="bc-cards" id="bc-cards">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ========== BRITTANY CHIANG PROJECTS END ========== -->
+  <!-- ========== SLIDE PANEL ========== -->
+  <div class="bc-panel-overlay" id="bc-panel-overlay">
+    <div class="bc-panel" id="bc-panel">
+      <button class="bc-panel-close" id="bc-panel-close" aria-label="Close panel">&times;</button>
+      <div id="bc-panel-content"></div>
+    </div>
+  </div>
+  <!-- ========== SLIDE PANEL END ========== -->
+  <div class="page" style="margin-top:0">
+    <main class="sheet" style="border-top:none;border-top-left-radius:0;border-top-right-radius:0">
+      <div class="content" style="padding-top:0">
         <section class="section" id="skills">
           <div class="bar">Core Skills</div>
           <div class="skills">
@@ -296,18 +365,7 @@
       </div>
     </main>
   </div>
-  <!-- ========== PROJECT OVERLAY ========== -->
-  <div id="project-overlay" onclick="if(event.target===this)window.closeProjectOverlay()">
-    <div id="po-card">
-      <button id="po-close" onclick="window.closeProjectOverlay()">&times;</button>
-      <div id="po-img-wrap"></div>
-      <h2 id="po-title"></h2>
-      <p class="po-desc" id="po-desc"></p>
-      <p class="po-details" id="po-details"></p>
-      <div class="po-tech" id="po-tech-tags"></div>
-      <div class="po-actions" id="po-actions"></div>
-    </div>
-  </div>
+  <!-- old project overlay removed — replaced by .bc-panel -->
   <!-- ========== GAME HTML — START ========== -->
   <div id="ms-game">
     <canvas id="ms-canvas"></canvas>
@@ -1257,537 +1315,211 @@ document.addEventListener('DOMContentLoaded',function(){
 
   </script>
   <!-- ========== GAME ENGINE — END ========== -->
-  <!-- ========== ORBITAL SOLAR SYSTEM SCRIPT ========== -->
-  <script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
-import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
+  <!-- ========== BRITTANY CHIANG PROJECTS SCRIPT ========== -->
+  <script>
+  (function(){
+    var PROJECTS = [
+      {
+        id:'berriospay',cat:'professional',year:'2026',title:'BerriosPay',
+        context:'Business Computer POS',
+        desc:'Enterprise payment kiosk system for a 45+ year old Puerto Rican retailer. Handles self-service payments across 25+ locations with PCI DSS compliance, PAX terminal integration, and zero duplicate transactions.',
+        descShort:'Enterprise payment kiosk system for 45+ year old Puerto Rican retailer. Self-service payments across 25+ locations with PCI DSS compliance.',
+        tech:['React 19','.NET 10','WPF','Azure SQL','PAX A920','Epson TM-M30II'],
+        github:'https://github.com/luisangelrod',
+        img:'img/projects/portfolio-bot-results.png'
+      },
+      {
+        id:'gofleetcare',cat:'professional',year:'2025',title:'GoFleetCare',
+        context:'Business Computer POS',
+        desc:'Real-time medical transport logistics portal with offline-first sync, live GPS tracking, and HIPAA-adjacent security. Dispatchers manage 200+ daily trips across Puerto Rico.',
+        descShort:'Real-time medical transport logistics portal with offline-first sync. Dispatchers manage 200+ daily trips across Puerto Rico.',
+        tech:['Ionic','Capacitor','.NET','Firebase','Angular'],
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'saludmedica',cat:'professional',year:'2025',title:'saludMedica',
+        context:'Business Computer POS',
+        desc:'Pharmacy distribution POS with barcode scanning and native Android deployment. Handles inventory, invoicing, and distribution tracking for pharmaceutical supply chain.',
+        descShort:'Pharmacy distribution POS with barcode scanning and native Android deployment for pharmaceutical supply chain.',
+        tech:['Angular 18','Ionic 8','.NET 8','Capacitor'],
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'shaderforge',cat:'opensource',year:'2025',title:'ShaderForge Studio',
+        context:'Personal',
+        desc:'Browser-based visual shader editor with drag-and-drop node graph, Monaco code editor, and real-time 3D preview. Export shaders as GLSL/WGSL. WebGPU-first rendering pipeline.',
+        descShort:'Browser-based visual shader editor with node graph, Monaco code editor, and real-time 3D preview.',
+        tech:['React','NestJS','WebGPU','Three.js','React Three Fiber'],
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'leadflow',cat:'opensource',year:'2025',title:'LeadFlow',
+        context:'Personal',
+        desc:'AI-powered lead conversion SaaS for medical spas. Claude API automation handles inbound SMS, qualifies leads, books appointments. Stripe billing, Twilio messaging, real-time dashboard.',
+        descShort:'AI-powered lead conversion SaaS for medical spas with Claude API automation.',
+        tech:['Next.js 16','Stripe','Twilio','Claude API','Clerk','Neon PostgreSQL'],
+        github:'https://github.com/luisangelrod',
+        img:'img/projects/lead-response-landing.png'
+      },
+      {
+        id:'devstatus',cat:'opensource',year:'2026',title:'DevStatus / NEXUS',
+        context:'Personal',
+        desc:'Real-time mission control dashboard monitoring 15 developer services with interactive world map, latency graphs, and incident timeline. Aggregates status from GitHub, Vercel, Netlify, and more.',
+        descShort:'Real-time mission control dashboard monitoring 15 developer services with world map.',
+        tech:['Next.js 15','TypeScript','Statuspage.io APIs'],
+        github:'https://github.com/luisangelrod',
+        img:'img/projects/devstatus.png'
+      },
+      {
+        id:'echo',cat:'games',year:'2026',title:'ECHO',
+        context:'Personal',
+        desc:'Atmospheric first-person thriller set in an abandoned deep-sea research station. Features SSAO, PBR materials, volumetric lighting, procedural audio, and a narrative-driven exploration loop.',
+        descShort:'Atmospheric first-person thriller in an abandoned deep-sea research station.',
+        tech:['Three.js','WebGPU','SSAO','PBR','Web Audio API'],
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'shipit',cat:'games',year:'2026',title:'Operation: Ship IT',
+        context:'Personal',
+        desc:'Mario-style 2D platformer with character creator, checkpoint system, scoring, and mobile touch controls. 4 themed levels with progressive difficulty and retro pixel art.',
+        descShort:'Mario-style 2D platformer with character creator, checkpoints, and scoreboard.',
+        tech:['Canvas 2D','Vanilla JS'],
+        github:'https://github.com/luisangelrod'
+      }
+    ];
 
-/* ===== CONSTANTS ===== */
-const ORBIT_R = [13, 23, 36];
-const ORBIT_T = [20, 35, 55];
-const PR = 1.1;
-const STAR_N = 8000;
-const AST_N = 200;
+    var githubSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>';
+    var externalSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
 
-/* ===== PROJECTS ===== */
-const PROJECTS = [
-  {n:'BerriosPay',r:0,a:0,c:0x1a2a5f,e:0x0a1a4a,rg:.3,mt:.4,sr:1,
-   l:'Enterprise Payment Kiosks',d:'Enterprise payment kiosk platform for bilingual self-service collection across 25+ retail locations. PCI DSS, PAX terminals, zero duplicate transactions.',
-   t:['React 19','.NET 10','WPF','Azure SQL','PAX A920'],img:null,url:null},
-  {n:'GoFleetCare',r:0,a:2.09,c:0x1a5a30,e:0x0a4a1a,rg:.6,mt:.2,sr:0,
-   l:'Medical Transport Logistics',d:'Medical transport logistics with 13-state trip workflow, geofencing, offline sync, and HIPAA-adjacent compliance.',
-   t:['React','Firebase','WebSocket','Geofencing','.NET'],img:null,url:null},
-  {n:'DevStatus',r:0,a:4.19,c:0x0a3a5a,e:0x00aaff,rg:.2,mt:.6,sr:0,
-   l:'Mission Control Dashboard',d:'Real-time status dashboard tracking 15 developer services. Monitors OpenAI, GitHub, Vercel with 60s refresh.',
-   t:['Next.js 15','TypeScript','ISR','Statuspage.io','RSS'],img:'img/projects/devstatus.png',url:'https://devstatus-lilac.vercel.app/'},
-  {n:'ShaderForge',r:1,a:0.5,c:0x4a2a6a,e:0x9944ff,rg:.1,mt:.8,sr:0,
-   l:'Visual Shader Editor',d:'Browser-based visual shader editor for creating and exporting custom shaders through a node-based interface.',
-   t:['React','NestJS','WebGPU','Three.js'],img:null,url:null},
-  {n:'LeadFlow',r:1,a:2.6,c:0x5a3a0a,e:0xffaa00,rg:.4,mt:.3,sr:0,
-   l:'AI Lead Conversion SaaS',d:'AI-powered lead response for med spas. Claude-powered SMS in under 60s. Live with paying subscribers.',
-   t:['Next.js 16','Claude API','Stripe','Twilio','PostgreSQL'],img:'img/projects/lead-response-landing.png',url:'https://lead-response-saas.vercel.app/'},
-  {n:'saludMedica',r:1,a:4.7,c:0xbbbbcc,e:0xeeeeff,rg:.5,mt:.1,sr:0,
-   l:'Pharmacy POS System',d:'Tablet POS for cash checkout, membership, and receipt printing with Star Micronics hardware integration.',
-   t:['Angular 18','Ionic','.NET 8','Android','Star Micronics'],img:null,url:null},
-  {n:'ECHO',r:2,a:1.0,c:0x2a0a3a,e:0x7700bb,rg:.7,mt:.3,sr:0,
-   l:'Atmospheric Thriller Game',d:'An atmospheric thriller built with Three.js featuring SSAO, PBR materials, and immersive audio design.',
-   t:['Three.js','WebGPU','SSAO','PBR'],img:null,url:null},
-  {n:'Ship IT',r:2,a:3.1,c:0x5a3a1a,e:0xff6600,rg:.5,mt:.2,sr:0,
-   l:'Mario-Style Platformer',d:'Full platformer with 3 levels, character creator, checkpoints, double jump, enemy AI, and scoreboard.',
-   t:['Canvas 2D','Vanilla JS','Game Engine'],img:null,url:null},
-  {n:'Portfolio',r:2,a:5.2,c:0x2a3a4a,e:0x3388cc,rg:.05,mt:.9,sr:0,
-   l:'This Portfolio',d:'The orbital solar system you are exploring right now. Three.js, bloom, terminal mode, recruiter bot, hidden game.',
-   t:['Three.js','WebGL','CSS3','GSAP'],img:null,url:null},
-];
+    var cardsEl = document.getElementById('bc-cards');
+    if (!cardsEl) return;
 
-/* ===== INIT ===== */
-const ctr = document.getElementById('solar-system');
-if (!ctr) throw new Error('No #solar-system');
-const W = () => ctr.clientWidth, H = () => ctr.clientHeight;
+    PROJECTS.forEach(function(p) {
+      var card = document.createElement('div');
+      card.className = 'bc-card';
+      card.setAttribute('data-cat', p.cat);
+      card.setAttribute('data-id', p.id);
 
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x020408);
+      var techHTML = '';
+      p.tech.forEach(function(t) { techHTML += '<span class="bc-pill">' + t + '</span>'; });
 
-const cam = new THREE.PerspectiveCamera(55, W()/H(), 0.1, 800);
-cam.position.set(0, 28, 45);
+      var linksHTML = '<a class="bc-card-link" href="' + p.github + '" target="_blank" rel="noopener noreferrer" title="GitHub" onclick="event.stopPropagation()">' + githubSVG + '</a>';
+      if (p.live) {
+        linksHTML += '<a class="bc-card-link" href="' + p.live + '" target="_blank" rel="noopener noreferrer" title="Live Demo" onclick="event.stopPropagation()">' + externalSVG + '</a>';
+      }
 
-const ren = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-ren.setSize(W(), H());
-ren.setPixelRatio(Math.min(devicePixelRatio, 2));
-ren.toneMapping = THREE.ACESFilmicToneMapping;
-ren.toneMappingExposure = 1.3;
-ren.outputColorSpace = THREE.SRGBColorSpace;
-ctr.appendChild(ren.domElement);
+      card.innerHTML =
+        '<div class="bc-card-year">' + p.year + '</div>' +
+        '<h3 class="bc-card-title">' + p.title + '</h3>' +
+        '<p class="bc-card-context">' + p.context + '</p>' +
+        '<p class="bc-card-desc">' + p.descShort + '</p>' +
+        '<div class="bc-card-tech">' + techHTML + '</div>' +
+        '<div class="bc-card-links">' + linksHTML + '</div>';
 
-/* ===== CONTROLS ===== */
-const ctrl = new OrbitControls(cam, ren.domElement);
-ctrl.enableDamping = true;
-ctrl.dampingFactor = 0.06;
-ctrl.minDistance = 8;
-ctrl.maxDistance = 70;
-ctrl.maxPolarAngle = Math.PI * 0.85;
-ctrl.autoRotate = true;
-ctrl.autoRotateSpeed = 0.3;
+      card.addEventListener('click', function() { openPanel(p); });
+      cardsEl.appendChild(card);
+    });
 
-/* ===== LIGHTING ===== */
-scene.add(new THREE.AmbientLight(0x111133, 0.6));
-const ptLight = new THREE.PointLight(0xffeedd, 3, 80);
-scene.add(ptLight);
+    // Scroll-triggered fade-in
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('bc-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-/* ===== POST-PROCESSING ===== */
-const comp = new EffectComposer(ren);
-comp.addPass(new RenderPass(scene, cam));
-
-const bloom = new UnrealBloomPass(new THREE.Vector2(W(), H()), 1.0, 0.4, 0.2);
-comp.addPass(bloom);
-
-const cgShader = {
-  uniforms: {
-    tDiffuse: { value: null },
-    brightness: { value: 0.02 },
-    contrast: { value: 1.12 },
-    saturation: { value: 1.2 },
-    vigI: { value: 0.25 },
-    vigR: { value: 0.8 }
-  },
-  vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
-  fragmentShader: `
-    uniform sampler2D tDiffuse;
-    uniform float brightness, contrast, saturation, vigI, vigR;
-    varying vec2 vUv;
-    void main() {
-      vec4 c = texture2D(tDiffuse, vUv);
-      c.rgb += brightness;
-      c.rgb = (c.rgb - 0.5) * contrast + 0.5;
-      float g = dot(c.rgb, vec3(0.299, 0.587, 0.114));
-      c.rgb = mix(vec3(g), c.rgb, saturation);
-      vec2 u = vUv * 2.0 - 1.0;
-      float v = 1.0 - dot(u * vigR, u * vigR);
-      c.rgb *= mix(1.0 - vigI, 1.0, clamp(pow(v, 1.5), 0.0, 1.0));
-      gl_FragColor = c;
-    }`
-};
-comp.addPass(new ShaderPass(cgShader));
-
-const fxaa = new ShaderPass(FXAAShader);
-fxaa.uniforms.resolution.value.set(1 / W(), 1 / H());
-comp.addPass(fxaa);
-
-/* ===== ENVIRONMENT MAP ===== */
-const pmr = new THREE.PMREMGenerator(ren);
-pmr.compileEquirectangularShader();
-const envS = new THREE.Scene();
-envS.add(new THREE.Mesh(
-  new THREE.SphereGeometry(500, 16, 16),
-  new THREE.ShaderMaterial({
-    side: THREE.BackSide,
-    uniforms: { top: { value: new THREE.Color(0x000033) }, bot: { value: new THREE.Color(0x000011) } },
-    vertexShader: `varying vec3 vW; void main() { vW = (modelMatrix * vec4(position,1.0)).xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
-    fragmentShader: `uniform vec3 top, bot; varying vec3 vW; void main() { float h = normalize(vW).y * 0.5 + 0.5; gl_FragColor = vec4(mix(bot, top, h), 1.0); }`
-  })
-));
-scene.environment = pmr.fromScene(envS, 0.04).texture;
-pmr.dispose();
-
-/* ===== STAR FIELD ===== */
-const stGeo = new THREE.BufferGeometry();
-const stPos = new Float32Array(STAR_N * 3);
-const stSz = new Float32Array(STAR_N);
-const stPh = new Float32Array(STAR_N);
-for (let i = 0; i < STAR_N; i++) {
-  const th = Math.random() * Math.PI * 2;
-  const ph = Math.acos(2 * Math.random() - 1);
-  const r = 150 + Math.random() * 200;
-  stPos[i*3]   = r * Math.sin(ph) * Math.cos(th);
-  stPos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
-  stPos[i*3+2] = r * Math.cos(ph);
-  stSz[i] = 0.5 + Math.random() * 2.0;
-  stPh[i] = Math.random() * Math.PI * 2;
-}
-stGeo.setAttribute('position', new THREE.BufferAttribute(stPos, 3));
-stGeo.setAttribute('size', new THREE.BufferAttribute(stSz, 1));
-stGeo.setAttribute('phase', new THREE.BufferAttribute(stPh, 1));
-
-const stMat = new THREE.ShaderMaterial({
-  transparent: true, depthWrite: false,
-  uniforms: { time: { value: 0 } },
-  vertexShader: `
-    attribute float size, phase;
-    uniform float time;
-    varying float vA;
-    void main() {
-      vA = 0.5 + 0.5 * sin(time * 0.8 + phase);
-      vec4 mv = modelViewMatrix * vec4(position, 1.0);
-      gl_PointSize = size * (200.0 / -mv.z);
-      gl_Position = projectionMatrix * mv;
-    }`,
-  fragmentShader: `
-    varying float vA;
-    void main() {
-      float d = length(gl_PointCoord - 0.5) * 2.0;
-      if (d > 1.0) discard;
-      gl_FragColor = vec4(0.9, 0.92, 1.0, (1.0 - d * d) * vA);
-    }`
-});
-const stars = new THREE.Points(stGeo, stMat);
-scene.add(stars);
-
-let mx = 0, my = 0;
-ctr.addEventListener('mousemove', e => {
-  const r = ctr.getBoundingClientRect();
-  mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-  my = ((e.clientY - r.top) / r.height - 0.5) * 2;
-});
-
-/* ===== NEBULA ===== */
-const nebMat = new THREE.ShaderMaterial({
-  side: THREE.BackSide, transparent: true, depthWrite: false,
-  uniforms: { time: { value: 0 } },
-  vertexShader: `varying vec3 vP; void main() { vP = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
-  fragmentShader: `
-    uniform float time;
-    varying vec3 vP;
-    float hash(vec3 p) { return fract(sin(dot(p, vec3(127.1,311.7,74.7))) * 43758.5453); }
-    float noise(vec3 p) {
-      vec3 i = floor(p), f = fract(p);
-      f = f * f * (3.0 - 2.0 * f);
-      return mix(
-        mix(mix(hash(i), hash(i+vec3(1,0,0)), f.x),
-            mix(hash(i+vec3(0,1,0)), hash(i+vec3(1,1,0)), f.x), f.y),
-        mix(mix(hash(i+vec3(0,0,1)), hash(i+vec3(1,0,1)), f.x),
-            mix(hash(i+vec3(0,1,1)), hash(i+vec3(1,1,1)), f.x), f.y), f.z);
+    function observeCards() {
+      var allCards = cardsEl.querySelectorAll('.bc-card:not(.bc-hiding):not(.bc-visible)');
+      allCards.forEach(function(card, i) {
+        card.style.transitionDelay = (i * 100) + 'ms';
+        observer.observe(card);
+      });
     }
-    float fbm(vec3 p) { float v=0.0, a=0.5; for(int i=0;i<4;i++){v+=a*noise(p);p*=2.0;a*=0.5;} return v; }
-    void main() {
-      vec3 d = normalize(vP);
-      float n = fbm(d * 3.0 + time * 0.02);
-      float n2 = fbm(d * 5.0 - time * 0.015);
-      vec3 purple = vec3(0.3, 0.05, 0.5);
-      vec3 cyan = vec3(0.0, 0.4, 0.5);
-      vec3 teal = vec3(0.0, 0.35, 0.3);
-      vec3 col = mix(purple, cyan, n) * 0.4 + teal * n2 * 0.2;
-      float alpha = smoothstep(0.3, 0.7, n) * 0.12;
-      gl_FragColor = vec4(col, alpha);
-    }`
-});
-scene.add(new THREE.Mesh(new THREE.SphereGeometry(300, 32, 32), nebMat));
+    observeCards();
 
-/* ===== CENTRAL STAR ===== */
-const cMat = new THREE.MeshPhysicalMaterial({
-  color: 0xffcc66, emissive: 0xffaa33, emissiveIntensity: 3.0,
-  roughness: 0.2, metalness: 0.0
-});
-const cStar = new THREE.Mesh(new THREE.SphereGeometry(2.5, 32, 32), cMat);
-scene.add(cStar);
+    // Filter buttons
+    var filterBtns = document.querySelectorAll('.bc-filter-btn');
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('bc-active'); b.setAttribute('aria-selected','false'); });
+        btn.classList.add('bc-active');
+        btn.setAttribute('aria-selected','true');
+        var filter = btn.getAttribute('data-filter');
+        var cards = cardsEl.querySelectorAll('.bc-card');
+        cards.forEach(function(card) {
+          card.classList.remove('bc-visible','bc-hiding');
+          card.style.transitionDelay = '0ms';
+        });
+        var visibleIdx = 0;
+        cards.forEach(function(card) {
+          var cat = card.getAttribute('data-cat');
+          if (filter === 'all' || cat === filter) {
+            card.classList.remove('bc-hiding');
+            card.style.transitionDelay = (visibleIdx * 100) + 'ms';
+            visibleIdx++;
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                card.classList.add('bc-visible');
+              });
+            });
+          } else {
+            card.classList.add('bc-hiding');
+          }
+        });
+      });
+    });
 
-// Corona sprite
-const corCanvas = document.createElement('canvas');
-corCanvas.width = corCanvas.height = 256;
-const corCtx = corCanvas.getContext('2d');
-const corGrad = corCtx.createRadialGradient(128,128,0,128,128,128);
-corGrad.addColorStop(0, 'rgba(255,200,100,0.6)');
-corGrad.addColorStop(0.3, 'rgba(255,150,50,0.2)');
-corGrad.addColorStop(1, 'rgba(255,100,0,0)');
-corCtx.fillStyle = corGrad;
-corCtx.fillRect(0,0,256,256);
-const corona = new THREE.Sprite(new THREE.SpriteMaterial({
-  map: new THREE.CanvasTexture(corCanvas),
-  transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
-}));
-corona.scale.setScalar(12);
-scene.add(corona);
+    // Slide panel
+    var overlay = document.getElementById('bc-panel-overlay');
+    var panelContent = document.getElementById('bc-panel-content');
+    var closeBtn = document.getElementById('bc-panel-close');
 
-/* ===== ORBITAL RING LINES ===== */
-ORBIT_R.forEach(r => {
-  const rg = new THREE.Mesh(
-    new THREE.RingGeometry(r - 0.03, r + 0.03, 128),
-    new THREE.MeshBasicMaterial({ color: 0x1a2a4a, transparent: true, opacity: 0.3, side: THREE.DoubleSide })
-  );
-  rg.rotation.x = -Math.PI / 2;
-  scene.add(rg);
-});
+    function openPanel(p) {
+      var techHTML = '';
+      p.tech.forEach(function(t) { techHTML += '<span class="bc-pill">' + t + '</span>'; });
 
-/* ===== PLANETS ===== */
-const pMeshes = [];
-PROJECTS.forEach((p, i) => {
-  const mat = new THREE.MeshPhysicalMaterial({
-    color: p.c, emissive: p.e, emissiveIntensity: 0.8,
-    roughness: p.rg, metalness: p.mt,
-    clearcoat: 0.3, clearcoatRoughness: 0.2
-  });
-  const mesh = new THREE.Mesh(new THREE.SphereGeometry(PR, 32, 32), mat);
-  mesh.userData = { idx: i, baseEI: 0.8 };
-  const R = ORBIT_R[p.r];
-  mesh.position.set(Math.cos(p.a) * R, 0, Math.sin(p.a) * R);
-  scene.add(mesh);
-  pMeshes.push(mesh);
+      var imgHTML = '';
+      if (p.img) {
+        imgHTML = '<img class="bc-panel-img" src="' + p.img + '" alt="' + p.title + ' screenshot" loading="lazy">';
+      }
 
-  // Saturn ring for BerriosPay
-  if (p.sr) {
-    const ring = new THREE.Mesh(
-      new THREE.RingGeometry(PR * 1.4, PR * 2.2, 64),
-      new THREE.MeshPhysicalMaterial({
-        color: 0x3a4a6a, emissive: 0x1a2a4a, emissiveIntensity: 0.4,
-        roughness: 0.3, metalness: 0.5, transparent: true, opacity: 0.7, side: THREE.DoubleSide
-      })
-    );
-    ring.rotation.x = Math.PI / 2.5;
-    mesh.add(ring);
-  }
-});
+      var actionsHTML = '<a class="bc-panel-btn bc-panel-btn-primary" href="' + p.github + '" target="_blank" rel="noopener noreferrer">' + githubSVG + ' GitHub</a>';
+      if (p.live) {
+        actionsHTML += '<a class="bc-panel-btn bc-panel-btn-ghost" href="' + p.live + '" target="_blank" rel="noopener noreferrer">' + externalSVG + ' Live Demo</a>';
+      }
 
-/* ===== ASTEROID BELT ===== */
-const astGeo = new THREE.IcosahedronGeometry(0.15, 0);
-const astMat = new THREE.MeshStandardMaterial({ color: 0x555566, roughness: 0.9, metalness: 0.1 });
-const asts = new THREE.InstancedMesh(astGeo, astMat, AST_N);
-const astD = [];
-const dum = new THREE.Object3D();
-for (let i = 0; i < AST_N; i++) {
-  const ang = Math.random() * Math.PI * 2;
-  const r = ORBIT_R[0] + 3 + Math.random() * (ORBIT_R[1] - ORBIT_R[0] - 6);
-  const y = (Math.random() - 0.5) * 2;
-  const sc = 0.5 + Math.random() * 1.5;
-  astD.push({ ang, r, y, sc, sp: 0.001 + Math.random() * 0.003, rx: Math.random() * Math.PI, ry: Math.random() * Math.PI, rs: 0.01 + Math.random() * 0.02 });
-  dum.position.set(Math.cos(ang) * r, y, Math.sin(ang) * r);
-  dum.rotation.set(astD[i].rx, astD[i].ry, 0);
-  dum.scale.setScalar(sc);
-  dum.updateMatrix();
-  asts.setMatrixAt(i, dum.matrix);
-}
-asts.instanceMatrix.needsUpdate = true;
-scene.add(asts);
+      panelContent.innerHTML =
+        '<div class="bc-panel-year">' + p.year + '</div>' +
+        '<h2>' + p.title + '</h2>' +
+        '<p class="bc-panel-context">' + p.context + '</p>' +
+        imgHTML +
+        '<p class="bc-panel-desc">' + p.desc + '</p>' +
+        '<div class="bc-panel-tech">' + techHTML + '</div>' +
+        '<div class="bc-panel-actions">' + actionsHTML + '</div>';
 
-/* ===== SHOOTING STARS ===== */
-const shoots = [];
-let shootT = 0, nextShoot = 3 + Math.random() * 5;
-function spawnShoot() {
-  const pos = new THREE.Vector3((Math.random()-0.5)*200, 50+Math.random()*100, (Math.random()-0.5)*200);
-  const dir = new THREE.Vector3((Math.random()-0.5)*2, -1-Math.random(), (Math.random()-0.5)*2).normalize();
-  const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
-  const mat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 });
-  const line = new THREE.Line(geo, mat);
-  scene.add(line);
-  shoots.push({ line, pos: pos.clone(), dir, sp: 80 + Math.random() * 60, life: 1.5 + Math.random() });
-}
+      overlay.classList.add('bc-panel-open');
+      document.body.style.overflow = 'hidden';
+    }
 
-/* ===== SATELLITE ===== */
-const satG = new THREE.Group();
-satG.add(new THREE.Mesh(new THREE.BoxGeometry(0.3,0.3,0.6), new THREE.MeshPhysicalMaterial({ color:0xaaaaaa, metalness:0.8, roughness:0.2 })));
-const sp1 = new THREE.Mesh(new THREE.BoxGeometry(1.2,0.05,0.5), new THREE.MeshPhysicalMaterial({ color:0x2255aa, metalness:0.3, roughness:0.4, emissive:0x112244, emissiveIntensity:0.5 }));
-sp1.position.x = 0.8; satG.add(sp1);
-const sp2 = sp1.clone(); sp2.position.x = -0.8; satG.add(sp2);
-satG.scale.setScalar(0.8);
-scene.add(satG);
+    function closePanel() {
+      overlay.classList.remove('bc-panel-open');
+      document.body.style.overflow = '';
+    }
 
-/* ===== INTERACTIONS ===== */
-const ray = new THREE.Raycaster();
-const mPos = new THREE.Vector2(-999, -999);
-let hovered = null;
-const lbl = document.getElementById('planet-label');
-const lblN = document.getElementById('pl-name');
-const lblT = document.getElementById('pl-tech');
+    closeBtn.addEventListener('click', closePanel);
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) closePanel();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('bc-panel-open')) closePanel();
+    });
 
-ctr.addEventListener('pointermove', e => {
-  const r = ctr.getBoundingClientRect();
-  mPos.x = ((e.clientX - r.left) / r.width) * 2 - 1;
-  mPos.y = -((e.clientY - r.top) / r.height) * 2 + 1;
-  mx = mPos.x; my = mPos.y;
-});
-
-ctr.addEventListener('click', () => {
-  if (hovered !== null) {
-    if (hovered === -1) openBio(); else openProj(hovered);
-  }
-});
-
-/* ===== OVERLAY ===== */
-function openProj(i) {
-  const p = PROJECTS[i];
-  const ov = document.getElementById('project-overlay');
-  document.getElementById('po-title').textContent = p.n;
-  document.getElementById('po-desc').textContent = p.l;
-  document.getElementById('po-details').textContent = p.d;
-  const iw = document.getElementById('po-img-wrap'); iw.innerHTML = '';
-  if (p.img) { const im = document.createElement('img'); im.src = p.img; im.alt = p.n; im.className = 'po-img'; iw.appendChild(im); }
-  const td = document.getElementById('po-tech-tags'); td.innerHTML = '';
-  p.t.forEach(t => { const s = document.createElement('span'); s.textContent = t; td.appendChild(s); });
-  const ad = document.getElementById('po-actions'); ad.innerHTML = '';
-  if (p.url) { const a = document.createElement('a'); a.href = p.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.className = 'chip'; a.textContent = 'Live Demo'; ad.appendChild(a); }
-  const bk = document.createElement('button'); bk.className = 'chip'; bk.textContent = '\u2190 Back to Universe'; bk.onclick = closePO; ad.appendChild(bk);
-  ov.style.display = 'flex';
-  gsap.fromTo(ov, { opacity: 0 }, { opacity: 1, duration: 0.3 });
-  gsap.fromTo('#po-card', { scale: 0.9, y: 30 }, { scale: 1, y: 0, duration: 0.4, ease: 'back.out(1.5)' });
-}
-
-function openBio() {
-  const ov = document.getElementById('project-overlay');
-  document.getElementById('po-title').textContent = 'Luis Rodr\u00edguez';
-  document.getElementById('po-desc').textContent = 'Senior Full-Stack Engineer & Technical Lead';
-  document.getElementById('po-details').textContent = 'I ship production software end to end \u2014 from database schema and cloud infrastructure to frontend, hardware integration, and deployment. 4 systems shipped as sole engineer in 6 months. Based in Puerto Rico, US citizen, available for remote roles.';
-  document.getElementById('po-img-wrap').innerHTML = '';
-  const td = document.getElementById('po-tech-tags'); td.innerHTML = '';
-  ['React 19','.NET 10','TypeScript','Azure','Three.js','Claude API','SQL Server','PostgreSQL'].forEach(t => {
-    const s = document.createElement('span'); s.textContent = t; td.appendChild(s);
-  });
-  const ad = document.getElementById('po-actions'); ad.innerHTML = '';
-  const em = document.createElement('a'); em.href = 'mailto:luisangelrod17@gmail.com'; em.className = 'cta'; em.textContent = 'Contact Me';
-  const gh = document.createElement('a'); gh.href = 'https://github.com/luisangelrod'; gh.target = '_blank'; gh.className = 'chip'; gh.textContent = 'GitHub';
-  const bk = document.createElement('button'); bk.className = 'chip'; bk.textContent = '\u2190 Back to Universe'; bk.onclick = closePO;
-  ad.append(em, gh, bk);
-  ov.style.display = 'flex';
-  gsap.fromTo(ov, { opacity: 0 }, { opacity: 1, duration: 0.3 });
-  gsap.fromTo('#po-card', { scale: 0.9, y: 30 }, { scale: 1, y: 0, duration: 0.4, ease: 'back.out(1.5)' });
-}
-
-function closePO() {
-  const ov = document.getElementById('project-overlay');
-  gsap.to(ov, { opacity: 0, duration: 0.25, onComplete: () => { ov.style.display = 'none'; } });
-}
-window.closeProjectOverlay = closePO;
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('project-overlay').style.display === 'flex') closePO(); });
-
-/* ===== CLOCK ===== */
-const clk = document.createElement('div');
-clk.className = 'solar-clock';
-ctr.appendChild(clk);
-setInterval(() => { clk.textContent = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }); }, 1000);
-
-/* ===== ANIMATION ===== */
-const clock = new THREE.Clock();
-
-function animate() {
-  requestAnimationFrame(animate);
-  const dt = clock.getDelta(), t = clock.getElapsedTime();
-
-  // Stars twinkle + parallax
-  stMat.uniforms.time.value = t;
-  stars.rotation.x = my * 0.02;
-  stars.rotation.y = mx * 0.02;
-
-  // Nebula
-  nebMat.uniforms.time.value = t;
-
-  // Central star pulse
-  cMat.emissiveIntensity = 2.5 + Math.sin(t * 1.5) * 0.8;
-  corona.material.opacity = 0.4 + Math.sin(t * 1.2) * 0.15;
-  corona.scale.setScalar(11 + Math.sin(t * 0.8) * 1.5);
-  ptLight.intensity = 2.5 + Math.sin(t * 1.5) * 0.5;
-
-  // Planet orbits + self-rotation
-  pMeshes.forEach((m, i) => {
-    const p = PROJECTS[i];
-    const R = ORBIT_R[p.r];
-    const spd = (2 * Math.PI) / ORBIT_T[p.r];
-    const ang = p.a + t * spd;
-    m.position.set(Math.cos(ang) * R, 0, Math.sin(ang) * R);
-    m.rotation.y += dt * 0.3;
-  });
-
-  // Asteroids
-  for (let i = 0; i < AST_N; i++) {
-    const d = astD[i];
-    d.ang += d.sp;
-    d.rx += d.rs;
-    d.ry += d.rs * 0.7;
-    dum.position.set(Math.cos(d.ang) * d.r, d.y, Math.sin(d.ang) * d.r);
-    dum.rotation.set(d.rx, d.ry, 0);
-    dum.scale.setScalar(d.sc);
-    dum.updateMatrix();
-    asts.setMatrixAt(i, dum.matrix);
-  }
-  asts.instanceMatrix.needsUpdate = true;
-
-  // Satellite
-  const sa = t * 0.15, sr = ORBIT_R[1] + 4;
-  satG.position.set(Math.cos(sa) * sr, Math.sin(t * 0.3) * 2 + 4, Math.sin(sa) * sr);
-  satG.rotation.y = sa + Math.PI;
-
-  // Shooting stars
-  shootT += dt;
-  if (shootT > nextShoot) { spawnShoot(); shootT = 0; nextShoot = 3 + Math.random() * 5; }
-  for (let i = shoots.length - 1; i >= 0; i--) {
-    const s = shoots[i];
-    s.life -= dt;
-    if (s.life <= 0) { scene.remove(s.line); s.line.geometry.dispose(); s.line.material.dispose(); shoots.splice(i, 1); continue; }
-    const tail = s.pos.clone().addScaledVector(s.dir, -4);
-    s.pos.addScaledVector(s.dir, s.sp * dt);
-    const pa = s.line.geometry.attributes.position.array;
-    pa[0] = s.pos.x; pa[1] = s.pos.y; pa[2] = s.pos.z;
-    pa[3] = tail.x; pa[4] = tail.y; pa[5] = tail.z;
-    s.line.geometry.attributes.position.needsUpdate = true;
-    s.line.material.opacity = Math.min(s.life, 0.8);
-  }
-
-  // Hover detection
-  ray.setFromCamera(mPos, cam);
-  const ph = ray.intersectObjects(pMeshes);
-  const ch = ray.intersectObject(cStar);
-  let newH = null, lTxt = '', lSub = '', lSP = null;
-
-  if (ph.length > 0) {
-    const h = ph[0].object;
-    newH = h.userData.idx;
-    lTxt = PROJECTS[newH].n;
-    lSub = PROJECTS[newH].t.join(' \u00b7 ');
-    lSP = h.position.clone().project(cam);
-  } else if (ch.length > 0) {
-    newH = -1;
-    lTxt = 'Luis Rodr\u00edguez';
-    lSub = 'Click to learn more';
-    lSP = cStar.position.clone().project(cam);
-  }
-
-  if (newH !== hovered) {
-    if (hovered !== null && hovered >= 0) pMeshes[hovered].material.emissiveIntensity = pMeshes[hovered].userData.baseEI;
-    if (newH !== null && newH >= 0) pMeshes[newH].material.emissiveIntensity = 2.0;
-    hovered = newH;
-  }
-
-  if (hovered !== null) {
-    ctr.style.cursor = 'pointer';
-    lblN.textContent = lTxt;
-    lblT.textContent = lSub;
-    lbl.style.opacity = '1';
-    const sx = (lSP.x * 0.5 + 0.5) * W();
-    const sy = (-lSP.y * 0.5 + 0.5) * H();
-    const lw = lbl.offsetWidth || 160;
-    const lh = lbl.offsetHeight || 40;
-    const lx = Math.min(sx + 16, W() - lw - 8);
-    const ly = Math.max(sy - 20, 8);
-    lbl.style.left = Math.max(8, lx) + 'px';
-    lbl.style.top = Math.min(ly, H() - lh - 8) + 'px';
-  } else {
-    lbl.style.opacity = '0';
-    ctr.style.cursor = 'grab';
-  }
-
-  ctrl.update();
-  comp.render();
-}
-animate();
-
-/* ===== RESIZE ===== */
-function onResize() {
-  cam.aspect = W() / H();
-  cam.updateProjectionMatrix();
-  ren.setSize(W(), H());
-  comp.setSize(W(), H());
-  bloom.setSize(W(), H());
-  fxaa.uniforms.resolution.value.set(1 / W(), 1 / H());
-}
-window.addEventListener('resize', onResize);
-new ResizeObserver(onResize).observe(ctr);
-
-// Fade hint
-setTimeout(() => { const h = document.getElementById('solar-hint'); if (h) h.style.opacity = '0'; }, 6000);
+    window.closeProjectOverlay = closePanel;
+  })();
   </script>
-  <!-- ========== ORBITAL SOLAR SYSTEM SCRIPT END ========== -->
+  <!-- ========== BRITTANY CHIANG PROJECTS SCRIPT END ========== -->
 
   <!-- ========== TERMINAL MODE — START ========== -->
   <style>
