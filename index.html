@@ -78,10 +78,10 @@
     #ms-exit{position:absolute;top:12px;right:12px;padding:8px 14px;background:linear-gradient(180deg,#e84040,#c02020);color:#fff;border:3px solid #801010;border-radius:0;font-family:'Press Start 2P',monospace;font-size:8px;cursor:pointer;z-index:1;box-shadow:3px 3px 0 rgba(0,0,0,.4)}
     #ms-exit:active{transform:translate(1px,1px);box-shadow:1px 1px 0 rgba(0,0,0,.4)}
     .ms-dpad{position:absolute;bottom:24px;left:24px;display:grid;grid-template:auto auto auto/auto auto auto;gap:4px;z-index:1}
-    .ms-dpad button{width:48px;height:48px;background:rgba(0,0,0,.5);color:#fff;border:2px solid rgba(255,255,255,.2);border-radius:0;font-size:18px;cursor:pointer;touch-action:none;-webkit-touch-callout:none;user-select:none}
+    .ms-dpad button{width:72px;height:72px;font-size:22px;background:rgba(0,0,0,.5);color:#fff;border:2px solid rgba(255,255,255,.2);border-radius:0;font-size:18px;cursor:pointer;touch-action:none;-webkit-touch-callout:none;user-select:none}
     .ms-dpad button:active{background:rgba(59,130,246,.6)}
     .ms-up{grid-area:1/2}.ms-left{grid-area:2/1}.ms-right{grid-area:2/3}.ms-down{grid-area:3/2}
-    .ms-btn-a,.ms-btn-b{position:absolute;bottom:40px;width:52px;height:52px;border-radius:50%;color:#fff;border:3px solid rgba(255,255,255,.3);font-family:'Press Start 2P',monospace;font-size:14px;cursor:pointer;touch-action:none;-webkit-touch-callout:none;user-select:none;z-index:1}
+    .ms-btn-a,.ms-btn-b{position:absolute;bottom:40px;width:72px;height:72px;font-size:22px;border-radius:50%;color:#fff;border:3px solid rgba(255,255,255,.3);font-family:'Press Start 2P',monospace;font-size:14px;cursor:pointer;touch-action:none;-webkit-touch-callout:none;user-select:none;z-index:1}
     .ms-btn-a{right:24px;background:rgba(224,49,49,.6)}.ms-btn-a:active{background:rgba(224,49,49,.9)}
     .ms-btn-b{right:88px;background:rgba(59,130,246,.6)}.ms-btn-b:active{background:rgba(59,130,246,.9)}
     @media(max-width:768px){.ms-dpad{bottom:20px;left:16px;gap:2px}.ms-dpad button{width:72px;height:72px;font-size:24px}.ms-btn-a,.ms-btn-b{width:72px;height:72px;font-size:16px;bottom:32px}.ms-btn-a{right:16px}.ms-btn-b{right:100px}}
@@ -149,6 +149,40 @@
     @media(max-width:640px){.rw-trigger{bottom:16px;right:16px}.rw-trigger-btn{width:52px;height:52px}.rw-trigger-btn svg{width:30px;height:30px}.rw-bubble{font-size:.8rem;padding:8px 12px;bottom:60px}.rw-modal{padding:20px;border-radius:16px}.rw-robot{width:64px;height:64px}.rw-cat{grid-template-columns:90px 1fr auto;font-size:.78rem}.rw-row{grid-template-columns:1fr;gap:6px}}
   </style>
   <!-- ========== RECRUITER WIZARD STYLES — END ========== -->
+  <!-- ========== ORBITAL SOLAR SYSTEM DEPS ========== -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    #solar-system{position:relative;width:100%;aspect-ratio:16/10;min-height:420px;max-height:75vh;border-radius:12px;overflow:hidden;border:1px solid var(--line);cursor:grab;background:#020408}
+    #solar-system:active{cursor:grabbing}
+    #solar-system canvas{display:block}
+    #planet-label{position:absolute;pointer-events:none;padding:8px 14px;background:rgba(10,15,26,.88);border:1px solid rgba(59,130,246,.3);border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:600;color:#e5e7eb;white-space:nowrap;opacity:0;transition:opacity .2s;z-index:10;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    #planet-label .pl-tech{font-size:.7rem;color:var(--accent-light,#93c5fd);margin-top:3px;font-weight:500}
+    #solar-hint{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-family:'Space Grotesk',sans-serif;font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.05em;text-align:center;pointer-events:none;z-index:10;transition:opacity 1s}
+    #project-overlay{position:fixed;inset:0;z-index:9800;background:rgba(2,4,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;padding:24px}
+    #po-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;max-width:640px;width:100%;max-height:85vh;overflow-y:auto;padding:32px;position:relative}
+    #po-card h2{margin:0 0 6px;font-size:1.5rem;font-weight:900;color:var(--heading);font-family:'Space Grotesk',sans-serif}
+    .po-desc{color:var(--accent-light,#93c5fd);font-size:.88rem;font-weight:600;margin:0 0 16px}
+    .po-img{width:100%;border-radius:8px;border:1px solid var(--line);margin-bottom:16px}
+    .po-details{color:var(--muted);line-height:1.65;margin:0 0 16px}
+    .po-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .po-tech span{padding:5px 12px;border-radius:999px;font-size:.74rem;font-weight:700;background:var(--chip);border:1px solid var(--line);color:var(--accent-light,#93c5fd)}
+    .po-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .po-actions .chip,.po-actions .cta{cursor:pointer}
+    #po-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,.08);color:var(--muted);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+    #po-close:hover{background:rgba(255,255,255,.15)}
+    .solar-clock{position:absolute;bottom:12px;right:12px;font:.7rem 'Space Grotesk',sans-serif;color:rgba(255,255,255,.25);z-index:10;letter-spacing:.05em}
+    @media(max-width:640px){#solar-system{min-height:300px;aspect-ratio:4/3}#po-card{padding:20px;border-radius:12px}}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <!-- ========== ORBITAL SOLAR SYSTEM DEPS END ========== -->
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
@@ -234,160 +268,12 @@
             </article>
           </div>
         </section>
-        <section class="section" id="projects">
+                <section class="section" id="projects">
           <div class="bar">Selected Projects</div>
-          <article class="project project-card pc-blue">
-            <div class="titlebar">LeadFlow <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live SaaS Product</span></div>
-            <div class="body">
-              <div class="mixed">
-                <div class="stack">
-                  <div class="media"><img src="img/projects/lead-response-landing.png" alt="LeadFlow landing page"></div>
-                  <div class="media metric" aria-hidden="true"><small>Response Time</small><strong>&lt; 60 Seconds</strong><p>AI engages new leads via SMS around the clock, 24/7/365.</p></div>
-                </div>
-                <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">An AI-powered lead response platform for med spas. Engages new leads via SMS in under 60 seconds, handles intelligent conversations, books consultations, and escalates to humans when needed. HIPAA-aware message handling with automatic PHI detection and redaction.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a multi-tenant SaaS with Clerk auth, Stripe subscriptions, Twilio A2P 10DLC-compliant SMS, and Claude-powered conversational AI. Includes a real-time analytics dashboard, lead source tracking, smart escalation logic, and Google Calendar booking integration.</p></div>
-                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://lead-response-saas.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">lead-response-saas.vercel.app</a>. Currently servicing med spas across the United States, Puerto Rico, and Latin America with paying subscribers on monthly plans.</p></div>
-                  <div class="meta"><span class="tag">Next.js 16</span><span class="tag">TypeScript</span><span class="tag">Claude API</span><span class="tag">Twilio SMS</span><span class="tag">Stripe</span><span class="tag">Clerk</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="project project-card pc-purple">
-            <div class="titlebar">Portfolio Match Assistant <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live on This Page</span></div>
-            <div class="body">
-              <div class="mixed">
-                <div class="stack">
-                  <div class="media"><img src="img/projects/portfolio-bot-results.png" alt="Portfolio Match Assistant showing 83% Strong Match results"></div>
-                  <div class="media metric" aria-hidden="true"><small>Architecture</small><strong>Zero API Calls</strong><p>Entire scoring engine, animations, and multilingual detection run client-side with no backend.</p></div>
-                </div>
-                <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">An interactive recruiter assistant embedded directly in this portfolio. A floating robot prompts visitors to paste a job description, then runs a real-time skill match analysis with animated results and honest scoring. Understands both English and Spanish job descriptions. Try it — click the robot in the bottom-right corner.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a client-side scoring engine with 11 weighted skill categories, 24 transferable skill mappings, and word-boundary regex matching to prevent false positives across languages. Includes a 4-step wizard with typing animations, SVG robot character, animated progress ring, category bars, confetti effects, and bilingual narrative generation (English/Spanish) that responds in the detected language.</p></div>
-                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live on this page with zero API calls or backend dependencies. Honestly scores matching roles at 80-95% with green/blue themes and domain mismatches at 15-40% with red themes. Detects Spanish construction jobs just as accurately as English senior engineer postings.</p></div>
-                  <div class="meta"><span class="tag">Vanilla JavaScript</span><span class="tag">SVG Animation</span><span class="tag">CSS Keyframes</span><span class="tag">Regex NLP</span><span class="tag">Bilingual EN/ES</span><span class="tag">Zero Dependencies</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="project project-card pc-cyan">
-            <div class="titlebar">AI QA Agent <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live Project</span></div>
-            <div class="body">
-              <div class="mixed">
-                <div class="stack">
-                  <div class="media"><img src="img/projects/ai-qa-agent.png" alt="AI QA Agent interface"></div>
-                  <div class="media metric" aria-hidden="true"><small>Architecture</small><strong>Agentic Loop</strong><p>Claude decides which checks to run, executes them server-side, and synthesizes a graded report.</p></div>
-                </div>
-                <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">A web app where users paste a URL and an AI agent autonomously tests the site for accessibility, SEO, performance, security headers, and broken links, streaming its reasoning in real time.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a multi-step agentic loop using Claude tool_use with 6 server-side analysis modules. Results stream to the browser via SSE, showing the agent's thinking, tool calls, and findings as they happen.</p></div>
-                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://ai-qa-agent.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">ai-qa-agent.vercel.app</a>. Produces structured reports with letter grades (A-F), categorized issues, and actionable recommendations across 6 QA dimensions.</p></div>
-                  <div class="meta"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Claude API</span><span class="tag">SSE Streaming</span><span class="tag">Cheerio</span><span class="tag">Vercel</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="project project-card pc-green">
-            <div class="titlebar">Dep Scanner <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live Project</span></div>
-            <div class="body">
-              <div class="mixed">
-                <div class="stack">
-                  <div class="media"><img src="img/projects/dep-scanner.png" alt="Dep Scanner interface"></div>
-                  <div class="media metric" aria-hidden="true"><small>Analysis</small><strong>6 Data Sources</strong><p>npm registry, OSV.dev vulnerabilities, and download statistics combined into a composite health score.</p></div>
-                </div>
-                <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">A dependency health scanner where users paste a package.json or enter a GitHub URL and get instant health scores, vulnerability reports, and upgrade recommendations for every npm package.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built a server-side analysis pipeline that concurrently queries the npm registry, OSV.dev, and npm downloads API, then computes composite health scores with a custom grading algorithm. Includes a treemap visualization and exportable reports.</p></div>
-                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://dep-scanner.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">dep-scanner.vercel.app</a>. Scans up to 80 packages per analysis with letter grades (A-F), categorized vulnerabilities, and auto-generated fix commands. Exports to JSON and CSV.</p></div>
-                  <div class="meta"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">shadcn/ui</span><span class="tag">OSV.dev</span><span class="tag">npm Registry</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="project project-card pc-orange">
-            <div class="titlebar">DevStatus <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Live Project</span></div>
-            <div class="body">
-              <div class="mixed">
-                <div class="stack">
-                  <div class="media"><img src="img/projects/devstatus.png" alt="DevStatus mission control dashboard"></div>
-                  <div class="media metric" aria-hidden="true"><small>Monitoring</small><strong>15 Services</strong><p>Real-time status checks across AI, hosting, databases, dev tools, and registries.</p></div>
-                </div>
-                <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">A real-time status monitoring dashboard tracking 15 developer services with a mission control aesthetic. Aggregates live status, active incidents, and tech news into a single NOC-style view.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built with ISR-powered data fetching from Statuspage.io APIs, RSS feeds, and Hacker News. Features a 3-panel layout with an interactive SVG world map, incident timeline, scrolling ticker bar, and client-side polling.</p></div>
-                  <div class="block"><h4 class="label">Results</h4><p class="copy">Live at <a href="https://devstatus-lilac.vercel.app/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700;text-decoration:underline">devstatus-lilac.vercel.app</a>. Monitors OpenAI, Anthropic, GitHub, Vercel, Cloudflare, Netlify, and more with 60-second refresh cycles and zero API keys required.</p></div>
-                  <div class="meta"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">ISR</span><span class="tag">Statuspage.io</span><span class="tag">RSS</span><span class="tag">SVG Maps</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="project project-card pc-rose">
-            <div class="titlebar">BerriosPay - BCPOS</div>
-            <div class="body">
-              <div class="grid3">
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Scale</small><strong>25+ Kiosks</strong><p>Bilingual self-service payment collection across retail locations.</p></div><h4 class="label">What?</h4><p class="copy">Enterprise payment kiosk platform for bilingual self-service payment collection across 25+ retail locations.</p></div>
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Stack</small><strong>Full-Stack</strong><p>React 19, .NET 10, WPF, WebView2, Azure SQL, SHA256 idempotency, and offline recovery.</p></div><h4 class="label">How?</h4><p class="copy">Architected and shipped solo with clean architecture, PAX POSLink PCI integration, kiosk hardware drivers, auto-sync queues, and transaction safety protections.</p></div>
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Results</small><strong>0 Duplicates</strong><p>PCI DSS SAQ A, 43 automated tests, and 11 vulnerabilities resolved.</p></div><h4 class="label">Results</h4><p class="copy">Delivered a stable production rollout with resilient payment handling and operational reliability across a live retail footprint.</p></div>
-              </div>
-              <div class="meta"><span class="tag">React 19</span><span class="tag">.NET 10</span><span class="tag">WPF / WebView2</span><span class="tag">Azure SQL</span><span class="tag">PAX POSLink</span><span class="tag">Polly</span></div>
-            </div>
-          </article>
-          <article class="project project-card pc-teal">
-            <div class="titlebar">GoFleetCare - BCPOS</div>
-            <div class="body">
-              <div class="mixed">
-                <div class="stack">
-                  <div class="media metric" aria-hidden="true"><small>Platform</small><strong>Mobile-First</strong><p>Driver and dispatcher portals for medical transport in a HIPAA-adjacent environment.</p></div>
-                  <div class="media metric" aria-hidden="true"><small>Workflow</small><strong>13 States</strong><p>Trip status orchestration with debounce, rate limiting, offline sync, and real-time user feedback.</p></div>
-                </div>
-                <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">A medical transport logistics platform for distinct driver personas in a HIPAA-adjacent environment, requiring mobile-first trip execution, signatures, geofencing, and clear status updates.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built React portals with Firebase messaging, WebSocket updates, mutation queuing, and a guarded backend state machine. Added mutex-based token refresh to eliminate race conditions.</p></div>
-                  <div class="block"><h4 class="label">Results</h4><p class="copy">Created a reliable logistics workflow that survives connectivity loss, keeps drivers synchronized in the field, and supports production-ready dispatch operations.</p></div>
-                  <div class="meta"><span class="tag">React</span><span class="tag">Firebase</span><span class="tag">WebSocket</span><span class="tag">Offline Sync</span><span class="tag">Geofencing</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="project project-card pc-amber">
-            <div class="titlebar">CDD-HUB - BCPOS</div>
-            <div class="body">
-              <div class="mixed">
-                <div class="stack">
-                  <div class="media metric" aria-hidden="true"><small>Timeline</small><strong>3.5 Weeks</strong><p>First commit to production deployment with full test coverage.</p></div>
-                  <div class="media metric" aria-hidden="true"><small>QA</small><strong>215 Tests</strong><p>Unit, integration, and end-to-end coverage added while the product moved from first commit to production.</p></div>
-                </div>
-                <div>
-                  <div class="block"><h4 class="label">What?</h4><p class="copy">An operations portal for dispatch and transport coordination that needed real-time communication, reporting, and reliable production delivery in a compressed timeline.</p></div>
-                  <div class="block"><h4 class="label">How?</h4><p class="copy">Built as a React PWA with WebSocket messaging, PDF generation, and a steadily expanded automated test suite using Vitest and Playwright.</p></div>
-                  <div class="block"><h4 class="label">Results</h4><p class="copy">Went from first commit to production deployment in 3.5 weeks with 215 tests, PDF reporting, and stable real-time interactions.</p></div>
-                  <div class="meta"><span class="tag">React</span><span class="tag">Vitest</span><span class="tag">Playwright</span><span class="tag">PWA</span><span class="tag">PDF Generation</span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="project project-card pc-purple">
-            <div class="titlebar">Salud Medica - BCPOS</div>
-            <div class="body">
-              <div class="grid3">
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Platform</small><strong>Tablet POS</strong><p>Built for Android devices used in healthcare retail operations.</p></div><h4 class="label">What?</h4><p class="copy">A tablet-based point of sale for cash checkout, membership workflows, and receipt printing in a healthcare retail environment.</p></div>
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Hardware</small><strong>Native Drivers</strong><p>Star Micronics printer and cash drawer integration through Ionic and Capacitor.</p></div><h4 class="label">How?</h4><p class="copy">Delivered an Ionic and Capacitor application with native Android hardware support to bridge web UI speed with reliable physical device control.</p></div>
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Outcome</small><strong>Field Ready</strong><p>Checkout, membership handling, and receipt generation unified into a portable retail workflow.</p></div><h4 class="label">Results</h4><p class="copy">Provided a dependable tablet POS flow with hardware-backed printing and drawer operations suited for day-to-day store use.</p></div>
-              </div>
-              <div class="meta"><span class="tag">Ionic</span><span class="tag">Capacitor</span><span class="tag">Android</span><span class="tag">Star Micronics</span><span class="tag">Cash Drawer</span></div>
-            </div>
-          </article>
-          <article class="project project-card pc-purple">
-            <div class="titlebar">Operation: Ship IT <span style="font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#28435f;margin-left:10px">Hidden Easter Egg</span></div>
-            <div class="body">
-              <div class="grid3">
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Genre</small><strong>Platformer</strong><p>Mario-style side-scrolling platformer across three themed levels.</p></div><h4 class="label">What?</h4><p class="copy">A full Mario-style platformer embedded in this portfolio. Run, jump, and stomp through The Office, The Cloud, and Production to ship code. Character creator, checkpoints, double jump, and a top-10 scoreboard.</p></div>
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Engine</small><strong>Canvas 2D</strong><p>Custom game engine with physics, parallax scrolling, and pixel-art rendering.</p></div><h4 class="label">How?</h4><p class="copy">Built a complete platformer engine in vanilla JavaScript with gravity physics, variable-height jumps, double jump, moving platforms, enemy AI with stomp mechanics, checkpoint saves, and a character customization screen.</p></div>
-                <div class="card"><div class="media metric" aria-hidden="true"><small>Features</small><strong>3 Levels</strong><p>Character creator, checkpoints, scoreboard, 3 enemy types, coin collection, and time bonus.</p></div><h4 class="label">Results</h4><p class="copy">A complete playable platformer with parallax backgrounds, moving platforms, localStorage checkpoints and high scores, mobile touch controls, and a satisfying victory screen with confetti.</p></div>
-              </div>
-              <div class="meta"><span class="tag">Vanilla JS</span><span class="tag">Canvas 2D</span><span class="tag">Game Engine</span><span class="tag">Pixel Art</span><span class="tag">Platformer</span><span class="tag">Easter Egg</span></div>
-            </div>
-          </article>
+          <div id="solar-system">
+            <div id="planet-label"><span id="pl-name"></span><div class="pl-tech" id="pl-tech"></div></div>
+            <div id="solar-hint">Drag to orbit &middot; Click a planet to explore &middot; Scroll to zoom</div>
+          </div>
         </section>
         <section class="section" id="skills">
           <div class="bar">Core Skills</div>
@@ -409,6 +295,18 @@
         </section>
       </div>
     </main>
+  </div>
+  <!-- ========== PROJECT OVERLAY ========== -->
+  <div id="project-overlay" onclick="if(event.target===this)window.closeProjectOverlay()">
+    <div id="po-card">
+      <button id="po-close" onclick="window.closeProjectOverlay()">&times;</button>
+      <div id="po-img-wrap"></div>
+      <h2 id="po-title"></h2>
+      <p class="po-desc" id="po-desc"></p>
+      <p class="po-details" id="po-details"></p>
+      <div class="po-tech" id="po-tech-tags"></div>
+      <div class="po-actions" id="po-actions"></div>
+    </div>
   </div>
   <!-- ========== GAME HTML — START ========== -->
   <div id="ms-game">
@@ -1359,6 +1257,538 @@ document.addEventListener('DOMContentLoaded',function(){
 
   </script>
   <!-- ========== GAME ENGINE — END ========== -->
+  <!-- ========== ORBITAL SOLAR SYSTEM SCRIPT ========== -->
+  <script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
+
+/* ===== CONSTANTS ===== */
+const ORBIT_R = [13, 23, 36];
+const ORBIT_T = [20, 35, 55];
+const PR = 1.1;
+const STAR_N = 8000;
+const AST_N = 200;
+
+/* ===== PROJECTS ===== */
+const PROJECTS = [
+  {n:'BerriosPay',r:0,a:0,c:0x1a2a5f,e:0x0a1a4a,rg:.3,mt:.4,sr:1,
+   l:'Enterprise Payment Kiosks',d:'Enterprise payment kiosk platform for bilingual self-service collection across 25+ retail locations. PCI DSS, PAX terminals, zero duplicate transactions.',
+   t:['React 19','.NET 10','WPF','Azure SQL','PAX A920'],img:null,url:null},
+  {n:'GoFleetCare',r:0,a:2.09,c:0x1a5a30,e:0x0a4a1a,rg:.6,mt:.2,sr:0,
+   l:'Medical Transport Logistics',d:'Medical transport logistics with 13-state trip workflow, geofencing, offline sync, and HIPAA-adjacent compliance.',
+   t:['React','Firebase','WebSocket','Geofencing','.NET'],img:null,url:null},
+  {n:'DevStatus',r:0,a:4.19,c:0x0a3a5a,e:0x00aaff,rg:.2,mt:.6,sr:0,
+   l:'Mission Control Dashboard',d:'Real-time status dashboard tracking 15 developer services. Monitors OpenAI, GitHub, Vercel with 60s refresh.',
+   t:['Next.js 15','TypeScript','ISR','Statuspage.io','RSS'],img:'img/projects/devstatus.png',url:'https://devstatus-lilac.vercel.app/'},
+  {n:'ShaderForge',r:1,a:0.5,c:0x4a2a6a,e:0x9944ff,rg:.1,mt:.8,sr:0,
+   l:'Visual Shader Editor',d:'Browser-based visual shader editor for creating and exporting custom shaders through a node-based interface.',
+   t:['React','NestJS','WebGPU','Three.js'],img:null,url:null},
+  {n:'LeadFlow',r:1,a:2.6,c:0x5a3a0a,e:0xffaa00,rg:.4,mt:.3,sr:0,
+   l:'AI Lead Conversion SaaS',d:'AI-powered lead response for med spas. Claude-powered SMS in under 60s. Live with paying subscribers.',
+   t:['Next.js 16','Claude API','Stripe','Twilio','PostgreSQL'],img:'img/projects/lead-response-landing.png',url:'https://lead-response-saas.vercel.app/'},
+  {n:'saludMedica',r:1,a:4.7,c:0xbbbbcc,e:0xeeeeff,rg:.5,mt:.1,sr:0,
+   l:'Pharmacy POS System',d:'Tablet POS for cash checkout, membership, and receipt printing with Star Micronics hardware integration.',
+   t:['Angular 18','Ionic','.NET 8','Android','Star Micronics'],img:null,url:null},
+  {n:'ECHO',r:2,a:1.0,c:0x2a0a3a,e:0x7700bb,rg:.7,mt:.3,sr:0,
+   l:'Atmospheric Thriller Game',d:'An atmospheric thriller built with Three.js featuring SSAO, PBR materials, and immersive audio design.',
+   t:['Three.js','WebGPU','SSAO','PBR'],img:null,url:null},
+  {n:'Ship IT',r:2,a:3.1,c:0x5a3a1a,e:0xff6600,rg:.5,mt:.2,sr:0,
+   l:'Mario-Style Platformer',d:'Full platformer with 3 levels, character creator, checkpoints, double jump, enemy AI, and scoreboard.',
+   t:['Canvas 2D','Vanilla JS','Game Engine'],img:null,url:null},
+  {n:'Portfolio',r:2,a:5.2,c:0x2a3a4a,e:0x3388cc,rg:.05,mt:.9,sr:0,
+   l:'This Portfolio',d:'The orbital solar system you are exploring right now. Three.js, bloom, terminal mode, recruiter bot, hidden game.',
+   t:['Three.js','WebGL','CSS3','GSAP'],img:null,url:null},
+];
+
+/* ===== INIT ===== */
+const ctr = document.getElementById('solar-system');
+if (!ctr) throw new Error('No #solar-system');
+const W = () => ctr.clientWidth, H = () => ctr.clientHeight;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x020408);
+
+const cam = new THREE.PerspectiveCamera(55, W()/H(), 0.1, 800);
+cam.position.set(0, 28, 45);
+
+const ren = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+ren.setSize(W(), H());
+ren.setPixelRatio(Math.min(devicePixelRatio, 2));
+ren.toneMapping = THREE.ACESFilmicToneMapping;
+ren.toneMappingExposure = 1.3;
+ren.outputColorSpace = THREE.SRGBColorSpace;
+ctr.appendChild(ren.domElement);
+
+/* ===== CONTROLS ===== */
+const ctrl = new OrbitControls(cam, ren.domElement);
+ctrl.enableDamping = true;
+ctrl.dampingFactor = 0.06;
+ctrl.minDistance = 8;
+ctrl.maxDistance = 70;
+ctrl.maxPolarAngle = Math.PI * 0.85;
+ctrl.autoRotate = true;
+ctrl.autoRotateSpeed = 0.3;
+
+/* ===== LIGHTING ===== */
+scene.add(new THREE.AmbientLight(0x111133, 0.6));
+const ptLight = new THREE.PointLight(0xffeedd, 3, 80);
+scene.add(ptLight);
+
+/* ===== POST-PROCESSING ===== */
+const comp = new EffectComposer(ren);
+comp.addPass(new RenderPass(scene, cam));
+
+const bloom = new UnrealBloomPass(new THREE.Vector2(W(), H()), 1.0, 0.4, 0.2);
+comp.addPass(bloom);
+
+const cgShader = {
+  uniforms: {
+    tDiffuse: { value: null },
+    brightness: { value: 0.02 },
+    contrast: { value: 1.12 },
+    saturation: { value: 1.2 },
+    vigI: { value: 0.25 },
+    vigR: { value: 0.8 }
+  },
+  vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    uniform float brightness, contrast, saturation, vigI, vigR;
+    varying vec2 vUv;
+    void main() {
+      vec4 c = texture2D(tDiffuse, vUv);
+      c.rgb += brightness;
+      c.rgb = (c.rgb - 0.5) * contrast + 0.5;
+      float g = dot(c.rgb, vec3(0.299, 0.587, 0.114));
+      c.rgb = mix(vec3(g), c.rgb, saturation);
+      vec2 u = vUv * 2.0 - 1.0;
+      float v = 1.0 - dot(u * vigR, u * vigR);
+      c.rgb *= mix(1.0 - vigI, 1.0, clamp(pow(v, 1.5), 0.0, 1.0));
+      gl_FragColor = c;
+    }`
+};
+comp.addPass(new ShaderPass(cgShader));
+
+const fxaa = new ShaderPass(FXAAShader);
+fxaa.uniforms.resolution.value.set(1 / W(), 1 / H());
+comp.addPass(fxaa);
+
+/* ===== ENVIRONMENT MAP ===== */
+const pmr = new THREE.PMREMGenerator(ren);
+pmr.compileEquirectangularShader();
+const envS = new THREE.Scene();
+envS.add(new THREE.Mesh(
+  new THREE.SphereGeometry(500, 16, 16),
+  new THREE.ShaderMaterial({
+    side: THREE.BackSide,
+    uniforms: { top: { value: new THREE.Color(0x000033) }, bot: { value: new THREE.Color(0x000011) } },
+    vertexShader: `varying vec3 vW; void main() { vW = (modelMatrix * vec4(position,1.0)).xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
+    fragmentShader: `uniform vec3 top, bot; varying vec3 vW; void main() { float h = normalize(vW).y * 0.5 + 0.5; gl_FragColor = vec4(mix(bot, top, h), 1.0); }`
+  })
+));
+scene.environment = pmr.fromScene(envS, 0.04).texture;
+pmr.dispose();
+
+/* ===== STAR FIELD ===== */
+const stGeo = new THREE.BufferGeometry();
+const stPos = new Float32Array(STAR_N * 3);
+const stSz = new Float32Array(STAR_N);
+const stPh = new Float32Array(STAR_N);
+for (let i = 0; i < STAR_N; i++) {
+  const th = Math.random() * Math.PI * 2;
+  const ph = Math.acos(2 * Math.random() - 1);
+  const r = 150 + Math.random() * 200;
+  stPos[i*3]   = r * Math.sin(ph) * Math.cos(th);
+  stPos[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+  stPos[i*3+2] = r * Math.cos(ph);
+  stSz[i] = 0.5 + Math.random() * 2.0;
+  stPh[i] = Math.random() * Math.PI * 2;
+}
+stGeo.setAttribute('position', new THREE.BufferAttribute(stPos, 3));
+stGeo.setAttribute('size', new THREE.BufferAttribute(stSz, 1));
+stGeo.setAttribute('phase', new THREE.BufferAttribute(stPh, 1));
+
+const stMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false,
+  uniforms: { time: { value: 0 } },
+  vertexShader: `
+    attribute float size, phase;
+    uniform float time;
+    varying float vA;
+    void main() {
+      vA = 0.5 + 0.5 * sin(time * 0.8 + phase);
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = size * (200.0 / -mv.z);
+      gl_Position = projectionMatrix * mv;
+    }`,
+  fragmentShader: `
+    varying float vA;
+    void main() {
+      float d = length(gl_PointCoord - 0.5) * 2.0;
+      if (d > 1.0) discard;
+      gl_FragColor = vec4(0.9, 0.92, 1.0, (1.0 - d * d) * vA);
+    }`
+});
+const stars = new THREE.Points(stGeo, stMat);
+scene.add(stars);
+
+let mx = 0, my = 0;
+ctr.addEventListener('mousemove', e => {
+  const r = ctr.getBoundingClientRect();
+  mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+  my = ((e.clientY - r.top) / r.height - 0.5) * 2;
+});
+
+/* ===== NEBULA ===== */
+const nebMat = new THREE.ShaderMaterial({
+  side: THREE.BackSide, transparent: true, depthWrite: false,
+  uniforms: { time: { value: 0 } },
+  vertexShader: `varying vec3 vP; void main() { vP = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
+  fragmentShader: `
+    uniform float time;
+    varying vec3 vP;
+    float hash(vec3 p) { return fract(sin(dot(p, vec3(127.1,311.7,74.7))) * 43758.5453); }
+    float noise(vec3 p) {
+      vec3 i = floor(p), f = fract(p);
+      f = f * f * (3.0 - 2.0 * f);
+      return mix(
+        mix(mix(hash(i), hash(i+vec3(1,0,0)), f.x),
+            mix(hash(i+vec3(0,1,0)), hash(i+vec3(1,1,0)), f.x), f.y),
+        mix(mix(hash(i+vec3(0,0,1)), hash(i+vec3(1,0,1)), f.x),
+            mix(hash(i+vec3(0,1,1)), hash(i+vec3(1,1,1)), f.x), f.y), f.z);
+    }
+    float fbm(vec3 p) { float v=0.0, a=0.5; for(int i=0;i<4;i++){v+=a*noise(p);p*=2.0;a*=0.5;} return v; }
+    void main() {
+      vec3 d = normalize(vP);
+      float n = fbm(d * 3.0 + time * 0.02);
+      float n2 = fbm(d * 5.0 - time * 0.015);
+      vec3 purple = vec3(0.3, 0.05, 0.5);
+      vec3 cyan = vec3(0.0, 0.4, 0.5);
+      vec3 teal = vec3(0.0, 0.35, 0.3);
+      vec3 col = mix(purple, cyan, n) * 0.4 + teal * n2 * 0.2;
+      float alpha = smoothstep(0.3, 0.7, n) * 0.12;
+      gl_FragColor = vec4(col, alpha);
+    }`
+});
+scene.add(new THREE.Mesh(new THREE.SphereGeometry(300, 32, 32), nebMat));
+
+/* ===== CENTRAL STAR ===== */
+const cMat = new THREE.MeshPhysicalMaterial({
+  color: 0xffcc66, emissive: 0xffaa33, emissiveIntensity: 3.0,
+  roughness: 0.2, metalness: 0.0
+});
+const cStar = new THREE.Mesh(new THREE.SphereGeometry(2.5, 32, 32), cMat);
+scene.add(cStar);
+
+// Corona sprite
+const corCanvas = document.createElement('canvas');
+corCanvas.width = corCanvas.height = 256;
+const corCtx = corCanvas.getContext('2d');
+const corGrad = corCtx.createRadialGradient(128,128,0,128,128,128);
+corGrad.addColorStop(0, 'rgba(255,200,100,0.6)');
+corGrad.addColorStop(0.3, 'rgba(255,150,50,0.2)');
+corGrad.addColorStop(1, 'rgba(255,100,0,0)');
+corCtx.fillStyle = corGrad;
+corCtx.fillRect(0,0,256,256);
+const corona = new THREE.Sprite(new THREE.SpriteMaterial({
+  map: new THREE.CanvasTexture(corCanvas),
+  transparent: true, blending: THREE.AdditiveBlending, depthWrite: false
+}));
+corona.scale.setScalar(12);
+scene.add(corona);
+
+/* ===== ORBITAL RING LINES ===== */
+ORBIT_R.forEach(r => {
+  const rg = new THREE.Mesh(
+    new THREE.RingGeometry(r - 0.03, r + 0.03, 128),
+    new THREE.MeshBasicMaterial({ color: 0x1a2a4a, transparent: true, opacity: 0.3, side: THREE.DoubleSide })
+  );
+  rg.rotation.x = -Math.PI / 2;
+  scene.add(rg);
+});
+
+/* ===== PLANETS ===== */
+const pMeshes = [];
+PROJECTS.forEach((p, i) => {
+  const mat = new THREE.MeshPhysicalMaterial({
+    color: p.c, emissive: p.e, emissiveIntensity: 0.8,
+    roughness: p.rg, metalness: p.mt,
+    clearcoat: 0.3, clearcoatRoughness: 0.2
+  });
+  const mesh = new THREE.Mesh(new THREE.SphereGeometry(PR, 32, 32), mat);
+  mesh.userData = { idx: i, baseEI: 0.8 };
+  const R = ORBIT_R[p.r];
+  mesh.position.set(Math.cos(p.a) * R, 0, Math.sin(p.a) * R);
+  scene.add(mesh);
+  pMeshes.push(mesh);
+
+  // Saturn ring for BerriosPay
+  if (p.sr) {
+    const ring = new THREE.Mesh(
+      new THREE.RingGeometry(PR * 1.4, PR * 2.2, 64),
+      new THREE.MeshPhysicalMaterial({
+        color: 0x3a4a6a, emissive: 0x1a2a4a, emissiveIntensity: 0.4,
+        roughness: 0.3, metalness: 0.5, transparent: true, opacity: 0.7, side: THREE.DoubleSide
+      })
+    );
+    ring.rotation.x = Math.PI / 2.5;
+    mesh.add(ring);
+  }
+});
+
+/* ===== ASTEROID BELT ===== */
+const astGeo = new THREE.IcosahedronGeometry(0.15, 0);
+const astMat = new THREE.MeshStandardMaterial({ color: 0x555566, roughness: 0.9, metalness: 0.1 });
+const asts = new THREE.InstancedMesh(astGeo, astMat, AST_N);
+const astD = [];
+const dum = new THREE.Object3D();
+for (let i = 0; i < AST_N; i++) {
+  const ang = Math.random() * Math.PI * 2;
+  const r = ORBIT_R[0] + 3 + Math.random() * (ORBIT_R[1] - ORBIT_R[0] - 6);
+  const y = (Math.random() - 0.5) * 2;
+  const sc = 0.5 + Math.random() * 1.5;
+  astD.push({ ang, r, y, sc, sp: 0.001 + Math.random() * 0.003, rx: Math.random() * Math.PI, ry: Math.random() * Math.PI, rs: 0.01 + Math.random() * 0.02 });
+  dum.position.set(Math.cos(ang) * r, y, Math.sin(ang) * r);
+  dum.rotation.set(astD[i].rx, astD[i].ry, 0);
+  dum.scale.setScalar(sc);
+  dum.updateMatrix();
+  asts.setMatrixAt(i, dum.matrix);
+}
+asts.instanceMatrix.needsUpdate = true;
+scene.add(asts);
+
+/* ===== SHOOTING STARS ===== */
+const shoots = [];
+let shootT = 0, nextShoot = 3 + Math.random() * 5;
+function spawnShoot() {
+  const pos = new THREE.Vector3((Math.random()-0.5)*200, 50+Math.random()*100, (Math.random()-0.5)*200);
+  const dir = new THREE.Vector3((Math.random()-0.5)*2, -1-Math.random(), (Math.random()-0.5)*2).normalize();
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
+  const mat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.8 });
+  const line = new THREE.Line(geo, mat);
+  scene.add(line);
+  shoots.push({ line, pos: pos.clone(), dir, sp: 80 + Math.random() * 60, life: 1.5 + Math.random() });
+}
+
+/* ===== SATELLITE ===== */
+const satG = new THREE.Group();
+satG.add(new THREE.Mesh(new THREE.BoxGeometry(0.3,0.3,0.6), new THREE.MeshPhysicalMaterial({ color:0xaaaaaa, metalness:0.8, roughness:0.2 })));
+const sp1 = new THREE.Mesh(new THREE.BoxGeometry(1.2,0.05,0.5), new THREE.MeshPhysicalMaterial({ color:0x2255aa, metalness:0.3, roughness:0.4, emissive:0x112244, emissiveIntensity:0.5 }));
+sp1.position.x = 0.8; satG.add(sp1);
+const sp2 = sp1.clone(); sp2.position.x = -0.8; satG.add(sp2);
+satG.scale.setScalar(0.8);
+scene.add(satG);
+
+/* ===== INTERACTIONS ===== */
+const ray = new THREE.Raycaster();
+const mPos = new THREE.Vector2(-999, -999);
+let hovered = null;
+const lbl = document.getElementById('planet-label');
+const lblN = document.getElementById('pl-name');
+const lblT = document.getElementById('pl-tech');
+
+ctr.addEventListener('pointermove', e => {
+  const r = ctr.getBoundingClientRect();
+  mPos.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+  mPos.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+  mx = mPos.x; my = mPos.y;
+});
+
+ctr.addEventListener('click', () => {
+  if (hovered !== null) {
+    if (hovered === -1) openBio(); else openProj(hovered);
+  }
+});
+
+/* ===== OVERLAY ===== */
+function openProj(i) {
+  const p = PROJECTS[i];
+  const ov = document.getElementById('project-overlay');
+  document.getElementById('po-title').textContent = p.n;
+  document.getElementById('po-desc').textContent = p.l;
+  document.getElementById('po-details').textContent = p.d;
+  const iw = document.getElementById('po-img-wrap'); iw.innerHTML = '';
+  if (p.img) { const im = document.createElement('img'); im.src = p.img; im.alt = p.n; im.className = 'po-img'; iw.appendChild(im); }
+  const td = document.getElementById('po-tech-tags'); td.innerHTML = '';
+  p.t.forEach(t => { const s = document.createElement('span'); s.textContent = t; td.appendChild(s); });
+  const ad = document.getElementById('po-actions'); ad.innerHTML = '';
+  if (p.url) { const a = document.createElement('a'); a.href = p.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.className = 'chip'; a.textContent = 'Live Demo'; ad.appendChild(a); }
+  const bk = document.createElement('button'); bk.className = 'chip'; bk.textContent = '\u2190 Back to Universe'; bk.onclick = closePO; ad.appendChild(bk);
+  ov.style.display = 'flex';
+  gsap.fromTo(ov, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+  gsap.fromTo('#po-card', { scale: 0.9, y: 30 }, { scale: 1, y: 0, duration: 0.4, ease: 'back.out(1.5)' });
+}
+
+function openBio() {
+  const ov = document.getElementById('project-overlay');
+  document.getElementById('po-title').textContent = 'Luis Rodr\u00edguez';
+  document.getElementById('po-desc').textContent = 'Senior Full-Stack Engineer & Technical Lead';
+  document.getElementById('po-details').textContent = 'I ship production software end to end \u2014 from database schema and cloud infrastructure to frontend, hardware integration, and deployment. 4 systems shipped as sole engineer in 6 months. Based in Puerto Rico, US citizen, available for remote roles.';
+  document.getElementById('po-img-wrap').innerHTML = '';
+  const td = document.getElementById('po-tech-tags'); td.innerHTML = '';
+  ['React 19','.NET 10','TypeScript','Azure','Three.js','Claude API','SQL Server','PostgreSQL'].forEach(t => {
+    const s = document.createElement('span'); s.textContent = t; td.appendChild(s);
+  });
+  const ad = document.getElementById('po-actions'); ad.innerHTML = '';
+  const em = document.createElement('a'); em.href = 'mailto:luisangelrod17@gmail.com'; em.className = 'cta'; em.textContent = 'Contact Me';
+  const gh = document.createElement('a'); gh.href = 'https://github.com/luisangelrod'; gh.target = '_blank'; gh.className = 'chip'; gh.textContent = 'GitHub';
+  const bk = document.createElement('button'); bk.className = 'chip'; bk.textContent = '\u2190 Back to Universe'; bk.onclick = closePO;
+  ad.append(em, gh, bk);
+  ov.style.display = 'flex';
+  gsap.fromTo(ov, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+  gsap.fromTo('#po-card', { scale: 0.9, y: 30 }, { scale: 1, y: 0, duration: 0.4, ease: 'back.out(1.5)' });
+}
+
+function closePO() {
+  const ov = document.getElementById('project-overlay');
+  gsap.to(ov, { opacity: 0, duration: 0.25, onComplete: () => { ov.style.display = 'none'; } });
+}
+window.closeProjectOverlay = closePO;
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('project-overlay').style.display === 'flex') closePO(); });
+
+/* ===== CLOCK ===== */
+const clk = document.createElement('div');
+clk.className = 'solar-clock';
+ctr.appendChild(clk);
+setInterval(() => { clk.textContent = new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }); }, 1000);
+
+/* ===== ANIMATION ===== */
+const clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const dt = clock.getDelta(), t = clock.getElapsedTime();
+
+  // Stars twinkle + parallax
+  stMat.uniforms.time.value = t;
+  stars.rotation.x = my * 0.02;
+  stars.rotation.y = mx * 0.02;
+
+  // Nebula
+  nebMat.uniforms.time.value = t;
+
+  // Central star pulse
+  cMat.emissiveIntensity = 2.5 + Math.sin(t * 1.5) * 0.8;
+  corona.material.opacity = 0.4 + Math.sin(t * 1.2) * 0.15;
+  corona.scale.setScalar(11 + Math.sin(t * 0.8) * 1.5);
+  ptLight.intensity = 2.5 + Math.sin(t * 1.5) * 0.5;
+
+  // Planet orbits + self-rotation
+  pMeshes.forEach((m, i) => {
+    const p = PROJECTS[i];
+    const R = ORBIT_R[p.r];
+    const spd = (2 * Math.PI) / ORBIT_T[p.r];
+    const ang = p.a + t * spd;
+    m.position.set(Math.cos(ang) * R, 0, Math.sin(ang) * R);
+    m.rotation.y += dt * 0.3;
+  });
+
+  // Asteroids
+  for (let i = 0; i < AST_N; i++) {
+    const d = astD[i];
+    d.ang += d.sp;
+    d.rx += d.rs;
+    d.ry += d.rs * 0.7;
+    dum.position.set(Math.cos(d.ang) * d.r, d.y, Math.sin(d.ang) * d.r);
+    dum.rotation.set(d.rx, d.ry, 0);
+    dum.scale.setScalar(d.sc);
+    dum.updateMatrix();
+    asts.setMatrixAt(i, dum.matrix);
+  }
+  asts.instanceMatrix.needsUpdate = true;
+
+  // Satellite
+  const sa = t * 0.15, sr = ORBIT_R[1] + 4;
+  satG.position.set(Math.cos(sa) * sr, Math.sin(t * 0.3) * 2 + 4, Math.sin(sa) * sr);
+  satG.rotation.y = sa + Math.PI;
+
+  // Shooting stars
+  shootT += dt;
+  if (shootT > nextShoot) { spawnShoot(); shootT = 0; nextShoot = 3 + Math.random() * 5; }
+  for (let i = shoots.length - 1; i >= 0; i--) {
+    const s = shoots[i];
+    s.life -= dt;
+    if (s.life <= 0) { scene.remove(s.line); s.line.geometry.dispose(); s.line.material.dispose(); shoots.splice(i, 1); continue; }
+    const tail = s.pos.clone().addScaledVector(s.dir, -4);
+    s.pos.addScaledVector(s.dir, s.sp * dt);
+    const pa = s.line.geometry.attributes.position.array;
+    pa[0] = s.pos.x; pa[1] = s.pos.y; pa[2] = s.pos.z;
+    pa[3] = tail.x; pa[4] = tail.y; pa[5] = tail.z;
+    s.line.geometry.attributes.position.needsUpdate = true;
+    s.line.material.opacity = Math.min(s.life, 0.8);
+  }
+
+  // Hover detection
+  ray.setFromCamera(mPos, cam);
+  const ph = ray.intersectObjects(pMeshes);
+  const ch = ray.intersectObject(cStar);
+  let newH = null, lTxt = '', lSub = '', lSP = null;
+
+  if (ph.length > 0) {
+    const h = ph[0].object;
+    newH = h.userData.idx;
+    lTxt = PROJECTS[newH].n;
+    lSub = PROJECTS[newH].t.join(' \u00b7 ');
+    lSP = h.position.clone().project(cam);
+  } else if (ch.length > 0) {
+    newH = -1;
+    lTxt = 'Luis Rodr\u00edguez';
+    lSub = 'Click to learn more';
+    lSP = cStar.position.clone().project(cam);
+  }
+
+  if (newH !== hovered) {
+    if (hovered !== null && hovered >= 0) pMeshes[hovered].material.emissiveIntensity = pMeshes[hovered].userData.baseEI;
+    if (newH !== null && newH >= 0) pMeshes[newH].material.emissiveIntensity = 2.0;
+    hovered = newH;
+  }
+
+  if (hovered !== null) {
+    ctr.style.cursor = 'pointer';
+    lblN.textContent = lTxt;
+    lblT.textContent = lSub;
+    lbl.style.opacity = '1';
+    const sx = (lSP.x * 0.5 + 0.5) * W();
+    const sy = (-lSP.y * 0.5 + 0.5) * H();
+    const lw = lbl.offsetWidth || 160;
+    const lh = lbl.offsetHeight || 40;
+    const lx = Math.min(sx + 16, W() - lw - 8);
+    const ly = Math.max(sy - 20, 8);
+    lbl.style.left = Math.max(8, lx) + 'px';
+    lbl.style.top = Math.min(ly, H() - lh - 8) + 'px';
+  } else {
+    lbl.style.opacity = '0';
+    ctr.style.cursor = 'grab';
+  }
+
+  ctrl.update();
+  comp.render();
+}
+animate();
+
+/* ===== RESIZE ===== */
+function onResize() {
+  cam.aspect = W() / H();
+  cam.updateProjectionMatrix();
+  ren.setSize(W(), H());
+  comp.setSize(W(), H());
+  bloom.setSize(W(), H());
+  fxaa.uniforms.resolution.value.set(1 / W(), 1 / H());
+}
+window.addEventListener('resize', onResize);
+new ResizeObserver(onResize).observe(ctr);
+
+// Fade hint
+setTimeout(() => { const h = document.getElementById('solar-hint'); if (h) h.style.opacity = '0'; }, 6000);
+  </script>
+  <!-- ========== ORBITAL SOLAR SYSTEM SCRIPT END ========== -->
+
   <!-- ========== TERMINAL MODE — START ========== -->
   <style>
     .term-hint{position:fixed;bottom:92px;right:24px;z-index:8990;background:rgba(0,0,0,.75);border:1px solid rgba(0,200,80,.18);border-radius:6px;padding:5px 10px;font:9px 'Press Start 2P',monospace;color:rgba(0,200,80,.45);letter-spacing:.05em;pointer-events:none;opacity:0;transition:opacity .6s}
@@ -1837,3 +2267,4 @@ document.addEventListener('DOMContentLoaded',function(){
   <!-- ========== TERMINAL MODE — END ========== -->
 </body>
 </html>
+
