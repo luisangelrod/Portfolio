@@ -52,6 +52,13 @@
     .project-card .titlebar span{color:rgba(255,255,255,.45)!important}
     @media (max-width:920px){.hero-main,.summary,.mixed,.skills,.contactbox{grid-template-columns:1fr}.contact-row,.chips{justify-content:flex-start}.contact-row{text-align:left;justify-self:start}.nav{flex-wrap:nowrap;overflow:auto;padding-bottom:14px}.nav a{white-space:nowrap}.grid3{grid-template-columns:1fr}}
     @media (max-width:640px){.page{padding:0 8px;margin:14px auto}.hero,.content{padding-left:16px;padding-right:16px}.identity{align-items:flex-start}.mark{width:68px;height:68px;flex-basis:68px}.role{font-size:.92rem}.headline,.copy,.job p,.skill p,.lead{font-size:.93rem}.stats{grid-template-columns:1fr}.media{min-height:160px}.bar,.project .titlebar{font-size:1.05rem}.project-card{margin-left:-2px;margin-right:-2px}}
+    .ct-option{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bar);text-align:center;transition:border-color .2s,transform .2s,background .2s;text-decoration:none;color:inherit}
+    .ct-option:hover{border-color:rgba(59,130,246,.3);transform:translateY(-3px);background:rgba(59,130,246,.04)}
+    .ct-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ct-icon svg{width:22px;height:22px}
+    .ct-label{font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--heading)}
+    .ct-detail{font-size:.72rem;color:var(--muted);line-height:1.3;word-break:break-all}
+    @media(max-width:640px){.ct-option{padding:16px 10px}.ct-detail{display:none}}
+    @media(max-width:480px){#contact .panel>div{grid-template-columns:repeat(2,1fr)}}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card:hover{transform:none}}
   </style>
   <!-- ========== GAME STYLES — START ========== -->
@@ -662,9 +669,30 @@
         </section>
         <section class="section" id="contact">
           <div class="bar">Contact</div>
-          <div class="panel contactbox">
-            <p>Open to remote senior engineering and technical lead roles. If you need someone who ships fast and owns the full stack, let's talk.</p>
-            <a href="mailto:luisangelrod17@gmail.com" class="cta">Get in Touch</a>
+          <div class="panel" style="padding:24px">
+            <p style="margin:0 0 20px;color:var(--muted)">Open to remote senior engineering and technical lead roles. Reach out however works best for you.</p>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+              <a href="mailto:luisangelrod17@gmail.com" class="ct-option">
+                <span class="ct-icon" style="background:rgba(59,130,246,.12);color:#60a5fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+                <span class="ct-label">Email</span>
+                <span class="ct-detail">luisangelrod17@gmail.com</span>
+              </a>
+              <a href="tel:+17879805868" class="ct-option">
+                <span class="ct-icon" style="background:rgba(16,185,129,.12);color:#34d399"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72l.34 2.57a2 2 0 0 1-.57 1.68L7.1 9.76a16 16 0 0 0 7.14 7.14l1.79-1.78a2 2 0 0 1 1.68-.57l2.57.34A2 2 0 0 1 22 16.92z"/></svg></span>
+                <span class="ct-label">Call</span>
+                <span class="ct-detail">(787) 980-5868</span>
+              </a>
+              <a href="sms:+17879805868" class="ct-option">
+                <span class="ct-icon" style="background:rgba(139,92,246,.12);color:#a78bfa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                <span class="ct-label">Text</span>
+                <span class="ct-detail">(787) 980-5868</span>
+              </a>
+              <a href="https://wa.me/17879805868" target="_blank" rel="noopener noreferrer" class="ct-option">
+                <span class="ct-icon" style="background:rgba(37,211,102,.12);color:#25d366"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></span>
+                <span class="ct-label">WhatsApp</span>
+                <span class="ct-detail">Chat on WhatsApp</span>
+              </a>
+            </div>
           </div>
         </section>
       </div>
