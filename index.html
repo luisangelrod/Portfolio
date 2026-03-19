@@ -223,6 +223,32 @@
       .bc-panel{width:100%;max-width:100%}
     }
   </style>
+  <style>
+  /* ========== FEATURED SHOWCASE CARDS ========== */
+  .bc-featured{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:48px}
+  .bc-feat-card{position:relative;background:rgba(17,34,64,.5);border:1px solid rgba(100,255,218,.15);border-radius:12px;overflow:hidden;transition:all .3s ease;cursor:pointer}
+  .bc-feat-card:hover{border-color:rgba(100,255,218,.4);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .bc-feat-img{width:100%;height:240px;object-fit:cover;object-position:top;border-bottom:1px solid rgba(100,255,218,.1);display:block}
+  .bc-feat-body{padding:24px 28px}
+  .bc-feat-badge{display:inline-block;font-family:'Fira Code',monospace;font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(100,255,218,.1);color:#64ffda;border:1px solid rgba(100,255,218,.2);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
+  .bc-feat-title{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:800;color:#ccd6f6;margin:0 0 6px;transition:color .2s}
+  .bc-feat-card:hover .bc-feat-title{color:#64ffda}
+  .bc-feat-subtitle{font-size:.82rem;color:#8892b0;margin:0 0 14px;line-height:1.6}
+  .bc-feat-desc{font-size:.88rem;color:#8892b0;margin:0 0 18px;line-height:1.65}
+  .bc-feat-highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+  .bc-feat-hl{display:flex;align-items:center;gap:8px;font-size:.78rem;color:#a8b2d0}
+  .bc-feat-hl svg{width:14px;height:14px;color:#64ffda;flex-shrink:0}
+  .bc-feat-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .bc-feat-actions{display:flex;gap:10px}
+  .bc-feat-btn{padding:8px 18px;border-radius:6px;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+  .bc-feat-btn-primary{background:transparent;border:1px solid #64ffda;color:#64ffda}
+  .bc-feat-btn-primary:hover{background:rgba(100,255,218,.1)}
+  .bc-feat-btn-ghost{background:transparent;border:1px solid rgba(136,146,176,.3);color:#8892b0}
+  .bc-feat-btn-ghost:hover{border-color:#8892b0;color:#ccd6f6}
+  .bc-other-header{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:#8892b0;margin:0 0 24px;padding-bottom:12px;border-bottom:1px solid rgba(100,255,218,.08);letter-spacing:.04em;text-transform:uppercase}
+  @media(max-width:860px){.bc-featured{grid-template-columns:1fr}}
+  @media(max-width:640px){.bc-feat-body{padding:18px 20px}.bc-feat-highlights{grid-template-columns:1fr}.bc-feat-img{height:200px}}
+  </style>
   <!-- ========== BRITTANY CHIANG PROJECTS STYLES END ========== -->
 </head>
 <body>
@@ -255,6 +281,7 @@
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
+          <a href="#constellation">Constellation</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -318,6 +345,9 @@
       <div class="bc-header">
         <h2><span>03.</span> Selected Work</h2>
       </div>
+      <!-- Featured Showcase -->
+      <div class="bc-featured" id="bc-featured"></div>
+      <h3 class="bc-other-header">Other Projects</h3>
       <div class="bc-layout">
         <aside class="bc-sidebar">
           <nav class="bc-filters" role="tablist" aria-label="Project filters">
@@ -341,6 +371,310 @@
     </div>
   </div>
   <!-- ========== SLIDE PANEL END ========== -->
+
+  <!-- ========== SKILL CONSTELLATION — START ========== -->
+  <style>
+    .sk-uni{background:linear-gradient(180deg,#070c1a 0%,#040810 100%);position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+    html.light .sk-uni{background:linear-gradient(180deg,#f0f2f8 0%,#e4e8f0 100%)}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-uni{background:linear-gradient(180deg,#f0f2f8 0%,#e4e8f0 100%)}}
+    .sk-uni-hdr{max-width:1120px;margin:0 auto;padding:64px 24px 0;width:100%}
+    .sk-uni-hdr h2{margin:0 0 8px;font-family:'Inter',sans-serif;font-size:clamp(1.6rem,3vw,2rem);font-weight:900;color:#ccd6f6;letter-spacing:-.03em}
+    .sk-uni-hdr h2 span{color:#dc2626;margin-right:10px;font-family:'Fira Code',monospace;font-size:.85em;font-weight:400}
+    html.light .sk-uni-hdr h2{color:#1e293b}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-uni-hdr h2{color:#1e293b}}
+    .sk-uni-hdr p{margin:0;color:#8892b0;font-size:.92rem}
+    html.light .sk-uni-hdr p{color:#64748b}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-uni-hdr p{color:#64748b}}
+    .sk-wrap{position:relative;width:100%;max-width:1120px;margin:28px auto 0;height:580px;cursor:crosshair}
+    @media(max-width:640px){.sk-wrap{height:420px}.sk-uni-hdr{padding:44px 16px 0}}
+    #sk-canvas{display:block;width:100%;height:100%;border-radius:12px}
+    .sk-card{position:absolute;right:24px;top:24px;width:300px;max-width:calc(100% - 48px);background:rgba(6,9,20,.94);border:1px solid rgba(220,38,38,.25);border-radius:12px;padding:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:10;animation:sk-pop .25s cubic-bezier(.34,1.4,.64,1) both;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+    html.light .sk-card{background:rgba(255,255,255,.95);border-color:rgba(220,38,38,.2);box-shadow:0 8px 32px rgba(0,0,0,.12)}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-card{background:rgba(255,255,255,.95);border-color:rgba(220,38,38,.2);box-shadow:0 8px 32px rgba(0,0,0,.12)}}
+    @keyframes sk-pop{from{opacity:0;transform:scale(.9) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    @media(max-width:640px){.sk-card{right:12px;top:12px;width:calc(100% - 24px)}}
+    .sk-card-x{position:absolute;top:10px;right:10px;width:28px;height:28px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:transparent;color:#8892b0;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+    .sk-card-x:hover{color:#dc2626;border-color:rgba(220,38,38,.4)}
+    html.light .sk-card-x{border-color:rgba(0,0,0,.1);color:#64748b}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-x{border-color:rgba(0,0,0,.1);color:#64748b}}
+    .sk-card-cat{font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
+    .sk-card-name{margin:0 0 10px;font-size:1.1rem;font-weight:800;color:#ccd6f6}
+    html.light .sk-card-name{color:#1e293b}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-name{color:#1e293b}}
+    .sk-card-bar-wrap{width:100%;height:5px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-bottom:4px}
+    html.light .sk-card-bar-wrap{background:rgba(0,0,0,.08)}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-bar-wrap{background:rgba(0,0,0,.08)}}
+    .sk-card-bar{height:100%;border-radius:999px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+    .sk-card-lvl{margin:0 0 10px;font-size:.72rem;color:#8892b0;font-weight:600;font-family:'Fira Code',monospace}
+    html.light .sk-card-lvl{color:#64748b}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-lvl{color:#64748b}}
+    .sk-card-desc{margin:0 0 12px;font-size:.84rem;color:#a8b2d0;line-height:1.55}
+    html.light .sk-card-desc{color:#475569}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-desc{color:#475569}}
+    .sk-card-rel{display:flex;flex-wrap:wrap;gap:6px}
+    .sk-card-tag{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid;background:transparent;white-space:nowrap}
+    .sk-hint{max-width:1120px;margin:0 auto;padding:10px 24px 0;text-align:center;font-size:.75rem;color:rgba(136,146,176,.4);font-family:'Fira Code',monospace}
+    html.light .sk-hint{color:rgba(100,116,139,.5)}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-hint{color:rgba(100,116,139,.5)}}
+    .sk-legend{max-width:1120px;margin:0 auto;padding:20px 24px 52px;display:flex;flex-wrap:wrap;gap:10px;width:100%}
+    .sk-leg-item{display:flex;align-items:center;gap:6px;font-size:.73rem;font-weight:700;color:#8892b0}
+    html.light .sk-leg-item{color:#475569}
+    @media(prefers-color-scheme:light){html:not(.dark) .sk-leg-item{color:#475569}}
+    .sk-leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  </style>
+
+  <section id="constellation" class="sk-uni">
+    <div class="sk-uni-hdr">
+      <h2><span>04.</span> Tech Constellation</h2>
+      <p>Hover to trace connections &nbsp;&middot;&nbsp; Click a node to inspect &nbsp;&middot;&nbsp; Drag your cursor through the field</p>
+    </div>
+    <div class="sk-wrap">
+      <canvas id="sk-canvas"></canvas>
+      <div id="sk-card" class="sk-card" style="display:none"></div>
+    </div>
+    <div class="sk-hint">// every node is a skill, a production system, a shipped feature</div>
+    <div class="sk-legend" id="sk-legend"></div>
+  </section>
+
+  <script>
+  (function(){
+    var cv=document.getElementById('sk-canvas');if(!cv)return;
+    var ctx=cv.getContext('2d');
+    var CAT={
+      frontend:{fill:'#3b82f6',glow:'59,130,246',label:'Frontend'},
+      backend: {fill:'#10b981',glow:'16,185,129',label:'Backend'},
+      database:{fill:'#f59e0b',glow:'245,158,11',label:'Database'},
+      cloud:   {fill:'#8b5cf6',glow:'139,92,246',label:'Cloud & DevOps'},
+      testing: {fill:'#ef4444',glow:'239,68,68', label:'Testing'},
+      ai:      {fill:'#06b6d4',glow:'6,182,212', label:'AI & Agents'},
+      games:   {fill:'#f97316',glow:'249,115,22',label:'Games & 3D'},
+      platform:{fill:'#6366f1',glow:'99,102,241',label:'Platform'},
+    };
+    var RAW=[
+      {id:'react',    name:'React 19',        cat:'frontend',level:95,desc:'LeadFlow SaaS, BerriosPay kiosks, enterprise dashboards — React 19 in production',         rel:['typescript','vite','tailwind','wpf']},
+      {id:'typescript',name:'TypeScript',     cat:'frontend',level:92,desc:'Strict mode across every personal and production codebase — typed APIs, generics, Zod',    rel:['react','angular','node']},
+      {id:'angular',  name:'Angular',         cat:'frontend',level:80,desc:'PR Health Dept & Highspring Digital — WCAG-accessible enterprise features',                 rel:['typescript']},
+      {id:'vite',     name:'Vite',            cat:'frontend',level:88,desc:'Default bundler for all React projects — fast HMR, optimized production builds',            rel:['react','typescript']},
+      {id:'tailwind', name:'Tailwind CSS',    cat:'frontend',level:85,desc:'Responsive, accessible design systems at velocity — Shadcn architecture',                   rel:['react']},
+      {id:'dotnet',   name:'.NET 10',         cat:'backend', level:90,desc:'BerriosPay payment APIs & BCPOS kiosks — PCI DSS, high-reliability production systems',    rel:['csharp','efcore','sqlserver']},
+      {id:'csharp',   name:'C#',              cat:'backend', level:88,desc:'Clean architecture, async/await, SOLID patterns throughout all .NET projects',              rel:['dotnet','aspnet']},
+      {id:'aspnet',   name:'ASP.NET Core',    cat:'backend', level:87,desc:'REST APIs, middleware pipelines, background workers, JWT auth, rate limiting',              rel:['csharp','dotnet']},
+      {id:'efcore',   name:'EF Core',         cat:'backend', level:82,desc:'Code-first migrations, complex query optimization, zero N+1 queries in production',         rel:['dotnet','sqlserver']},
+      {id:'node',     name:'Node.js',         cat:'backend', level:78,desc:'LeadFlow SaaS — Express + Prisma, SSE streaming, Claude API agentic webhooks',             rel:['typescript','prisma','claude']},
+      {id:'sqlserver',name:'SQL Server',      cat:'database',level:88,desc:'Schema design, stored procedures, full-text search — 3 years at PR Health Dept',           rel:['efcore','azuresql']},
+      {id:'azuresql', name:'Azure SQL',       cat:'database',level:85,desc:'Production cloud DB for BerriosPay — elastic pools, geo-redundancy, auto-backups',          rel:['sqlserver','azure']},
+      {id:'postgres', name:'PostgreSQL',      cat:'database',level:78,desc:'LeadFlow SaaS — Prisma ORM + raw SQL, advanced indexing and relation design',               rel:['node','prisma']},
+      {id:'prisma',   name:'Prisma ORM',      cat:'database',level:80,desc:'Type-safe queries, migrations, seeding and relation handling across all Node projects',     rel:['postgres','node']},
+      {id:'azure',    name:'Azure',           cat:'cloud',   level:85,desc:'App Service, Static Web Apps, SQL, Key Vault, DevOps — primary cloud for all .NET work',   rel:['azuresql','githubactions','bicep']},
+      {id:'githubactions',name:'GitHub Actions',cat:'cloud', level:82,desc:'CI/CD — 215-test pipeline, multi-env deployment gates, matrix builds, caching',            rel:['azure','bicep']},
+      {id:'bicep',    name:'Bicep / IaC',     cat:'cloud',   level:70,desc:'Azure infrastructure-as-code — repeatable, versioned, multi-environment deployments',       rel:['azure']},
+      {id:'vitest',   name:'Vitest',          cat:'testing', level:88,desc:'215-test suite on CDD-HUB — fast parallel execution, coverage tracking, watch mode',        rel:['playwright','react']},
+      {id:'playwright',name:'Playwright',     cat:'testing', level:83,desc:'E2E across complex React routing flows, auth states, and multi-page interactions',          rel:['vitest','typescript']},
+      {id:'jest',     name:'Jest',            cat:'testing', level:80,desc:'Unit and integration tests for .NET & Node services — 43 tests on BerriosPay',             rel:['vitest','node']},
+      {id:'claude',   name:'Claude API',      cat:'ai',      level:90,desc:'LeadFlow — agentic SMS conversations with tool_use, SSE streaming, persistent context',     rel:['openai','node','typescript']},
+      {id:'openai',   name:'OpenAI GPT',      cat:'ai',      level:78,desc:'AI QA Agent — generative test case creation from feature specs, automated regression',      rel:['claude','node']},
+      {id:'threejs',  name:'Three.js',        cat:'games',   level:72,desc:'3D portfolio interactivity and visual experiments — targeting WebGPU renderer for AAA',     rel:['webgpu','typescript']},
+      {id:'webgpu',   name:'WebGPU',          cat:'games',   level:60,desc:'Exploring GPU-native compute for the AAA game engine layer — next frontier on the roadmap', rel:['threejs']},
+      {id:'wpf',      name:'WPF + WebView2',  cat:'platform',level:80,desc:'Kiosk software bridging desktop WPF and web React — BerriosPay 25+ kiosks in production',  rel:['dotnet','react']},
+      {id:'ionic',    name:'Ionic/Capacitor', cat:'platform',level:75,desc:'Salud Medica \u2014 Android POS for medical transport dispatch, offline-first with sync',         rel:['angular','typescript']},
+      {id:'nextjs',   name:'Next.js 16',      cat:'frontend',level:85,desc:'ALEXIS beach safety app, LeadFlow SaaS \u2014 SSR, ISR, App Router in production',             rel:['react','typescript','node']},
+      {id:'leaflet',  name:'Leaflet.js',      cat:'frontend',level:78,desc:'ALEXIS \u2014 interactive beach map with 73 markers, geolocation, zone overlays',               rel:['react','nextjs']},
+    ];
+
+    /* Legend */
+    var leg=document.getElementById('sk-legend');
+    if(leg){Object.keys(CAT).forEach(function(k){var c=CAT[k];var el=document.createElement('div');el.className='sk-leg-item';el.innerHTML='<div class="sk-leg-dot" style="background:'+c.fill+'"></div>'+c.label;leg.appendChild(el);});}
+
+    var W,H,dpr,nodes=[],stars=[],hovId=null,selId=null;
+    var mouse={x:-9999,y:-9999},T=0,af=null;
+    var reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function isLight(){return document.documentElement.classList.contains('light')||(!(document.documentElement.classList.contains('dark'))&&matchMedia('(prefers-color-scheme:light)').matches);}
+
+    function resize(){
+      var wrap=cv.parentElement;
+      W=wrap.clientWidth;
+      H=wrap.offsetHeight||520;
+      dpr=window.devicePixelRatio||1;
+      cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+      cv.style.width=W+'px';cv.style.height=H+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      layout();
+    }
+
+    function layout(){
+      var cx=W/2,cy=H/2,R=Math.min(W,H)*0.35;
+      var grp={};RAW.forEach(function(s){if(!grp[s.cat])grp[s.cat]=[];grp[s.cat].push(s);});
+      var keys=Object.keys(grp);nodes=[];
+      keys.forEach(function(cat,ci){
+        var g=grp[cat];
+        var ga=(ci/keys.length)*Math.PI*2-Math.PI/2;
+        var gr=R*(0.42+(ci%3)*0.22);
+        var gx=cx+Math.cos(ga)*gr,gy=cy+Math.sin(ga)*gr;
+        g.forEach(function(sk,si){
+          var sa=ga+((si-(g.length-1)/2)/Math.max(1,g.length))*1.5;
+          var sr=si===0?0:48+si*26;
+          var bx=si===0?gx:gx+Math.cos(sa)*sr;
+          var by=si===0?gy:gy+Math.sin(sa)*sr;
+          var pad=45;
+          bx=Math.max(pad,Math.min(W-pad,bx));
+          by=Math.max(pad,Math.min(H-pad,by));
+          nodes.push({id:sk.id,name:sk.name,cat:sk.cat,level:sk.level,desc:sk.desc,rel:sk.rel,
+            x:bx,y:by,bx:bx,by:by,vx:0,vy:0,
+            r:6+sk.level*0.08,
+            pu:Math.random()*Math.PI*2,pp:0.014+Math.random()*0.018,
+            fp:Math.random()*Math.PI*2,fa:1.8+Math.random()*2.8,fs:0.003+Math.random()*0.003});
+        });
+      });
+      stars=[];
+      for(var i=0;i<160;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.3+0.2,a:Math.random()*.7+.1,p:Math.random()*Math.PI*2,s:.01+Math.random()*.025});
+    }
+
+    function gn(id){for(var i=0;i<nodes.length;i++)if(nodes[i].id===id)return nodes[i];return null;}
+
+    function draw(){
+      if(!ctx)return;
+      ctx.clearRect(0,0,W,H);T+=0.016;
+      var lt=isLight();
+
+      /* bg */
+      var bg=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.85);
+      if(lt){bg.addColorStop(0,'#e8ecf4');bg.addColorStop(1,'#dbe0ec');}
+      else{bg.addColorStop(0,'#0e1730');bg.addColorStop(1,'#040810');}
+      ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+
+      /* stars */
+      for(var i=0;i<stars.length;i++){
+        var s=stars[i];
+        ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        if(lt) ctx.fillStyle='rgba(100,116,139,'+(s.a*.3*(0.5+0.5*Math.sin(T*s.s*60+s.p)))+')';
+        else ctx.fillStyle='rgba(255,255,255,'+(s.a*(0.5+0.5*Math.sin(T*s.s*60+s.p)))+')';
+        ctx.fill();
+      }
+
+      /* physics — no repulsion when hovering a node so it doesn't flee */
+      if(!reduced){
+        for(var ni=0;ni<nodes.length;ni++){
+          var n=nodes[ni];
+          var fx=Math.sin(T*n.fs*60+n.fp)*n.fa;
+          var fy=Math.cos(T*n.fs*60*.7+n.fp+1)*n.fa;
+          var dx=n.x-mouse.x,dy=n.y-mouse.y;
+          var dist=Math.sqrt(dx*dx+dy*dy);
+          var rx=0,ry=0;
+          /* only repel if NOT hovering any node — prevents nodes fleeing from cursor */
+          if(!hovId&&!selId&&dist<50&&dist>.1){var f=(50-dist)/50*1.5;rx=(dx/dist)*f;ry=(dy/dist)*f;}
+          n.vx+=(n.bx+fx-n.x)*.07+rx;n.vy+=(n.by+fy-n.y)*.07+ry;
+          n.vx*=.8;n.vy*=.8;n.x+=n.vx;n.y+=n.vy;n.pu+=n.pp;
+        }
+      }
+
+      /* connections */
+      var actId=selId||hovId;
+      if(actId){
+        var act=gn(actId);
+        if(act){
+          for(var ri=0;ri<act.rel.length;ri++){
+            var rel=gn(act.rel[ri]);if(!rel)continue;
+            var c=CAT[act.cat];
+            var lg=ctx.createLinearGradient(act.x,act.y,rel.x,rel.y);
+            lg.addColorStop(0,'rgba('+c.glow+',.65)');lg.addColorStop(1,'rgba('+c.glow+',.08)');
+            ctx.beginPath();ctx.moveTo(act.x,act.y);ctx.lineTo(rel.x,rel.y);
+            ctx.strokeStyle=lg;ctx.lineWidth=selId?2.5:2;
+            if(selId){ctx.setLineDash([5,5]);}ctx.stroke();ctx.setLineDash([]);
+          }
+        }
+      }
+
+      /* nodes */
+      for(var ni=0;ni<nodes.length;ni++){
+        var n=nodes[ni];var c=CAT[n.cat];
+        var isH=hovId===n.id,isS=selId===n.id;
+        var actN=actId?gn(actId):null;
+        var isR=actN&&actN.rel.indexOf(n.id)>=0;
+        var pm=isH?(1.35+Math.sin(n.pu*3)*.12):(1+Math.sin(n.pu)*.06);
+        var r=n.r*pm;
+
+        /* glow */
+        if(isH||isS||isR){
+          var gR=r*(isH?5.5:3.5);
+          var gl=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,gR);
+          var glA=isH?.6:(isS?.5:.25);
+          gl.addColorStop(0,'rgba('+c.glow+','+glA+')');gl.addColorStop(1,'rgba('+c.glow+',0)');
+          ctx.beginPath();ctx.arc(n.x,n.y,gR,0,Math.PI*2);ctx.fillStyle=gl;ctx.fill();
+        }
+
+        /* red accent ring on hover/select */
+        if(isH||isS){
+          ctx.beginPath();ctx.arc(n.x,n.y,r+4,0,Math.PI*2);
+          ctx.strokeStyle='rgba(220,38,38,'+(isS?.6:.35)+')';ctx.lineWidth=2;ctx.stroke();
+        }
+
+        /* circle */
+        ctx.beginPath();ctx.arc(n.x,n.y,r,0,Math.PI*2);
+        var a=(isH||isS)?'ff':(isR?'cc':(actId?'55':'aa'));
+        ctx.fillStyle=c.fill+a;ctx.fill();
+
+        /* shine */
+        ctx.beginPath();ctx.arc(n.x-r*.25,n.y-r*.3,r*.32,0,Math.PI*2);
+        ctx.fillStyle=lt?'rgba(255,255,255,.35)':'rgba(255,255,255,.2)';ctx.fill();
+
+        /* label */
+        if(r>8||isH||isS||isR||!actId){
+          var fs=Math.max(10,Math.min(12.5,8+r*.22));
+          ctx.font=(isH||isS?'bold ':'')+fs+'px Inter,system-ui,sans-serif';
+          ctx.textAlign='center';ctx.textBaseline='top';
+          if(isH||isS)ctx.fillStyle=lt?'#0f172a':'#fff';
+          else if(isR)ctx.fillStyle=c.fill;
+          else ctx.fillStyle=lt?(actId?'rgba(71,85,105,.3)':'rgba(71,85,105,.7)'):(actId?'rgba(130,140,160,.35)':'rgba(175,185,210,.72)');
+          ctx.fillText(n.name,n.x,n.y+r+5);
+        }
+      }
+      af=requestAnimationFrame(draw);
+    }
+
+    function hit(mx,my){
+      var best=null,bestD=Infinity;
+      for(var i=0;i<nodes.length;i++){var n=nodes[i];var dx=n.x-mx,dy=n.y-my;var d=Math.sqrt(dx*dx+dy*dy);if(d<n.r+28&&d<bestD){bestD=d;best=n;}}return best;
+    }
+
+    cv.addEventListener('mousemove',function(e){
+      var r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;
+      var h=hit(mouse.x,mouse.y);hovId=h?h.id:null;cv.style.cursor=h?'pointer':'crosshair';
+    });
+    cv.addEventListener('mouseleave',function(){mouse.x=-9999;mouse.y=-9999;hovId=null;cv.style.cursor='crosshair';});
+    cv.addEventListener('click',function(e){
+      var r=cv.getBoundingClientRect();var h=hit(e.clientX-r.left,e.clientY-r.top);
+      selId=h?(selId===h.id?null:h.id):null;updateCard();
+    });
+    cv.addEventListener('touchstart',function(e){
+      e.preventDefault();var t=e.touches[0];var r=cv.getBoundingClientRect();
+      var h=hit(t.clientX-r.left,t.clientY-r.top);selId=h?(selId===h.id?null:h.id):null;updateCard();
+    },{passive:false});
+
+    function updateCard(){
+      var card=document.getElementById('sk-card');if(!card)return;
+      if(!selId){card.style.display='none';return;}
+      var n=gn(selId);if(!n){card.style.display='none';return;}
+      var c=CAT[n.cat];
+      var tags=n.rel.map(function(rid){var rn=gn(rid);return rn?'<span class="sk-card-tag" style="border-color:'+c.fill+'44;color:'+c.fill+'">'+rn.name+'</span>':'';}).join('');
+      card.style.display='block';card.style.animation='none';void card.offsetWidth;card.style.animation='';
+      card.innerHTML=
+        '<button class="sk-card-x" onclick="document.getElementById(\'sk-card\').style.display=\'none\'" aria-label="Close">&times;</button>'+
+        '<div class="sk-card-cat" style="color:'+c.fill+'">'+CAT[n.cat].label+'</div>'+
+        '<h3 class="sk-card-name">'+n.name+'</h3>'+
+        '<div class="sk-card-bar-wrap"><div class="sk-card-bar" style="width:'+n.level+'%;background:'+c.fill+'"></div></div>'+
+        '<p class="sk-card-lvl">'+n.level+'% proficiency</p>'+
+        '<p class="sk-card-desc">'+n.desc+'</p>'+
+        (tags?'<div class="sk-card-rel">'+tags+'</div>':'');
+    }
+
+    window.addEventListener('resize',function(){cancelAnimationFrame(af);af=null;resize();draw();});
+    /* re-draw when theme changes */
+    new MutationObserver(function(){cancelAnimationFrame(af);af=null;draw();}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+    resize();draw();
+  })();
+  </script>
+  <!-- ========== SKILL CONSTELLATION — END ========== -->
+
   <div class="page" style="margin-top:0">
     <main class="sheet" style="border-top:none;border-top-left-radius:0;border-top-right-radius:0">
       <div class="content" style="padding-top:0">
@@ -464,7 +798,7 @@
       'jenkins':{c:'cloud',v:.6},'sass':{c:'frontend',v:.85},'webpack':{c:'frontend',v:.8},'figma':{c:'frontend',v:.5}
     };
     var EVIDENCE={
-      frontend:'LeadFlow, AI QA Agent, BerriosPay \u2014 React 19 & TypeScript across enterprise SaaS and kiosk systems',
+      frontend:'ALEXIS (Next.js 16/React 19), LeadFlow, BerriosPay \u2014 React 19 & TypeScript across SaaS, safety-critical, and enterprise kiosk systems',
       backend:'LeadFlow (Node.js + Prisma), BerriosPay (.NET 10, ASP.NET Core, EF Core)',
       database:'BerriosPay (Azure SQL), LeadFlow (PostgreSQL + Prisma), PR Health Dept (SQL Server)',
       cloud:'LeadFlow (Vercel), BerriosPay (Azure App Service), CDD-HUB (GitHub Actions CI/CD)',
@@ -1318,6 +1652,30 @@ document.addEventListener('DOMContentLoaded',function(){
   <!-- ========== BRITTANY CHIANG PROJECTS SCRIPT ========== -->
   <script>
   (function(){
+    var FEATURED = [
+      {
+        id:'alexis',year:'2026',title:'ALEXIS',
+        badge:'Shipped \u2014 Live on Vercel',
+        subtitle:'Real-time beach safety alert system for Puerto Rico',
+        desc:'Prevents drowning deaths by delivering actionable ocean condition data directly to beachgoers. Named in memory of Miguel Alexis Polanco. Covers 73 beaches across 19 municipalities with real-time NWS/NOAA alerts, interactive maps, tide predictions, and buoy observations. Fills a government-mandated gap (Senate Bill 661) that was never built.',
+        highlights:['73 beaches mapped','Bilingual EN/ES','Real-time NWS/NOAA','PWA + Capacitor native','Interactive Leaflet map','QR sharing per beach'],
+        tech:['Next.js 16','React 19','TypeScript','Tailwind CSS','Leaflet.js','Capacitor','NWS API','NOAA CO-OPS'],
+        img:'img/projects/alexis-homepage.png',
+        live:'https://alexis-watch.vercel.app',
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'prtaxpro',year:'2026',title:'PR Tax Pro',
+        badge:'Shipped \u2014 Zero Dependencies',
+        subtitle:'Puerto Rico salary & tax calculator with US state comparison',
+        desc:'Real-time progressive tax calculator for PR residents. Supports W-2, 1099, and mixed employment types with Act 22/60 incentives, filing status, dependents, and federal income source toggles. Features bracket visualization, goal planner, and side-by-side comparison against all 50 US states.',
+        highlights:['Progressive PR brackets','Act 22/60 support','50-state comparison','Goal planner','Share via URL','Zero dependencies'],
+        tech:['HTML5','CSS3','Vanilla JavaScript'],
+        img:'img/projects/pr-tax-pro.png',
+        github:'https://github.com/luisangelrod'
+      }
+    ];
+
     var PROJECTS = [
       {
         id:'berriospay',cat:'professional',year:'2026',title:'BerriosPay',
@@ -1390,6 +1748,43 @@ document.addEventListener('DOMContentLoaded',function(){
 
     var githubSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>';
     var externalSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
+    var checkSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+    // Render featured showcase cards
+    var featEl = document.getElementById('bc-featured');
+    if (featEl) {
+      FEATURED.forEach(function(f) {
+        var card = document.createElement('div');
+        card.className = 'bc-feat-card';
+
+        var techHTML = '';
+        f.tech.forEach(function(t) { techHTML += '<span class="bc-pill">' + t + '</span>'; });
+
+        var hlHTML = '';
+        f.highlights.forEach(function(h) { hlHTML += '<div class="bc-feat-hl">' + checkSVG + '<span>' + h + '</span></div>'; });
+
+        var actionsHTML = '';
+        if (f.live) {
+          actionsHTML += '<a class="bc-feat-btn bc-feat-btn-primary" href="' + f.live + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">' + externalSVG + ' Live Demo</a>';
+        }
+        actionsHTML += '<a class="bc-feat-btn bc-feat-btn-ghost" href="' + f.github + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">' + githubSVG + ' GitHub</a>';
+
+        card.innerHTML =
+          '<img class="bc-feat-img" src="' + f.img + '" alt="' + f.title + ' screenshot" loading="lazy">' +
+          '<div class="bc-feat-body">' +
+            '<span class="bc-feat-badge">' + f.badge + '</span>' +
+            '<h3 class="bc-feat-title">' + f.title + '</h3>' +
+            '<p class="bc-feat-subtitle">' + f.subtitle + '</p>' +
+            '<p class="bc-feat-desc">' + f.desc + '</p>' +
+            '<div class="bc-feat-highlights">' + hlHTML + '</div>' +
+            '<div class="bc-feat-tech">' + techHTML + '</div>' +
+            '<div class="bc-feat-actions">' + actionsHTML + '</div>' +
+          '</div>';
+
+        featEl.appendChild(card);
+      });
+    }
 
     var cardsEl = document.getElementById('bc-cards');
     if (!cardsEl) return;
@@ -1712,8 +2107,10 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     function doProjects(){
-      println('muted','total 9');blank();
+      println('muted','total 11');blank();
       var projects=[
+        ['alexis/','warn','[FEATURED] Beach safety alert system for PR -- live at alexis-watch.vercel.app'],
+        ['pr-tax-pro/','warn','[FEATURED] PR salary & tax calculator -- zero dependencies'],
         ['leadflow/','info','AI lead-response SaaS -- live at lead-response-saas.vercel.app'],
         ['ai-qa-agent/','info','Agentic site auditor with SSE streaming -- live'],
         ['dep-scanner/','info','npm dependency health scanner -- live'],

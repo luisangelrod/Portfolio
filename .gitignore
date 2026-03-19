@@ -19,10 +19,15 @@ CLAUDE.md
 # Playwright MCP logs
 .playwright-mcp/
 
+# Test artifacts
+test-results/
+.chrome-headless/
+
 # Dev screenshots (root-level previews)
 *.png
 *.jpeg
 !img/**/*.png
+!img/**/*.jpg
 
 # Generated HTML drafts
 assets/project-portfolio.html

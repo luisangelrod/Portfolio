@@ -34,8 +34,9 @@ npx serve
 
 ## Key Files
 
-- `index.html` - full site
-- `assets/LA_Resume_.docx` - downloadable resume
+- `index.html` - full site (single-file, all CSS/JS embedded)
+- `assets/resume.pdf` - downloadable resume (linked from HTML)
+- `assets/LA_Resume_.docx` - resume source
 - `img/projects/` - project screenshots
 - `robots.txt` and `sitemap.xml` - SEO support
 
@@ -48,8 +49,10 @@ npx serve
 
 ## Sections
 
-1. Hero
-2. Expertise
-3. Selected Work
-4. Experience
-5. Contact
+1. Hero (contact, nav)
+2. Professional Summary
+3. Professional Experience
+4. Selected Work (featured showcase: ALEXIS + PR Tax Pro, then smaller cards with filter tabs)
+5. Tech Constellation (interactive skill map)
+6. Core Skills
+7. Contact
