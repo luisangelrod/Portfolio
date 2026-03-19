@@ -20,16 +20,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
   <link rel="manifest" href="img/favicons/site.webmanifest">
-  <script>(function(){var s=localStorage.getItem('theme');if(s==='light')document.documentElement.classList.add('light');else if(s==='dark')document.documentElement.classList.add('dark');})()</script>
+  <script>(function(){document.documentElement.classList.add('dark');})()</script>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"></noscript>
   <style>
     :root{--bg:#0a0f1a;--paper:#111827;--bar:#1a2332;--ink:#e5e7eb;--muted:#9ca3af;--line:#1f2937;--chip:#1e293b;--dark:#0d1726;--darkline:#2d3a4d;--accent:#3b82f6;--glow:rgba(59,130,246,.15);--heading:#f9fafb;--accent-text:#60a5fa;--accent-light:#93c5fd;--headline:#d1d5db;--mark-bg:rgba(59,130,246,.1);--mark-ring:rgba(59,130,246,.2)}
-    @media(prefers-color-scheme:light){html:not(.dark){--bg:#f8fafc;--paper:#ffffff;--bar:#f1f5f9;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--chip:#f1f5f9;--dark:#e2e8f0;--darkline:#cbd5e1;--accent:#2563eb;--glow:rgba(37,99,235,.1);--heading:#0f172a;--accent-text:#2563eb;--accent-light:#3b82f6;--headline:#475569;--mark-bg:rgba(37,99,235,.08);--mark-ring:rgba(37,99,235,.15)}}
-    html.light{--bg:#f8fafc;--paper:#ffffff;--bar:#f1f5f9;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--chip:#f1f5f9;--dark:#e2e8f0;--darkline:#cbd5e1;--accent:#2563eb;--glow:rgba(37,99,235,.1);--heading:#0f172a;--accent-text:#2563eb;--accent-light:#3b82f6;--headline:#475569;--mark-bg:rgba(37,99,235,.08);--mark-ring:rgba(37,99,235,.15)}
-    @media(prefers-color-scheme:light){html:not(.dark) .sheet{box-shadow:0 24px 64px rgba(0,0,0,.08)}}html.light .sheet{box-shadow:0 24px 64px rgba(0,0,0,.08)}
-    .theme-toggle{position:fixed;top:16px;right:16px;z-index:9001;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bar);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,transform .2s,color .2s;box-shadow:0 2px 8px rgba(0,0,0,.15)}.theme-toggle:hover{transform:scale(1.1);border-color:var(--accent)}.theme-toggle svg{width:18px;height:18px}
-    @media(max-width:640px){.theme-toggle{top:12px;right:12px;width:36px;height:36px}.theme-toggle svg{width:16px;height:16px}}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:16px/1.55 "Aptos","Segoe UI","Calibri",sans-serif;color:var(--ink);background:var(--bg)}a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
     .skip{position:absolute;left:16px;top:-60px;padding:10px 14px;border-radius:10px;background:var(--paper);font-weight:700;color:var(--ink)}.skip:focus{top:16px}
     .page{max-width:1120px;margin:24px auto;padding:0 14px}.sheet{background:var(--paper);border:1px solid var(--line);box-shadow:0 24px 64px rgba(0,0,0,.4);overflow:hidden;border-radius:16px}
@@ -262,8 +257,8 @@
             <div>
               <p class="eyebrow">Senior Full-Stack Engineer &amp; Technical Lead</p>
               <h1 class="name">Luis Rodr&iacute;guez</h1>
-              <p class="role">Production Systems for Payments, Logistics, Retail, and Healthcare</p>
-              <p class="headline">I ship production software end to end &mdash; from database schema and cloud infrastructure to frontend, hardware integration, and deployment.</p>
+              <p class="role">Full-Stack Engineer &mdash; React, .NET, Azure</p>
+              <p class="headline">I build and ship production systems end to end. Four systems delivered solo in six months, each from schema design through cloud deployment.</p>
             </div>
           </div>
           <div class="contact" aria-label="Contact information">
@@ -290,8 +285,8 @@
           <div class="bar">Professional Summary</div>
           <div class="summary">
             <div class="panel">
-              <p class="lead">I shipped four production systems in six months as the sole engineer, each from database schema to cloud deployment. I deliver at team-level velocity as an individual contributor covering architecture, frontend, backend, QA, and DevOps.</p>
-              <p class="lead">My work spans React, .NET, Azure, SQL Server, hardware-connected kiosks, offline-first flows, payment infrastructure, and HIPAA-adjacent logistics. Based in Puerto Rico, US citizen, available for remote roles.</p>
+              <p class="lead">Sole engineer on four production systems shipped in six months &mdash; each covering architecture, frontend, backend, QA, and cloud deployment. I operate at team-level velocity as an individual contributor.</p>
+              <p class="lead">Core stack: React 19, .NET 10, Azure, SQL Server. Domain experience across payment kiosks, logistics platforms, healthcare systems, and public safety applications. Based in Puerto Rico, US citizen, open to remote work.</p>
               <div class="stats" aria-label="Key metrics">
                 <div class="stat"><b>4</b><span>Systems in 6 months</span></div>
                 <div class="stat"><b>50+</b><span>POS integrations</span></div>
@@ -313,7 +308,7 @@
             <article class="job">
               <div class="jobhead"><h3>BCPOS</h3><div class="date">September 2025 to Present</div></div>
               <p class="title">Senior Full-Stack Engineer &amp; Technical Lead</p>
-              <p>Promoted from mid-level to technical lead in three months. Sole engineer across architecture, frontend, backend, database, cloud, QA, and production support for 50+ active projects.</p>
+              <p>Promoted to technical lead within three months. Own the full stack across 50+ active client projects &mdash; architecture, development, testing, deployment, and production support.</p>
               <div class="tags"><span class="tag">React 19</span><span class="tag">.NET 10</span><span class="tag">Azure</span><span class="tag">SQL Server</span><span class="tag">WPF</span></div>
             </article>
             <article class="job">
@@ -343,7 +338,7 @@
   <section class="bc-projects" id="projects">
     <div class="bc-container">
       <div class="bc-header">
-        <h2><span>03.</span> Selected Work</h2>
+        <h2>Selected Work</h2>
       </div>
       <!-- Featured Showcase -->
       <div class="bc-featured" id="bc-featured"></div>
@@ -374,58 +369,40 @@
 
   <!-- ========== SKILL CONSTELLATION — START ========== -->
   <style>
-    .sk-uni{background:linear-gradient(180deg,#070c1a 0%,#040810 100%);position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-    html.light .sk-uni{background:linear-gradient(180deg,#f0f2f8 0%,#e4e8f0 100%)}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-uni{background:linear-gradient(180deg,#f0f2f8 0%,#e4e8f0 100%)}}
+    .sk-uni{background:linear-gradient(180deg,#070c1a 0%,#040810 100%);position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center;display:none}
+    .sk-uni.sk-open{display:flex}
     .sk-uni-hdr{max-width:1120px;margin:0 auto;padding:64px 24px 0;width:100%}
     .sk-uni-hdr h2{margin:0 0 8px;font-family:'Inter',sans-serif;font-size:clamp(1.6rem,3vw,2rem);font-weight:900;color:#ccd6f6;letter-spacing:-.03em}
-    .sk-uni-hdr h2 span{color:#dc2626;margin-right:10px;font-family:'Fira Code',monospace;font-size:.85em;font-weight:400}
-    html.light .sk-uni-hdr h2{color:#1e293b}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-uni-hdr h2{color:#1e293b}}
     .sk-uni-hdr p{margin:0;color:#8892b0;font-size:.92rem}
-    html.light .sk-uni-hdr p{color:#64748b}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-uni-hdr p{color:#64748b}}
+    .sk-back{display:inline-flex;align-items:center;gap:6px;color:#8892b0;font-size:.82rem;font-weight:600;cursor:pointer;background:none;border:1px solid rgba(136,146,176,.2);border-radius:6px;padding:6px 14px;margin-bottom:16px;transition:all .2s;font-family:inherit}
+    .sk-back:hover{color:#ccd6f6;border-color:rgba(136,146,176,.4)}
+    .sk-back svg{width:16px;height:16px}
     .sk-wrap{position:relative;width:100%;max-width:1120px;margin:28px auto 0;height:580px;cursor:crosshair}
     @media(max-width:640px){.sk-wrap{height:420px}.sk-uni-hdr{padding:44px 16px 0}}
     #sk-canvas{display:block;width:100%;height:100%;border-radius:12px}
     .sk-card{position:absolute;right:24px;top:24px;width:300px;max-width:calc(100% - 48px);background:rgba(6,9,20,.94);border:1px solid rgba(220,38,38,.25);border-radius:12px;padding:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:10;animation:sk-pop .25s cubic-bezier(.34,1.4,.64,1) both;box-shadow:0 8px 32px rgba(0,0,0,.4)}
-    html.light .sk-card{background:rgba(255,255,255,.95);border-color:rgba(220,38,38,.2);box-shadow:0 8px 32px rgba(0,0,0,.12)}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-card{background:rgba(255,255,255,.95);border-color:rgba(220,38,38,.2);box-shadow:0 8px 32px rgba(0,0,0,.12)}}
     @keyframes sk-pop{from{opacity:0;transform:scale(.9) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
     @media(max-width:640px){.sk-card{right:12px;top:12px;width:calc(100% - 24px)}}
     .sk-card-x{position:absolute;top:10px;right:10px;width:28px;height:28px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:transparent;color:#8892b0;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
     .sk-card-x:hover{color:#dc2626;border-color:rgba(220,38,38,.4)}
-    html.light .sk-card-x{border-color:rgba(0,0,0,.1);color:#64748b}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-x{border-color:rgba(0,0,0,.1);color:#64748b}}
     .sk-card-cat{font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px}
     .sk-card-name{margin:0 0 10px;font-size:1.1rem;font-weight:800;color:#ccd6f6}
-    html.light .sk-card-name{color:#1e293b}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-name{color:#1e293b}}
     .sk-card-bar-wrap{width:100%;height:5px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin-bottom:4px}
-    html.light .sk-card-bar-wrap{background:rgba(0,0,0,.08)}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-bar-wrap{background:rgba(0,0,0,.08)}}
     .sk-card-bar{height:100%;border-radius:999px;transition:width .7s cubic-bezier(.4,0,.2,1)}
     .sk-card-lvl{margin:0 0 10px;font-size:.72rem;color:#8892b0;font-weight:600;font-family:'Fira Code',monospace}
-    html.light .sk-card-lvl{color:#64748b}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-lvl{color:#64748b}}
     .sk-card-desc{margin:0 0 12px;font-size:.84rem;color:#a8b2d0;line-height:1.55}
-    html.light .sk-card-desc{color:#475569}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-card-desc{color:#475569}}
     .sk-card-rel{display:flex;flex-wrap:wrap;gap:6px}
     .sk-card-tag{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid;background:transparent;white-space:nowrap}
     .sk-hint{max-width:1120px;margin:0 auto;padding:10px 24px 0;text-align:center;font-size:.75rem;color:rgba(136,146,176,.4);font-family:'Fira Code',monospace}
-    html.light .sk-hint{color:rgba(100,116,139,.5)}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-hint{color:rgba(100,116,139,.5)}}
     .sk-legend{max-width:1120px;margin:0 auto;padding:20px 24px 52px;display:flex;flex-wrap:wrap;gap:10px;width:100%}
     .sk-leg-item{display:flex;align-items:center;gap:6px;font-size:.73rem;font-weight:700;color:#8892b0}
-    html.light .sk-leg-item{color:#475569}
-    @media(prefers-color-scheme:light){html:not(.dark) .sk-leg-item{color:#475569}}
     .sk-leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
   </style>
 
   <section id="constellation" class="sk-uni">
     <div class="sk-uni-hdr">
-      <h2><span>04.</span> Tech Constellation</h2>
+      <button class="sk-back" id="sk-back" aria-label="Back to portfolio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Back to Portfolio</button>
+      <h2>Tech Constellation</h2>
       <p>Hover to trace connections &nbsp;&middot;&nbsp; Click a node to inspect &nbsp;&middot;&nbsp; Drag your cursor through the field</p>
     </div>
     <div class="sk-wrap">
@@ -488,7 +465,6 @@
     var W,H,dpr,nodes=[],stars=[],hovId=null,selId=null;
     var mouse={x:-9999,y:-9999},T=0,af=null;
     var reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
-    function isLight(){return document.documentElement.classList.contains('light')||(!(document.documentElement.classList.contains('dark'))&&matchMedia('(prefers-color-scheme:light)').matches);}
 
     function resize(){
       var wrap=cv.parentElement;
@@ -534,20 +510,17 @@
     function draw(){
       if(!ctx)return;
       ctx.clearRect(0,0,W,H);T+=0.016;
-      var lt=isLight();
 
       /* bg */
       var bg=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*.85);
-      if(lt){bg.addColorStop(0,'#e8ecf4');bg.addColorStop(1,'#dbe0ec');}
-      else{bg.addColorStop(0,'#0e1730');bg.addColorStop(1,'#040810');}
+      bg.addColorStop(0,'#0e1730');bg.addColorStop(1,'#040810');
       ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
 
       /* stars */
       for(var i=0;i<stars.length;i++){
         var s=stars[i];
         ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        if(lt) ctx.fillStyle='rgba(100,116,139,'+(s.a*.3*(0.5+0.5*Math.sin(T*s.s*60+s.p)))+')';
-        else ctx.fillStyle='rgba(255,255,255,'+(s.a*(0.5+0.5*Math.sin(T*s.s*60+s.p)))+')';
+        ctx.fillStyle='rgba(255,255,255,'+(s.a*(0.5+0.5*Math.sin(T*s.s*60+s.p)))+')';
         ctx.fill();
       }
 
@@ -615,16 +588,16 @@
 
         /* shine */
         ctx.beginPath();ctx.arc(n.x-r*.25,n.y-r*.3,r*.32,0,Math.PI*2);
-        ctx.fillStyle=lt?'rgba(255,255,255,.35)':'rgba(255,255,255,.2)';ctx.fill();
+        ctx.fillStyle='rgba(255,255,255,.2)';ctx.fill();
 
         /* label */
         if(r>8||isH||isS||isR||!actId){
           var fs=Math.max(10,Math.min(12.5,8+r*.22));
           ctx.font=(isH||isS?'bold ':'')+fs+'px Inter,system-ui,sans-serif';
           ctx.textAlign='center';ctx.textBaseline='top';
-          if(isH||isS)ctx.fillStyle=lt?'#0f172a':'#fff';
+          if(isH||isS)ctx.fillStyle='#fff';
           else if(isR)ctx.fillStyle=c.fill;
-          else ctx.fillStyle=lt?(actId?'rgba(71,85,105,.3)':'rgba(71,85,105,.7)'):(actId?'rgba(130,140,160,.35)':'rgba(175,185,210,.72)');
+          else ctx.fillStyle=actId?'rgba(130,140,160,.35)':'rgba(175,185,210,.72)';
           ctx.fillText(n.name,n.x,n.y+r+5);
         }
       }
@@ -668,8 +641,6 @@
     }
 
     window.addEventListener('resize',function(){cancelAnimationFrame(af);af=null;resize();draw();});
-    /* re-draw when theme changes */
-    new MutationObserver(function(){cancelAnimationFrame(af);af=null;draw();}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
     resize();draw();
   })();
   </script>
@@ -692,8 +663,8 @@
         <section class="section" id="contact">
           <div class="bar">Contact</div>
           <div class="panel contactbox">
-            <p>I am open to senior full-stack engineering and technical lead roles where end-to-end ownership, delivery speed, and production reliability matter.</p>
-            <a href="mailto:luisangelrod17@gmail.com" class="cta">Start a Conversation</a>
+            <p>Open to remote senior engineering and technical lead roles. If you need someone who ships fast and owns the full stack, let's talk.</p>
+            <a href="mailto:luisangelrod17@gmail.com" class="cta">Get in Touch</a>
           </div>
         </section>
       </div>
@@ -771,6 +742,18 @@
   <script>
     const links=[...document.querySelectorAll(".nav a")],sections=[...document.querySelectorAll("section[id]")];
     if(sections.length){const spy=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){links.forEach((link)=>link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id));}});},{rootMargin:"-42% 0px -42% 0px",threshold:0});sections.forEach((section)=>spy.observe(section));}
+    /* Constellation tab — opens as full-screen overlay */
+    (function(){
+      var skEl=document.getElementById('constellation');if(!skEl)return;
+      var mainContent=document.querySelectorAll('.page, .bc-projects, .bc-panel-overlay');
+      function openSk(){skEl.classList.add('sk-open');mainContent.forEach(function(el){el.style.display='none';});window.scrollTo(0,0);window.dispatchEvent(new Event('resize'));}
+      function closeSk(){skEl.classList.remove('sk-open');mainContent.forEach(function(el){el.style.display='';});}
+      var navLink=document.querySelector('.nav a[href="#constellation"]');
+      if(navLink){navLink.addEventListener('click',function(e){e.preventDefault();openSk();});}
+      var backBtn=document.getElementById('sk-back');
+      if(backBtn){backBtn.addEventListener('click',closeSk);}
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&skEl.classList.contains('sk-open'))closeSk();});
+    })();
     (()=>{const c=document.getElementById("lr-canvas");if(!c)return;const x=c.getContext("2d"),reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;let pts=[],w=0,h=0,m={x:-999,y:-999};function gc(){return getComputedStyle(document.documentElement).getPropertyValue('--accent-text').trim()||'#60a5fa'}function resize(){const r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;w=Math.max(1,r.width);h=Math.max(1,r.height);c.width=w*d;c.height=h*d;x.setTransform(1,0,0,1,0,0);x.scale(d,d);pts=build()}function build(){const o=document.createElement("canvas"),g=o.getContext("2d");o.width=w;o.height=h;g.fillStyle=gc();g.font="900 "+Math.min(w*.5,h*.54)+"px Segoe UI";g.textAlign="center";g.textBaseline="middle";g.fillText("LR",w/2,h/2+h*.03);const data=g.getImageData(0,0,w,h).data,out=[],gap=2;for(let y=0;y<h;y+=gap){for(let z=0;z<w;z+=gap){const i=(y*w+z)*4;if(data[i+3]>140)out.push({x:z,y,ox:z,oy:y,vx:0,vy:0,s:w<80?1.5:1.8});}}return out}function draw(){x.clearRect(0,0,w,h);x.fillStyle=gc();x.font="900 "+Math.min(w*.5,h*.54)+"px Segoe UI";x.textAlign="center";x.textBaseline="middle";x.fillText("LR",w/2,h/2+h*.03)}function anim(){x.clearRect(0,0,w,h);const col=gc();pts.forEach((p)=>{const dx=m.x-p.x,dy=m.y-p.y,dist=Math.sqrt(dx*dx+dy*dy),r=w<80?24:30;if(dist<r){const f=(r-dist)/r,a=Math.atan2(dy,dx);p.vx-=Math.cos(a)*f*1.2;p.vy-=Math.sin(a)*f*1.2}p.vx+=(p.ox-p.x)*.08;p.vy+=(p.oy-p.y)*.08;p.vx*=.86;p.vy*=.86;p.x+=p.vx;p.y+=p.vy;x.beginPath();x.arc(p.x,p.y,p.s,0,Math.PI*2);x.fillStyle=col;x.fill()});requestAnimationFrame(anim)}window.refreshCanvas=function(){resize();if(reduce)draw()};c.addEventListener("mousemove",(e)=>{const r=c.getBoundingClientRect();m.x=e.clientX-r.left;m.y=e.clientY-r.top});c.addEventListener("mouseleave",()=>{m.x=-999;m.y=-999});addEventListener("resize",resize);document.fonts?.ready?.then(resize);resize();reduce?draw():anim()})();
   </script>
   <!-- ========== RECRUITER WIZARD SCRIPT — START ========== -->
@@ -958,31 +941,6 @@
   })();
   </script>
   <!-- ========== RECRUITER WIZARD SCRIPT — END ========== -->
-  <!-- ========== THEME TOGGLE ========== -->
-  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-    <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
-  </button>
-  <script>
-  (function(){
-    var html=document.documentElement;
-    function isDark(){if(html.classList.contains('light'))return false;if(html.classList.contains('dark'))return true;return!matchMedia('(prefers-color-scheme:light)').matches;}
-    function updateIcon(){
-      var el=document.getElementById('theme-icon');if(!el)return;
-      el.innerHTML=isDark()?'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
-        :'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-      var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=isDark()?'#0d1726':'#f1f5f9';
-    }
-    matchMedia('(prefers-color-scheme:light)').addEventListener('change',function(){if(!localStorage.getItem('theme')){updateIcon();if(window.refreshCanvas)window.refreshCanvas();}});
-    document.addEventListener('DOMContentLoaded',function(){
-      updateIcon();
-      document.getElementById('theme-toggle').addEventListener('click',function(){
-        if(isDark()){html.classList.remove('dark');html.classList.add('light');localStorage.setItem('theme','light');}
-        else{html.classList.remove('light');html.classList.add('dark');localStorage.setItem('theme','dark');}
-        updateIcon();if(window.refreshCanvas)window.refreshCanvas();
-      });
-    });
-  })();
-  </script>
   <!-- ========== OPERATION: SHIP IT — GAME ENGINE ========== -->
   <script>
 (function(){
@@ -1593,7 +1551,6 @@ window.startShipIT=function(){
   initMenuAnim();
   document.getElementById('ms-game').style.display='flex';
   document.querySelector('.page').style.display='none';
-  var tt=document.querySelector('.theme-toggle');if(tt)tt.style.display='none';
   var rw=document.getElementById('rw-trigger');if(rw)rw.style.display='none';
   var gb=document.getElementById('gbc-widget');if(gb)gb.style.display='none';
   on=true;document.addEventListener('keydown',onKeyDown);document.addEventListener('keyup',onKeyUp);
@@ -1609,7 +1566,6 @@ window.stopShipIT=function(){
   if(window._shipItResize)window.removeEventListener('resize',window._shipItResize);
   document.getElementById('ms-game').style.display='none';
   document.querySelector('.page').style.display='';
-  var tt=document.querySelector('.theme-toggle');if(tt)tt.style.display='';
   var gb=document.getElementById('gbc-widget');if(gb)gb.style.display='';
   setTimeout(function(){var rw=document.getElementById('rw-trigger');if(rw)rw.style.display='';},3000);
   document.removeEventListener('keydown',onKeyDown);document.removeEventListener('keyup',onKeyUp);
