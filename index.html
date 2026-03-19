@@ -52,13 +52,13 @@
     .project-card .titlebar span{color:rgba(255,255,255,.45)!important}
     @media (max-width:920px){.hero-main,.summary,.mixed,.skills,.contactbox{grid-template-columns:1fr}.contact-row,.chips{justify-content:flex-start}.contact-row{text-align:left;justify-self:start}.nav{flex-wrap:nowrap;overflow:auto;padding-bottom:14px}.nav a{white-space:nowrap}.grid3{grid-template-columns:1fr}}
     @media (max-width:640px){.page{padding:0 8px;margin:14px auto}.hero,.content{padding-left:16px;padding-right:16px}.identity{align-items:flex-start}.mark{width:68px;height:68px;flex-basis:68px}.role{font-size:.92rem}.headline,.copy,.job p,.skill p,.lead{font-size:.93rem}.stats{grid-template-columns:1fr}.media{min-height:160px}.bar,.project .titlebar{font-size:1.05rem}.project-card{margin-left:-2px;margin-right:-2px}}
+    .ct-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     .ct-option{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bar);text-align:center;transition:border-color .2s,transform .2s,background .2s;text-decoration:none;color:inherit}
     .ct-option:hover{border-color:rgba(59,130,246,.3);transform:translateY(-3px);background:rgba(59,130,246,.04)}
     .ct-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.ct-icon svg{width:22px;height:22px}
     .ct-label{font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--heading)}
     .ct-detail{font-size:.72rem;color:var(--muted);line-height:1.3;word-break:break-all}
-    @media(max-width:640px){.ct-option{padding:16px 10px}.ct-detail{display:none}}
-    @media(max-width:480px){#contact .panel>div{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.ct-grid{grid-template-columns:repeat(2,1fr)}.ct-option{padding:16px 10px}.ct-detail{display:none}}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card:hover{transform:none}}
   </style>
   <!-- ========== GAME STYLES — START ========== -->
@@ -671,7 +671,7 @@
           <div class="bar">Contact</div>
           <div class="panel" style="padding:24px">
             <p style="margin:0 0 20px;color:var(--muted)">Open to remote senior engineering and technical lead roles. Reach out however works best for you.</p>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+            <div class="ct-grid">
               <a href="mailto:luisangelrod17@gmail.com" class="ct-option">
                 <span class="ct-icon" style="background:rgba(59,130,246,.12);color:#60a5fa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
                 <span class="ct-label">Email</span>
