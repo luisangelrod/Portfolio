@@ -461,7 +461,7 @@
       {id:'webgpu',   name:'WebGPU',          cat:'games',   level:60,desc:'Exploring GPU-native compute for the AAA game engine layer — next frontier on the roadmap', rel:['threejs']},
       {id:'wpf',      name:'WPF + WebView2',  cat:'platform',level:80,desc:'Kiosk software bridging desktop WPF and web React — BerriosPay 25+ kiosks in production',  rel:['dotnet','react']},
       {id:'ionic',    name:'Ionic/Capacitor', cat:'platform',level:75,desc:'Salud Medica \u2014 Android POS for medical transport dispatch, offline-first with sync',         rel:['angular','typescript']},
-      {id:'nextjs',   name:'Next.js 16',      cat:'frontend',level:85,desc:'ALEXIS beach safety app, LeadFlow SaaS \u2014 SSR, ISR, App Router in production',             rel:['react','typescript','node']},
+      {id:'nextjs',   name:'Next.js 16',      cat:'frontend',level:85,desc:'Safe Shores PR beach safety app, LeadFlow SaaS \u2014 SSR, ISR, App Router in production',             rel:['react','typescript','node']},
       {id:'leaflet',  name:'Leaflet.js',      cat:'frontend',level:78,desc:'ALEXIS \u2014 interactive beach map with 73 markers, geolocation, zone overlays',               rel:['react','nextjs']},
     ];
 
@@ -1640,12 +1640,12 @@ document.addEventListener('DOMContentLoaded',function(){
       {
         id:'alexis',year:'2026',title:'ALEXIS',
         badge:'Shipped \u2014 Live on Vercel',
-        subtitle:'Real-time beach safety alert system for Puerto Rico',
+        subtitle:'Safe Shores PR — Real-time beach safety alert system for Puerto Rico',
         desc:'Prevents drowning deaths by delivering actionable ocean condition data directly to beachgoers. Named in memory of Miguel Alexis Polanco. Covers 73 beaches across 19 municipalities with real-time NWS/NOAA alerts, interactive maps, tide predictions, and buoy observations. Fills a government-mandated gap (Senate Bill 661) that was never built.',
         highlights:['73 beaches mapped','Bilingual EN/ES','Real-time NWS/NOAA','PWA + Capacitor native','Interactive Leaflet map','QR sharing per beach'],
         tech:['Next.js 16','React 19','TypeScript','Tailwind CSS','Leaflet.js','Capacitor','NWS API','NOAA CO-OPS'],
         img:'img/projects/alexis-homepage.png',
-        live:'https://alexis-watch.vercel.app',
+        live:'https://safe-shores-pr.vercel.app',
         github:'https://github.com/luisangelrod'
       },
       {
@@ -2094,7 +2094,7 @@ document.addEventListener('DOMContentLoaded',function(){
     function doProjects(){
       println('muted','total 11');blank();
       var projects=[
-        ['alexis/','warn','[FEATURED] Beach safety alert system for PR -- live at alexis-watch.vercel.app'],
+        ['safe-shores/','warn','[FEATURED] Safe Shores PR -- Real-time maritime alerts for Puerto Rico'],
         ['pr-tax-pro/','warn','[FEATURED] PR salary & tax calculator -- zero dependencies'],
         ['leadflow/','info','AI lead-response SaaS -- live at lead-response-saas.vercel.app'],
         ['ai-qa-agent/','info','Agentic site auditor with SSE streaming -- live'],
@@ -2381,4 +2381,5 @@ document.addEventListener('DOMContentLoaded',function(){
   <!-- ========== TERMINAL MODE — END ========== -->
 </body>
 </html>
+
 
