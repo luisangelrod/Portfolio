@@ -1855,12 +1855,12 @@ document.addEventListener('DOMContentLoaded',function(){
       },
       {
         id:'echo',cat:'personal',year:'2026',title:'ECHO',
-        context:'Personal \u2014 AAA Web Game',
-        desc:'Atmospheric first-person thriller set in an abandoned deep-sea research station. Built using the build-game skill pattern: SSAO ambient occlusion, PBR materials, sky dome shader, proximity-triggered AI dialogue system, 5 discoverable narrative logs, volumetric fog, and procedural Web Audio. Playable in the browser.',
+        context:'Personal — AAA Web Game',
+        desc:'Atmospheric first-person thriller set in an abandoned deep-sea research station. SSAO ambient occlusion, PBR materials, sky dome shader, proximity-triggered AI dialogue, 5 narrative logs, volumetric fog, procedural Web Audio. Playable in the browser.',
         descShort:'Atmospheric first-person thriller. Three.js WebGPU, SSAO, PBR materials, AI dialogue, narrative exploration.',
         tech:['Three.js','WebGPU','SSAO','PBR','Web Audio API'],
         github:'https://github.com/luisangelrod/echo-game',
-        demo:'https://github.com/luisangelrod/echo-game'
+        demo:'https://echo-game-phi.vercel.app'
       },
       {
         id:'shipit',cat:'personal',year:'2026',title:'Operation: Ship IT',
@@ -1868,7 +1868,8 @@ document.addEventListener('DOMContentLoaded',function(){
         desc:'Mario-style 2D platformer with character creator (customize hair, skin, outfit colors), checkpoint system saved to localStorage, top-10 scoreboard, enemy stomp mechanics, and full mobile touch controls. 3 themed levels: The Office, The Cloud, Production. Embedded directly in the portfolio.',
         descShort:'Mario-style 2D platformer with character creator, checkpoints, scoreboard, and mobile touch controls.',
         tech:['Canvas 2D','Vanilla JS','LocalStorage'],
-        github:'https://github.com/luisangelrod'
+        github:'https://github.com/luisangelrod',
+        demo:'#play-shipit'
       }
     ];
 
@@ -2054,6 +2055,20 @@ document.addEventListener('DOMContentLoaded',function(){
     });
 
     window.closeProjectOverlay = closePanel;
+    // Special demo link handler - intercept #play-shipit
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a[href="#play-shipit"]');
+      if (a) {
+        e.preventDefault();
+        // Close the panel first if open
+        if (overlay && overlay.classList.contains('bc-panel-open')) closePanel();
+        // Launch the game
+        setTimeout(function() {
+          if (window.startShipIT) window.startShipIT();
+          else if (window.startMSGame) window.startMSGame();
+        }, 200);
+      }
+    });
   })();
   </script>
   <!-- ========== BRITTANY CHIANG PROJECTS SCRIPT END ========== -->
@@ -2540,6 +2555,9 @@ document.addEventListener('DOMContentLoaded',function(){
   <!-- ========== TERMINAL MODE — END ========== -->
 </body>
 </html>
+
+
+
 
 
 
