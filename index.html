@@ -1876,14 +1876,14 @@ document.addEventListener('DOMContentLoaded',function(){
         github:'https://github.com/luisangelrod'
       },
       {
-        id:'agentqa',year:'2026',title:'AgentQA',
-        badge:'AI\u2011Powered \u2014 Claude tool_use',
-        subtitle:'Agentic test-suite generator — from spec to 215 passing Vitest tests',
-        desc:'Give AgentQA a feature spec and it returns a complete Vitest test suite via SSE streaming. Powered by Claude tool_use with a custom <code>generate_vitest_case</code> tool, it reads requirements, infers edge cases, writes type-safe TypeScript tests, and streams results live to the browser. Built to scale CDD-HUB to 215 automated tests and beyond.',
-        highlights:['Claude tool_use + SSE','Spec \u2192 tests in seconds','Vitest + TypeScript output','Edge-case inference','Coverage tracking','Live streaming UI'],
-        tech:['Claude API','tool_use','SSE streaming','Node.js','Vitest','TypeScript'],
-        img:'img/projects/agent-qa.svg',
-        live:'https://ai-qa-agent.vercel.app',
+        id:'shipit',year:'2026',title:'Operation: Ship IT',
+        badge:'Playable \u2014 Embedded in Portfolio',
+        subtitle:'Mario-style 2D platformer built from scratch with Canvas 2D',
+        desc:'A full platformer game engine written in vanilla JavaScript with Canvas 2D. Features character creator (customize hair, skin, outfit), checkpoint system with localStorage persistence, top-10 scoreboard, enemy stomp mechanics, double jump, and mobile touch controls. Three themed levels: The Office, The Cloud, and Production. Embedded directly in this portfolio \u2014 click Play to try it.',
+        highlights:['Custom game engine','Character creator','3 themed levels','Checkpoint + scoreboard','Mobile touch controls','Embedded in portfolio'],
+        tech:['Canvas 2D','Vanilla JavaScript','LocalStorage','Custom Physics'],
+        img:'img/projects/operation-ship-it.png',
+        demo:'#play-shipit',
         github:'https://github.com/luisangelrod'
       }
     ];
@@ -1975,13 +1975,14 @@ document.addEventListener('DOMContentLoaded',function(){
         demo:'https://echo-game-phi.vercel.app'
       },
       {
-        id:'shipit',cat:'personal',year:'2026',title:'Operation: Ship IT',
-        context:'Personal \u2014 2D Game',
-        desc:'Mario-style 2D platformer with character creator (customize hair, skin, outfit colors), checkpoint system saved to localStorage, top-10 scoreboard, enemy stomp mechanics, and full mobile touch controls. 3 themed levels: The Office, The Cloud, Production. Embedded directly in the portfolio.',
-        descShort:'Mario-style 2D platformer with character creator, checkpoints, scoreboard, and mobile touch controls.',
-        tech:['Canvas 2D','Vanilla JS','LocalStorage'],
+        id:'agentqa',cat:'personal',year:'2026',title:'AgentQA',
+        context:'Personal \u2014 AI Engineering',
+        desc:'Agentic QA tool powered by Claude tool_use + SSE streaming. Paste a URL and an AI agent autonomously runs 6 analysis tools (accessibility, SEO, performance, security headers, link health) then streams a graded report to the browser in real time. Next.js 16, React 19, TypeScript.',
+        descShort:'AI-powered site analyzer — Claude tool_use runs 6 checks autonomously, streams graded report via SSE.',
+        tech:['Claude API','tool_use','SSE','Next.js 16','React 19','TypeScript'],
         github:'https://github.com/luisangelrod',
-        demo:'#play-shipit'
+        demo:'https://ai-qa-agent.vercel.app',
+        img:'img/projects/agent-qa.svg'
       }
     ];
 
@@ -2004,8 +2005,10 @@ document.addEventListener('DOMContentLoaded',function(){
         f.highlights.forEach(function(h) { hlHTML += '<div class="bc-feat-hl">' + checkSVG + '<span>' + h + '</span></div>'; });
 
         var actionsHTML = '';
-        if (f.live) {
-          actionsHTML += '<a class="bc-feat-btn bc-feat-btn-primary" href="' + f.live + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">' + externalSVG + ' Live Demo</a>';
+        var featDemo = f.live || f.demo;
+        if (featDemo) {
+          var isHash = featDemo.charAt(0) === '#';
+          actionsHTML += '<a class="bc-feat-btn bc-feat-btn-primary" href="' + featDemo + '"' + (isHash ? '' : ' target="_blank" rel="noopener noreferrer"') + ' onclick="event.stopPropagation()">' + externalSVG + (isHash ? ' Play Now' : ' Live Demo') + '</a>';
         }
         actionsHTML += '<a class="bc-feat-btn bc-feat-btn-ghost" href="' + f.github + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">' + githubSVG + ' GitHub</a>';
 
