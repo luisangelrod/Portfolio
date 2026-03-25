@@ -88,7 +88,116 @@
     .ct-detail{font-size:.72rem;color:var(--muted);line-height:1.3;word-break:break-all}
     @media(max-width:640px){.ct-grid{grid-template-columns:repeat(2,1fr)}.ct-option{padding:16px 10px}.ct-detail{display:none}}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-card:hover{transform:none}}
+    .jrnl-filter{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:6px 14px;color:var(--muted);font-size:.74rem;font-weight:800;cursor:pointer;transition:all .2s}
+    .jrnl-filter:hover{border-color:rgba(59,130,246,.3);color:var(--heading)}
+    .jrnl-filter.jrnl-active{background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3);color:var(--accent-light)}
+    .jrnl-count{font-size:.66rem;padding:1px 6px;border-radius:999px;background:rgba(59,130,246,.08);color:var(--accent-light);margin-left:4px}
+    .jrnl-share{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px;border-radius:4px;transition:color .2s;display:inline-flex;align-items:center}
+    .jrnl-share:hover{color:var(--accent-light)}
   </style>
+  <!-- ===== UI/UX 2026 — AURORA + GLASSMORPHISM 2.0 ===== -->
+  <style>
+    /* Aurora animated hero backdrop */
+    .hero{position:relative;overflow:hidden;isolation:isolate}
+    .hero::before{content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 90% 70% at 15% -30%,rgba(59,130,246,.22) 0%,transparent 55%),
+        radial-gradient(ellipse 70% 60% at 85% 130%,rgba(139,92,246,.16) 0%,transparent 55%),
+        radial-gradient(ellipse 50% 45% at 55% 45%,rgba(6,182,212,.08) 0%,transparent 50%);
+      animation:aurora-drift 14s ease-in-out infinite alternate;
+      pointer-events:none;z-index:0}
+    .hero::after{content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse 55% 50% at 90% 10%,rgba(168,85,247,.13) 0%,transparent 55%);
+      animation:aurora-drift2 18s ease-in-out 3s infinite alternate;
+      pointer-events:none;z-index:0}
+    .hero>*{position:relative;z-index:1}
+    @keyframes aurora-drift{
+      0%{opacity:.65;transform:scale(1) translate(0,0)}
+      50%{opacity:1;transform:scale(1.06) translate(1.5%,-1.5%)}
+      100%{opacity:.7;transform:scale(.97) translate(-1%,1%)}}
+    @keyframes aurora-drift2{
+      0%{opacity:.45;transform:translate(0,0)}
+      60%{opacity:.85;transform:translate(-2%,1.5%)}
+      100%{opacity:.55;transform:translate(1%,-1%)}}
+
+    /* Gradient shimmer on the name */
+    .name{
+      background:linear-gradient(130deg,#f9fafb 0%,#93c5fd 38%,#c4b5fd 62%,#f9fafb 100%);
+      background-size:200% 100%;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:name-shimmer 9s ease-in-out infinite}
+    @keyframes name-shimmer{
+      0%,100%{background-position:0% 0%}
+      50%{background-position:100% 0%}}
+
+    /* Role subtitle gradient */
+    .role{
+      background:linear-gradient(90deg,#93c5fd,#c4b5fd 50%,#67e8f9);
+      background-size:200% 100%;
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      animation:role-flow 12s ease-in-out infinite}
+    @keyframes role-flow{
+      0%,100%{background-position:0% 0%}
+      50%{background-position:100% 0%}}
+
+    /* LR canvas mark — pulsing glow */
+    .mark{animation:mark-glow 6s ease-in-out infinite}
+    @keyframes mark-glow{
+      0%,100%{box-shadow:inset 0 0 0 1px rgba(59,130,246,.25),0 0 14px rgba(59,130,246,.12)}
+      50%{box-shadow:inset 0 0 0 1px rgba(139,92,246,.45),0 0 24px rgba(139,92,246,.2)}}
+
+    /* Available to hire badge */
+    .avail-badge{
+      display:inline-flex;align-items:center;gap:5px;
+      background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.22);
+      color:#34d399;font-size:.64rem;font-weight:800;padding:3px 9px 3px 7px;
+      border-radius:999px;letter-spacing:.08em;text-transform:uppercase;
+      margin-left:12px;vertical-align:middle;white-space:nowrap;
+      box-shadow:0 0 10px rgba(52,211,153,.08)}
+    .avail-dot{
+      width:6px;height:6px;border-radius:50%;background:#34d399;
+      flex-shrink:0;animation:avail-ping 2s ease-out infinite}
+    @keyframes avail-ping{
+      0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}
+      70%{box-shadow:0 0 0 5px rgba(52,211,153,0)}
+      100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+
+    /* Glass pill nav */
+    .nav a{padding:6px 13px;border-radius:999px;transition:color .2s,background .2s,box-shadow .2s}
+    .nav a:hover{background:rgba(59,130,246,.1);border-bottom-color:transparent}
+    .nav a.active{background:rgba(59,130,246,.18);border-bottom-color:transparent;
+      box-shadow:0 0 0 1px rgba(59,130,246,.25),0 0 12px rgba(59,130,246,.15)}
+
+    /* Bento stat micro-animations */
+    .stat{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:default}
+    .stat::after{content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(59,130,246,.15) 0%,transparent 65%);
+      opacity:0;transition:opacity .3s;border-radius:inherit;pointer-events:none}
+    .stat:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 10px 28px rgba(0,0,0,.4);border-color:rgba(59,130,246,.38)!important}
+    .stat:hover::after{opacity:1}
+    .stat b{transition:color .25s}
+    .stat:hover b{color:#93c5fd!important}
+
+    /* Glassmorphism 2.0 on hero panel */
+    .hero-main{
+      background:linear-gradient(135deg,rgba(255,255,255,.018) 0%,rgba(255,255,255,.004) 100%);
+      border-radius:10px;padding:4px;margin:-4px}
+
+    /* Sheet top accent bar */
+    .sheet{position:relative}
+    .sheet::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+      background:linear-gradient(90deg,transparent 0%,rgba(59,130,246,.4) 20%,rgba(139,92,246,.6) 50%,rgba(6,182,212,.4) 80%,transparent 100%);
+      border-radius:16px 16px 0 0;z-index:2;pointer-events:none}
+
+    /* Reduce-motion overrides */
+    @media (prefers-reduced-motion:reduce){
+      .hero::before,.hero::after{animation:none}
+      .name,.role{animation:none;background-position:0 0}
+      .mark{animation:none}
+      .avail-dot{animation:none}
+      .stat:hover{transform:none}}
+  </style>
+  <!-- ===== UI/UX 2026 END ===== -->
   <!-- ========== GAME STYLES — START ========== -->
   <style>
     .gbc-widget{position:fixed;bottom:24px;left:24px;z-index:9001;cursor:pointer;animation:rw-slideUp .6s .8s both;display:none}
@@ -293,7 +402,7 @@
           <div class="identity">
             <div class="mark" aria-hidden="true"><canvas id="lr-canvas"></canvas></div>
             <div>
-              <p class="eyebrow">Senior Full-Stack &amp; AI Engineer &mdash; Technical Lead</p>
+              <p class="eyebrow">Senior Full-Stack &amp; AI Engineer &mdash; Technical Lead<span class="avail-badge"><span class="avail-dot"></span>Open to Work</span></p>
               <h1 class="name">Luis Rodr&iacute;guez</h1>
               <p class="role">Full-Stack &middot; AI Engineering &middot; React &middot; .NET &middot; Azure</p>
               <p class="headline">I build and ship production systems end to end &mdash; and I do it fast. Four systems delivered solo in six months: schema design, cloud deployment, hardware integrations, and everything in between.</p>
@@ -314,7 +423,7 @@
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
-          <a href="#gamedev-blog">Game Dev Blog</a>
+          <a href="#journal">Journal</a>
           <a href="#constellation">Constellation</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -702,21 +811,20 @@
             <article class="skill"><h3>Platform &amp; Embedded</h3><p>WPF + WebView2, Ionic/Capacitor (Android/iOS), payment kiosk hardware (PAX terminals, Epson thermal printers, cash drawers), PCI DSS, HIPAA-adjacent systems.</p></article>
           </div>
         </section>
-        <section class="section" id="gamedev-blog">
-          <div class="bar">Game Dev Journal &mdash; Building ECHO</div>
+        <section class="section" id="journal">
+          <div class="bar">Engineering Journal</div>
           <div class="panel" style="padding:0;overflow:hidden">
-            <div style="padding:18px 20px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-              <div>
-                <p style="margin:0;color:var(--accent-text);font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase">Side Project &mdash; In Development</p>
-                <h3 style="margin:6px 0 0;font-size:1.15rem;font-weight:900;color:var(--heading)">ECHO: The Deep Station Chronicles</h3>
-              </div>
-              <span style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#34d399;font-size:.72rem;font-weight:800;padding:5px 12px;border-radius:999px;letter-spacing:.1em;text-transform:uppercase">Active Dev &mdash; Pre-Alpha</span>
+            <div style="padding:14px 20px 0;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px">
+              <button class="jrnl-filter jrnl-active" data-jrnl-filter="all">All <span class="jrnl-count">4</span></button>
+              <button class="jrnl-filter" data-jrnl-filter="ai">AI Engineering <span class="jrnl-count">1</span></button>
+              <button class="jrnl-filter" data-jrnl-filter="gamedev">Game Dev <span class="jrnl-count">3</span></button>
             </div>
             <div style="padding:18px 20px">
-              <article style="margin-bottom:24px">
+              <article id="journal-agentqa" data-cat="ai" style="margin-bottom:24px">
                 <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
                   <span style="color:var(--accent-text);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Entry #004 &mdash; March 23, 2026</span>
-                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);font-size:.72rem;font-weight:700">AI Engineering</span>
+                  <span style="background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);border-radius:999px;padding:3px 10px;color:#a78bfa;font-size:.72rem;font-weight:700">AI Engineering</span>
+                  <button class="jrnl-share" data-href="#journal-agentqa" title="Copy link" aria-label="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
                 </div>
                 <h4 style="margin:0 0 10px;color:var(--heading);font-size:1rem;font-weight:800">I Built an AI Agent to Write My Tests &mdash; It Now Knows My Codebase Better Than I Do</h4>
                 <p style="margin:0 0 10px;color:var(--muted);line-height:1.65">There's a specific kind of developer pain that comes from staring at a feature spec and knowing you need to write 40 Vitest tests before any of it ships. I solved it by building AgentQA &mdash; an agentic tool that takes a feature spec and streams a complete, type-safe test suite back to you in real time.</p>
@@ -731,10 +839,11 @@
                   <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.72rem;font-weight:700">Agentic Loops</span>
                 </div>
               </article>
-              <article style="padding-top:18px;border-top:1px solid var(--line);margin-bottom:24px">
+              <article id="journal-webgpu" data-cat="gamedev" style="padding-top:18px;border-top:1px solid var(--line);margin-bottom:24px">
                 <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
                   <span style="color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Entry #003 &mdash; March 19, 2026</span>
-                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);font-size:.72rem;font-weight:700">WebGPU Renderer</span>
+                  <span style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:999px;padding:3px 10px;color:#34d399;font-size:.72rem;font-weight:700">WebGPU Renderer</span>
+                  <button class="jrnl-share" data-href="#journal-webgpu" title="Copy link" aria-label="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
                 </div>
                 <h4 style="margin:0 0 10px;color:var(--heading);font-size:1rem;font-weight:800">Why I Chose WebGPU Over a Traditional Game Engine</h4>
                 <p style="margin:0 0 10px;color:var(--muted);line-height:1.65">The obvious choice for a browser-based AAA-quality game would be Unity WebGL or Godot. I considered both for about a week, then abandoned them for a reason that sounds insane: I want to own the renderer. Not wrap it. Not configure it. Own it.</p>
@@ -748,19 +857,21 @@
                   <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.72rem;font-weight:700">Volumetric Lighting</span>
                 </div>
               </article>
-              <article style="padding-top:18px;border-top:1px solid var(--line)">
+              <article id="journal-echo-world" data-cat="gamedev" style="padding-top:18px;border-top:1px solid var(--line)">
                 <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
                   <span style="color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Entry #002 &mdash; March 12, 2026</span>
-                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);font-size:.72rem;font-weight:700">Game Concept</span>
+                  <span style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:999px;padding:3px 10px;color:#34d399;font-size:.72rem;font-weight:700">Game Concept</span>
+                  <button class="jrnl-share" data-href="#journal-echo-world" title="Copy link" aria-label="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
                 </div>
                 <h4 style="margin:0 0 8px;color:var(--headline);font-size:.95rem;font-weight:800">ECHO: The World, The Tone, The Why</h4>
                 <p style="margin:0 0 8px;color:var(--muted);line-height:1.65">ECHO is set in an abandoned deep-sea research station, 3,000 meters below the Atlantic. You're the first human to return to Facility Kilo-7 after a catastrophic communication blackout 11 years ago. No combat. No weapons. Just exploration, environmental storytelling, and the growing certainty that something is still down here with you.</p>
                 <p style="margin:0;color:var(--muted);line-height:1.65">The gameplay loop is: exploration &rarr; audio logs / environmental clues &rarr; puzzle-unlocked zones &rarr; escalating dread. Think Soma meets SOMA's atmosphere with the environmental storytelling of Outer Wilds. I want the water physics to feel oppressive. The acoustics to feel wrong. The light to feel rationed.</p>
               </article>
-              <article style="padding-top:18px;border-top:1px solid var(--line);margin-top:18px">
+              <article id="journal-echo-origin" data-cat="gamedev" style="padding-top:18px;border-top:1px solid var(--line);margin-top:18px">
                 <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
                   <span style="color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Entry #001 &mdash; March 5, 2026</span>
-                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted);font-size:.72rem;font-weight:700">Origin</span>
+                  <span style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:999px;padding:3px 10px;color:#34d399;font-size:.72rem;font-weight:700">Origin</span>
+                  <button class="jrnl-share" data-href="#journal-echo-origin" title="Copy link" aria-label="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
                 </div>
                 <h4 style="margin:0 0 8px;color:var(--headline);font-size:.95rem;font-weight:800">Why a Full-Stack Engineer is Building a AAA Game</h4>
                 <p style="margin:0;color:var(--muted);line-height:1.65">Two things converged: the WebGPU spec hit stable in Chrome 113, and I spent a week prototyping a Three.js scene that made me genuinely uncomfortable to look at. That's the test. If it makes me feel something, it's worth building. ECHO is the game I've wanted to play for 10 years. I'm building it because no one else is building it exactly this way: browser-native, no plugin, AAA visual ambition, solo dev. If you're a game studio or audio engineer who wants to collaborate on something genuinely different &mdash; <a href="mailto:luisangelrod17@gmail.com" style="color:var(--accent-text);text-decoration:underline">find me</a>.</p>
@@ -1772,6 +1883,7 @@ document.addEventListener('DOMContentLoaded',function(){
         highlights:['Claude tool_use + SSE','Spec \u2192 tests in seconds','Vitest + TypeScript output','Edge-case inference','Coverage tracking','Live streaming UI'],
         tech:['Claude API','tool_use','SSE streaming','Node.js','Vitest','TypeScript'],
         img:'img/projects/agent-qa.svg',
+        live:'https://ai-qa-agent.vercel.app',
         github:'https://github.com/luisangelrod'
       }
     ];
@@ -2553,6 +2665,281 @@ document.addEventListener('DOMContentLoaded',function(){
   })();
   </script>
   <!-- ========== TERMINAL MODE — END ========== -->
+  <!-- ========== JOURNAL FILTERS + PERMALINKS — START ========== -->
+  <script>
+  (function(){
+    // Filter tabs
+    var btns=document.querySelectorAll('.jrnl-filter');
+    btns.forEach(function(btn){
+      btn.addEventListener('click',function(){
+        btns.forEach(function(b){b.classList.remove('jrnl-active');});
+        btn.classList.add('jrnl-active');
+        var f=btn.getAttribute('data-jrnl-filter');
+        document.querySelectorAll('#journal article[data-cat]').forEach(function(a){
+          a.style.display=(f==='all'||a.getAttribute('data-cat')===f)?'':'none';
+        });
+      });
+    });
+    // Copy permalink
+    document.querySelectorAll('.jrnl-share').forEach(function(btn){
+      btn.addEventListener('click',function(e){
+        e.stopPropagation();
+        var hash=btn.getAttribute('data-href');
+        var url=window.location.origin+window.location.pathname+hash;
+        navigator.clipboard.writeText(url).then(function(){
+          btn.style.color='#34d399';
+          setTimeout(function(){btn.style.color='';},1200);
+        });
+      });
+    });
+    // Deep link on load
+    var hash=window.location.hash;
+    if(hash&&hash.indexOf('#journal-')===0){
+      var target=document.getElementById(hash.slice(1));
+      if(target){
+        setTimeout(function(){
+          target.scrollIntoView({behavior:'smooth',block:'center'});
+          target.style.boxShadow='0 0 0 2px var(--accent)';
+          setTimeout(function(){target.style.boxShadow='';},2500);
+        },400);
+      }
+    }
+  })();
+  </script>
+  <!-- ========== JOURNAL FILTERS + PERMALINKS — END ========== -->
+  <!-- ========== COMMAND PALETTE (Cmd+K) — START ========== -->
+  <style>
+    .cmdk-overlay{position:fixed;inset:0;z-index:9900;background:rgba(0,0,0,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;align-items:flex-start;justify-content:center;padding-top:min(18vh,160px);opacity:0;pointer-events:none;transition:opacity .2s ease}
+    .cmdk-overlay.cmdk-open{opacity:1;pointer-events:auto}
+    .cmdk-dialog{width:100%;max-width:580px;background:#111827;border:1px solid rgba(100,255,218,.15);border-radius:16px;box-shadow:0 25px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.04) inset;overflow:hidden;transform:scale(.96) translateY(-8px);transition:transform .25s cubic-bezier(.34,1.4,.64,1);font-family:'Inter','Segoe UI',sans-serif}
+    .cmdk-overlay.cmdk-open .cmdk-dialog{transform:scale(1) translateY(0)}
+    .cmdk-search-wrap{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .cmdk-search-icon{width:20px;height:20px;color:#64748b;flex-shrink:0}
+    .cmdk-search-icon svg{width:100%;height:100%;display:block}
+    .cmdk-input{flex:1;background:none;border:none;outline:none;color:#e2e8f0;font-size:1rem;font-family:inherit;caret-color:#3b82f6}
+    .cmdk-input::placeholder{color:#475569}
+    .cmdk-kbd-hint{display:flex;align-items:center;gap:4px;color:#475569;font-size:.72rem;font-weight:600}
+    .cmdk-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 5px;border:1px solid rgba(255,255,255,.1);border-radius:5px;background:rgba(255,255,255,.04);font-size:.68rem;font-family:'Fira Code',monospace;color:#64748b;line-height:1}
+    .cmdk-list{max-height:360px;overflow-y:auto;padding:6px 8px;scroll-behavior:smooth}
+    .cmdk-list::-webkit-scrollbar{width:4px}.cmdk-list::-webkit-scrollbar-track{background:transparent}.cmdk-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
+    .cmdk-group-label{padding:6px 10px 4px;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#475569;user-select:none}
+    .cmdk-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background .12s;color:#94a3b8;font-size:.9rem;font-weight:500}
+    .cmdk-item:hover,.cmdk-item.cmdk-active{background:rgba(59,130,246,.1);color:#e2e8f0}
+    .cmdk-item.cmdk-active{box-shadow:inset 0 0 0 1px rgba(59,130,246,.2)}
+    .cmdk-item-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
+    .cmdk-item-icon svg{width:16px;height:16px}
+    .cmdk-item-body{flex:1;min-width:0}
+    .cmdk-item-title{font-weight:600;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .cmdk-item-desc{font-size:.76rem;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+    .cmdk-item-badge{font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:999px;white-space:nowrap;letter-spacing:.04em}
+    .cmdk-empty{padding:32px 16px;text-align:center;color:#475569;font-size:.88rem}
+    .cmdk-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:.7rem;color:#334155}
+    .cmdk-footer-keys{display:flex;align-items:center;gap:10px}
+    .cmdk-footer-key{display:flex;align-items:center;gap:4px}
+    .cmdk-footer-key .cmdk-kbd{min-width:18px;height:18px;font-size:.6rem}
+    @media(max-width:640px){.cmdk-dialog{max-width:calc(100% - 24px);border-radius:14px}.cmdk-list{max-height:50vh}.cmdk-kbd-hint{display:none}}
+    .cmdk-highlight{color:#60a5fa;font-weight:700}
+  </style>
+  <div id="cmdk-overlay" class="cmdk-overlay" onclick="if(event.target===this)cmdkClose()">
+    <div class="cmdk-dialog" role="dialog" aria-label="Command palette">
+      <div class="cmdk-search-wrap">
+        <div class="cmdk-search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <input class="cmdk-input" id="cmdk-input" type="text" placeholder="Search commands, projects, sections…" autocomplete="off" autocorrect="off" spellcheck="false">
+        <div class="cmdk-kbd-hint"><span class="cmdk-kbd">ESC</span> to close</div>
+      </div>
+      <div class="cmdk-list" id="cmdk-list"></div>
+      <div class="cmdk-footer">
+        <div class="cmdk-footer-keys">
+          <span class="cmdk-footer-key"><span class="cmdk-kbd">↑↓</span> navigate</span>
+          <span class="cmdk-footer-key"><span class="cmdk-kbd">↵</span> select</span>
+          <span class="cmdk-footer-key"><span class="cmdk-kbd">esc</span> close</span>
+        </div>
+        <span style="color:#334155">⌘K or Ctrl+K</span>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    'use strict';
+    var overlay=document.getElementById('cmdk-overlay');
+    var input=document.getElementById('cmdk-input');
+    var list=document.getElementById('cmdk-list');
+    var activeIdx=0,filteredItems=[];
+
+    var ITEMS=[
+      // Navigation
+      {group:'Navigation',icon:'🏠',title:'Go to About',desc:'About me section',action:function(){navTo('#about')},tags:'about home intro summary'},
+      {group:'Navigation',icon:'💼',title:'Go to Experience',desc:'Professional experience',action:function(){navTo('#experience')},tags:'experience work jobs career'},
+      {group:'Navigation',icon:'🚀',title:'Go to Projects',desc:'Selected work & featured projects',action:function(){navTo('#projects')},tags:'projects work portfolio'},
+      {group:'Navigation',icon:'⚡',title:'Go to Skills',desc:'Technical skills — 2026 stack',action:function(){navTo('#skills')},tags:'skills stack technologies tech'},
+      {group:'Navigation',icon:'📝',title:'Go to Journal',desc:'Engineering journal — AI & game dev',action:function(){navTo('#journal')},tags:'journal blog engineering ai game dev echo'},
+      {group:'Navigation',icon:'✨',title:'Open Tech Constellation',desc:'Interactive skill visualization',action:function(){var l=document.querySelector('.nav a[href="#constellation"]');if(l)l.click();},tags:'constellation skills visualization interactive 3d'},
+      {group:'Navigation',icon:'📬',title:'Go to Contact',desc:'Get in touch',action:function(){navTo('#contact')},tags:'contact hire email phone'},
+
+      // Projects
+      {group:'Projects',icon:'🏖️',title:'Safe Shores PR',desc:'Real-time beach safety alerts for Puerto Rico',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#projects')},tags:'safe shores beach noaa alerts next.js leaflet'},
+      {group:'Projects',icon:'💰',title:'PR Tax Pro',desc:'Puerto Rico salary & tax calculator',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#projects')},tags:'tax calculator pr salary'},
+      {group:'Projects',icon:'🤖',title:'AgentQA',desc:'AI-powered test suite generator — Claude tool_use',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#projects')},tags:'agent qa testing claude ai vitest'},
+      {group:'Projects',icon:'📊',title:'CDD-HUB',desc:'Enterprise ops hub — 215 tests, 50+ clients',action:function(){navTo('#projects')},tags:'cdd hub operations enterprise'},
+      {group:'Projects',icon:'💳',title:'BerriosPay',desc:'Payment kiosk system — 25+ locations',action:function(){navTo('#projects')},tags:'berrios pay payment kiosk pci'},
+      {group:'Projects',icon:'🏥',title:'GoFleetCare',desc:'Medical transport logistics portal',action:function(){navTo('#projects')},tags:'gofleet care medical transport hipaa'},
+      {group:'Projects',icon:'📱',title:'LeadFlow',desc:'AI lead conversion SaaS for med spas',action:function(){navTo('#projects')},tags:'leadflow lead ai saas stripe twilio'},
+      {group:'Projects',icon:'🎮',title:'ECHO: The Deep Station',desc:'Atmospheric WebGPU browser game',action:function(){navTo('#journal')},tags:'echo game webgpu three.js deep sea'},
+      {group:'Projects',icon:'🕹️',title:'Operation: Ship IT',desc:'Hidden Mario-style arcade game',badge:'Easter Egg',badgeColor:'#f59e0b',action:function(){if(window.startShipIT)window.startShipIT();},tags:'game ship it mario platformer play arcade'},
+
+      // Actions
+      {group:'Actions',icon:'📄',title:'Download Resume',desc:'Open resume PDF in new tab',action:function(){window.open('assets/resume.pdf','_blank');},tags:'resume pdf download cv'},
+      {group:'Actions',icon:'✉️',title:'Send Email',desc:'luisangelrod17@gmail.com',action:function(){window.location.href='mailto:luisangelrod17@gmail.com';},tags:'email mail contact hire'},
+      {group:'Actions',icon:'🔗',title:'Open GitHub',desc:'github.com/luisangelrod',action:function(){window.open('https://github.com/luisangelrod','_blank');},tags:'github git code repo source'},
+      {group:'Actions',icon:'💼',title:'Open LinkedIn',desc:'Connect on LinkedIn',action:function(){window.open('https://www.linkedin.com/in/luis-rodriguez-515858bb/','_blank');},tags:'linkedin social professional network'},
+      {group:'Actions',icon:'🤝',title:'Recruiter Match Tool',desc:'Analyze job description fit',action:function(){if(window.rwOpen)window.rwOpen();},tags:'recruiter wizard match hire job description'},
+      {group:'Actions',icon:'💻',title:'Open Terminal',desc:'Press backtick ` for hacker mode',action:function(){if(window.termOpen)window.termOpen();},tags:'terminal console cli hacker command'},
+
+      // Fun / Easter Eggs
+      {group:'Fun',icon:'🌀',title:'Scroll to Top',desc:'Back to the beginning',action:function(){window.scrollTo({top:0,behavior:'smooth'});},tags:'top scroll up beginning'},
+      {group:'Fun',icon:'🎲',title:'Surprise Me',desc:'Jump to a random section',action:function(){var s=['#about','#experience','#projects','#skills','#journal','#contact'];navTo(s[Math.floor(Math.random()*s.length)]);},tags:'random surprise lucky'},
+    ];
+
+    function navTo(hash){
+      // close constellation if open
+      var sk=document.getElementById('constellation');
+      if(sk&&sk.classList.contains('sk-open')){
+        var pages=document.querySelectorAll('.page, .bc-projects, .bc-panel-overlay');
+        sk.classList.remove('sk-open');pages.forEach(function(el){el.style.display='';});
+      }
+      var el=document.querySelector(hash);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    function fuzzyMatch(query,text){
+      var q=query.toLowerCase(),t=text.toLowerCase(),qi=0;
+      for(var ti=0;ti<t.length&&qi<q.length;ti++){if(t[ti]===q[qi])qi++;}
+      return qi===q.length;
+    }
+
+    function scoreMatch(query,text){
+      var q=query.toLowerCase(),t=text.toLowerCase();
+      if(t.indexOf(q)===0)return 100;
+      if(t.indexOf(q)>0)return 80;
+      var score=0,qi=0,consecutive=0;
+      for(var ti=0;ti<t.length&&qi<q.length;ti++){
+        if(t[ti]===q[qi]){score+=10+consecutive*5;consecutive++;qi++;}else{consecutive=0;}
+      }
+      return qi===q.length?score:0;
+    }
+
+    function render(query){
+      list.innerHTML='';
+      var q=(query||'').trim();
+      filteredItems=[];
+
+      var scored=ITEMS.map(function(item){
+        var s=0;
+        if(!q){s=1;}
+        else{
+          s=Math.max(
+            scoreMatch(q,item.title),
+            scoreMatch(q,item.desc||'')*0.7,
+            scoreMatch(q,item.tags||'')*0.5,
+            scoreMatch(q,item.group)*0.3
+          );
+        }
+        return{item:item,score:s};
+      }).filter(function(x){return x.score>0;}).sort(function(a,b){return b.score-a.score;});
+
+      if(!scored.length){
+        list.innerHTML='<div class="cmdk-empty">No results for "'+escH(q)+'"<br><span style="font-size:.78rem;color:#334155">Try searching for projects, skills, or actions</span></div>';
+        return;
+      }
+
+      var lastGroup='';
+      scored.forEach(function(entry,idx){
+        var item=entry.item;
+        if(!q&&item.group!==lastGroup){
+          lastGroup=item.group;
+          var lbl=document.createElement('div');
+          lbl.className='cmdk-group-label';
+          lbl.textContent=item.group;
+          list.appendChild(lbl);
+        }
+
+        var el=document.createElement('div');
+        el.className='cmdk-item'+(idx===activeIdx?' cmdk-active':'');
+        el.setAttribute('data-idx',String(idx));
+
+        var badgeHTML='';
+        if(item.badge)badgeHTML='<span class="cmdk-item-badge" style="background:'+item.badgeColor+'22;color:'+item.badgeColor+'">'+escH(item.badge)+'</span>';
+
+        el.innerHTML=
+          '<div class="cmdk-item-icon" style="background:rgba(255,255,255,.04)">'+item.icon+'</div>'+
+          '<div class="cmdk-item-body"><div class="cmdk-item-title">'+highlightMatch(item.title,q)+'</div>'+(item.desc?'<div class="cmdk-item-desc">'+escH(item.desc)+'</div>':'')+'</div>'+
+          badgeHTML;
+
+        el.addEventListener('click',function(){executeItem(item);});
+        el.addEventListener('mouseenter',function(){setActive(idx);});
+        list.appendChild(el);
+        filteredItems.push(item);
+      });
+    }
+
+    function highlightMatch(text,query){
+      if(!query)return escH(text);
+      var q=query.toLowerCase(),t=text,result='',qi=0;
+      for(var ti=0;ti<t.length;ti++){
+        if(qi<q.length&&t[ti].toLowerCase()===q[qi]){result+='<span class="cmdk-highlight">'+escH(t[ti])+'</span>';qi++;}
+        else{result+=escH(t[ti]);}
+      }
+      return result;
+    }
+
+    function escH(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+    function setActive(idx){
+      activeIdx=idx;
+      var items=list.querySelectorAll('.cmdk-item');
+      items.forEach(function(el,i){el.classList.toggle('cmdk-active',i===idx);});
+      if(items[idx])items[idx].scrollIntoView({block:'nearest'});
+    }
+
+    function executeItem(item){
+      cmdkClose();
+      setTimeout(function(){item.action();},120);
+    }
+
+    function cmdkOpen(){
+      overlay.classList.add('cmdk-open');
+      input.value='';activeIdx=0;
+      render('');
+      setTimeout(function(){input.focus();},80);
+    }
+
+    function cmdkClose(){
+      overlay.classList.remove('cmdk-open');
+      input.blur();
+    }
+
+    window.cmdkOpen=cmdkOpen;
+    window.cmdkClose=cmdkClose;
+
+    input.addEventListener('input',function(){activeIdx=0;render(input.value);});
+
+    input.addEventListener('keydown',function(e){
+      if(e.key==='ArrowDown'){e.preventDefault();if(activeIdx<filteredItems.length-1)setActive(activeIdx+1);}
+      else if(e.key==='ArrowUp'){e.preventDefault();if(activeIdx>0)setActive(activeIdx-1);}
+      else if(e.key==='Enter'){e.preventDefault();if(filteredItems[activeIdx])executeItem(filteredItems[activeIdx]);}
+      else if(e.key==='Escape'){cmdkClose();}
+    });
+
+    // Global Cmd+K / Ctrl+K shortcut
+    document.addEventListener('keydown',function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==='k'){
+        e.preventDefault();
+        if(overlay.classList.contains('cmdk-open'))cmdkClose();else cmdkOpen();
+      }
+    });
+  })();
+  </script>
+  <!-- ========== COMMAND PALETTE (Cmd+K) — END ========== -->
 </body>
 </html>
 
