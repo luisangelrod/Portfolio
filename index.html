@@ -295,46 +295,98 @@
   <style>
     .bc-projects{background:#0a0a0f;padding:80px 0;position:relative;overflow:hidden;border-radius:0}
     .bc-projects *{box-sizing:border-box}
-    .bc-container{max-width:1120px;margin:0 auto;padding:0 24px}
-    .bc-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;padding-bottom:16px;border-bottom:1px solid rgba(100,255,218,.15)}
+    .bc-container{max-width:1280px;margin:0 auto;padding:0 24px}
+    .bc-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid rgba(100,255,218,.15);flex-wrap:wrap}
     .bc-header h2{margin:0;font-family:'Inter',sans-serif;font-size:clamp(1.6rem,3vw,2rem);font-weight:900;color:#ccd6f6;letter-spacing:-.03em}
     .bc-header h2 span{color:#64ffda;margin-right:10px;font-family:'Fira Code',monospace;font-size:.85em;font-weight:400}
-    .bc-view-all{color:#64ffda;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-decoration:none;transition:color .2s}
-    .bc-view-all:hover{color:#9efce5}
-    .bc-layout{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start}
-    .bc-sidebar{position:sticky;top:100px}
-    .bc-filters{display:flex;flex-direction:column;gap:4px}
-    .bc-filter-btn{background:none;border:none;padding:10px 16px;text-align:left;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;color:#8892b0;cursor:pointer;border-radius:6px;transition:all .2s;display:flex;align-items:center;justify-content:space-between}
-    .bc-filter-btn:hover{color:#ccd6f6;background:rgba(100,255,218,.05)}
-    .bc-filter-btn.bc-active{color:#64ffda;background:rgba(100,255,218,.1)}
-    .bc-filter-count{font-family:'Fira Code',monospace;font-size:.72rem;padding:2px 8px;border-radius:999px;background:rgba(100,255,218,.08);color:#64ffda;min-width:24px;text-align:center}
-    .bc-filter-btn:not(.bc-active) .bc-filter-count{background:rgba(136,146,176,.1);color:#8892b0}
-    .bc-cards{display:grid;gap:24px}
-    .bc-card{background:rgba(17,34,64,.4);border:1px solid rgba(100,255,218,.1);border-radius:8px;padding:24px 28px;transition:all .2s ease;cursor:pointer;position:relative;opacity:0;transform:translateY(20px)}
+    .bc-rail-meta{display:flex;align-items:center;gap:16px}
+    .bc-rail-hint{font-family:'Fira Code',monospace;font-size:.72rem;color:rgba(136,146,176,.6);letter-spacing:.04em}
+    .bc-rail-nav{display:flex;gap:8px}
+    .bc-rail-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(100,255,218,.25);background:rgba(17,34,64,.5);color:#64ffda;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .bc-rail-btn:hover:not(:disabled){background:rgba(100,255,218,.12);border-color:#64ffda;transform:scale(1.05)}
+    .bc-rail-btn:disabled{opacity:.3;cursor:not-allowed}
+    .bc-rail-btn svg{width:18px;height:18px}
+
+    /* The horizontal rail */
+    .bc-rail-wrap{position:relative}
+    .bc-rail{display:flex;gap:24px;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:24px 4px 56px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(100,255,218,.25) transparent}
+    .bc-rail::-webkit-scrollbar{height:8px}
+    .bc-rail::-webkit-scrollbar-track{background:rgba(100,255,218,.04);border-radius:999px}
+    .bc-rail::-webkit-scrollbar-thumb{background:rgba(100,255,218,.2);border-radius:999px}
+    .bc-rail::-webkit-scrollbar-thumb:hover{background:rgba(100,255,218,.4)}
+    .bc-rail.bc-grabbing{scroll-behavior:auto;cursor:grabbing;user-select:none}
+    .bc-rail:focus{outline:none}
+    .bc-rail:focus-visible{outline:2px solid rgba(100,255,218,.3);outline-offset:4px;border-radius:8px}
+
+    /* Edge fades */
+    .bc-rail-fade{position:absolute;top:0;bottom:28px;width:60px;pointer-events:none;transition:opacity .25s;z-index:2}
+    .bc-rail-fade-l{left:0;background:linear-gradient(90deg,#0a0a0f 0%,rgba(10,10,15,0) 100%);opacity:0}
+    .bc-rail-fade-r{right:0;background:linear-gradient(270deg,#0a0a0f 0%,rgba(10,10,15,0) 100%);opacity:1}
+    .bc-rail-wrap.bc-at-start .bc-rail-fade-l{opacity:0}
+    .bc-rail-wrap:not(.bc-at-start) .bc-rail-fade-l{opacity:1}
+    .bc-rail-wrap.bc-at-end .bc-rail-fade-r{opacity:0}
+
+    /* Progress bar */
+    .bc-rail-progress{height:2px;width:100%;background:rgba(100,255,218,.08);border-radius:999px;overflow:hidden;margin-top:4px}
+    .bc-rail-progress-bar{height:100%;background:linear-gradient(90deg,#64ffda,#9efce5);border-radius:999px;width:0;transition:width .15s ease-out}
+
+    /* Cards in the rail */
+    .bc-card{flex:0 0 380px;scroll-snap-align:start;background:rgba(17,34,64,.45);border:1px solid rgba(100,255,218,.12);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .45s cubic-bezier(.2,.85,.25,1),box-shadow .45s cubic-bezier(.2,.85,.25,1),border-color .35s ease,background .35s ease,opacity .5s ease;position:relative;opacity:0;transform:translateY(16px);will-change:transform,box-shadow;isolation:isolate}
+    .bc-card::before{content:'';position:absolute;inset:-1px;border-radius:14px;padding:1px;background:linear-gradient(135deg,rgba(100,255,218,0) 0%,rgba(100,255,218,0) 50%,rgba(100,255,218,0) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity .4s ease,background .4s ease;z-index:1}
+    .bc-card::after{content:'';position:absolute;left:8%;right:8%;bottom:-22px;height:32px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(100,255,218,.18) 0%,rgba(100,255,218,0) 70%);opacity:0;filter:blur(6px);transition:opacity .45s ease,bottom .45s cubic-bezier(.2,.85,.25,1);pointer-events:none;z-index:0}
     .bc-card.bc-visible{opacity:1;transform:translateY(0)}
-    .bc-card:hover{background:rgba(17,34,64,.7);border-color:rgba(100,255,218,.3);transform:translateY(-2px)}
-    .bc-card.bc-visible:hover{transform:translateY(-2px)}
-    .bc-card-year{font-family:'Fira Code',monospace;font-size:.75rem;color:#64ffda;margin-bottom:8px;letter-spacing:.02em}
-    .bc-card-title{font-family:'Inter',sans-serif;font-size:1.2rem;font-weight:700;color:#ccd6f6;margin:0 0 4px;transition:color .2s}
-    .bc-card:hover .bc-card-title{color:#64ffda}
-    .bc-card-context{font-size:.78rem;color:#8892b0;margin:0 0 12px;font-weight:500}
-    .bc-card-desc{font-size:.9rem;color:#8892b0;margin:0 0 16px;line-height:1.6}
-    .bc-card-tech{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-    .bc-pill{font-family:'Fira Code',monospace;font-size:.7rem;padding:4px 12px;border-radius:999px;border:1px solid rgba(100,255,218,.25);color:#64ffda;background:transparent;white-space:nowrap}
-    .bc-card-links{display:flex;gap:12px;opacity:0;transition:opacity .2s}
-    .bc-card:hover .bc-card-links{opacity:1}
+    .bc-card:hover,.bc-card:focus-visible{transform:translateY(-14px) scale(1.022);border-color:rgba(100,255,218,.55);background:rgba(17,34,64,.78);box-shadow:0 30px 70px -20px rgba(0,0,0,.75),0 18px 40px -18px rgba(100,255,218,.22),0 0 0 1px rgba(100,255,218,.18)}
+    .bc-card:hover::before,.bc-card:focus-visible::before{opacity:1;background:linear-gradient(135deg,rgba(100,255,218,.5) 0%,rgba(100,255,218,0) 40%,rgba(100,255,218,0) 60%,rgba(159,252,229,.35) 100%)}
+    .bc-card:hover::after,.bc-card:focus-visible::after{opacity:1;bottom:-26px}
+    .bc-card:hover .bc-card-title,.bc-card:focus-visible .bc-card-title{color:#64ffda}
+    .bc-card:hover .bc-card-thumb-img,.bc-card:focus-visible .bc-card-thumb-img{transform:scale(1.08)}
+    .bc-card:active{transform:translateY(-10px) scale(1.01)}
+    @media (prefers-reduced-motion:reduce){
+      .bc-card,.bc-card:hover,.bc-card:focus-visible{transition:none;transform:none!important}
+      .bc-card::after,.bc-card::before{display:none}
+    }
+
+    /* Section markers (Personal / Work) inline in the rail */
+    .bc-rail-marker{flex:0 0 200px;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:24px 22px;border-radius:14px;position:relative;overflow:hidden;background:linear-gradient(155deg,rgba(17,34,64,.4) 0%,rgba(10,10,15,.6) 100%);border:1px dashed rgba(100,255,218,.18)}
+    .bc-rail-marker::before{content:'';position:absolute;left:0;top:18%;bottom:18%;width:3px;border-radius:0 3px 3px 0;background:linear-gradient(180deg,#64ffda,rgba(100,255,218,0))}
+    .bc-rail-marker-num{font-family:'Fira Code',monospace;font-size:.68rem;color:rgba(100,255,218,.55);letter-spacing:.18em;font-weight:600;margin-bottom:8px}
+    .bc-rail-marker-label{font-family:'Inter',sans-serif;font-size:1.32rem;font-weight:900;color:#ccd6f6;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+    .bc-rail-marker-sub{font-size:.78rem;color:#8892b0;line-height:1.5;font-weight:500}
+    .bc-rail-marker-work{border-color:rgba(245,158,11,.22);background:linear-gradient(155deg,rgba(120,80,20,.18) 0%,rgba(10,10,15,.6) 100%)}
+    .bc-rail-marker-work::before{background:linear-gradient(180deg,#fbbf24,rgba(251,191,36,0))}
+    .bc-rail-marker-work .bc-rail-marker-num{color:rgba(251,191,36,.6)}
+
+    /* Card thumbnail */
+    .bc-card-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#112240 0%,#0a192f 100%);border-bottom:1px solid rgba(100,255,218,.08);flex-shrink:0}
+    .bc-card-thumb-img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+    .bc-card-thumb-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Fira Code',monospace;font-size:3.4rem;font-weight:800;color:rgba(100,255,218,.18);letter-spacing:-.05em;background:radial-gradient(circle at 30% 20%,rgba(100,255,218,.08) 0%,transparent 60%),linear-gradient(135deg,#112240 0%,#0a192f 100%)}
+    .bc-card-cat-badge{position:absolute;top:12px;left:12px;font-family:'Fira Code',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:2}
+    .bc-card-cat-work{background:rgba(245,158,11,.18);color:#fbbf24;border:1px solid rgba(245,158,11,.35)}
+    .bc-card-cat-personal{background:rgba(100,255,218,.15);color:#64ffda;border:1px solid rgba(100,255,218,.3)}
+    .bc-card-year-badge{position:absolute;top:12px;right:12px;font-family:'Fira Code',monospace;font-size:.68rem;font-weight:700;color:#ccd6f6;background:rgba(10,10,15,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);z-index:2}
+
+    /* Card body */
+    .bc-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex-grow:1}
+    .bc-card-title{font-family:'Inter',sans-serif;font-size:1.18rem;font-weight:800;color:#ccd6f6;margin:0 0 4px;transition:color .2s;line-height:1.3}
+    .bc-card-context{font-size:.74rem;color:#64ffda;margin:0 0 12px;font-weight:600;font-family:'Fira Code',monospace;letter-spacing:.02em}
+    .bc-card-desc{font-size:.86rem;color:#8892b0;margin:0 0 16px;line-height:1.6;flex-grow:1;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+    .bc-card-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+    .bc-pill{font-family:'Fira Code',monospace;font-size:.66rem;padding:3px 10px;border-radius:999px;border:1px solid rgba(100,255,218,.22);color:#64ffda;background:rgba(100,255,218,.04);white-space:nowrap}
+    .bc-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(100,255,218,.08)}
+    .bc-card-links{display:flex;gap:14px}
     .bc-card-link{color:#8892b0;transition:color .2s;display:flex;align-items:center}
     .bc-card-link:hover{color:#64ffda}
     .bc-card-link svg{width:18px;height:18px}
-    .bc-group-header{font-family:'Inter',sans-serif;font-size:.85rem;font-weight:700;color:#64ffda;margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid rgba(100,255,218,.08);letter-spacing:.03em;opacity:.85}
-    .bc-group-header:first-child{margin-top:0}
+    .bc-card-more{font-size:.7rem;font-weight:700;color:#64ffda;font-family:'Fira Code',monospace;letter-spacing:.05em;display:flex;align-items:center;gap:4px;opacity:.7;transition:opacity .2s}
+    .bc-card:hover .bc-card-more{opacity:1}
+    .bc-card-more svg{width:12px;height:12px}
 
-    /* Slide panel */
+    /* Slide panel (kept) */
     .bc-panel-overlay{position:fixed;inset:0;z-index:9800;background:rgba(10,10,15,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
     .bc-panel-overlay.bc-panel-open{opacity:1;pointer-events:auto}
-    .bc-panel{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:90vw;z-index:9801;background:#0a0a0f;border-left:1px solid rgba(100,255,218,.15);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:32px 28px}
+    .bc-panel{position:fixed;top:0;right:0;bottom:0;width:460px;max-width:90vw;z-index:9801;background:#0a0a0f;border-left:1px solid rgba(100,255,218,.15);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:32px 28px}
     .bc-panel-open .bc-panel,.bc-panel.bc-panel-active{transform:translateX(0)}
-    .bc-panel-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(100,255,218,.2);background:transparent;color:#8892b0;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .bc-panel-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(100,255,218,.2);background:transparent;color:#8892b0;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:5}
     .bc-panel-close:hover{color:#64ffda;border-color:#64ffda}
     .bc-panel-year{font-family:'Fira Code',monospace;font-size:.78rem;color:#64ffda;margin-bottom:8px}
     .bc-panel h2{font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:800;color:#ccd6f6;margin:0 0 6px}
@@ -348,52 +400,37 @@
     .bc-panel-btn-primary:hover{background:rgba(100,255,218,.1)}
     .bc-panel-btn-ghost{background:transparent;border:1px solid rgba(136,146,176,.3);color:#8892b0}
     .bc-panel-btn-ghost:hover{border-color:#8892b0;color:#ccd6f6}
-
-    /* Filter transition */
-    .bc-card.bc-hiding{opacity:0;transform:translateY(10px);pointer-events:none;position:absolute;visibility:hidden}
+    .bc-panel-highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+    .bc-panel-hl{display:flex;align-items:center;gap:8px;font-size:.8rem;color:#a8b2d0}
+    .bc-panel-hl svg{width:14px;height:14px;color:#64ffda;flex-shrink:0}
 
     @media(max-width:860px){
-      .bc-layout{grid-template-columns:1fr;gap:24px}
-      .bc-sidebar{position:static}
-      .bc-filters{flex-direction:row;flex-wrap:wrap;gap:6px}
-      .bc-filter-btn{padding:8px 14px;font-size:.82rem}
-      .bc-card-links{opacity:1}
+      .bc-card{flex:0 0 320px}
+      .bc-rail{gap:18px}
+      .bc-rail-marker{flex:0 0 180px;padding:20px 18px}
+      .bc-rail-marker-label{font-size:1.18rem}
     }
     @media(max-width:640px){
       .bc-projects{padding:48px 0}
       .bc-container{padding:0 16px}
-      .bc-card{padding:20px}
+      .bc-card{flex:0 0 86vw}
+      .bc-rail{gap:14px;padding:18px 4px 44px}
+      .bc-rail-hint{display:none}
+      .bc-rail-btn{width:36px;height:36px}
+      .bc-rail-marker{flex:0 0 78vw;padding:18px 16px}
+      .bc-rail-marker-label{font-size:1.08rem}
+      .bc-rail-marker-sub{font-size:.74rem}
+      .bc-card:hover,.bc-card:focus-visible{transform:translateY(-8px) scale(1.012)}
       .bc-panel{width:100%;max-width:100%}
+      .bc-panel-highlights{grid-template-columns:1fr}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .bc-rail{scroll-behavior:auto}
+      .bc-card{transition:none}
+      .bc-card-thumb-img{transition:none}
     }
   </style>
-  <style>
-  /* ========== FEATURED SHOWCASE CARDS ========== */
-  .bc-featured{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
-  .bc-feat-card{position:relative;background:rgba(17,34,64,.5);border:1px solid rgba(100,255,218,.15);border-radius:12px;overflow:hidden;transition:all .3s ease;cursor:pointer}
-  .bc-feat-card:hover{border-color:rgba(100,255,218,.4);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
-  .bc-feat-img{width:100%;height:240px;object-fit:cover;object-position:top;border-bottom:1px solid rgba(100,255,218,.1);display:block}
-  .bc-feat-body{padding:24px 28px}
-  .bc-feat-badge{display:inline-block;font-family:'Fira Code',monospace;font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(100,255,218,.1);color:#64ffda;border:1px solid rgba(100,255,218,.2);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase}
-  .bc-feat-title{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:800;color:#ccd6f6;margin:0 0 6px;transition:color .2s}
-  .bc-feat-card:hover .bc-feat-title{color:#64ffda}
-  .bc-feat-subtitle{font-size:.82rem;color:#8892b0;margin:0 0 14px;line-height:1.6}
-  .bc-feat-desc{font-size:.88rem;color:#8892b0;margin:0 0 18px;line-height:1.65}
-  .bc-feat-highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
-  .bc-feat-hl{display:flex;align-items:center;gap:8px;font-size:.78rem;color:#a8b2d0}
-  .bc-feat-hl svg{width:14px;height:14px;color:#64ffda;flex-shrink:0}
-  .bc-feat-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-  .bc-feat-actions{display:flex;gap:10px}
-  .bc-feat-btn{padding:8px 18px;border-radius:6px;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
-  .bc-feat-btn-primary{background:transparent;border:1px solid #64ffda;color:#64ffda}
-  .bc-feat-btn-primary:hover{background:rgba(100,255,218,.1)}
-  .bc-feat-btn-ghost{background:transparent;border:1px solid rgba(136,146,176,.3);color:#8892b0}
-  .bc-feat-btn-ghost:hover{border-color:#8892b0;color:#ccd6f6}
-  .bc-other-header{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:#8892b0;margin:0 0 24px;padding-bottom:12px;border-bottom:1px solid rgba(100,255,218,.08);letter-spacing:.04em;text-transform:uppercase}
-  @media(max-width:1100px){.bc-featured{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:640px){.bc-featured{grid-template-columns:1fr}}
-  @media(max-width:640px){.bc-feat-body{padding:18px 20px}.bc-feat-highlights{grid-template-columns:1fr}.bc-feat-img{height:200px}}
-  </style>
-  <!-- ========== BRITTANY CHIANG PROJECTS STYLES END ========== -->
+  <!-- ========== SELECTED WORK CAROUSEL STYLES END ========== -->
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
@@ -426,7 +463,6 @@
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
-          <a href="#journal">Journal</a>
           <a href="#constellation">Constellation</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -487,29 +523,32 @@
       </div>
     </main>
   </div>
-  <!-- ========== BRITTANY CHIANG PROJECTS SECTION ========== -->
+  <!-- ========== SELECTED WORK — HORIZONTAL CAROUSEL ========== -->
   <section class="bc-projects" id="projects">
     <div class="bc-container">
       <div class="bc-header">
         <h2>Selected Work</h2>
-      </div>
-      <!-- Featured Showcase -->
-      <div class="bc-featured" id="bc-featured"></div>
-      <h3 class="bc-other-header">Other Projects</h3>
-      <div class="bc-layout">
-        <aside class="bc-sidebar">
-          <nav class="bc-filters" role="tablist" aria-label="Project filters">
-            <button class="bc-filter-btn bc-active" data-filter="all" role="tab" aria-selected="true">All <span class="bc-filter-count">11</span></button>
-            <button class="bc-filter-btn" data-filter="work" role="tab" aria-selected="false">Work <span class="bc-filter-count">4</span></button>
-            <button class="bc-filter-btn" data-filter="personal" role="tab" aria-selected="false">Personal <span class="bc-filter-count">7</span></button>
-          </nav>
-        </aside>
-        <div class="bc-cards" id="bc-cards">
+        <div class="bc-rail-meta">
+          <span class="bc-rail-hint" aria-hidden="true">scroll &middot; drag &middot; or use arrows</span>
+          <div class="bc-rail-nav" role="group" aria-label="Carousel navigation">
+            <button type="button" class="bc-rail-btn" id="bc-rail-prev" aria-label="Previous projects">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="bc-rail-btn" id="bc-rail-next" aria-label="Next projects">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
         </div>
       </div>
+      <div class="bc-rail-wrap">
+        <div class="bc-rail" id="bc-rail" tabindex="0" role="region" aria-label="Selected work carousel"></div>
+        <div class="bc-rail-fade bc-rail-fade-l" aria-hidden="true"></div>
+        <div class="bc-rail-fade bc-rail-fade-r" aria-hidden="true"></div>
+      </div>
+      <div class="bc-rail-progress" aria-hidden="true"><div class="bc-rail-progress-bar" id="bc-rail-progress-bar"></div></div>
     </div>
   </section>
-  <!-- ========== BRITTANY CHIANG PROJECTS END ========== -->
+  <!-- ========== SELECTED WORK END ========== -->
   <!-- ========== SLIDE PANEL ========== -->
   <div class="bc-panel-overlay" id="bc-panel-overlay">
     <div class="bc-panel" id="bc-panel">
@@ -814,7 +853,7 @@
             <article class="skill"><h3>Platform &amp; Embedded</h3><p>WPF + WebView2, Ionic/Capacitor (Android/iOS), payment kiosk hardware (PAX terminals, Epson thermal printers, cash drawers), PCI DSS, HIPAA-adjacent systems.</p></article>
           </div>
         </section>
-        <section class="section" id="journal">
+        <section class="section" id="journal" style="display:none" hidden aria-hidden="true">
           <div class="bar">Engineering Journal</div>
           <div class="panel" style="padding:0;overflow:hidden">
             <div style="padding:14px 20px 0;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px">
@@ -1852,15 +1891,19 @@ document.addEventListener('DOMContentLoaded',function(){
 
   </script>
   <!-- ========== GAME ENGINE — END ========== -->
-  <!-- ========== BRITTANY CHIANG PROJECTS SCRIPT ========== -->
+  <!-- ========== SELECTED WORK CAROUSEL SCRIPT ========== -->
   <script>
   (function(){
-    var FEATURED = [
+    // Single source of truth — personal first, BCPOS work last.
+    var ALL_PROJECTS = [
+      // ===== Personal projects =====
       {
-        id:'alexis',year:'2026',title:'Safe Shores PR',
-        badge:'Shipped \u2014 Live on Vercel',
-        subtitle:'Safe Shores PR — Real-time beach safety alert system for Puerto Rico',
+        id:'alexis',cat:'personal',year:'2026',title:'Safe Shores PR',
+        context:'Personal — Live on Vercel',
+        badge:'Shipped',
+        subtitle:'Real-time beach safety alert system for Puerto Rico',
         desc:'Prevents drowning deaths by delivering actionable ocean condition data directly to beachgoers. Named in memory of Miguel Alexis Polanco. Covers 98 beaches across 35 municipalities with real-time NWS/NOAA alerts, interactive maps, tide predictions, and buoy observations. Fills a government-mandated gap (Senate Bill 661) that was never built.',
+        descShort:'Real-time beach safety alerts for 98 PR beaches. Bilingual NWS/NOAA data, interactive Leaflet map, PWA + Capacitor.',
         highlights:['98 beaches mapped','Bilingual EN/ES','Real-time NWS/NOAA','PWA + Capacitor native','Interactive Leaflet map','QR sharing per beach'],
         tech:['Next.js 16','React 19','TypeScript','Tailwind CSS','Leaflet.js','Capacitor','NWS API','NOAA CO-OPS'],
         img:'img/projects/alexis-homepage.png',
@@ -1868,10 +1911,12 @@ document.addEventListener('DOMContentLoaded',function(){
         github:'https://github.com/luisangelrod'
       },
       {
-        id:'prtaxpro',year:'2026',title:'PR Tax Pro',
-        badge:'Shipped \u2014 Zero Dependencies',
+        id:'prtaxpro',cat:'personal',year:'2026',title:'PR Tax Pro',
+        context:'Personal — Zero Dependencies',
+        badge:'Shipped',
         subtitle:'Puerto Rico salary & tax calculator with US state comparison',
         desc:'Real-time progressive tax calculator for PR residents. Supports W-2, 1099, and mixed employment types with Act 22/60 incentives, filing status, dependents, and federal income source toggles. Features bracket visualization, goal planner, and side-by-side comparison against all 50 US states.',
+        descShort:'Progressive PR tax calculator with Act 22/60 support and 50-state side-by-side comparison. Zero dependencies.',
         highlights:['Progressive PR brackets','Act 22/60 support','50-state comparison','Goal planner','Share via URL','Zero dependencies'],
         tech:['HTML5','CSS3','Vanilla JavaScript'],
         img:'img/projects/pr-tax-pro.png',
@@ -1879,19 +1924,74 @@ document.addEventListener('DOMContentLoaded',function(){
         github:'https://github.com/luisangelrod'
       },
       {
-        id:'shipit',year:'2026',title:'Operation: Ship IT',
-        badge:'Playable \u2014 Embedded in Portfolio',
+        id:'shipit',cat:'personal',year:'2026',title:'Operation: Ship IT',
+        context:'Personal — Embedded Game',
+        badge:'Playable',
         subtitle:'Mario-style 2D platformer built from scratch with Canvas 2D',
-        desc:'A full platformer game engine written in vanilla JavaScript with Canvas 2D. Features character creator (customize hair, skin, outfit), checkpoint system with localStorage persistence, top-10 scoreboard, enemy stomp mechanics, double jump, and mobile touch controls. Three themed levels: The Office, The Cloud, and Production. Embedded directly in this portfolio \u2014 click Play to try it.',
+        desc:'A full platformer game engine written in vanilla JavaScript with Canvas 2D. Features character creator (customize hair, skin, outfit), checkpoint system with localStorage persistence, top-10 scoreboard, enemy stomp mechanics, double jump, and mobile touch controls. Three themed levels: The Office, The Cloud, and Production. Embedded directly in this portfolio — click Play to try it.',
+        descShort:'Custom Canvas 2D platformer with character creator, 3 themed levels, checkpoints, scoreboard. Embedded in this portfolio.',
         highlights:['Custom game engine','Character creator','3 themed levels','Checkpoint + scoreboard','Mobile touch controls','Embedded in portfolio'],
         tech:['Canvas 2D','Vanilla JavaScript','LocalStorage','Custom Physics'],
         img:'img/projects/operation-ship-it.png',
         demo:'#play-shipit',
         github:'https://github.com/luisangelrod'
-      }
-    ];
+      },
+      {
+        id:'openclaw-env',cat:'personal',year:'2026',title:'AI Personal Command Center',
+        context:'Personal — Ongoing',
+        desc:'End-to-end AI automation environment built on OpenClaw running locally. Configured a complete personal AI assistant delivering curated intelligence via Telegram: morning briefs with JW daily text + world news, AI stock moat rankings, daily income opportunity research scraped from Reddit/forums, + job leads, EOD Asana task creation from git commits + 8h Everhour logging, RTX 5090 stock monitoring across Best Buy/NVIDIA/Walmart with instant alerts. Includes a self-healing watchdog that detects gateway crashes and restarts automatically. Continuously expanding as new OpenClaw features and community skills are released.',
+        descShort:'Personal AI environment with 7+ automated cron jobs delivering curated intelligence daily via Telegram. Self-healing watchdog, stock monitors, EOD work automation.',
+        tech:['OpenClaw','Claude API','TypeScript','PowerShell','Telegram Bot API','NOAA API','Asana API','Everhour API'],
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'shaderforge',cat:'personal',year:'2025',title:'ShaderForge Studio',
+        context:'Personal',
+        desc:'Browser-based visual shader editor with drag-and-drop node graph, Monaco code editor, and real-time 3D preview. Export shaders as GLSL/WGSL. WebGPU-first rendering pipeline.',
+        descShort:'Browser-based visual shader editor with node graph, Monaco code editor, and real-time 3D preview.',
+        tech:['React','NestJS','WebGPU','Three.js','React Three Fiber'],
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'leadflow',cat:'personal',year:'2025',title:'LeadFlow',
+        context:'Personal',
+        desc:'AI-powered lead conversion SaaS for medical spas. Claude API automation handles inbound SMS, qualifies leads, books appointments. Stripe billing, Twilio messaging, real-time dashboard.',
+        descShort:'AI-powered lead conversion SaaS for medical spas with Claude API automation, Stripe billing, and Twilio messaging.',
+        tech:['Next.js 16','Stripe','Twilio','Claude API','Clerk','Neon PostgreSQL'],
+        github:'https://github.com/luisangelrod',
+        img:'img/projects/lead-response-landing.png'
+      },
+      {
+        id:'devstatus',cat:'personal',year:'2026',title:'DevStatus / NEXUS',
+        context:'Personal',
+        desc:'Real-time mission control dashboard monitoring 15 developer services with interactive world map, latency graphs, and incident timeline. Aggregates status from GitHub, Vercel, Netlify, and more.',
+        descShort:'Real-time mission control dashboard monitoring 15 developer services with interactive world map and latency graphs.',
+        tech:['Next.js 15','TypeScript','Statuspage.io APIs'],
+        github:'https://github.com/luisangelrod',
+        demo:'https://devstatus-lilac.vercel.app',
+        img:'img/projects/devstatus.png'
+      },
+      {
+        id:'echo',cat:'personal',year:'2026',title:'ECHO',
+        context:'Personal — AAA Web Game',
+        desc:'Atmospheric first-person thriller set in an abandoned deep-sea research station. SSAO ambient occlusion, PBR materials, sky dome shader, proximity-triggered AI dialogue, 5 narrative logs, volumetric fog, procedural Web Audio. Playable in the browser.',
+        descShort:'Atmospheric first-person thriller. Three.js WebGPU, SSAO, PBR materials, AI dialogue, narrative exploration.',
+        tech:['Three.js','WebGPU','SSAO','PBR','Web Audio API'],
+        github:'https://github.com/luisangelrod/echo-game',
+        demo:'https://echo-game-phi.vercel.app'
+      },
+      {
+        id:'agentqa',cat:'personal',year:'2026',title:'AgentQA',
+        context:'Personal — AI Engineering',
+        desc:'Agentic QA tool powered by Claude tool_use + SSE streaming. Paste a URL and an AI agent autonomously runs 6 analysis tools (accessibility, SEO, performance, security headers, link health) then streams a graded report to the browser in real time. Next.js 16, React 19, TypeScript.',
+        descShort:'AI-powered site analyzer — Claude tool_use runs 6 checks autonomously, streams graded report via SSE.',
+        tech:['Claude API','tool_use','SSE','Next.js 16','React 19','TypeScript'],
+        github:'https://github.com/luisangelrod',
+        demo:'https://ai-qa-agent.vercel.app',
+        img:'img/projects/agent-qa.svg'
+      },
 
-    var PROJECTS = [
+      // ===== BCPOS work projects =====
       {
         id:'cddhub',cat:'work',year:'2026',title:'CDD-HUB',
         context:'Business Computer POS',
@@ -1904,7 +2004,7 @@ document.addEventListener('DOMContentLoaded',function(){
         id:'berriospay',cat:'work',year:'2026',title:'BerriosPay',
         context:'Business Computer POS',
         desc:'Enterprise payment kiosk system for a 45+ year old Puerto Rican retailer. Handles self-service payments across 25+ locations with PCI DSS compliance, PAX terminal integration, and zero duplicate transactions.',
-        descShort:'Enterprise payment kiosk system for 45+ year old Puerto Rican retailer. Self-service payments across 25+ locations with PCI DSS compliance.',
+        descShort:'Enterprise payment kiosk system for 45+ year old PR retailer. Self-service payments across 25+ locations with PCI DSS compliance.',
         tech:['React 19','.NET 10','WPF','Azure SQL','PAX A920','Epson TM-M30II'],
         github:'https://github.com/luisangelrod',
         img:'img/projects/portfolio-bot-results.png'
@@ -1924,146 +2024,117 @@ document.addEventListener('DOMContentLoaded',function(){
         descShort:'Pharmacy distribution POS with barcode scanning and native Android deployment for pharmaceutical supply chain.',
         tech:['Angular 18','Ionic 8','.NET 8','Capacitor'],
         github:'https://github.com/luisangelrod'
-      },
-
-      {
-        id:'openclaw-env',cat:'personal',year:'2026',title:'AI Personal Command Center',
-        context:'Personal \u2014 Ongoing',
-        desc:'End-to-end AI automation environment built on OpenClaw running locally. Configured a complete personal AI assistant delivering curated intelligence via Telegram: morning briefs with JW daily text + world news, AI stock moat rankings, daily income opportunity research scraped from Reddit/forums, + job leads, EOD Asana task creation from git commits + 8h Everhour logging, RTX 5090 stock monitoring across Best Buy/NVIDIA/Walmart with instant alerts. Includes a self-healing watchdog that detects gateway crashes and restarts automatically. Continuously expanding as new OpenClaw features and community skills are released.',
-        descShort:'Personal AI environment with 7+ automated cron jobs delivering curated intelligence daily via Telegram. Self-healing watchdog, stock monitors, EOD work automation.',
-        tech:['OpenClaw','Claude API','TypeScript','PowerShell','Telegram Bot API','NOAA API','Asana API','Everhour API'],
-        github:'https://github.com/luisangelrod'
-      },
-      {
-        id:'shaderforge',cat:'personal',year:'2025',title:'ShaderForge Studio',
-        context:'Personal',
-        desc:'Browser-based visual shader editor with drag-and-drop node graph, Monaco code editor, and real-time 3D preview. Export shaders as GLSL/WGSL. WebGPU-first rendering pipeline.',
-        descShort:'Browser-based visual shader editor with node graph, Monaco code editor, and real-time 3D preview.',
-        tech:['React','NestJS','WebGPU','Three.js','React Three Fiber'],
-        github:'https://github.com/luisangelrod'
-      },
-      {
-        id:'leadflow',cat:'personal',year:'2025',title:'LeadFlow',
-        context:'Personal',
-        desc:'AI-powered lead conversion SaaS for medical spas. Claude API automation handles inbound SMS, qualifies leads, books appointments. Stripe billing, Twilio messaging, real-time dashboard.',
-        descShort:'AI-powered lead conversion SaaS for medical spas with Claude API automation.',
-        tech:['Next.js 16','Stripe','Twilio','Claude API','Clerk','Neon PostgreSQL'],
-        github:'https://github.com/luisangelrod',
-        img:'img/projects/lead-response-landing.png'
-      },
-      {
-        id:'devstatus',cat:'personal',year:'2026',title:'DevStatus / NEXUS',
-        context:'Personal',
-        desc:'Real-time mission control dashboard monitoring 15 developer services with interactive world map, latency graphs, and incident timeline. Aggregates status from GitHub, Vercel, Netlify, and more.',
-        descShort:'Real-time mission control dashboard monitoring 15 developer services with world map.',
-        tech:['Next.js 15','TypeScript','Statuspage.io APIs'],
-        github:'https://github.com/luisangelrod',
-        demo:'https://devstatus-lilac.vercel.app',
-        img:'img/projects/devstatus.png'
-      },
-      {
-        id:'echo',cat:'personal',year:'2026',title:'ECHO',
-        context:'Personal — AAA Web Game',
-        desc:'Atmospheric first-person thriller set in an abandoned deep-sea research station. SSAO ambient occlusion, PBR materials, sky dome shader, proximity-triggered AI dialogue, 5 narrative logs, volumetric fog, procedural Web Audio. Playable in the browser.',
-        descShort:'Atmospheric first-person thriller. Three.js WebGPU, SSAO, PBR materials, AI dialogue, narrative exploration.',
-        tech:['Three.js','WebGPU','SSAO','PBR','Web Audio API'],
-        github:'https://github.com/luisangelrod/echo-game',
-        demo:'https://echo-game-phi.vercel.app'
-      },
-      {
-        id:'agentqa',cat:'personal',year:'2026',title:'AgentQA',
-        context:'Personal \u2014 AI Engineering',
-        desc:'Agentic QA tool powered by Claude tool_use + SSE streaming. Paste a URL and an AI agent autonomously runs 6 analysis tools (accessibility, SEO, performance, security headers, link health) then streams a graded report to the browser in real time. Next.js 16, React 19, TypeScript.',
-        descShort:'AI-powered site analyzer — Claude tool_use runs 6 checks autonomously, streams graded report via SSE.',
-        tech:['Claude API','tool_use','SSE','Next.js 16','React 19','TypeScript'],
-        github:'https://github.com/luisangelrod',
-        demo:'https://ai-qa-agent.vercel.app',
-        img:'img/projects/agent-qa.svg'
       }
     ];
 
     var githubSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>';
     var externalSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
-
     var checkSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    var arrowSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
 
-    // Render featured showcase cards
-    var featEl = document.getElementById('bc-featured');
-    if (featEl) {
-      FEATURED.forEach(function(f) {
-        var card = document.createElement('div');
-        card.className = 'bc-feat-card';
+    function escAttr(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-        var techHTML = '';
-        f.tech.forEach(function(t) { techHTML += '<span class="bc-pill">' + t + '</span>'; });
+    var rail = document.getElementById('bc-rail');
+    var railWrap = rail ? rail.parentNode : null;
+    if (!rail) return;
 
-        var hlHTML = '';
-        f.highlights.forEach(function(h) { hlHTML += '<div class="bc-feat-hl">' + checkSVG + '<span>' + h + '</span></div>'; });
+    // Sort projects: personal first, work last (preserves order within each group)
+    var SORTED_PROJECTS = ALL_PROJECTS.slice().sort(function(a, b) {
+      var rank = function(c) { return c === 'personal' ? 0 : 1; };
+      return rank(a.cat) - rank(b.cat);
+    });
 
-        var actionsHTML = '';
-        var featDemo = f.live || f.demo;
-        if (featDemo) {
-          var isHash = featDemo.charAt(0) === '#';
-          actionsHTML += '<a class="bc-feat-btn bc-feat-btn-primary" href="' + featDemo + '"' + (isHash ? '' : ' target="_blank" rel="noopener noreferrer"') + ' onclick="' + (isHash ? 'event.preventDefault();event.stopPropagation();if(window.startShipIT)window.startShipIT();' : 'event.stopPropagation()') + '">' + externalSVG + (isHash ? ' Play Now' : ' Live Demo') + '</a>';
-        }
-        actionsHTML += '<a class="bc-feat-btn bc-feat-btn-ghost" href="' + f.github + '" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">' + githubSVG + ' GitHub</a>';
-
-        card.innerHTML =
-          '<img class="bc-feat-img" src="' + f.img + '" alt="' + f.title + ' screenshot" loading="lazy">' +
-          '<div class="bc-feat-body">' +
-            '<span class="bc-feat-badge">' + f.badge + '</span>' +
-            '<h3 class="bc-feat-title">' + f.title + '</h3>' +
-            '<p class="bc-feat-subtitle">' + f.subtitle + '</p>' +
-            '<p class="bc-feat-desc">' + f.desc + '</p>' +
-            '<div class="bc-feat-highlights">' + hlHTML + '</div>' +
-            '<div class="bc-feat-tech">' + techHTML + '</div>' +
-            '<div class="bc-feat-actions">' + actionsHTML + '</div>' +
-          '</div>';
-
-        featEl.appendChild(card);
-      });
+    // Insert leading section label for the first group
+    var firstCat = SORTED_PROJECTS.length ? SORTED_PROJECTS[0].cat : null;
+    if (firstCat) {
+      var openMarker = document.createElement('div');
+      openMarker.className = 'bc-rail-marker bc-rail-marker-' + firstCat;
+      openMarker.setAttribute('aria-hidden', 'true');
+      openMarker.innerHTML =
+        '<span class="bc-rail-marker-num">01</span>' +
+        '<span class="bc-rail-marker-label">' + (firstCat === 'work' ? 'Client Work' : 'Personal Builds') + '</span>' +
+        '<span class="bc-rail-marker-sub">' + (firstCat === 'work' ? 'Production systems shipped for clients' : 'Side projects, experiments &amp; passion work') + '</span>';
+      rail.appendChild(openMarker);
     }
 
-    var cardsEl = document.getElementById('bc-cards');
-    if (!cardsEl) return;
-
-    var lastCat = '';
-    PROJECTS.forEach(function(p) {
+    // Render every project as a card in the rail (sorted: personal first, work last)
+    var lastCat = firstCat;
+    SORTED_PROJECTS.forEach(function(p, idx) {
+      // Insert a divider when transitioning from personal -> work
       if (p.cat !== lastCat) {
-        var hdr = document.createElement('div');
-        hdr.className = 'bc-group-header';
-        hdr.setAttribute('data-group-cat', p.cat);
-        hdr.textContent = p.cat === 'work' ? '\uD83D\uDCBC Work' : '\uD83D\uDEE0\uFE0F Personal';
-        cardsEl.appendChild(hdr);
+        var divider = document.createElement('div');
+        divider.className = 'bc-rail-marker bc-rail-marker-' + p.cat;
+        divider.setAttribute('aria-hidden', 'true');
+        divider.innerHTML =
+          '<span class="bc-rail-marker-num">02</span>' +
+          '<span class="bc-rail-marker-label">' + (p.cat === 'work' ? 'Client Work' : 'Personal Builds') + '</span>' +
+          '<span class="bc-rail-marker-sub">' + (p.cat === 'work' ? 'Production systems shipped for clients' : 'Side projects, experiments &amp; passion work') + '</span>';
+        rail.appendChild(divider);
         lastCat = p.cat;
       }
-      var card = document.createElement('div');
+
+      var card = document.createElement('article');
       card.className = 'bc-card';
       card.setAttribute('data-cat', p.cat);
       card.setAttribute('data-id', p.id);
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-label', p.title + ' — view details');
 
+      // Tech pills (limit 5 in card)
       var techHTML = '';
-      p.tech.forEach(function(t) { techHTML += '<span class="bc-pill">' + t + '</span>'; });
-
-      var demoUrl = p.demo || p.live;
-      var linksHTML = '<a class="bc-card-link" href="' + p.github + '" target="_blank" rel="noopener noreferrer" title="GitHub" onclick="event.stopPropagation()">' + githubSVG + '</a>';
-      if (demoUrl) {
-        linksHTML += '<a class="bc-card-link" href="' + demoUrl + '" target="_blank" rel="noopener noreferrer" title="Live Demo" onclick="event.stopPropagation()">' + externalSVG + '</a>';
+      var maxPills = 5;
+      var techList = p.tech.slice(0, maxPills);
+      techList.forEach(function(t) { techHTML += '<span class="bc-pill">' + t + '</span>'; });
+      if (p.tech.length > maxPills) {
+        techHTML += '<span class="bc-pill" style="opacity:.6">+' + (p.tech.length - maxPills) + '</span>';
       }
 
+      // Thumbnail (real image OR initials fallback)
+      var thumbHTML;
+      if (p.img) {
+        thumbHTML = '<img class="bc-card-thumb-img" src="' + escAttr(p.img) + '" alt="' + escAttr(p.title) + ' screenshot" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' +
+                    '<div class="bc-card-thumb-fallback" style="display:none">' + escAttr(p.title.charAt(0)) + '</div>';
+      } else {
+        thumbHTML = '<div class="bc-card-thumb-fallback">' + escAttr(p.title.charAt(0)) + '</div>';
+      }
+
+      // Card link icons
+      var demoUrl = p.demo || p.live;
+      var linksHTML = '<a class="bc-card-link" href="' + escAttr(p.github) + '" target="_blank" rel="noopener noreferrer" title="GitHub" onclick="event.stopPropagation()" aria-label="' + escAttr(p.title) + ' on GitHub">' + githubSVG + '</a>';
+      if (demoUrl) {
+        var isHash = demoUrl.charAt(0) === '#';
+        linksHTML += '<a class="bc-card-link" href="' + escAttr(demoUrl) + '"' + (isHash ? '' : ' target="_blank" rel="noopener noreferrer"') + ' title="' + (isHash ? 'Play Now' : 'Live Demo') + '" onclick="event.stopPropagation()' + (isHash ? ';event.preventDefault();if(window.startShipIT)window.startShipIT()' : '') + '" aria-label="' + escAttr(p.title) + ' live demo">' + externalSVG + '</a>';
+      }
+
+      var catLabel = p.cat === 'work' ? 'Work' : 'Personal';
+      var catClass = p.cat === 'work' ? 'bc-card-cat-work' : 'bc-card-cat-personal';
+
       card.innerHTML =
-        '<div class="bc-card-year">' + p.year + '</div>' +
-        '<h3 class="bc-card-title">' + p.title + '</h3>' +
-        '<p class="bc-card-context">' + p.context + '</p>' +
-        '<p class="bc-card-desc">' + p.descShort + '</p>' +
-        '<div class="bc-card-tech">' + techHTML + '</div>' +
-        '<div class="bc-card-links">' + linksHTML + '</div>';
+        '<div class="bc-card-thumb">' +
+          '<span class="bc-card-cat-badge ' + catClass + '">' + catLabel + '</span>' +
+          '<span class="bc-card-year-badge">' + escAttr(p.year) + '</span>' +
+          thumbHTML +
+        '</div>' +
+        '<div class="bc-card-body">' +
+          '<h3 class="bc-card-title">' + escAttr(p.title) + '</h3>' +
+          '<p class="bc-card-context">' + escAttr(p.context || '') + '</p>' +
+          '<p class="bc-card-desc">' + escAttr(p.descShort || p.desc || '') + '</p>' +
+          '<div class="bc-card-tech">' + techHTML + '</div>' +
+          '<div class="bc-card-footer">' +
+            '<div class="bc-card-links">' + linksHTML + '</div>' +
+            '<span class="bc-card-more">View ' + arrowSVG + '</span>' +
+          '</div>' +
+        '</div>';
 
       card.addEventListener('click', function() { openPanel(p); });
-      cardsEl.appendChild(card);
+      card.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPanel(p); }
+      });
+      rail.appendChild(card);
     });
 
-    // Scroll-triggered fade-in
+    // Reveal cards on scroll
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -2071,55 +2142,103 @@ document.addEventListener('DOMContentLoaded',function(){
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { root: rail, threshold: 0.15, rootMargin: '0px 50px 0px 50px' });
+    Array.prototype.forEach.call(rail.querySelectorAll('.bc-card'), function(card, i) {
+      card.style.transitionDelay = (Math.min(i, 8) * 60) + 'ms';
+      observer.observe(card);
+    });
+    // Force first card visible immediately
+    var firstCard = rail.querySelector('.bc-card');
+    if (firstCard) firstCard.classList.add('bc-visible');
 
-    function observeCards() {
-      var allCards = cardsEl.querySelectorAll('.bc-card:not(.bc-hiding):not(.bc-visible)');
-      allCards.forEach(function(card, i) {
-        card.style.transitionDelay = (i * 100) + 'ms';
-        observer.observe(card);
-      });
+    // ====== Carousel navigation ======
+    var btnPrev = document.getElementById('bc-rail-prev');
+    var btnNext = document.getElementById('bc-rail-next');
+    var progressBar = document.getElementById('bc-rail-progress-bar');
+
+    function getStep() {
+      var firstCard = rail.querySelector('.bc-card');
+      if (!firstCard) return 400;
+      var styles = getComputedStyle(rail);
+      var gap = parseFloat(styles.columnGap || styles.gap || '24') || 24;
+      return firstCard.offsetWidth + gap;
     }
-    observeCards();
 
-    // Filter buttons
-    var filterBtns = document.querySelectorAll('.bc-filter-btn');
-    filterBtns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        filterBtns.forEach(function(b) { b.classList.remove('bc-active'); b.setAttribute('aria-selected','false'); });
-        btn.classList.add('bc-active');
-        btn.setAttribute('aria-selected','true');
-        var filter = btn.getAttribute('data-filter');
-        var cards = cardsEl.querySelectorAll('.bc-card');
-        var headers = cardsEl.querySelectorAll('.bc-group-header');
-        cards.forEach(function(card) {
-          card.classList.remove('bc-visible','bc-hiding');
-          card.style.transitionDelay = '0ms';
-        });
-        headers.forEach(function(hdr) {
-          var hCat = hdr.getAttribute('data-group-cat');
-          hdr.style.display = (filter === 'all' || hCat === filter) ? '' : 'none';
-        });
-        var visibleIdx = 0;
-        cards.forEach(function(card) {
-          var cat = card.getAttribute('data-cat');
-          if (filter === 'all' || cat === filter) {
-            card.classList.remove('bc-hiding');
-            card.style.transitionDelay = (visibleIdx * 100) + 'ms';
-            visibleIdx++;
-            requestAnimationFrame(function() {
-              requestAnimationFrame(function() {
-                card.classList.add('bc-visible');
-              });
-            });
-          } else {
-            card.classList.add('bc-hiding');
-          }
-        });
-      });
+    function scrollByStep(direction) {
+      var step = getStep();
+      // Snap to nearest card boundary by computing target column
+      var current = rail.scrollLeft;
+      var nextLeft;
+      if (direction > 0) {
+        nextLeft = Math.ceil((current + 1) / step) * step;
+      } else {
+        nextLeft = Math.floor((current - 1) / step) * step;
+      }
+      rail.scrollTo({ left: nextLeft, behavior: 'smooth' });
+    }
+
+    function updateNavState() {
+      var maxScroll = rail.scrollWidth - rail.clientWidth;
+      var atStart = rail.scrollLeft <= 2;
+      var atEnd = rail.scrollLeft >= maxScroll - 2;
+      btnPrev.disabled = atStart;
+      btnNext.disabled = atEnd;
+      if (railWrap) {
+        railWrap.classList.toggle('bc-at-start', atStart);
+        railWrap.classList.toggle('bc-at-end', atEnd);
+      }
+      if (progressBar && maxScroll > 0) {
+        var pct = (rail.scrollLeft / maxScroll) * 100;
+        progressBar.style.width = Math.max(0, Math.min(100, pct)) + '%';
+      } else if (progressBar) {
+        progressBar.style.width = '100%';
+      }
+    }
+
+    btnPrev.addEventListener('click', function() { scrollByStep(-1); });
+    btnNext.addEventListener('click', function() { scrollByStep(1); });
+    rail.addEventListener('scroll', function() {
+      window.requestAnimationFrame(updateNavState);
+    }, { passive: true });
+    window.addEventListener('resize', updateNavState);
+    setTimeout(updateNavState, 50);
+
+    // Keyboard navigation when rail is focused
+    rail.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); scrollByStep(-1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); scrollByStep(1); }
+      else if (e.key === 'Home') { e.preventDefault(); rail.scrollTo({left:0,behavior:'smooth'}); }
+      else if (e.key === 'End') { e.preventDefault(); rail.scrollTo({left:rail.scrollWidth,behavior:'smooth'}); }
     });
 
-    // Slide panel
+    // Drag-to-scroll (desktop)
+    var isDown = false, startX = 0, startScroll = 0, dragMoved = false;
+    rail.addEventListener('mousedown', function(e) {
+      // Don't hijack drags from card links
+      if (e.target.closest('a, button')) return;
+      isDown = true; dragMoved = false;
+      startX = e.pageX;
+      startScroll = rail.scrollLeft;
+      rail.classList.add('bc-grabbing');
+    });
+    document.addEventListener('mouseup', function() {
+      if (isDown) {
+        isDown = false;
+        rail.classList.remove('bc-grabbing');
+      }
+    });
+    rail.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      var dx = e.pageX - startX;
+      if (Math.abs(dx) > 4) dragMoved = true;
+      rail.scrollLeft = startScroll - dx;
+    });
+    // Suppress click after a drag
+    rail.addEventListener('click', function(e) {
+      if (dragMoved) { e.stopPropagation(); e.preventDefault(); dragMoved = false; }
+    }, true);
+
+    // ====== Slide panel ======
     var overlay = document.getElementById('bc-panel-overlay');
     var panelContent = document.getElementById('bc-panel-content');
     var closeBtn = document.getElementById('bc-panel-close');
@@ -2130,21 +2249,35 @@ document.addEventListener('DOMContentLoaded',function(){
 
       var imgHTML = '';
       if (p.img) {
-        imgHTML = '<img class="bc-panel-img" src="' + p.img + '" alt="' + p.title + ' screenshot" loading="lazy">';
+        imgHTML = '<img class="bc-panel-img" src="' + escAttr(p.img) + '" alt="' + escAttr(p.title) + ' screenshot" loading="lazy">';
+      }
+
+      var hlHTML = '';
+      if (p.highlights && p.highlights.length) {
+        p.highlights.forEach(function(h) {
+          hlHTML += '<div class="bc-panel-hl">' + checkSVG + '<span>' + escAttr(h) + '</span></div>';
+        });
+        hlHTML = '<div class="bc-panel-highlights">' + hlHTML + '</div>';
       }
 
       var panelDemo = p.demo || p.live;
-      var actionsHTML = '<a class="bc-panel-btn bc-panel-btn-primary" href="' + p.github + '" target="_blank" rel="noopener noreferrer">' + githubSVG + ' GitHub</a>';
+      var actionsHTML = '<a class="bc-panel-btn bc-panel-btn-primary" href="' + escAttr(p.github) + '" target="_blank" rel="noopener noreferrer">' + githubSVG + ' GitHub</a>';
       if (panelDemo) {
-        actionsHTML += '<a class="bc-panel-btn bc-panel-btn-ghost" href="' + panelDemo + '" target="_blank" rel="noopener noreferrer">' + externalSVG + ' Live Demo</a>';
+        var isHash = panelDemo.charAt(0) === '#';
+        if (isHash) {
+          actionsHTML += '<a class="bc-panel-btn bc-panel-btn-ghost" href="' + escAttr(panelDemo) + '" onclick="event.preventDefault();if(window.startShipIT)window.startShipIT();">' + externalSVG + ' Play Now</a>';
+        } else {
+          actionsHTML += '<a class="bc-panel-btn bc-panel-btn-ghost" href="' + escAttr(panelDemo) + '" target="_blank" rel="noopener noreferrer">' + externalSVG + ' Live Demo</a>';
+        }
       }
 
       panelContent.innerHTML =
-        '<div class="bc-panel-year">' + p.year + '</div>' +
-        '<h2>' + p.title + '</h2>' +
-        '<p class="bc-panel-context">' + p.context + '</p>' +
+        '<div class="bc-panel-year">' + escAttr(p.year) + '</div>' +
+        '<h2>' + escAttr(p.title) + '</h2>' +
+        '<p class="bc-panel-context">' + escAttr(p.context || '') + '</p>' +
         imgHTML +
-        '<p class="bc-panel-desc">' + p.desc + '</p>' +
+        '<p class="bc-panel-desc">' + escAttr(p.desc || '') + '</p>' +
+        hlHTML +
         '<div class="bc-panel-tech">' + techHTML + '</div>' +
         '<div class="bc-panel-actions">' + actionsHTML + '</div>';
 
@@ -2166,14 +2299,13 @@ document.addEventListener('DOMContentLoaded',function(){
     });
 
     window.closeProjectOverlay = closePanel;
-    // Special demo link handler - intercept #play-shipit
+
+    // Special demo link handler — intercept #play-shipit anywhere
     document.addEventListener('click', function(e) {
       var a = e.target.closest('a[href="#play-shipit"]');
       if (a) {
         e.preventDefault();
-        // Close the panel first if open
         if (overlay && overlay.classList.contains('bc-panel-open')) closePanel();
-        // Launch the game
         setTimeout(function() {
           if (window.startShipIT) window.startShipIT();
           else if (window.startMSGame) window.startMSGame();
@@ -2182,7 +2314,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   })();
   </script>
-  <!-- ========== BRITTANY CHIANG PROJECTS SCRIPT END ========== -->
+  <!-- ========== SELECTED WORK CAROUSEL SCRIPT END ========== -->
 
   <!-- ========== TERMINAL MODE — START ========== -->
   <style>
@@ -2771,7 +2903,6 @@ document.addEventListener('DOMContentLoaded',function(){
       {group:'Navigation',icon:'💼',title:'Go to Experience',desc:'Professional experience',action:function(){navTo('#experience')},tags:'experience work jobs career'},
       {group:'Navigation',icon:'🚀',title:'Go to Projects',desc:'Selected work & featured projects',action:function(){navTo('#projects')},tags:'projects work portfolio'},
       {group:'Navigation',icon:'⚡',title:'Go to Skills',desc:'Technical skills — 2026 stack',action:function(){navTo('#skills')},tags:'skills stack technologies tech'},
-      {group:'Navigation',icon:'📝',title:'Go to Journal',desc:'Engineering journal — AI & game dev',action:function(){navTo('#journal')},tags:'journal blog engineering ai game dev echo'},
       {group:'Navigation',icon:'✨',title:'Open Tech Constellation',desc:'Interactive skill visualization',action:function(){var l=document.querySelector('.nav a[href="#constellation"]');if(l)l.click();},tags:'constellation skills visualization interactive 3d'},
       {group:'Navigation',icon:'📬',title:'Go to Contact',desc:'Get in touch',action:function(){navTo('#contact')},tags:'contact hire email phone'},
 
@@ -2783,7 +2914,7 @@ document.addEventListener('DOMContentLoaded',function(){
       {group:'Projects',icon:'💳',title:'BerriosPay',desc:'Payment kiosk system — 25+ locations',action:function(){navTo('#projects')},tags:'berrios pay payment kiosk pci'},
       {group:'Projects',icon:'🏥',title:'GoFleetCare',desc:'Medical transport logistics portal',action:function(){navTo('#projects')},tags:'gofleet care medical transport hipaa'},
       {group:'Projects',icon:'📱',title:'LeadFlow',desc:'AI lead conversion SaaS for med spas',action:function(){navTo('#projects')},tags:'leadflow lead ai saas stripe twilio'},
-      {group:'Projects',icon:'🎮',title:'ECHO: The Deep Station',desc:'Atmospheric WebGPU browser game',action:function(){navTo('#journal')},tags:'echo game webgpu three.js deep sea'},
+      {group:'Projects',icon:'🎮',title:'ECHO: The Deep Station',desc:'Atmospheric WebGPU browser game',action:function(){navTo('#projects')},tags:'echo game webgpu three.js deep sea'},
       {group:'Projects',icon:'🕹️',title:'Operation: Ship IT',desc:'Hidden Mario-style arcade game',badge:'Easter Egg',badgeColor:'#f59e0b',action:function(){if(window.startShipIT)window.startShipIT();},tags:'game ship it mario platformer play arcade'},
 
       // Actions
@@ -2797,7 +2928,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
       // Fun / Easter Eggs
       {group:'Fun',icon:'🌀',title:'Scroll to Top',desc:'Back to the beginning',action:function(){window.scrollTo({top:0,behavior:'smooth'});},tags:'top scroll up beginning'},
-      {group:'Fun',icon:'🎲',title:'Surprise Me',desc:'Jump to a random section',action:function(){var s=['#about','#experience','#projects','#skills','#journal','#contact'];navTo(s[Math.floor(Math.random()*s.length)]);},tags:'random surprise lucky'},
+      {group:'Fun',icon:'🎲',title:'Surprise Me',desc:'Jump to a random section',action:function(){var s=['#about','#experience','#projects','#skills','#contact'];navTo(s[Math.floor(Math.random()*s.length)]);},tags:'random surprise lucky'},
     ];
 
     function navTo(hash){
