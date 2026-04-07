@@ -293,7 +293,7 @@
   <!-- ========== BRITTANY CHIANG PROJECTS STYLES ========== -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    .bc-projects{background:#0a0a0f;padding:80px 0;position:relative;overflow:hidden;border-radius:0}
+    .bc-projects{background:#0a0f1a;padding:80px 0;position:relative;overflow:hidden;border-radius:0}
     .bc-projects *{box-sizing:border-box}
     .bc-container{max-width:1280px;margin:0 auto;padding:0 24px}
     .bc-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid rgba(100,255,218,.15);flex-wrap:wrap}
@@ -320,8 +320,8 @@
 
     /* Edge fades */
     .bc-rail-fade{position:absolute;top:0;bottom:28px;width:60px;pointer-events:none;transition:opacity .25s;z-index:2}
-    .bc-rail-fade-l{left:0;background:linear-gradient(90deg,#0a0a0f 0%,rgba(10,10,15,0) 100%);opacity:0}
-    .bc-rail-fade-r{right:0;background:linear-gradient(270deg,#0a0a0f 0%,rgba(10,10,15,0) 100%);opacity:1}
+    .bc-rail-fade-l{left:0;background:linear-gradient(90deg,#0a0f1a 0%,rgba(10,15,26,0) 100%);opacity:0}
+    .bc-rail-fade-r{right:0;background:linear-gradient(270deg,#0a0f1a 0%,rgba(10,15,26,0) 100%);opacity:1}
     .bc-rail-wrap.bc-at-start .bc-rail-fade-l{opacity:0}
     .bc-rail-wrap:not(.bc-at-start) .bc-rail-fade-l{opacity:1}
     .bc-rail-wrap.bc-at-end .bc-rail-fade-r{opacity:0}
@@ -384,7 +384,7 @@
     /* Slide panel (kept) */
     .bc-panel-overlay{position:fixed;inset:0;z-index:9800;background:rgba(10,10,15,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
     .bc-panel-overlay.bc-panel-open{opacity:1;pointer-events:auto}
-    .bc-panel{position:fixed;top:0;right:0;bottom:0;width:460px;max-width:90vw;z-index:9801;background:#0a0a0f;border-left:1px solid rgba(100,255,218,.15);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:32px 28px}
+    .bc-panel{position:fixed;top:0;right:0;bottom:0;width:460px;max-width:90vw;z-index:9801;background:#0a0f1a;border-left:1px solid rgba(100,255,218,.15);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:32px 28px}
     .bc-panel-open .bc-panel,.bc-panel.bc-panel-active{transform:translateX(0)}
     .bc-panel-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(100,255,218,.2);background:transparent;color:#8892b0;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:5}
     .bc-panel-close:hover{color:#64ffda;border-color:#64ffda}
@@ -435,7 +435,7 @@
   <!-- ========== APPLE-STYLE REDESIGN — v4.0 ========== -->
   <style>
     /* ── Full-width layout: remove card container ── */
-    body { background: #000 !important; }
+    body { background: #090e1a !important; }
     .page { max-width: none !important; margin: 0 !important; padding: 0 !important; }
     .sheet { border-radius: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important; }
     .sheet::before { display: none !important; }
@@ -446,13 +446,13 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
       height: 52px; display: flex; align-items: center; justify-content: space-between;
       padding: 0 max(32px, 4vw);
-      background: rgba(0,0,0,.75);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      transition: background .3s, border-color .3s;
+      background: rgba(9,14,26,.82);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: background .3s cubic-bezier(0.25,0.46,0.45,0.94), border-color .3s;
     }
-    .apple-nav.nav-scrolled { background: rgba(0,0,0,.9); border-color: rgba(255,255,255,.1); }
+    .apple-nav.nav-scrolled { background: rgba(9,14,26,.94); border-color: rgba(255,255,255,.1); }
     .apple-nav-brand { font-size: .92rem; font-weight: 800; color: #f5f5f7; letter-spacing: -.02em; text-decoration: none; }
     .apple-nav-links { display: flex; align-items: center; gap: 4px; }
     .apple-nav-link { color: rgba(255,255,255,.65); font-size: .8rem; font-weight: 500; padding: 6px 12px; border-radius: 999px; transition: color .2s, background .2s; text-decoration: none; }
@@ -465,7 +465,7 @@
       min-height: 100vh !important;
       display: flex !important; flex-direction: column !important; justify-content: center !important;
       padding: 80px max(48px, 6vw) 56px !important;
-      background: #000 !important;
+      background: transparent !important;
       border-bottom: 1px solid rgba(255,255,255,.07) !important;
       isolation: isolate;
     }
@@ -503,10 +503,10 @@
     }
     .apple-feat.feat-reverse .apple-feat-text { order: 2; }
     .apple-feat.feat-reverse .apple-feat-media { order: 1; }
-    .feat-dark { background: #000; }
-    .feat-mid  { background: #0a0a0a; }
-    .feat-light { background: #111; }
-    .feat-slate { background: #0d1117; }
+    .feat-dark  { background: #0a0f1a; }
+    .feat-mid   { background: #0a0f1a; }
+    .feat-light { background: #0d1422; }
+    .feat-slate { background: #0c1321; }
 
     /* Subtle dividers between featured sections */
     .apple-feat + .apple-feat { border-top: 1px solid rgba(255,255,255,.05); }
@@ -606,6 +606,314 @@
     }
   </style>
   <!-- ========== APPLE-STYLE REDESIGN END ========== -->
+  <!-- ============================================================
+       PREMIUM VISUAL UPGRADE v2.0
+       Particle hero · Liquid glass cards · Mouse spotlight
+       Cursor glow · Deep gradient backgrounds · Polish
+       ============================================================ -->
+  <style>
+    /* ── Font rendering ── */
+    body {
+      text-rendering: optimizeLegibility !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+
+    /* ── Global noise grain overlay (very subtle depth) ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    /* ── Override flat black body ── */
+    body {
+      background: #090e1a !important;
+    }
+
+    /* ── Hero: transparent so particle canvas shows through ── */
+    .hero {
+      background: transparent !important;
+      position: relative !important;
+    }
+
+    /* ── Hero particle canvas behind content ── */
+    #hero-particles {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+      display: block !important;
+    }
+
+    /* ── Hero content above particle canvas ── */
+    .hero-main,
+    .hero > .nav {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+
+    /* ── Main home section: rich dark gradient ── */
+    #home {
+      background: radial-gradient(ellipse at 15% 55%, rgba(0,113,227,0.1) 0%, transparent 58%),
+                  radial-gradient(ellipse at 85% 15%, rgba(100,200,255,0.06) 0%, transparent 50%),
+                  #090e1a !important;
+    }
+
+    /* ── Featured sections: deep gradient backgrounds ── */
+    .feat-dark {
+      background: radial-gradient(ellipse at 20% 50%, rgba(0,113,227,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(100,200,255,0.05) 0%, transparent 50%),
+                  #0a0f1a !important;
+    }
+    .feat-mid {
+      background: radial-gradient(ellipse at 60% 80%, rgba(0,113,227,0.06) 0%, transparent 55%),
+                  #0a0f1a !important;
+    }
+    .feat-light {
+      background: radial-gradient(ellipse at 40% 30%, rgba(100,200,255,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 70%, rgba(0,113,227,0.04) 0%, transparent 50%),
+                  #0d1422 !important;
+    }
+    .feat-slate {
+      background: radial-gradient(ellipse at 70% 40%, rgba(0,113,227,0.08) 0%, transparent 55%),
+                  radial-gradient(ellipse at 20% 80%, rgba(100,200,255,0.04) 0%, transparent 50%),
+                  #0c1321 !important;
+    }
+
+    /* ── apple-feat inner always above pseudo-elements ── */
+    .apple-feat {
+      position: relative !important;
+    }
+    .apple-feat-inner {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+
+    /* ── Carousel section: gradient background ── */
+    .bc-projects {
+      background: radial-gradient(ellipse at 30% 60%, rgba(0,113,227,0.06) 0%, transparent 55%),
+                  radial-gradient(ellipse at 75% 25%, rgba(100,200,255,0.04) 0%, transparent 50%),
+                  #0a0f1a !important;
+    }
+    /* Fade overlays must match new bg */
+    .bc-rail-fade-l {
+      background: linear-gradient(90deg, #0a0f1a 0%, rgba(10,15,26,0) 100%) !important;
+    }
+    .bc-rail-fade-r {
+      background: linear-gradient(270deg, #0a0f1a 0%, rgba(10,15,26,0) 100%) !important;
+    }
+
+    /* ══════════════════════════════════════════════
+       LIQUID GLASS PROJECT CARDS
+       ══════════════════════════════════════════════ */
+    .bc-card {
+      background: rgba(255, 255, 255, 0.04) !important;
+      backdrop-filter: blur(20px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 20px !important;
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.1) !important;
+      transition:
+        transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+      will-change: transform, box-shadow !important;
+      position: relative !important;
+      overflow: hidden !important;
+      isolation: isolate !important;
+    }
+
+    /* Mouse-tracking radial spotlight */
+    .bc-card::before {
+      content: '' !important;
+      position: absolute !important;
+      inset: 0 !important;
+      background: radial-gradient(
+        400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(0, 113, 227, 0.12),
+        transparent 70%
+      ) !important;
+      border-radius: inherit !important;
+      opacity: 0 !important;
+      transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      /* Reset masking from previous rule */
+      -webkit-mask: none !important;
+      mask: none !important;
+    }
+    .bc-card:hover::before,
+    .bc-card:focus-visible::before {
+      opacity: 1 !important;
+    }
+
+    /* Top-edge shimmer line */
+    .bc-card::after {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: auto !important;
+      height: 1px !important;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.22) 50%, transparent 100%) !important;
+      border-radius: inherit !important;
+      pointer-events: none !important;
+      z-index: 2 !important;
+      opacity: 1 !important;
+      filter: none !important;
+    }
+
+    /* Card hover lift */
+    .bc-card:hover,
+    .bc-card:focus-visible {
+      transform: translateY(-6px) scale(1.01) !important;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(0, 113, 227, 0.15),
+        inset 0 1px 0 rgba(255,255,255,0.15) !important;
+      border-color: rgba(255,255,255,0.14) !important;
+    }
+
+    /* ══════════════════════════════════════════════
+       PAGE-LEVEL CURSOR GLOW
+       ══════════════════════════════════════════════ */
+    #cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,113,227,0.055) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9997;
+      transform: translate(-300px, -300px);
+      will-change: transform;
+      transition: opacity 0.4s ease;
+    }
+
+    /* ══════════════════════════════════════════════
+       POLISH: GPU HINTS + APPLE EASING
+       ══════════════════════════════════════════════ */
+    .fade-up {
+      will-change: transform, opacity !important;
+      transition:
+        opacity 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    }
+    .fade-up.delay-1 { transition-delay: 0.1s !important; }
+    .fade-up.delay-2 { transition-delay: 0.22s !important; }
+    .fade-up.delay-3 { transition-delay: 0.34s !important; }
+
+    .apple-feat-btn-primary,
+    .apple-feat-btn-ghost,
+    .apple-nav-cta,
+    .chip,
+    .job,
+    .skill,
+    .ct-option {
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    }
+
+    /* ══════════════════════════════════════════════
+       UI ALIGNMENT AUDIT FIXES
+       ══════════════════════════════════════════════ */
+
+    /* Navbar: consistent height + vertical centering */
+    .apple-nav {
+      height: 56px !important;
+    }
+    .apple-nav-brand,
+    .apple-nav-links {
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    /* Hero: balanced spacing */
+    .hero {
+      padding: 96px max(48px, 6vw) 64px !important;
+    }
+    .hero-main {
+      gap: 32px !important;
+      align-items: center !important;
+    }
+    .hero .identity {
+      gap: 24px !important;
+      align-items: flex-start !important;
+    }
+    .hero .chips {
+      margin-top: 16px !important;
+      gap: 10px !important;
+    }
+
+    /* Featured sections: tighter consistent gap */
+    .apple-feat-inner {
+      gap: 64px !important;
+    }
+
+    /* Section headings: consistent spacing */
+    .section {
+      margin-bottom: 64px !important;
+    }
+    .bar {
+      margin-bottom: 32px !important;
+    }
+
+    /* Contact grid: even spacing */
+    .ct-grid {
+      gap: 16px !important;
+    }
+    .ct-option {
+      padding: 24px 16px !important;
+    }
+
+    /* Footer-level "more projects" header */
+    .apple-more-header {
+      padding: 80px 24px 8px !important;
+    }
+
+    /* Carousel header alignment */
+    .bc-header {
+      align-items: center !important;
+      padding-bottom: 20px !important;
+    }
+
+    /* Cards in rail: consistent sizing */
+    .bc-card {
+      flex: 0 0 360px !important;
+      min-width: 340px !important;
+      max-width: 380px !important;
+    }
+    @media (max-width: 640px) {
+      .bc-card {
+        flex: 0 0 88vw !important;
+        min-width: 0 !important;
+        max-width: 88vw !important;
+      }
+    }
+
+    /* Scrollbar: match new bg */
+    .bc-rail::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.03) !important;
+    }
+    .bc-rail::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.12) !important;
+    }
+    .bc-rail::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.22) !important;
+    }
+  </style>
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
@@ -623,8 +931,10 @@
   </nav>
   <!-- ========== STICKY TOP NAVBAR END ========== -->
   <div class="page">
-    <main class="sheet" id="home" style="background:#000">
+    <main class="sheet" id="home" style="background:transparent">
       <header class="hero">
+        <!-- Particle canvas: sits at z-index 0, content above at z-index 1 -->
+        <canvas id="hero-particles" aria-hidden="true"></canvas>
         <div class="hero-main">
           <div class="identity">
             <div class="mark" aria-hidden="true"><canvas id="lr-canvas"></canvas></div>
@@ -873,7 +1183,7 @@
 
   <!-- ========== SKILL CONSTELLATION — START ========== -->
   <style>
-    .sk-uni{background:linear-gradient(180deg,#070c1a 0%,#040810 100%);position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center;display:none}
+    .sk-uni{background:linear-gradient(180deg,#090e1a 0%,#060c18 100%);position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;justify-content:center;display:none}
     .sk-uni.sk-open{display:flex}
     .sk-uni-hdr{max-width:1120px;margin:0 auto;padding:64px 24px 0;width:100%}
     .sk-uni-hdr h2{margin:0 0 8px;font-family:'Inter',sans-serif;font-size:clamp(1.6rem,3vw,2rem);font-weight:900;color:#ccd6f6;letter-spacing:-.03em}
@@ -3426,6 +3736,187 @@ document.addEventListener('DOMContentLoaded',function(){
   })();
   </script>
   <!-- ========== APPLE REDESIGN SCRIPTS END ========== -->
+  <!-- ============================================================
+       PREMIUM UPGRADE JS
+       1. Hero particle / sand field
+       2. Mouse spotlight on every card
+       3. Page-level cursor glow
+       ============================================================ -->
+  <script>
+  /* ── 1. HERO PARTICLE SYSTEM ─────────────────────────────────── */
+  (function() {
+    'use strict';
+    var canvas = document.getElementById('hero-particles');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var hero = canvas.parentElement;
+    var W = 0, H = 0;
+    var particles = [];
+    var PARTICLE_COUNT = 180;
+    var MOUSE_RADIUS = 120;
+    var REPEL = 0.55;
+    var mouse = { x: -9999, y: -9999 };
+    var reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var afId = 0;
+
+    var COLORS = [
+      [0,   113, 227],   /* electric blue  */
+      [100, 200, 255],   /* sky blue        */
+      [0,   190, 210],   /* teal            */
+      [80,  150, 255],   /* medium blue     */
+      [150, 220, 255],   /* light cyan      */
+    ];
+
+    function resize() {
+      W = hero.offsetWidth;
+      H = hero.offsetHeight;
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width  = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      canvas.style.width  = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function mkParticles() {
+      particles = [];
+      for (var i = 0; i < PARTICLE_COUNT; i++) {
+        var col = COLORS[Math.floor(Math.random() * COLORS.length)];
+        particles.push({
+          x:  Math.random() * W,
+          y:  Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.35,
+          vy: (Math.random() - 0.5) * 0.35,
+          r:  1.4 + Math.random() * 2.4,
+          col: col,
+          op: 0.28 + Math.random() * 0.32,
+        });
+      }
+    }
+
+    function frame() {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        /* Mouse repulsion (sand brushing away) */
+        var dx   = p.x - mouse.x;
+        var dy   = p.y - mouse.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_RADIUS && dist > 0.5) {
+          var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+          var ang   = Math.atan2(dy, dx);
+          p.vx += Math.cos(ang) * force * REPEL;
+          p.vy += Math.sin(ang) * force * REPEL;
+        }
+        /* Gentle random drift + friction */
+        p.vx += (Math.random() - 0.5) * 0.018;
+        p.vy += (Math.random() - 0.5) * 0.018;
+        p.vx *= 0.968;
+        p.vy *= 0.968;
+        p.x  += p.vx;
+        p.y  += p.vy;
+        /* Wrap at edges */
+        if (p.x < -12) p.x = W + 12;
+        if (p.x > W + 12) p.x = -12;
+        if (p.y < -12) p.y = H + 12;
+        if (p.y > H + 12) p.y = -12;
+        /* Render */
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + p.col[0] + ',' + p.col[1] + ',' + p.col[2] + ',' + p.op + ')';
+        ctx.fill();
+      }
+      afId = requestAnimationFrame(frame);
+    }
+
+    /* Mouse relative to canvas viewport position */
+    window.addEventListener('mousemove', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    }, { passive: true });
+
+    window.addEventListener('resize', function() {
+      cancelAnimationFrame(afId);
+      resize();
+      mkParticles();
+      if (!reduced) frame();
+    });
+
+    resize();
+    mkParticles();
+    if (!reduced) frame();
+  })();
+
+  /* ── 2. MOUSE SPOTLIGHT ON EVERY CARD ───────────────────────── */
+  (function() {
+    'use strict';
+    function attachSpotlight(card) {
+      if (card._spotlightBound) return;
+      card._spotlightBound = true;
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--mouse-y', (e.clientY - rect.top)  + 'px');
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.setProperty('--mouse-x', '50%');
+        card.style.setProperty('--mouse-y', '50%');
+      });
+    }
+    /* Attach to any cards already in the DOM */
+    document.querySelectorAll('.bc-card, .project-card').forEach(attachSpotlight);
+
+    /* Watch for cards injected by the carousel JS */
+    var rail = document.getElementById('bc-rail');
+    if (rail && window.MutationObserver) {
+      new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+          m.addedNodes.forEach(function(node) {
+            if (node.nodeType !== 1) return;
+            if (node.classList.contains('bc-card') || node.classList.contains('project-card')) {
+              attachSpotlight(node);
+            }
+            node.querySelectorAll('.bc-card, .project-card').forEach(attachSpotlight);
+          });
+        });
+      }).observe(rail, { childList: true, subtree: true });
+    }
+  })();
+
+  /* ── 3. PAGE-LEVEL CURSOR GLOW ──────────────────────────────── */
+  (function() {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var glow = document.createElement('div');
+    glow.id = 'cursor-glow';
+    document.body.appendChild(glow);
+
+    var mx = -9999, my = -9999;
+    var gx = -9999, gy = -9999;
+    var ticking = false;
+
+    window.addEventListener('mousemove', function(e) {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(step);
+      }
+    }, { passive: true });
+
+    function step() {
+      gx += (mx - gx) * 0.085;
+      gy += (my - gy) * 0.085;
+      glow.style.transform = 'translate(' + (gx - 300) + 'px, ' + (gy - 300) + 'px)';
+      ticking = false;
+      if (Math.abs(mx - gx) > 0.5 || Math.abs(my - gy) > 0.5) {
+        ticking = true;
+        requestAnimationFrame(step);
+      }
+    }
+  })();
+  </script>
 </body>
 </html>
 
