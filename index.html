@@ -1086,55 +1086,48 @@
 
   <style>
     /* =====================================================
-       MOBILE COHESION FIX — removes boxy legacy styling
+       MOBILE COHESION FIX v2 — dark theme, no boxy outlines
        ===================================================== */
+
+    /* Body ALWAYS dark — never transparent, never white */
+    body {
+      background-color: #090e1a !important;
+    }
+
     @media (max-width: 768px) {
 
-      /* Kill the resume-card "sheet" container on mobile — full bleed */
+      /* Page wrapper: full bleed, no card margins */
       .page {
         padding: 0 !important;
         margin: 0 !important;
         max-width: 100vw !important;
       }
+
+      /* Sheet: kill the resume-card border and rounded corners */
       .sheet {
         border: none !important;
         border-radius: 0 !important;
         box-shadow: none !important;
-        background: transparent !important;
+        background: #090e1a !important;
         overflow: visible !important;
       }
 
-      /* Hero: match the body background, remove box borders */
+      /* Hero: dark background, no bottom border */
       .hero {
-        background: transparent !important;
+        background: #090e1a !important;
         border-bottom: none !important;
-        padding: 24px 20px 20px !important;
+        padding: 80px 20px 24px !important;
       }
 
-      /* Section bars: remove the left accent border and background box */
-      .bar {
-        background: transparent !important;
-        border-left: none !important;
-        padding: 0 0 8px !important;
-        border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-        font-size: 1.1rem !important;
-      }
-
-      /* Content sections: consistent padding */
-      .content {
-        padding: 24px 20px !important;
-      }
-
-      /* Panels / job cards: subtle, not boxy */
-      .panel, .job, .skill {
-        border-color: rgba(255,255,255,0.07) !important;
-        background: rgba(255,255,255,0.03) !important;
-      }
-
-      /* Identity row: tighten up */
+      /* Identity row stays horizontal (avatar + text side by side) */
       .hero-main {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        display: block !important;
+      }
+      .identity {
+        display: flex !important;
+        align-items: center !important;
+        gap: 14px !important;
+        margin-bottom: 16px !important;
       }
 
       /* Eyebrow: plain text, no box */
@@ -1143,33 +1136,34 @@
         border: none !important;
         padding: 0 !important;
         display: block !important;
-        margin-bottom: 6px !important;
-        font-size: 0.6rem !important;
+        margin-bottom: 8px !important;
+        font-size: 0.58rem !important;
         letter-spacing: 0.12em !important;
         line-height: 1.6 !important;
       }
 
-      /* "Open to Work" pill: keep it but make it flow naturally */
+      /* "Open to Work" pill stays inline */
       .avail-badge {
         display: inline-flex !important;
-        margin-left: 8px !important;
-        font-size: 0.58rem !important;
-        padding: 2px 8px 2px 6px !important;
+        margin-left: 6px !important;
+        font-size: 0.55rem !important;
+        padding: 2px 7px 2px 5px !important;
         vertical-align: middle !important;
         white-space: nowrap !important;
       }
 
-      /* Name: scale down so it never overflows */
+      /* Name scales down, never clips */
       .name {
         font-size: clamp(2.6rem, 10.5vw, 3.5rem) !important;
         word-break: break-word !important;
         overflow-wrap: break-word !important;
         overflow: visible !important;
+        line-height: 1.05 !important;
       }
 
-      /* Role / subline */
+      /* Role subline */
       .role {
-        font-size: 0.68rem !important;
+        font-size: 0.67rem !important;
         letter-spacing: 0.07em !important;
         line-height: 1.7 !important;
         margin-top: 10px !important;
@@ -1182,7 +1176,7 @@
         margin-top: 12px !important;
       }
 
-      /* Contact chips row — wrap and give breathing room */
+      /* Contact chips */
       .contact {
         flex-wrap: wrap !important;
         gap: 10px !important;
@@ -1195,12 +1189,19 @@
         font-size: 0.75rem !important;
       }
 
-      /* Nav row inside hero (old design) — hide it on mobile, we have the hamburger */
-      .hero .nav {
-        display: none !important;
+      /* Hide old hero nav, we have hamburger */
+      .hero .nav { display: none !important; }
+
+      /* Section bars: remove the left border box look */
+      .bar {
+        background: transparent !important;
+        border-left: none !important;
+        padding: 0 0 8px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+        font-size: 1.1rem !important;
       }
 
-      /* Project titlebar in old card sections */
+      /* Project titlebars */
       .project .titlebar {
         border-left: none !important;
         background: transparent !important;
@@ -1208,18 +1209,22 @@
         padding: 0 0 8px !important;
       }
 
-      /* Stats grid: 2 cols on mobile */
-      .stats { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
-
-      /* Apple nav: fix stacking context on mobile */
-      .apple-nav {
-        position: fixed !important;
-        top: 0 !important;
-        z-index: 9000 !important;
+      /* Content padding */
+      .content {
+        padding: 24px 20px !important;
       }
 
-      /* Ensure body bg shows through everywhere */
-      body, #home, section, .bc-projects, .apple-more-header {
+      /* Panels keep dark background */
+      .panel, .job, .skill {
+        border-color: rgba(255,255,255,0.07) !important;
+        background: rgba(255,255,255,0.03) !important;
+      }
+
+      /* Stats: 2 cols */
+      .stats { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+
+      /* Sections keep dark, only sections transparent — not body */
+      #home, section, .bc-projects, .apple-more-header {
         background-color: transparent !important;
       }
     }
