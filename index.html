@@ -431,11 +431,199 @@
     }
   </style>
   <!-- ========== SELECTED WORK CAROUSEL STYLES END ========== -->
+
+  <!-- ========== APPLE-STYLE REDESIGN — v4.0 ========== -->
+  <style>
+    /* ── Full-width layout: remove card container ── */
+    body { background: #000 !important; }
+    .page { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+    .sheet { border-radius: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important; }
+    .sheet::before { display: none !important; }
+    .skip { z-index: 9999; }
+
+    /* ── Sticky blur top navbar ── */
+    .apple-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1100;
+      height: 52px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 max(32px, 4vw);
+      background: rgba(0,0,0,.75);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: background .3s, border-color .3s;
+    }
+    .apple-nav.nav-scrolled { background: rgba(0,0,0,.9); border-color: rgba(255,255,255,.1); }
+    .apple-nav-brand { font-size: .92rem; font-weight: 800; color: #f5f5f7; letter-spacing: -.02em; text-decoration: none; }
+    .apple-nav-links { display: flex; align-items: center; gap: 4px; }
+    .apple-nav-link { color: rgba(255,255,255,.65); font-size: .8rem; font-weight: 500; padding: 6px 12px; border-radius: 999px; transition: color .2s, background .2s; text-decoration: none; }
+    .apple-nav-link:hover { color: #fff; background: rgba(255,255,255,.09); }
+    .apple-nav-cta { background: #0071e3; color: #fff !important; font-size: .78rem; font-weight: 700; padding: 7px 16px; border-radius: 999px; transition: background .2s, transform .15s; text-decoration: none; margin-left: 6px; }
+    .apple-nav-cta:hover { background: #0077ed; transform: translateY(-1px); }
+
+    /* ── Hero: full viewport ── */
+    .hero {
+      min-height: 100vh !important;
+      display: flex !important; flex-direction: column !important; justify-content: center !important;
+      padding: 80px max(48px, 6vw) 56px !important;
+      background: #000 !important;
+      border-bottom: 1px solid rgba(255,255,255,.07) !important;
+      isolation: isolate;
+    }
+    .hero-main { max-width: 1100px; margin: 0 auto; width: 100%; }
+    .hero .name { font-size: clamp(4rem, 9vw, 8rem) !important; letter-spacing: -.05em !important; }
+    .hero .eyebrow { font-size: .82rem !important; }
+    .hero .role { font-size: 1.15rem !important; }
+    .hero .headline { font-size: 1.08rem !important; max-width: 620px !important; line-height: 1.65 !important; }
+    .hero .nav { display: none !important; }
+    .hero .contact { gap: 14px; }
+
+    /* ── About / Experience: clean full-width panels ── */
+    .content { padding: 72px max(48px, 6vw) !important; max-width: 1100px; margin: 0 auto; box-sizing: border-box; }
+    .section { margin-bottom: 72px !important; }
+    .bar { font-size: 1.5rem !important; padding: 0 !important; background: transparent !important;
+      border-left: none !important; color: #f5f5f7 !important; margin-bottom: 28px !important;
+      letter-spacing: -.04em !important; font-weight: 900 !important; }
+    .panel { background: rgba(255,255,255,.035) !important; border-color: rgba(255,255,255,.07) !important; border-radius: 16px !important; }
+    .job { background: rgba(255,255,255,.03) !important; border-color: rgba(255,255,255,.07) !important; }
+    .job:hover { border-color: rgba(0,113,227,.35) !important; }
+    .skill { background: rgba(255,255,255,.03) !important; border-color: rgba(255,255,255,.07) !important; }
+    .skill:hover { border-color: rgba(0,113,227,.35) !important; transform: translateY(-3px) !important; }
+    .stat { background: rgba(0,113,227,.07) !important; border-color: rgba(0,113,227,.14) !important; }
+    .stat:hover { border-color: rgba(0,113,227,.4) !important; }
+    .stat b { color: #60a5fa !important; }
+
+    /* ── Featured project sections ── */
+    .apple-feat {
+      width: 100%; min-height: 80vh; display: flex; align-items: center;
+      padding: 100px max(48px, 6vw); box-sizing: border-box; position: relative; overflow: hidden;
+    }
+    .apple-feat-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    }
+    .apple-feat.feat-reverse .apple-feat-text { order: 2; }
+    .apple-feat.feat-reverse .apple-feat-media { order: 1; }
+    .feat-dark { background: #000; }
+    .feat-mid  { background: #0a0a0a; }
+    .feat-light { background: #111; }
+    .feat-slate { background: #0d1117; }
+
+    /* Subtle dividers between featured sections */
+    .apple-feat + .apple-feat { border-top: 1px solid rgba(255,255,255,.05); }
+
+    .apple-feat-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px;
+      font-size: .7rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: #0071e3;
+    }
+    .apple-feat-status {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 3px 11px; border-radius: 999px; font-size: .68rem; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase; margin-left: 10px; vertical-align: middle;
+    }
+    .status-shipped { background: rgba(52,211,153,.1); color: #34d399; border: 1px solid rgba(52,211,153,.22); }
+    .status-playable { background: rgba(251,191,36,.1); color: #fbbf24; border: 1px solid rgba(251,191,36,.22); }
+    .status-inprod   { background: rgba(139,92,246,.1); color: #a78bfa; border: 1px solid rgba(139,92,246,.22); }
+    .status-live     { background: rgba(0,113,227,.1); color: #60a5fa; border: 1px solid rgba(0,113,227,.22); }
+
+    .apple-feat-title {
+      margin: 0 0 18px; font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 900;
+      letter-spacing: -.05em; line-height: 1.0; color: #f5f5f7;
+    }
+    .apple-feat-desc {
+      margin: 0 0 28px; font-size: 1.05rem; line-height: 1.68; color: rgba(245,245,247,.6);
+    }
+    .apple-feat-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .apple-feat-chip {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.55); padding: 5px 13px; border-radius: 999px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .02em;
+    }
+    .apple-feat-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .apple-feat-btn-primary {
+      background: #0071e3; color: #fff; padding: 12px 24px; border-radius: 999px;
+      font-size: .88rem; font-weight: 700; transition: background .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,113,227,.3);
+    }
+    .apple-feat-btn-primary:hover { background: #0077ed; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,113,227,.4); }
+    .apple-feat-btn-ghost {
+      background: rgba(255,255,255,.07); color: rgba(255,255,255,.85);
+      border: 1px solid rgba(255,255,255,.15); padding: 12px 24px; border-radius: 999px;
+      font-size: .88rem; font-weight: 700; transition: background .2s, transform .15s;
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    }
+    .apple-feat-btn-ghost:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
+
+    .apple-feat-media {
+      border-radius: 20px; overflow: hidden;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
+      aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 24px 64px rgba(0,0,0,.5);
+    }
+    .apple-feat-media img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+    .apple-feat-placeholder {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; padding: 48px 32px; text-align: center; width: 100%;
+    }
+    .apple-feat-placeholder-icon { font-size: 3.5rem; opacity: .35; }
+    .apple-feat-placeholder-label { font-size: 1.3rem; font-weight: 900; color: rgba(255,255,255,.35); letter-spacing: -.03em; }
+    .apple-feat-placeholder-sub { font-size: .82rem; color: rgba(255,255,255,.22); }
+
+    /* ── "More Projects" carousel section header ── */
+    .apple-more-header {
+      max-width: 1280px; margin: 0 auto; padding: 72px 24px 0;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .apple-more-title { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900; color: #f5f5f7; letter-spacing: -.04em; margin: 0 0 6px; }
+    .apple-more-sub { font-size: .92rem; color: rgba(255,255,255,.4); margin: 0; }
+
+    /* ── Fade-in on scroll ── */
+    .fade-up { opacity: 0; transform: translateY(36px); transition: opacity .75s ease, transform .75s ease; }
+    .fade-up.in-view { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: .1s; }
+    .fade-up.delay-2 { transition-delay: .2s; }
+    .fade-up.delay-3 { transition-delay: .32s; }
+    @media (prefers-reduced-motion: reduce) { .fade-up { opacity: 1; transform: none; transition: none; } }
+
+    /* ── bc-projects carousel section override ── */
+    .bc-projects { border-top: none; padding-top: 0; }
+
+    /* ── Mobile ── */
+    @media (max-width: 900px) {
+      .apple-feat { padding: 72px 24px; min-height: auto; }
+      .apple-feat-inner { grid-template-columns: 1fr; gap: 48px; }
+      .apple-feat.feat-reverse .apple-feat-text { order: 1; }
+      .apple-feat.feat-reverse .apple-feat-media { order: 2; }
+      .apple-feat-title { font-size: clamp(2rem, 6vw, 3rem); }
+    }
+    @media (max-width: 640px) {
+      .apple-nav-links { display: none; }
+      .hero { padding: 80px 20px 48px !important; }
+      .content { padding: 48px 20px !important; }
+      .apple-feat { padding: 56px 20px; }
+      .apple-feat-media { display: none; }
+      .apple-more-header { padding: 56px 20px 0; }
+    }
+  </style>
+  <!-- ========== APPLE-STYLE REDESIGN END ========== -->
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
+  <!-- ========== STICKY TOP NAVBAR ========== -->
+  <nav class="apple-nav" id="apple-nav" aria-label="Main navigation">
+    <a href="#home" class="apple-nav-brand">Luis Rodr&iacute;guez</a>
+    <div class="apple-nav-links">
+      <a href="#about" class="apple-nav-link">About</a>
+      <a href="#experience" class="apple-nav-link">Experience</a>
+      <a href="#agentqa" class="apple-nav-link">Projects</a>
+      <a href="#skills" class="apple-nav-link">Skills</a>
+      <a href="#contact" class="apple-nav-link">Contact</a>
+      <a href="mailto:luisangelrod17@gmail.com" class="apple-nav-cta">Hire Me</a>
+    </div>
+  </nav>
+  <!-- ========== STICKY TOP NAVBAR END ========== -->
   <div class="page">
-    <main class="sheet" id="home">
+    <main class="sheet" id="home" style="background:#000">
       <header class="hero">
         <div class="hero-main">
           <div class="identity">
@@ -523,8 +711,133 @@
       </div>
     </main>
   </div>
+  <!-- ========== FEATURED PROJECTS — APPLE SECTIONS ========== -->
+
+  <!-- AgentQA -->
+  <section class="apple-feat feat-dark" id="agentqa" aria-label="AgentQA project">
+    <div class="apple-feat-inner">
+      <div class="apple-feat-text fade-up">
+        <div>
+          <span class="apple-feat-eyebrow">AI Engineering</span>
+          <span class="apple-feat-status status-shipped">SHIPPED &middot; LIVE</span>
+        </div>
+        <h2 class="apple-feat-title">AgentQA</h2>
+        <p class="apple-feat-desc">Paste a URL. An AI agent autonomously fires 6 analysis tools &mdash; accessibility, SEO, performance, security headers, link health &mdash; then streams a graded report to your browser in real time. No polling. No wait. Just Claude doing the work.</p>
+        <div class="apple-feat-chips">
+          <span class="apple-feat-chip">Claude API</span>
+          <span class="apple-feat-chip">tool_use</span>
+          <span class="apple-feat-chip">SSE Streaming</span>
+          <span class="apple-feat-chip">Next.js 16</span>
+          <span class="apple-feat-chip">React 19</span>
+          <span class="apple-feat-chip">TypeScript</span>
+        </div>
+        <div class="apple-feat-actions">
+          <a href="https://ai-qa-agent.vercel.app" target="_blank" rel="noopener noreferrer" class="apple-feat-btn-primary">Live Demo &rarr;</a>
+          <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="apple-feat-btn-ghost">GitHub</a>
+        </div>
+      </div>
+      <div class="apple-feat-media fade-up delay-2">
+        <img src="img/projects/ai-qa-agent.png" alt="AgentQA — AI-powered site analyzer" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Operation: Ship IT -->
+  <section class="apple-feat feat-light feat-reverse" id="ship-it" aria-label="Operation Ship IT project">
+    <div class="apple-feat-inner">
+      <div class="apple-feat-text fade-up">
+        <div>
+          <span class="apple-feat-eyebrow">Game Dev &middot; Canvas 2D</span>
+          <span class="apple-feat-status status-playable">PLAYABLE &middot; EMBEDDED</span>
+        </div>
+        <h2 class="apple-feat-title">Operation: Ship IT</h2>
+        <p class="apple-feat-desc">A full Mario-style platformer written from scratch in vanilla JavaScript. Custom physics, character creator, 3 themed levels (The Office, The Cloud, Production), checkpoint saves, top-10 scoreboard, and mobile touch controls. Embedded directly in this portfolio.</p>
+        <div class="apple-feat-chips">
+          <span class="apple-feat-chip">Canvas 2D</span>
+          <span class="apple-feat-chip">Vanilla JavaScript</span>
+          <span class="apple-feat-chip">Custom Physics</span>
+          <span class="apple-feat-chip">LocalStorage</span>
+          <span class="apple-feat-chip">Mobile Controls</span>
+        </div>
+        <div class="apple-feat-actions">
+          <a href="#play-shipit" class="apple-feat-btn-primary" onclick="event.preventDefault();if(window.startShipIT)window.startShipIT();">&#9654; Play Now</a>
+          <a href="https://github.com/luisangelrod/operation-ship-it" target="_blank" rel="noopener noreferrer" class="apple-feat-btn-ghost">GitHub</a>
+        </div>
+      </div>
+      <div class="apple-feat-media fade-up delay-2">
+        <img src="img/projects/operation-ship-it.png" alt="Operation: Ship IT game" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Safe Shores -->
+  <section class="apple-feat feat-slate" id="safe-shores-feat" aria-label="Safe Shores project">
+    <div class="apple-feat-inner">
+      <div class="apple-feat-text fade-up">
+        <div>
+          <span class="apple-feat-eyebrow">Public Safety &middot; Puerto Rico</span>
+          <span class="apple-feat-status status-shipped">SHIPPED &middot; LIVE</span>
+        </div>
+        <h2 class="apple-feat-title">Safe Shores</h2>
+        <p class="apple-feat-desc">Real-time beach safety system for Puerto Rico's 98 beaches across 35 municipalities. Bilingual NWS/NOAA alerts, interactive map with geolocation, tide predictions, and buoy data. Fills a government-mandated gap (Senate Bill 661) that was never built.</p>
+        <div class="apple-feat-chips">
+          <span class="apple-feat-chip">Next.js 16</span>
+          <span class="apple-feat-chip">Leaflet.js</span>
+          <span class="apple-feat-chip">NWS API</span>
+          <span class="apple-feat-chip">NOAA CO-OPS</span>
+          <span class="apple-feat-chip">Capacitor</span>
+          <span class="apple-feat-chip">TypeScript</span>
+        </div>
+        <div class="apple-feat-actions">
+          <a href="https://safe-shores.vercel.app" target="_blank" rel="noopener noreferrer" class="apple-feat-btn-primary">Live Site &rarr;</a>
+          <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="apple-feat-btn-ghost">GitHub</a>
+        </div>
+      </div>
+      <div class="apple-feat-media fade-up delay-2">
+        <div class="apple-feat-placeholder">
+          <div class="apple-feat-placeholder-icon">&#127958;</div>
+          <div class="apple-feat-placeholder-label">Safe Shores</div>
+          <div class="apple-feat-placeholder-sub">98 Beaches &middot; 35 Municipalities &middot; Bilingual EN/ES</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PR Tax Pro -->
+  <section class="apple-feat feat-dark feat-reverse" id="pr-tax-pro-feat" aria-label="PR Tax Pro project">
+    <div class="apple-feat-inner">
+      <div class="apple-feat-text fade-up">
+        <div>
+          <span class="apple-feat-eyebrow">Finance Tools &middot; Puerto Rico</span>
+          <span class="apple-feat-status status-shipped">SHIPPED &middot; LIVE</span>
+        </div>
+        <h2 class="apple-feat-title">PR Tax Pro</h2>
+        <p class="apple-feat-desc">Progressive tax calculator built for PR residents. Supports W-2, 1099, and mixed employment with Act 22/60 incentives, bracket visualization, goal planner, and side-by-side comparison against all 50 US states. Zero dependencies.</p>
+        <div class="apple-feat-chips">
+          <span class="apple-feat-chip">HTML5</span>
+          <span class="apple-feat-chip">Vanilla JavaScript</span>
+          <span class="apple-feat-chip">CSS3</span>
+          <span class="apple-feat-chip">Zero Dependencies</span>
+        </div>
+        <div class="apple-feat-actions">
+          <a href="https://luisangelrod.github.io/pr-tax-calc/" target="_blank" rel="noopener noreferrer" class="apple-feat-btn-primary">Try It Live &rarr;</a>
+          <a href="https://github.com/luisangelrod" target="_blank" rel="noopener noreferrer" class="apple-feat-btn-ghost">GitHub</a>
+        </div>
+      </div>
+      <div class="apple-feat-media fade-up delay-2">
+        <img src="img/projects/pr-tax-pro.png" alt="PR Tax Pro salary and tax calculator" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- "More Projects" header before carousel -->
+  <div class="apple-more-header" id="projects">
+    <p class="apple-more-title fade-up">More Projects</p>
+    <p class="apple-more-sub fade-up delay-1">Experiments, tools, and work in progress &mdash; drag to explore</p>
+  </div>
+
   <!-- ========== SELECTED WORK — HORIZONTAL CAROUSEL ========== -->
-  <section class="bc-projects" id="projects">
+  <section class="bc-projects" style="padding-top:32px" aria-label="Project carousel">
     <div class="bc-container">
       <div class="bc-header">
         <h2>Selected Work</h2>
@@ -1898,15 +2211,14 @@ document.addEventListener('DOMContentLoaded',function(){
     var ALL_PROJECTS = [
       // ===== Personal projects =====
       {
-        id:'alexis',cat:'personal',year:'2026',title:'Safe Shores PR',
+        id:'safe-shores',cat:'personal',year:'2026',title:'Safe Shores',
         context:'Personal — Live on Vercel',
         badge:'Shipped',
-        subtitle:'Real-time beach safety alert system for Puerto Rico',
-        desc:'Prevents drowning deaths by delivering actionable ocean condition data directly to beachgoers. Named in memory of Miguel Alexis Polanco. Covers 98 beaches across 35 municipalities with real-time NWS/NOAA alerts, interactive maps, tide predictions, and buoy observations. Fills a government-mandated gap (Senate Bill 661) that was never built.',
+        subtitle:'Real-time beach safety system for Puerto Rico',
+        desc:'Real-time beach safety system for Puerto Rico\'s 98 beaches across 35 municipalities. Bilingual NWS/NOAA alerts, interactive Leaflet map, tide predictions, and buoy observations. Fills a government-mandated gap (Senate Bill 661) that was never built. Named in memory of Miguel Alexis Polanco.',
         descShort:'Real-time beach safety alerts for 98 PR beaches. Bilingual NWS/NOAA data, interactive Leaflet map, PWA + Capacitor.',
         highlights:['98 beaches mapped','Bilingual EN/ES','Real-time NWS/NOAA','PWA + Capacitor native','Interactive Leaflet map','QR sharing per beach'],
         tech:['Next.js 16','React 19','TypeScript','Tailwind CSS','Leaflet.js','Capacitor','NWS API','NOAA CO-OPS'],
-        img:'img/projects/alexis-homepage.png',
         live:'https://safe-shores.vercel.app',
         github:'https://github.com/luisangelrod'
       },
@@ -2051,8 +2363,8 @@ document.addEventListener('DOMContentLoaded',function(){
       openMarker.setAttribute('aria-hidden', 'true');
       openMarker.innerHTML =
         '<span class="bc-rail-marker-num">01</span>' +
-        '<span class="bc-rail-marker-label">' + (firstCat === 'work' ? 'Client Work' : 'Personal Builds') + '</span>' +
-        '<span class="bc-rail-marker-sub">' + (firstCat === 'work' ? 'Production systems shipped for clients' : 'Side projects, experiments &amp; passion work') + '</span>';
+        '<span class="bc-rail-marker-label">' + (firstCat === 'work' ? 'Direct-Work Projects' : 'Personal Builds') + '</span>' +
+        '<span class="bc-rail-marker-sub">' + (firstCat === 'work' ? 'Professional contract &amp; employed work — BCPOS' : 'Side projects, experiments &amp; passion work') + '</span>';
       rail.appendChild(openMarker);
     }
 
@@ -2066,8 +2378,8 @@ document.addEventListener('DOMContentLoaded',function(){
         divider.setAttribute('aria-hidden', 'true');
         divider.innerHTML =
           '<span class="bc-rail-marker-num">02</span>' +
-          '<span class="bc-rail-marker-label">' + (p.cat === 'work' ? 'Client Work' : 'Personal Builds') + '</span>' +
-          '<span class="bc-rail-marker-sub">' + (p.cat === 'work' ? 'Production systems shipped for clients' : 'Side projects, experiments &amp; passion work') + '</span>';
+          '<span class="bc-rail-marker-label">' + (p.cat === 'work' ? 'Direct-Work Projects' : 'Personal Builds') + '</span>' +
+          '<span class="bc-rail-marker-sub">' + (p.cat === 'work' ? 'Professional contract &amp; employed work — BCPOS (Sep 2025–Present)' : 'Side projects, experiments &amp; passion work') + '</span>';
         rail.appendChild(divider);
         lastCat = p.cat;
       }
@@ -2264,7 +2576,7 @@ document.addEventListener('DOMContentLoaded',function(){
       if (panelDemo) {
         var isHash = panelDemo.charAt(0) === '#';
         if (isHash) {
-          actionsHTML += '<a class="bc-panel-btn bc-panel-btn-ghost" href="' + escAttr(panelDemo) + '" onclick="event.preventDefault();if(window.startShipIT)window.startShipIT();">' + externalSVG + ' Play Now</a>';
+          actionsHTML += '<a class="bc-panel-btn bc-panel-btn-ghost" href="' + escAttr(panelDemo) + '" onclick="event.preventDefault();closePanel();setTimeout(function(){if(window.startShipIT)window.startShipIT();else if(window.startMSGame)window.startMSGame();},300);">' + externalSVG + ' Play Now</a>';
         } else {
           actionsHTML += '<a class="bc-panel-btn bc-panel-btn-ghost" href="' + escAttr(panelDemo) + '" target="_blank" rel="noopener noreferrer">' + externalSVG + ' Live Demo</a>';
         }
@@ -2900,21 +3212,21 @@ document.addEventListener('DOMContentLoaded',function(){
       // Navigation
       {group:'Navigation',icon:'🏠',title:'Go to About',desc:'About me section',action:function(){navTo('#about')},tags:'about home intro summary'},
       {group:'Navigation',icon:'💼',title:'Go to Experience',desc:'Professional experience',action:function(){navTo('#experience')},tags:'experience work jobs career'},
-      {group:'Navigation',icon:'🚀',title:'Go to Projects',desc:'Selected work & featured projects',action:function(){navTo('#projects')},tags:'projects work portfolio'},
+      {group:'Navigation',icon:'🚀',title:'Go to Projects',desc:'Featured projects &amp; selected work',action:function(){navTo('#agentqa')},tags:'projects work portfolio'},
       {group:'Navigation',icon:'⚡',title:'Go to Skills',desc:'Technical skills — 2026 stack',action:function(){navTo('#skills')},tags:'skills stack technologies tech'},
       {group:'Navigation',icon:'✨',title:'Open Tech Constellation',desc:'Interactive skill visualization',action:function(){var l=document.querySelector('.nav a[href="#constellation"]');if(l)l.click();},tags:'constellation skills visualization interactive 3d'},
       {group:'Navigation',icon:'📬',title:'Go to Contact',desc:'Get in touch',action:function(){navTo('#contact')},tags:'contact hire email phone'},
 
       // Projects
-      {group:'Projects',icon:'🏖️',title:'Safe Shores PR',desc:'Real-time beach safety alerts for Puerto Rico',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#projects')},tags:'safe shores beach noaa alerts next.js leaflet'},
-      {group:'Projects',icon:'💰',title:'PR Tax Pro',desc:'Puerto Rico salary & tax calculator',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#projects')},tags:'tax calculator pr salary'},
-      {group:'Projects',icon:'🤖',title:'AgentQA',desc:'AI-powered test suite generator — Claude tool_use',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#projects')},tags:'agent qa testing claude ai vitest'},
+      {group:'Projects',icon:'🏖️',title:'Safe Shores',desc:'Real-time beach safety system for Puerto Rico',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#safe-shores-feat')},tags:'safe shores beach noaa alerts next.js leaflet'},
+      {group:'Projects',icon:'💰',title:'PR Tax Pro',desc:'Puerto Rico salary & tax calculator',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#pr-tax-pro-feat')},tags:'tax calculator pr salary'},
+      {group:'Projects',icon:'🤖',title:'AgentQA',desc:'AI-powered site analyzer — Claude tool_use + SSE',badge:'Featured',badgeColor:'#10b981',action:function(){navTo('#agentqa')},tags:'agent qa testing claude ai vitest'},
       {group:'Projects',icon:'📊',title:'CDD-HUB',desc:'Enterprise ops hub — 215 tests, 50+ clients',action:function(){navTo('#projects')},tags:'cdd hub operations enterprise'},
       {group:'Projects',icon:'💳',title:'BerriosPay',desc:'Payment kiosk system — 25+ locations',action:function(){navTo('#projects')},tags:'berrios pay payment kiosk pci'},
       {group:'Projects',icon:'🏥',title:'GoFleetCare',desc:'Medical transport logistics portal',action:function(){navTo('#projects')},tags:'gofleet care medical transport hipaa'},
       {group:'Projects',icon:'📱',title:'LeadFlow',desc:'AI lead conversion SaaS for med spas',action:function(){navTo('#projects')},tags:'leadflow lead ai saas stripe twilio'},
       {group:'Projects',icon:'🎮',title:'ECHO: The Deep Station',desc:'Atmospheric WebGPU browser game',action:function(){navTo('#projects')},tags:'echo game webgpu three.js deep sea'},
-      {group:'Projects',icon:'🕹️',title:'Operation: Ship IT',desc:'Hidden Mario-style arcade game',badge:'Easter Egg',badgeColor:'#f59e0b',action:function(){if(window.startShipIT)window.startShipIT();},tags:'game ship it mario platformer play arcade'},
+      {group:'Projects',icon:'🕹️',title:'Operation: Ship IT',desc:'Mario-style platformer — play it embedded',badge:'Playable',badgeColor:'#f59e0b',action:function(){if(window.startShipIT)window.startShipIT();},tags:'game ship it mario platformer play arcade'},
 
       // Actions
       {group:'Actions',icon:'📄',title:'Download Resume',desc:'Open resume PDF in new tab',action:function(){window.open('assets/resume.pdf','_blank');},tags:'resume pdf download cv'},
@@ -3070,6 +3382,50 @@ document.addEventListener('DOMContentLoaded',function(){
   })();
   </script>
   <!-- ========== COMMAND PALETTE (Cmd+K) — END ========== -->
+
+  <!-- ========== APPLE REDESIGN — SCROLL ANIMATIONS + NAVBAR ========== -->
+  <script>
+  (function() {
+    'use strict';
+
+    // Navbar blur on scroll
+    var nav = document.getElementById('apple-nav');
+    if (nav) {
+      function updateNav() {
+        nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+      }
+      window.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
+    }
+
+    // Fade-up on scroll (IntersectionObserver)
+    var fadeEls = document.querySelectorAll('.fade-up');
+    if ('IntersectionObserver' in window && fadeEls.length) {
+      var fadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+    } else {
+      // Fallback: show all immediately
+      fadeEls.forEach(function(el) { el.classList.add('in-view'); });
+    }
+
+    // Smooth journal section reveal when clicking nav link
+    var journalLink = document.querySelector('.apple-nav-link[href="#journal"]');
+    if (journalLink) {
+      journalLink.addEventListener('click', function() {
+        var j = document.getElementById('journal');
+        if (j) { j.removeAttribute('hidden'); j.style.display = ''; }
+      });
+    }
+  })();
+  </script>
+  <!-- ========== APPLE REDESIGN SCRIPTS END ========== -->
 </body>
 </html>
 
