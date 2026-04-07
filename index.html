@@ -1083,6 +1083,147 @@
     }
   </style>
   <!-- ========== MOBILE OPTIMIZATION v2 END ========== -->
+
+  <style>
+    /* =====================================================
+       MOBILE COHESION FIX — removes boxy legacy styling
+       ===================================================== */
+    @media (max-width: 768px) {
+
+      /* Kill the resume-card "sheet" container on mobile — full bleed */
+      .page {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100vw !important;
+      }
+      .sheet {
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        overflow: visible !important;
+      }
+
+      /* Hero: match the body background, remove box borders */
+      .hero {
+        background: transparent !important;
+        border-bottom: none !important;
+        padding: 24px 20px 20px !important;
+      }
+
+      /* Section bars: remove the left accent border and background box */
+      .bar {
+        background: transparent !important;
+        border-left: none !important;
+        padding: 0 0 8px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+        font-size: 1.1rem !important;
+      }
+
+      /* Content sections: consistent padding */
+      .content {
+        padding: 24px 20px !important;
+      }
+
+      /* Panels / job cards: subtle, not boxy */
+      .panel, .job, .skill {
+        border-color: rgba(255,255,255,0.07) !important;
+        background: rgba(255,255,255,0.03) !important;
+      }
+
+      /* Identity row: tighten up */
+      .hero-main {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      /* Eyebrow: plain text, no box */
+      .eyebrow {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        display: block !important;
+        margin-bottom: 6px !important;
+        font-size: 0.6rem !important;
+        letter-spacing: 0.12em !important;
+        line-height: 1.6 !important;
+      }
+
+      /* "Open to Work" pill: keep it but make it flow naturally */
+      .avail-badge {
+        display: inline-flex !important;
+        margin-left: 8px !important;
+        font-size: 0.58rem !important;
+        padding: 2px 8px 2px 6px !important;
+        vertical-align: middle !important;
+        white-space: nowrap !important;
+      }
+
+      /* Name: scale down so it never overflows */
+      .name {
+        font-size: clamp(2.6rem, 10.5vw, 3.5rem) !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        overflow: visible !important;
+      }
+
+      /* Role / subline */
+      .role {
+        font-size: 0.68rem !important;
+        letter-spacing: 0.07em !important;
+        line-height: 1.7 !important;
+        margin-top: 10px !important;
+      }
+
+      /* Headline paragraph */
+      .headline {
+        font-size: 0.93rem !important;
+        line-height: 1.65 !important;
+        margin-top: 12px !important;
+      }
+
+      /* Contact chips row — wrap and give breathing room */
+      .contact {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+        margin-top: 18px !important;
+        padding-bottom: 24px !important;
+      }
+      .contact a, .ct-option {
+        min-height: 44px !important;
+        flex: 1 1 40% !important;
+        font-size: 0.75rem !important;
+      }
+
+      /* Nav row inside hero (old design) — hide it on mobile, we have the hamburger */
+      .hero .nav {
+        display: none !important;
+      }
+
+      /* Project titlebar in old card sections */
+      .project .titlebar {
+        border-left: none !important;
+        background: transparent !important;
+        border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+        padding: 0 0 8px !important;
+      }
+
+      /* Stats grid: 2 cols on mobile */
+      .stats { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+
+      /* Apple nav: fix stacking context on mobile */
+      .apple-nav {
+        position: fixed !important;
+        top: 0 !important;
+        z-index: 9000 !important;
+      }
+
+      /* Ensure body bg shows through everywhere */
+      body, #home, section, .bc-projects, .apple-more-header {
+        background-color: transparent !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <a href="#content" class="skip">Skip to content</a>
