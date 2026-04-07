@@ -2565,7 +2565,6 @@ document.addEventListener('DOMContentLoaded',function(){
         demo:'https://echo-game-phi.vercel.app'
       },
       {
-        {
         id:'healthbridge',cat:'personal',year:'2025',title:'HealthBridge',
         context:'Personal — HIPAA SaaS',
         ai:'AI: HIPAA SaaS · Anthropic API',
@@ -3740,7 +3739,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var ctx = canvas.getContext('2d');
     var W = 0, H = 0;
     var particles = [];
-    var PARTICLE_COUNT = 180;
+    var PARTICLE_COUNT = 220;
     var MOUSE_RADIUS = 120;
     var REPEL = 0.55;
     var mouse = { x: -9999, y: -9999 };
@@ -3775,7 +3774,7 @@ document.addEventListener('DOMContentLoaded',function(){
           y:  Math.random() * H,
           vx: (Math.random() - 0.5) * 0.35,
           vy: (Math.random() - 0.5) * 0.35,
-          r:  1.4 + Math.random() * 2.4,
+          r:  1.0 + Math.random() * 1.5,
           col: col,
           op: 0.28 + Math.random() * 0.32,
         });
@@ -3809,10 +3808,8 @@ document.addEventListener('DOMContentLoaded',function(){
         if (p.y < -12) p.y = H + 12;
         if (p.y > H + 12) p.y = -12;
         /* Render */
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(' + p.col[0] + ',' + p.col[1] + ',' + p.col[2] + ',' + p.op + ')';
-        ctx.fill();
+        ctx.fillRect(p.x - p.r / 2, p.y - p.r / 2, p.r, p.r);
       }
       afId = requestAnimationFrame(frame);
     }
