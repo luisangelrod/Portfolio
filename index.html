@@ -366,7 +366,7 @@
     .bc-card-cat-badge{position:absolute;top:12px;left:12px;font-family:'Fira Code',monospace;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:2}
     .bc-card-cat-work{background:rgba(245,158,11,.18);color:#fbbf24;border:1px solid rgba(245,158,11,.35)}
     .bc-card-cat-personal{background:rgba(100,255,218,.15);color:#64ffda;border:1px solid rgba(100,255,218,.3)}
-    .bc-card-year-badge{position:absolute;top:12px;right:12px;font-family:'Fira Code',monospace;font-size:.68rem;font-weight:700;color:#ccd6f6;background:rgba(10,10,15,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.08);z-index:2}
+    
 
     /* Card body */
     .bc-card-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex-grow:1}
@@ -391,7 +391,7 @@
     .bc-panel-open .bc-panel,.bc-panel.bc-panel-active{transform:translateX(0)}
     .bc-panel-close{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(100,255,218,.2);background:transparent;color:#8892b0;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:5}
     .bc-panel-close:hover{color:#64ffda;border-color:#64ffda}
-    .bc-panel-year{font-family:'Fira Code',monospace;font-size:.78rem;color:#64ffda;margin-bottom:8px}
+    
     .bc-panel h2{font-family:'Inter',sans-serif;font-size:1.5rem;font-weight:800;color:#ccd6f6;margin:0 0 6px}
     .bc-panel-context{font-size:.82rem;color:#8892b0;margin:0 0 20px;font-weight:500}
     .bc-panel-img{width:100%;border-radius:8px;border:1px solid rgba(100,255,218,.15);margin-bottom:20px}
@@ -2988,7 +2988,7 @@ document.addEventListener('DOMContentLoaded',function(){
         '<div class="scan-line" aria-hidden="true"></div>' +
         '<div class="bc-card-thumb">' +
           '<span class="bc-card-cat-badge ' + catClass + '">' + catLabel + '</span>' +
-          '<span class="bc-card-year-badge">' + escAttr(p.year) + '</span>' +
+          
           thumbHTML +
         '</div>' +
         '<div class="bc-card-body">' +
@@ -3149,7 +3149,7 @@ document.addEventListener('DOMContentLoaded',function(){
       }
 
       panelContent.innerHTML =
-        '<div class="bc-panel-year">' + escAttr(p.year) + '</div>' +
+        
         '<h2>' + escAttr(p.title) + '</h2>' +
         '<p class="bc-panel-context">' + escAttr(p.context || '') + '</p>' +
         imgHTML +
