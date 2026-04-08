@@ -2722,19 +2722,27 @@ document.addEventListener('DOMContentLoaded',function(){
     var ALL_PROJECTS = [
       // ===== Personal projects =====
       {
-        id:'cod-zombie-slug',cat:'personal',year:'2026',title:'COD Zombie Slug',
-        ai:'AI: Manus AI · Open-Source Neo Geo sprites',
-        status:'PLAYABLE · LIVE',
-        context:'Personal — Browser Game',
-        badge:'Playable',
-        subtitle:'Metal Slug × Call of Duty Zombies — Full 2D run-and-gun',
-        desc:'Full Metal Slug-style 2D side-scrolling run-and-gun game, reskinned end-to-end as a Call of Duty Zombies experience. Built with React 19 + HTML5 Canvas — no game engine. Features SMB-accurate tile physics (inertia=0.89, separate X/Y collision passes from robertkleffner/mariohtml5), real Neo Geo Metal Slug sprites color-graded for the COD Zombies aesthetic, 5 escalating rounds, Boss Zombie with 3-way toxic venom spray, 3 weapons (Pistol/Shotgun/Ray Gun), 8 obstacle types including toxic pits and destructible barricades, combo multiplier, parallax backgrounds, screen shake, and Web Audio procedural SFX.',
-        descShort:'Metal Slug × COD Zombies 2D run-and-gun. React 19 + Canvas, SMB physics, real Neo Geo sprites, Boss Zombie, 5 rounds.',
-        highlights:['Real Neo Geo sprites','SMB-accurate physics','Boss Zombie + venom','8 obstacle types','3 weapons','Web Audio SFX'],
-        tech:['React 19','TypeScript','HTML5 Canvas','Web Audio API','Vite 7','Tailwind CSS'],
-        img:'img/projects/cod-zombie-slug.png',
-        live:'https://cod-zombie-slug.vercel.app',
-        github:'https://github.com/luisangelrod/cod-zombie-slug'
+        id:'devstatus',cat:'personal',year:'2026',title:'DevStatus / NEXUS',
+        ai:'AI: Real-time monitoring pipeline',
+        status:'IN PRODUCTION',
+        context:'Personal',
+        desc:'Real-time mission control dashboard monitoring 15 developer services with interactive world map, latency graphs, and incident timeline. Aggregates status from GitHub, Vercel, Netlify, and more.',
+        descShort:'Real-time mission control dashboard monitoring 15 developer services with interactive world map and latency graphs.',
+        tech:['Next.js 15','TypeScript','Statuspage.io APIs'],
+        github:'https://github.com/luisangelrod',
+        demo:'https://devstatus-lilac.vercel.app',
+        img:'img/projects/devstatus.png'
+      },
+      {
+        id:'leadflow',cat:'personal',year:'2025',title:'LeadFlow',
+        ai:'AI: CRM automation pipeline',
+        status:'IN PRODUCTION',
+        context:'Personal',
+        desc:'AI-powered lead conversion SaaS for medical spas. Claude API automation handles inbound SMS, qualifies leads, books appointments. Stripe billing, Twilio messaging, real-time dashboard.',
+        descShort:'AI-powered lead conversion SaaS for medical spas with Claude API automation, Stripe billing, and Twilio messaging.',
+        tech:['Next.js 16','Stripe','Twilio','Claude API','Clerk','Neon PostgreSQL'],
+        github:'https://github.com/luisangelrod',
+        img:'img/projects/lead-response-landing.png'
       },
       {
         id:'safe-shores',cat:'personal',year:'2026',title:'Safe Shores',
@@ -2791,48 +2799,6 @@ document.addEventListener('DOMContentLoaded',function(){
         github:'https://github.com/luisangelrod'
       },
       {
-        id:'shaderforge',cat:'personal',year:'2025',title:'ShaderForge Studio',
-        context:'Personal',
-        desc:'Browser-based visual shader editor with drag-and-drop node graph, Monaco code editor, and real-time 3D preview. Export shaders as GLSL/WGSL. WebGPU-first rendering pipeline.',
-        descShort:'Browser-based visual shader editor with node graph, Monaco code editor, and real-time 3D preview.',
-        tech:['React','NestJS','WebGPU','Three.js','React Three Fiber'],
-        github:'https://github.com/luisangelrod'
-      },
-      {
-        id:'leadflow',cat:'personal',year:'2025',title:'LeadFlow',
-        ai:'AI: CRM automation pipeline',
-        status:'IN PRODUCTION',
-        context:'Personal',
-        desc:'AI-powered lead conversion SaaS for medical spas. Claude API automation handles inbound SMS, qualifies leads, books appointments. Stripe billing, Twilio messaging, real-time dashboard.',
-        descShort:'AI-powered lead conversion SaaS for medical spas with Claude API automation, Stripe billing, and Twilio messaging.',
-        tech:['Next.js 16','Stripe','Twilio','Claude API','Clerk','Neon PostgreSQL'],
-        github:'https://github.com/luisangelrod',
-        img:'img/projects/lead-response-landing.png'
-      },
-      {
-        id:'devstatus',cat:'personal',year:'2026',title:'DevStatus / NEXUS',
-        ai:'AI: Real-time monitoring pipeline',
-        status:'IN PRODUCTION',
-        context:'Personal',
-        desc:'Real-time mission control dashboard monitoring 15 developer services with interactive world map, latency graphs, and incident timeline. Aggregates status from GitHub, Vercel, Netlify, and more.',
-        descShort:'Real-time mission control dashboard monitoring 15 developer services with interactive world map and latency graphs.',
-        tech:['Next.js 15','TypeScript','Statuspage.io APIs'],
-        github:'https://github.com/luisangelrod',
-        demo:'https://devstatus-lilac.vercel.app',
-        img:'img/projects/devstatus.png'
-      },
-      {
-        id:'echo',cat:'personal',year:'2026',title:'ECHO',
-        ai:'AI: Proximity-triggered AI dialogue · Web Audio',
-        status:'PLAYABLE · EMBEDDED',
-        context:'Personal — AAA Web Game',
-        desc:'Atmospheric first-person thriller set in an abandoned deep-sea research station. SSAO ambient occlusion, PBR materials, sky dome shader, proximity-triggered AI dialogue, 5 narrative logs, volumetric fog, procedural Web Audio. Playable in the browser.',
-        descShort:'Atmospheric first-person thriller. Three.js WebGPU, SSAO, PBR materials, AI dialogue, narrative exploration.',
-        tech:['Three.js','WebGPU','SSAO','PBR','Web Audio API'],
-        github:'https://github.com/luisangelrod/echo-game',
-        demo:'https://echo-game-phi.vercel.app'
-      },
-      {
         id:'healthbridge',cat:'personal',year:'2025',title:'HealthBridge',
         context:'Personal — HIPAA SaaS',
         ai:'AI: HIPAA SaaS · Anthropic API',
@@ -2857,7 +2823,40 @@ document.addEventListener('DOMContentLoaded',function(){
         demo:'https://ai-qa-agent.vercel.app',
         img:'img/projects/agent-qa.svg'
       },
-
+      {
+        id:'shaderforge',cat:'personal',year:'2025',title:'ShaderForge Studio',
+        context:'Personal',
+        desc:'Browser-based visual shader editor with drag-and-drop node graph, Monaco code editor, and real-time 3D preview. Export shaders as GLSL/WGSL. WebGPU-first rendering pipeline.',
+        descShort:'Browser-based visual shader editor with node graph, Monaco code editor, and real-time 3D preview.',
+        tech:['React','NestJS','WebGPU','Three.js','React Three Fiber'],
+        github:'https://github.com/luisangelrod'
+      },
+      {
+        id:'echo',cat:'personal',year:'2026',title:'ECHO',
+        ai:'AI: Proximity-triggered AI dialogue · Web Audio',
+        status:'PLAYABLE · EMBEDDED',
+        context:'Personal — AAA Web Game',
+        desc:'Atmospheric first-person thriller set in an abandoned deep-sea research station. SSAO ambient occlusion, PBR materials, sky dome shader, proximity-triggered AI dialogue, 5 narrative logs, volumetric fog, procedural Web Audio. Playable in the browser.',
+        descShort:'Atmospheric first-person thriller. Three.js WebGPU, SSAO, PBR materials, AI dialogue, narrative exploration.',
+        tech:['Three.js','WebGPU','SSAO','PBR','Web Audio API'],
+        github:'https://github.com/luisangelrod/echo-game',
+        demo:'https://echo-game-phi.vercel.app'
+      },
+      {
+        id:'cod-zombie-slug',cat:'personal',year:'2026',title:'COD Zombie Slug',
+        ai:'AI: Manus AI · Open-Source Neo Geo sprites',
+        status:'PLAYABLE · LIVE',
+        context:'Personal — Browser Game',
+        badge:'Playable',
+        subtitle:'Metal Slug × Call of Duty Zombies — Full 2D run-and-gun',
+        desc:'Full Metal Slug-style 2D side-scrolling run-and-gun game, reskinned end-to-end as a Call of Duty Zombies experience. Built with React 19 + HTML5 Canvas — no game engine. Features SMB-accurate tile physics (inertia=0.89, separate X/Y collision passes from robertkleffner/mariohtml5), real Neo Geo Metal Slug sprites color-graded for the COD Zombies aesthetic, 5 escalating rounds, Boss Zombie with 3-way toxic venom spray, 3 weapons (Pistol/Shotgun/Ray Gun), 8 obstacle types including toxic pits and destructible barricades, combo multiplier, parallax backgrounds, screen shake, and Web Audio procedural SFX.',
+        descShort:'Metal Slug × COD Zombies 2D run-and-gun. React 19 + Canvas, SMB physics, real Neo Geo sprites, Boss Zombie, 5 rounds.',
+        highlights:['Real Neo Geo sprites','SMB-accurate physics','Boss Zombie + venom','8 obstacle types','3 weapons','Web Audio SFX'],
+        tech:['React 19','TypeScript','HTML5 Canvas','Web Audio API','Vite 7','Tailwind CSS'],
+        img:'img/projects/cod-zombie-slug.png',
+        live:'https://cod-zombie-slug.vercel.app',
+        github:'https://github.com/luisangelrod/cod-zombie-slug'
+      },
       // ===== BCPOS work projects =====
       {
         id:'cddhub',cat:'work',year:'2026',title:'CDD-HUB',
