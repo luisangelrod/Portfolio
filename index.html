@@ -1243,6 +1243,7 @@
       <a href="#experience" class="apple-nav-link">Experience</a>
       <a href="#projects" class="apple-nav-link">Projects</a>
       <a href="#skills" class="apple-nav-link">Skills</a>
+      <a href="#journal" class="apple-nav-link">Journal</a>
       <a href="#contact" class="apple-nav-link">Contact</a>
       <a href="mailto:luisangelrod17@gmail.com" class="apple-nav-cta">Hire Me</a>
     </div>
@@ -1280,6 +1281,7 @@
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#skills">Skills</a>
+          <a href="#journal">Journal</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -1679,16 +1681,37 @@
             <article class="skill"><h3>Platform &amp; Embedded</h3><p>WPF + WebView2, Ionic/Capacitor (Android/iOS), payment kiosk hardware (PAX terminals, Epson thermal printers, cash drawers), PCI DSS, HIPAA-adjacent systems.</p></article>
           </div>
         </section>
-        <section class="section" id="journal" style="display:none" hidden aria-hidden="true">
+        <section class="section" id="journal">
           <div class="bar">Engineering Journal</div>
           <div class="panel" style="padding:0;overflow:hidden">
             <div style="padding:14px 20px 0;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px">
-              <button class="jrnl-filter jrnl-active" data-jrnl-filter="all">All <span class="jrnl-count">4</span></button>
-              <button class="jrnl-filter" data-jrnl-filter="ai">AI Engineering <span class="jrnl-count">1</span></button>
+              <button class="jrnl-filter jrnl-active" data-jrnl-filter="all">All <span class="jrnl-count">5</span></button>
+              <button class="jrnl-filter" data-jrnl-filter="ai">AI Engineering <span class="jrnl-count">2</span></button>
               <button class="jrnl-filter" data-jrnl-filter="gamedev">Game Dev <span class="jrnl-count">3</span></button>
             </div>
             <div style="padding:18px 20px">
-              <article id="journal-agentqa" data-cat="ai" style="margin-bottom:24px">
+              <article id="journal-leadflow" data-cat="ai" style="margin-bottom:24px">
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap">
+                  <span style="background:rgba(59,130,246,.12);color:var(--accent-light);border:1px solid rgba(59,130,246,.2);border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase">AI Engineering</span>
+                  <time style="color:var(--muted);font-size:.8rem;font-weight:700">June 2026</time>
+                  <button class="jrnl-share" data-href="#journal-leadflow" title="Copy link" aria-label="Copy link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+                </div>
+                <h3 style="margin:0 0 10px;font-size:1.1rem;font-weight:900;color:var(--heading);letter-spacing:-.02em">Building LeadFlow: What Actually Happens When You Ship an AI Product</h3>
+                <p style="margin:0 0 10px;color:var(--muted);line-height:1.65">Everyone talks about building with AI. Here&rsquo;s what it actually looks like: LeadFlow is a production SaaS I built for medical spas that uses Claude&rsquo;s <code style="background:rgba(59,130,246,.1);color:var(--accent-light);padding:1px 6px;border-radius:4px">tool_use</code> API to handle inbound SMS leads autonomously. A potential client texts in. An AI agent qualifies them, asks follow-up questions, and books an appointment &mdash; all without a human in the loop.</p>
+                <p style="margin:0 0 10px;color:var(--muted);line-height:1.65">The hardest part wasn&rsquo;t the AI. It was the state machine. An SMS conversation isn&rsquo;t stateless &mdash; you need to know where you are in the qualification flow, what the lead has already said, and when to hand off to a human. I built a persistent conversation context layer on top of Neon PostgreSQL that reconstructs the full conversation history on every webhook hit, then passes it as <code style="background:rgba(59,130,246,.1);color:var(--accent-light);padding:1px 6px;border-radius:4px">messages</code> context to the Claude API call. The agent always knows exactly where it is.</p>
+                <p style="margin:0 0 10px;color:var(--muted);line-height:1.65">The second hardest part: Twilio webhooks don&rsquo;t wait for slow AI responses. I moved the whole response pipeline to SSE streaming with a queue so the Twilio webhook returns 200 immediately, the AI processes async, and the outbound SMS fires when Claude finishes. Zero webhook timeouts. That architecture decision took half a day to figure out and saved every production conversation from silent failure.</p>
+                <p style="margin:0;color:var(--muted);line-height:1.65">The pattern I keep coming back to: <strong style="color:var(--heading)">AI is not a feature, it&rsquo;s infrastructure.</strong> You design around it the same way you design around a database or a message queue &mdash; with reliability, retry logic, fallbacks, and observability. LeadFlow runs in production. It&rsquo;s handling real leads. And it works because I treated the AI layer the same way I treat everything else: as something that needs to ship and stay up.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.73rem;font-weight:800">Claude API</span>
+                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.73rem;font-weight:800">tool_use</span>
+                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.73rem;font-weight:800">SSE Streaming</span>
+                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.73rem;font-weight:800">Twilio</span>
+                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.73rem;font-weight:800">Neon PostgreSQL</span>
+                  <span style="background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--accent-light);font-size:.73rem;font-weight:800">Next.js 16</span>
+                </div>
+              </article>
+              <hr style="border:none;border-top:1px solid var(--line);margin:20px 0">
+                            <article id="journal-agentqa" data-cat="ai" style="margin-bottom:24px">
                 <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap">
                   <span style="color:var(--accent-text);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase">Entry #004 &mdash; March 23, 2026</span>
                   <span style="background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);border-radius:999px;padding:3px 10px;color:#a78bfa;font-size:.72rem;font-weight:700">AI Engineering</span>
