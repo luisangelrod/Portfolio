@@ -1463,8 +1463,10 @@
       {id:'vitest',   name:'Vitest',          cat:'testing', level:88,desc:'215-test suite on CDD-HUB — fast parallel execution, coverage tracking, watch mode',        rel:['playwright','react']},
       {id:'playwright',name:'Playwright',     cat:'testing', level:83,desc:'E2E across complex React routing flows, auth states, and multi-page interactions',          rel:['vitest','typescript']},
       {id:'jest',     name:'Jest',            cat:'testing', level:80,desc:'Unit and integration tests for .NET & Node services — 43 tests on BerriosPay',             rel:['vitest','node']},
-      {id:'claude',   name:'Claude API',      cat:'ai',      level:90,desc:'LeadFlow — agentic SMS conversations with tool_use, SSE streaming, persistent context',     rel:['openai','node','typescript']},
-      {id:'openai',   name:'OpenAI GPT',      cat:'ai',      level:78,desc:'AI QA Agent — generative test case creation from feature specs, automated regression',      rel:['claude','node']},
+      {id:'claude',   name:'Claude API',      cat:'ai',      level:90,desc:'LeadFlow SaaS — Claude tool_use API, agentic SMS automation, SSE streaming, persistent context. AgentQA — autonomous multi-tool QA agent.',     rel:['openai','node','typescript','mcp']},
+      {id:'mcp',      name:'MCP Servers',    cat:'ai',      level:88,desc:'Custom MCP server integrations for agentic workflows — file system, GitHub, task automation, Cowork integrations',                   rel:['claude','typescript','node']},
+      {id:'rag',      name:'RAG Pipelines',  cat:'ai',      level:80,desc:'Retrieval-augmented generation — embedding pipelines, vector search, context window management for production AI systems',              rel:['claude','openai','postgres']},
+      {id:'openai',   name:'OpenAI GPT',      cat:'ai',      level:78,desc:'OpenAI API integration — embeddings, chat completions, function calling. Used alongside Claude for RAG and multi-model pipelines.',      rel:['claude','node','rag']},
       {id:'threejs',  name:'Three.js',        cat:'games',   level:72,desc:'3D portfolio interactivity and visual experiments — targeting WebGPU renderer for AAA',     rel:['webgpu','typescript']},
       {id:'webgpu',   name:'WebGPU',          cat:'games',   level:60,desc:'Exploring GPU-native compute for the AAA game engine layer — next frontier on the roadmap', rel:['threejs']},
       {id:'wpf',      name:'WPF + WebView2',  cat:'platform',level:80,desc:'Kiosk software bridging desktop WPF and web React — BerriosPay 25+ kiosks in production',  rel:['dotnet','react']},
@@ -1667,13 +1669,13 @@
         <section class="section" id="skills">
           <div class="bar">Technical Skills &mdash; 2026 Stack</div>
           <div class="skills">
-            <article class="skill"><h3>Frontend &amp; UI</h3><p>React 19, TypeScript 5, Next.js 16, Angular 18, Vite, Tailwind CSS v4, TanStack Query, Zustand, Zod, Shadcn/UI, Framer Motion, i18next, Leaflet.js.</p></article>
-            <article class="skill"><h3>Backend &amp; APIs</h3><p>.NET 10, C# 13, ASP.NET Core, Entity Framework Core 10, REST &amp; GraphQL, Minimal APIs, Node.js 22, Express, Hono, Prisma, background services, rate limiting.</p></article>
-            <article class="skill"><h3>AI Engineering</h3><p>Claude API (tool_use, SSE streaming, agentic loops), OpenAI GPT-4o, Vercel AI SDK, RAG patterns, vector embeddings, prompt engineering, LLM orchestration, AI-assisted QA.</p></article>
+            <article class="skill"><h3>AI &amp; Automation</h3><p>Claude API, MCP Servers, RAG Pipelines, LLM Integration, tool_use, SSE Streaming, Agentic Systems, Anthropic SDK, OpenAI GPT-4o, Vercel AI SDK, vector embeddings, prompt engineering.</p></article>
+            <article class="skill"><h3>Frontend</h3><p>React 19, Next.js 16, TypeScript, Angular 18, Tailwind CSS, HTML5, WebGPU / Three.js, Vite, TanStack Query, Zustand, Zod, Shadcn/UI, Framer Motion, Leaflet.js.</p></article>
+            <article class="skill"><h3>Backend</h3><p>.NET 10 / C#, ASP.NET Core, Node.js, Express, REST APIs, GraphQL, Entity Framework Core, Minimal APIs, Prisma, Hono, background services, rate limiting.</p></article>
+            <article class="skill"><h3>Cloud &amp; DevOps</h3><p>Azure (App Service, Functions, SQL, Key Vault), GitHub Actions, Docker, CI/CD, Vercel, Netlify, Bicep IaC, blue/green deployments, Static Web Apps, GitLab CI.</p></article>
+            <article class="skill"><h3>Data</h3><p>SQL Server, PostgreSQL, Redis, Prisma ORM, Azure SQL, Entity Framework, full-text search, query optimization, schema design, migrations, elastic pools.</p></article>
+            <article class="skill"><h3>Testing</h3><p>Vitest, Playwright, Jest, automated test suites (215+), Cypress, E2E CI pipelines, coverage tracking, RBAC &amp; JWT auth, WCAG accessibility, Serilog logging.</p></article>
             <article class="skill"><h3>3D, WebGPU &amp; Games</h3><p>Three.js, React Three Fiber, WebGPU renderer, Canvas 2D game engines, GLSL shaders, PBR materials, SSAO, volumetric lighting, custom physics, WebXR basics.</p></article>
-            <article class="skill"><h3>Cloud &amp; DevOps</h3><p>Azure App Service, Azure SQL, Key Vault, Static Web Apps, GitHub Actions CI/CD, GitLab CI, Bicep IaC, Vercel, Netlify, Docker, Terraform basics, blue/green deployments.</p></article>
-            <article class="skill"><h3>Data &amp; Databases</h3><p>SQL Server, PostgreSQL, Azure SQL elastic pools, Redis, Prisma ORM, Entity Framework, full-text search, query optimization, schema design, migrations, event sourcing basics.</p></article>
-            <article class="skill"><h3>Testing &amp; Reliability</h3><p>Vitest, Playwright E2E, Jest, Cypress, 215+ test suites, idempotency controls, RBAC &amp; JWT auth, offline-first sync, WCAG accessibility, Serilog structured logging.</p></article>
             <article class="skill"><h3>Platform &amp; Embedded</h3><p>WPF + WebView2, Ionic/Capacitor (Android/iOS), payment kiosk hardware (PAX terminals, Epson thermal printers, cash drawers), PCI DSS, HIPAA-adjacent systems.</p></article>
           </div>
         </section>
