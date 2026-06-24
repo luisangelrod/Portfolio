@@ -2721,18 +2721,6 @@ document.addEventListener('DOMContentLoaded',function(){
     var ALL_PROJECTS = [
       // ===== Personal projects =====
       {
-        id:'devstatus',cat:'personal',year:'2026',title:'DevStatus / NEXUS',
-        ai:'AI: Real-time monitoring pipeline',
-        status:'IN PRODUCTION',
-        context:'Personal',
-        desc:'Real-time mission control dashboard monitoring 15 developer services with interactive world map, latency graphs, and incident timeline. Aggregates status from GitHub, Vercel, Netlify, and more.',
-        descShort:'Real-time mission control dashboard monitoring 15 developer services with interactive world map and latency graphs.',
-        tech:['Next.js 15','TypeScript','Statuspage.io APIs'],
-        github:'https://github.com/luisangelrod',
-        demo:'https://devstatus-lilac.vercel.app',
-        img:'img/projects/devstatus.png'
-      },
-      {
         id:'leadflow',cat:'personal',year:'2025',title:'LeadFlow',
         ai:'AI: CRM automation pipeline',
         status:'IN PRODUCTION',
@@ -2740,7 +2728,7 @@ document.addEventListener('DOMContentLoaded',function(){
         desc:'AI-powered lead conversion SaaS for medical spas. Claude API automation handles inbound SMS, qualifies leads, books appointments. Stripe billing, Twilio messaging, real-time dashboard.',
         descShort:'AI-powered lead conversion SaaS for medical spas with Claude API automation, Stripe billing, and Twilio messaging.',
         tech:['Next.js 16','Stripe','Twilio','Claude API','Clerk','Neon PostgreSQL'],
-        github:'https://github.com/luisangelrod',
+        github:null,privateRepo:true,
         img:'img/projects/lead-response-landing.png'
       },
       {
@@ -2755,7 +2743,54 @@ document.addEventListener('DOMContentLoaded',function(){
         highlights:['98 beaches mapped','Bilingual EN/ES','Real-time NWS/NOAA','PWA + Capacitor native','Interactive Leaflet map','QR sharing per beach'],
         tech:['Next.js 16','React 19','TypeScript','Tailwind CSS','Leaflet.js','Capacitor','NWS API','NOAA CO-OPS'],
         live:'https://safe-shores.vercel.app',
-        github:'https://github.com/luisangelrod'
+        github:null,privateRepo:true
+      },
+      {
+        id:'agentqa',cat:'personal',year:'2026',title:'AgentQA',
+        ai:'AI: Agentic QA Automation · Claude API',
+        status:'SHIPPED · LIVE',
+        context:'Personal — AI Engineering',
+        desc:'Agentic QA tool powered by Claude tool_use + SSE streaming. Paste a URL and an AI agent autonomously runs 6 analysis tools (accessibility, SEO, performance, security headers, link health) then streams a graded report to the browser in real time. Next.js 16, React 19, TypeScript.',
+        descShort:'AI-powered site analyzer — Claude tool_use runs 6 checks autonomously, streams graded report via SSE.',
+        tech:['Claude API','tool_use','SSE','Next.js 16','React 19','TypeScript'],
+        github:null,privateRepo:true,
+        demo:'https://ai-qa-agent.vercel.app',
+        img:'img/projects/agent-qa.svg'
+      },
+      {
+        id:'devstatus',cat:'personal',year:'2026',title:'DevStatus / NEXUS',
+        ai:'AI: Real-time monitoring pipeline',
+        status:'IN PRODUCTION',
+        context:'Personal',
+        desc:'Real-time mission control dashboard monitoring 15 developer services with interactive world map, latency graphs, and incident timeline. Aggregates status from GitHub, Vercel, Netlify, and more.',
+        descShort:'Real-time mission control dashboard monitoring 15 developer services with interactive world map and latency graphs.',
+        tech:['Next.js 15','TypeScript','Statuspage.io APIs'],
+        github:null,privateRepo:true,
+        demo:'https://devstatus-lilac.vercel.app',
+        img:'img/projects/devstatus.png'
+      },
+      {
+        id:'openclaw-env',cat:'personal',year:'2026',title:'AI Personal Command Center',
+        ai:'AI: OpenClaw · Claude API · 7+ automations',
+        status:'IN PRODUCTION',
+        context:'Personal — Ongoing',
+        desc:'End-to-end AI automation environment built on OpenClaw running locally. Configured a complete personal AI assistant delivering curated intelligence via Telegram: morning briefs with JW daily text + world news, AI stock moat rankings, daily income opportunity research scraped from Reddit/forums, + job leads, EOD Asana task creation from git commits + 8h Everhour logging, RTX 5090 stock monitoring across Best Buy/NVIDIA/Walmart with instant alerts. Includes a self-healing watchdog that detects gateway crashes and restarts automatically. Continuously expanding as new OpenClaw features and community skills are released.',
+        descShort:'Personal AI environment with 7+ automated cron jobs delivering curated intelligence daily via Telegram. Self-healing watchdog, stock monitors, EOD work automation.',
+        tech:['OpenClaw','Claude API','TypeScript','PowerShell','Telegram Bot API','NOAA API','Asana API','Everhour API'],
+        github:null,privateRepo:true
+      },
+      {
+        id:'healthbridge',cat:'personal',year:'2025',title:'HealthBridge',
+        context:'Personal — HIPAA SaaS',
+        ai:'AI: HIPAA SaaS · Anthropic API',
+        status:'IN PRODUCTION',
+        badge:'Shipped',
+        subtitle:'HIPAA-compliant patient intake and records SaaS',
+        desc:'HIPAA-compliant patient intake, records, and referral management SaaS built with Anthropic\'s API for intelligent document parsing and clinical summaries. Full audit trail, role-based access, and encrypted data at rest.',
+        descShort:'HIPAA-compliant patient intake & records SaaS with Anthropic API for intelligent document parsing and clinical summaries.',
+        highlights:['HIPAA compliance','Anthropic API integration','Role-based access','Encrypted data at rest','Audit trail','Intelligent clinical summaries'],
+        tech:['React 19','.NET 10','Azure SQL','Anthropic API','TypeScript','Azure Key Vault'],
+        github:null,privateRepo:true
       },
       {
         id:'prtaxpro',cat:'personal',year:'2026',title:'PR Tax Pro',
@@ -2770,7 +2805,15 @@ document.addEventListener('DOMContentLoaded',function(){
         tech:['HTML5','CSS3','Vanilla JavaScript'],
         img:'img/projects/pr-tax-pro.png',
         live:'https://luisangelrod.github.io/pr-tax-calc/',
-        github:'https://github.com/luisangelrod'
+        github:'https://github.com/luisangelrod/pr-tax-calc'
+      },
+      {
+        id:'shaderforge',cat:'personal',year:'2025',title:'ShaderForge Studio',
+        context:'Personal',
+        desc:'Browser-based visual shader editor with drag-and-drop node graph, Monaco code editor, and real-time 3D preview. Export shaders as GLSL/WGSL. WebGPU-first rendering pipeline.',
+        descShort:'Browser-based visual shader editor with node graph, Monaco code editor, and real-time 3D preview.',
+        tech:['React','NestJS','WebGPU','Three.js','React Three Fiber'],
+        github:null,privateRepo:true
       },
       {
         id:'shipit',cat:'personal',year:'2026',title:'Operation: Ship IT',
@@ -2785,50 +2828,7 @@ document.addEventListener('DOMContentLoaded',function(){
         tech:['Canvas 2D','Vanilla JavaScript','LocalStorage','Custom Physics'],
         img:'img/projects/operation-ship-it.png',
         demo:'#play-shipit',
-        github:'https://github.com/luisangelrod'
-      },
-      {
-        id:'openclaw-env',cat:'personal',year:'2026',title:'AI Personal Command Center',
-        ai:'AI: OpenClaw · Claude API · 7+ automations',
-        status:'IN PRODUCTION',
-        context:'Personal — Ongoing',
-        desc:'End-to-end AI automation environment built on OpenClaw running locally. Configured a complete personal AI assistant delivering curated intelligence via Telegram: morning briefs with JW daily text + world news, AI stock moat rankings, daily income opportunity research scraped from Reddit/forums, + job leads, EOD Asana task creation from git commits + 8h Everhour logging, RTX 5090 stock monitoring across Best Buy/NVIDIA/Walmart with instant alerts. Includes a self-healing watchdog that detects gateway crashes and restarts automatically. Continuously expanding as new OpenClaw features and community skills are released.',
-        descShort:'Personal AI environment with 7+ automated cron jobs delivering curated intelligence daily via Telegram. Self-healing watchdog, stock monitors, EOD work automation.',
-        tech:['OpenClaw','Claude API','TypeScript','PowerShell','Telegram Bot API','NOAA API','Asana API','Everhour API'],
-        github:'https://github.com/luisangelrod'
-      },
-      {
-        id:'healthbridge',cat:'personal',year:'2025',title:'HealthBridge',
-        context:'Personal — HIPAA SaaS',
-        ai:'AI: HIPAA SaaS · Anthropic API',
-        status:'IN PRODUCTION',
-        badge:'Shipped',
-        subtitle:'HIPAA-compliant patient intake and records SaaS',
-        desc:'HIPAA-compliant patient intake, records, and referral management SaaS built with Anthropic\'s API for intelligent document parsing and clinical summaries. Full audit trail, role-based access, and encrypted data at rest.',
-        descShort:'HIPAA-compliant patient intake & records SaaS with Anthropic API for intelligent document parsing and clinical summaries.',
-        highlights:['HIPAA compliance','Anthropic API integration','Role-based access','Encrypted data at rest','Audit trail','Intelligent clinical summaries'],
-        tech:['React 19','.NET 10','Azure SQL','Anthropic API','TypeScript','Azure Key Vault'],
-        github:'https://github.com/luisangelrod'
-      },
-      {
-        id:'agentqa',cat:'personal',year:'2026',title:'AgentQA',
-        ai:'AI: Agentic QA Automation · Claude API',
-        status:'SHIPPED · LIVE',
-        context:'Personal — AI Engineering',
-        desc:'Agentic QA tool powered by Claude tool_use + SSE streaming. Paste a URL and an AI agent autonomously runs 6 analysis tools (accessibility, SEO, performance, security headers, link health) then streams a graded report to the browser in real time. Next.js 16, React 19, TypeScript.',
-        descShort:'AI-powered site analyzer — Claude tool_use runs 6 checks autonomously, streams graded report via SSE.',
-        tech:['Claude API','tool_use','SSE','Next.js 16','React 19','TypeScript'],
-        github:'https://github.com/luisangelrod',
-        demo:'https://ai-qa-agent.vercel.app',
-        img:'img/projects/agent-qa.svg'
-      },
-      {
-        id:'shaderforge',cat:'personal',year:'2025',title:'ShaderForge Studio',
-        context:'Personal',
-        desc:'Browser-based visual shader editor with drag-and-drop node graph, Monaco code editor, and real-time 3D preview. Export shaders as GLSL/WGSL. WebGPU-first rendering pipeline.',
-        descShort:'Browser-based visual shader editor with node graph, Monaco code editor, and real-time 3D preview.',
-        tech:['React','NestJS','WebGPU','Three.js','React Three Fiber'],
-        github:'https://github.com/luisangelrod'
+        github:null,privateRepo:true
       },
       {
         id:'echo',cat:'personal',year:'2026',title:'ECHO',
@@ -2865,7 +2865,7 @@ document.addEventListener('DOMContentLoaded',function(){
         desc:'Enterprise operations hub for BCPOS clients. Central command for 50+ active client projects — schema migrations, automated deployments, and the 215-test Vitest + Playwright suite that gates every release. Sole engineer from architecture to production support.',
         descShort:'Enterprise operations hub for 50+ BCPOS clients with 215-test CI/CD pipeline. Sole engineer, architecture to production.',
         tech:['React 19','.NET 10','Azure','Vitest','Playwright','GitHub Actions'],
-        github:'https://github.com/luisangelrod'
+        github:null,privateRepo:true
       },
       {
         id:'berriospay',cat:'work',year:'2026',title:'BerriosPay',
@@ -2875,7 +2875,7 @@ document.addEventListener('DOMContentLoaded',function(){
         desc:'Enterprise payment kiosk system for a 45+ year old Puerto Rican retailer. Handles self-service payments across 25+ locations with PCI DSS compliance, PAX terminal integration, and zero duplicate transactions.',
         descShort:'Enterprise payment kiosk system for 45+ year old PR retailer. Self-service payments across 25+ locations with PCI DSS compliance.',
         tech:['React 19','.NET 10','WPF','Azure SQL','PAX A920','Epson TM-M30II'],
-        github:'https://github.com/luisangelrod'
+        github:null,privateRepo:true
       },
       {
         id:'gofleetcare',cat:'work',year:'2025',title:'GoFleetCare',
@@ -2883,7 +2883,7 @@ document.addEventListener('DOMContentLoaded',function(){
         desc:'Real-time medical transport logistics portal with offline-first sync, live GPS tracking, and HIPAA-adjacent security. Dispatchers manage 200+ daily trips across Puerto Rico.',
         descShort:'Real-time medical transport logistics portal with offline-first sync. Dispatchers manage 200+ daily trips across Puerto Rico.',
         tech:['Ionic','Capacitor','.NET','Firebase','Angular'],
-        github:'https://github.com/luisangelrod'
+        github:null,privateRepo:true
       },
       {
         id:'saludmedica',cat:'work',year:'2025',title:'saludMedica',
@@ -2891,7 +2891,7 @@ document.addEventListener('DOMContentLoaded',function(){
         desc:'Pharmacy distribution POS with barcode scanning and native Android deployment. Handles inventory, invoicing, and distribution tracking for pharmaceutical supply chain.',
         descShort:'Pharmacy distribution POS with barcode scanning and native Android deployment for pharmaceutical supply chain.',
         tech:['Angular 18','Ionic 8','.NET 8','Capacitor'],
-        github:'https://github.com/luisangelrod'
+        github:null,privateRepo:true
       }
     ];
 
@@ -2969,7 +2969,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
       // Card link icons
       var demoUrl = p.demo || p.live;
-      var linksHTML = '<a class="bc-card-link" href="' + escAttr(p.github) + '" target="_blank" rel="noopener noreferrer" title="GitHub" onclick="event.stopPropagation()" aria-label="' + escAttr(p.title) + ' on GitHub">' + githubSVG + '</a>';
+      var linksHTML = p.github
+        ? '<a class="bc-card-link" href="' + escAttr(p.github) + '" target="_blank" rel="noopener noreferrer" title="GitHub" onclick="event.stopPropagation()" aria-label="' + escAttr(p.title) + ' on GitHub">' + githubSVG + '</a>'
+        : (p.privateRepo ? '<span style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);font-size:.75rem;font-weight:700">🔒 Private Repo</span>' : '');
       if (demoUrl) {
         var isHash = demoUrl.charAt(0) === '#';
         linksHTML += '<a class="bc-card-link" href="' + escAttr(demoUrl) + '"' + (isHash ? '' : ' target="_blank" rel="noopener noreferrer"') + ' title="' + (isHash ? 'Play Now' : 'Live Demo') + '" onclick="event.stopPropagation()' + (isHash ? ';event.preventDefault();if(window.startShipIT)window.startShipIT()' : '') + '" aria-label="' + escAttr(p.title) + ' live demo">' + externalSVG + '</a>';
@@ -3136,7 +3138,9 @@ document.addEventListener('DOMContentLoaded',function(){
       }
 
       var panelDemo = p.demo || p.live;
-      var actionsHTML = '<a class="bc-panel-btn bc-panel-btn-primary" href="' + escAttr(p.github) + '" target="_blank" rel="noopener noreferrer">' + githubSVG + ' GitHub</a>';
+      var actionsHTML = p.github
+        ? '<a class="bc-panel-btn bc-panel-btn-primary" href="' + escAttr(p.github) + '" target="_blank" rel="noopener noreferrer">' + githubSVG + ' GitHub</a>'
+        : (p.privateRepo ? '<span style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.4);font-size:.75rem;font-weight:700">🔒 Private Repo</span>' : '');
       if (panelDemo) {
         var isHash = panelDemo.charAt(0) === '#';
         if (isHash) {
