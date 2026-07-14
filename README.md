@@ -1,51 +1,48 @@
-# Luis Rodriguez Portfolio
+# Luis Rodriguez Rivera — Portfolio
 
-Recruiter-focused personal portfolio for Luis Rodriguez.
+Official portfolio for Luis Rodriguez Rivera, an AI-augmented full-stack software engineer.
 
-Live site: https://luisrodriguezdev.netlify.app
+Live site: <https://luisrodriguezdev.netlify.app>
 
-## Positioning
+## What it demonstrates
 
-The site is built to support roles such as:
-
-- Senior Full-Stack Engineer
-- Technical Lead
-- Systems Architect
-
-It highlights shipped work in payments, logistics, retail, and healthcare instead of generic side-project filler.
+- Production full-stack engineering across regulated systems, payments, operations, and public-interest tools
+- A human-accountable AI delivery loop built around scoped goals, independent review, correction, regression evidence, and final verification
+- ProofLoop, a deterministic browser-only replay of that workflow with no runtime model calls or inference bill
+- Live work including Safe Shores and DevStatus
+- An optional, accessible nostalgia layer inspired by 1990s arcades, neon storefronts, consoles, and early personal-computing interfaces
 
 ## Stack
 
-- HTML
-- Tailwind CSS via CDN
+- Semantic HTML
+- Modern CSS
 - Vanilla JavaScript
-- Lucide icons
-- Netlify Forms
+- Native dialog and local preference storage
+- No frontend framework or runtime API dependency
 
-## Local Development
-
-```bash
-npx serve
-```
-
-Or:
+## Local development
 
 ```bash
-python -m http.server 8000
+python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Then open <http://localhost:8000>.
 
-## Main Sections
+## Experience principles
 
-- Hero and recruiter snapshot
-- Expertise
-- Selected work
-- Experience
-- Contact
+- Recruiter-first content remains readable without JavaScript
+- Nostalgia mode is optional and never hides professional content
+- Motion respects `prefers-reduced-motion`
+- No copied third-party logos, sprites, or audio
+- Resume, social links, and deployed-project links are directly accessible
 
-## Notes
+## Main routes
 
-- Personal GitHub: `github.com/luisangelrod`
-- Work-specific GitHub references should not be used in personal branding here
-- Resume download is served from `assets/LA_Resume_.docx`
+- `/` — Portfolio
+- `/agent-review-lab/` — ProofLoop interactive work sample
+
+## Contact
+
+- GitHub: <https://github.com/luisangelrod>
+- LinkedIn: <https://www.linkedin.com/in/luis-rodriguez-515858bb/>
+- Email: <mailto:luisangelrod17@gmail.com>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07050d">
+  <meta name="description" content="A deterministic, zero-token interactive demonstration of Luis Rodriguez Rivera's evaluation-driven AI software delivery workflow.">
+  <title>ProofLoop // Agent Review Lab // Luis Rodriguez Rivera</title>
+  <link rel="canonical" href="https://luisrodriguezdev.netlify.app/agent-review-lab/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ProofLoop // Agent Review Lab">
+  <meta property="og:description" content="Replay an evaluation-driven AI delivery workflow with deterministic reviewer findings, regression evidence, and human sign-off.">
+  <meta property="og:url" content="https://luisrodriguezdev.netlify.app/agent-review-lab/">
+  <meta property="og:image" content="https://luisrodriguezdev.netlify.app/img/og-retro-portfolio.png">
+  <link rel="icon" href="../img/favicons/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#lab">Skip to lab</a>
+  <header class="lab-header">
+    <a class="back-link" href="../"><span aria-hidden="true">←</span> Portfolio</a>
+    <div class="lab-brand"><span>LR</span><strong>PROOFLOOP // AGENT REVIEW LAB</strong></div>
+    <p><i></i> ZERO-TOKEN DEMO</p>
+  </header>
+
+  <main id="lab">
+    <section class="lab-hero">
+      <div>
+        <p class="eyebrow">INTERACTIVE WORK SAMPLE / EVALUATION-DRIVEN DELIVERY</p>
+        <h1>What happens <span>after</span> the agent writes the code?</h1>
+        <p class="lede">Choose a sanitized software failure, run it through independent reviewer roles, and inspect the fixes, regression tests, and human acceptance evidence.</p>
+      </div>
+      <aside>
+        <span>DEMO RULE_01</span>
+        <p>AI output is an untrusted contribution until deterministic checks and human judgment confirm it.</p>
+      </aside>
+    </section>
+
+    <section class="scenario-picker" aria-labelledby="scenario-title">
+      <div class="section-label">
+        <span>01</span>
+        <div><p>INPUT</p><h2 id="scenario-title">Select a failure scenario</h2></div>
+      </div>
+      <div class="scenario-tabs" role="tablist" aria-label="Failure scenarios">
+        <button id="scenario-tab-payment" type="button" role="tab" aria-selected="true" aria-controls="scenario-panel" tabindex="0" data-scenario="payment">
+          <span>DOMAIN</span><strong>Payment state</strong><small>Transport success ≠ business success</small>
+        </button>
+        <button id="scenario-tab-tenant" type="button" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1" data-scenario="tenant">
+          <span>PRODUCT</span><strong>Tenant branding</strong><small>Defaults overwrite saved identity</small>
+        </button>
+        <button id="scenario-tab-isolation" type="button" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1" data-scenario="isolation">
+          <span>SECURITY</span><strong>Tenant isolation</strong><small>Update lacks ownership boundary</small>
+        </button>
+        <button id="scenario-tab-upstream" type="button" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1" data-scenario="upstream">
+          <span>RELIABILITY</span><strong>Source failure</strong><small>Unknown state rendered as safe</small>
+        </button>
+      </div>
+      <article class="scenario-panel" id="scenario-panel" role="tabpanel" aria-labelledby="scenario-tab-payment" tabindex="0">
+        <div><span id="scenario-severity">CRITICAL</span><small id="scenario-category">DOMAIN CORRECTNESS</small></div>
+        <h3 id="scenario-name">Payment response misclassification</h3>
+        <p id="scenario-summary">A gateway returns HTTP 200 for a declined payment. The first implementation treats transport success as payment success and advances the transaction state.</p>
+        <dl>
+          <div><dt>Acceptance criterion</dt><dd id="scenario-acceptance">Only a confirmed provider approval may transition a payment to completed.</dd></div>
+          <div><dt>First-pass gap</dt><dd id="scenario-gap">No mapping between provider result codes and the domain state machine.</dd></div>
+        </dl>
+      </article>
+    </section>
+
+    <section class="run-section" aria-labelledby="run-title">
+      <div class="section-label">
+        <span>02</span>
+        <div><p>CONTROL LOOP</p><h2 id="run-title">Run independent review</h2></div>
+      </div>
+      <div class="run-console">
+        <ol class="pipeline" aria-label="Evaluation stages">
+          <li data-stage="brief"><span>1</span><strong>Brief</strong><small>Goal + constraints</small></li>
+          <li data-stage="review"><span>2</span><strong>Review</strong><small>Independent roles</small></li>
+          <li data-stage="fix"><span>3</span><strong>Correct</strong><small>Findings → changes</small></li>
+          <li data-stage="test"><span>4</span><strong>Test</strong><small>Regression evidence</small></li>
+          <li data-stage="verify"><span>5</span><strong>Verify</strong><small>Human acceptance</small></li>
+        </ol>
+        <div class="console-body">
+          <div class="terminal" aria-live="polite" aria-atomic="false">
+            <div class="terminal-top"><span>evaluation.log</span><i></i><i></i><i></i></div>
+            <div id="terminal-output">
+              <p><b>READY</b> Select a scenario, then run the review loop.</p>
+              <p class="muted">No external model or paid API is used in this demonstration.</p>
+            </div>
+          </div>
+          <div class="run-controls">
+            <button class="run-button" id="run-review" type="button"><span aria-hidden="true">▶</span> Run evaluation loop</button>
+            <button class="reset-button" id="reset-review" type="button">Reset</button>
+            <p><span id="run-state">WAITING</span><small id="run-progress">0 / 5 gates complete</small></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="review-section" aria-labelledby="review-title">
+      <div class="section-label">
+        <span>03</span>
+        <div><p>JUDGE PANEL</p><h2 id="review-title">Reviewer verdicts</h2></div>
+      </div>
+      <div class="reviewer-grid" id="reviewer-grid">
+        <article data-reviewer="domain"><header><span>DOM</span><div><p>Domain reviewer</p><small>State and business rules</small></div><b>PENDING</b></header><p>Waiting for an evaluation run.</p></article>
+        <article data-reviewer="security"><header><span>SEC</span><div><p>Security reviewer</p><small>Trust and isolation</small></div><b>PENDING</b></header><p>Waiting for an evaluation run.</p></article>
+        <article data-reviewer="product"><header><span>UX</span><div><p>Product reviewer</p><small>User-visible behavior</small></div><b>PENDING</b></header><p>Waiting for an evaluation run.</p></article>
+        <article data-reviewer="tests"><header><span>TST</span><div><p>Test reviewer</p><small>Coverage and regression</small></div><b>PENDING</b></header><p>Waiting for an evaluation run.</p></article>
+      </div>
+    </section>
+
+    <section class="evidence-section" aria-labelledby="evidence-title">
+      <div class="section-label">
+        <span>04</span>
+        <div><p>ACCEPTANCE EVIDENCE</p><h2 id="evidence-title">What earns the green light</h2></div>
+      </div>
+      <div class="evidence-layout">
+        <article>
+          <p class="card-label">VERIFIED FIX</p>
+          <h3 id="fix-title">Run the loop to reveal the correction.</h3>
+          <p id="fix-copy">The accepted solution will appear here with the reason it closes the reviewer finding.</p>
+        </article>
+        <article>
+          <p class="card-label">REGRESSION TESTS</p>
+          <ul id="test-list"><li>Evidence is generated after the correction stage.</li></ul>
+        </article>
+        <article>
+          <p class="card-label">HUMAN CHECK</p>
+          <ul id="human-list"><li>The final gate remains a human decision.</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="explain-section">
+      <div>
+        <p class="eyebrow">WHY THIS IS A REAL WORK SAMPLE</p>
+        <h2>Reliable AI engineering is a system, not a prompt.</h2>
+      </div>
+      <div>
+        <p>This lab is intentionally deterministic: the scenarios and verdicts are pre-authored from sanitized engineering patterns, so it works without an API key or token budget.</p>
+        <p>What it demonstrates is the operating method—explicit acceptance criteria, independent reviewer roles, findings converted into fixes and regression tests, and human accountability at the end.</p>
+        <a href="../#method">See the full engineering method <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>CONCEPT, CODE & HUMAN VERIFICATION · LUIS RODRIGUEZ RIVERA</p>
+    <p>DETERMINISTIC DEMO · NO API KEY · NO TOKEN COST</p>
+  </footer>
+</body>
+</html>
