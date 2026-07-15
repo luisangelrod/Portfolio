@@ -75,6 +75,17 @@
     });
   });
 
+  document.querySelectorAll('[data-modern]').forEach((control) => {
+    control.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const boot = document.getElementById('boot-screen');
+      boot.querySelector('small').textContent = 'Restoring modern portfolio…';
+      boot.querySelector('.boot-track').hidden = false;
+      boot.classList.remove('done');
+      window.setTimeout(() => { window.location.href = '../'; }, 850);
+    });
+  });
+
   windows.forEach((win) => {
     win.addEventListener('pointerdown', () => focusWindow(win));
     win.querySelector('[data-close]')?.addEventListener('click', () => closeWindow(win));

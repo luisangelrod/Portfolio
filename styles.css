@@ -136,6 +136,7 @@ img { display: block; max-width: 100%; }
 .topbar nav a:hover, .topbar nav a:focus-visible, .topbar nav a.active { color: var(--cyan); text-shadow: 0 0 12px rgba(53,233,255,.7); }
 .topbar nav a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -11px; height: 2px; background: var(--cyan); box-shadow: var(--shadow-cyan); }
 .top-controls { justify-self: end; display: flex; align-items: center; gap: 8px; }
+.desktop-switch { display:flex; align-items:center; gap:7px; padding:8px 9px; border:1px solid rgba(80,151,255,.65); border-radius:3px; color:#86baff; background:rgba(41,105,215,.08); font:800 9px/1 var(--mono); letter-spacing:.06em; cursor:pointer; }.desktop-switch:hover { color:#fff; background:#2460ce; box-shadow:0 0 16px rgba(64,139,255,.4); }.windows-panes { display:grid; width:14px; height:13px; grid-template-columns:1fr 1fr; gap:1px; transform:skew(-7deg); }.windows-panes i:nth-child(1){background:#ef493b}.windows-panes i:nth-child(2){background:#69bd45}.windows-panes i:nth-child(3){background:#3a8ddd}.windows-panes i:nth-child(4){background:#f1c735}
 .crt-toggle {
   border: 1px solid rgba(89,255,154,.5);
   border-radius: 3px;
@@ -312,6 +313,8 @@ img { display: block; max-width: 100%; }
 .side-quest span { min-width: 0; display: grid; gap: 6px; }
 .side-quest strong { font: 800 .78rem/1.3 var(--mono); }.side-quest small { color: var(--muted); line-height: 1.35; }
 .side-quest b { color: var(--pink); font: 800 9px/1 var(--mono); }
+.eval-flight-quest { border-color:rgba(53,233,255,.35); background:linear-gradient(135deg,rgba(53,233,255,.04),rgba(140,99,255,.06)); }.eval-ship-art { position:relative; display:grid; grid-template-columns:repeat(5,9px); grid-template-rows:repeat(4,9px); place-content:center; gap:1px; background:radial-gradient(circle,#16295c,#050814 70%); overflow:hidden; }.eval-ship-art::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 12px 13px,#fff 0 1px,transparent 2px),radial-gradient(circle at 62px 40px,#64eaff 0 1px,transparent 2px),radial-gradient(circle at 72px 12px,#ff61dd 0 1px,transparent 2px); }.eval-ship-art i { position:relative; z-index:1; background:var(--cyan); box-shadow:0 0 7px rgba(53,233,255,.7); }.eval-ship-art i:nth-child(1){grid-column:3;grid-row:1/4}.eval-ship-art i:nth-child(2){grid-column:2;grid-row:2/4}.eval-ship-art i:nth-child(3){grid-column:4;grid-row:2/4}.eval-ship-art i:nth-child(4){grid-column:1/3;grid-row:4;background:var(--pink)}.eval-ship-art i:nth-child(5){grid-column:4/6;grid-row:4;background:var(--pink)}
+.mode-switch-overlay { position:fixed; inset:0; z-index:4000; display:grid; place-content:center; justify-items:center; gap:12px; color:#fff; background:#030303; opacity:0; visibility:hidden; transition:opacity .25s,visibility .25s; }.mode-switch-overlay.active { opacity:1; visibility:visible; }.windows-panes.large { width:58px; height:48px; gap:4px; }.mode-switch-overlay p { margin:5px 0 0; font:800 1.1rem/1 var(--mono); letter-spacing:.14em; }.mode-switch-overlay small { color:#9aa7b7; }.mode-switch-overlay > span { position:relative; width:180px; height:10px; margin-top:8px; overflow:hidden; border:1px solid #566; border-radius:5px; }.mode-switch-overlay > span::after { content:""; position:absolute; width:50px; height:100%; background:linear-gradient(90deg,#154eca,#67a2ff,#154eca); animation:xp-load .8s linear infinite; }@keyframes xp-load { from{left:-50px}to{left:180px} }
 
 .lab-visual { display: grid; place-items: center; padding: 22px; background: radial-gradient(circle at 50% 50%, rgba(140,99,255,.2), transparent 60%), #05070c; }
 .lab-preview { width: 100%; min-height: 255px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; padding: 18px; border: 1px solid rgba(53,233,255,.35); background: linear-gradient(145deg, rgba(13,22,31,.95), rgba(10,5,18,.94)); box-shadow: 0 0 36px rgba(53,233,255,.08); font-family: var(--mono); }
@@ -425,7 +428,7 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 720px) {
   .shell { width: min(calc(100% - 28px), var(--max)); }
-  .topbar { min-height: 64px; grid-template-columns: auto 1fr auto; padding-inline: 14px; }.brand-copy { display: none; }.topbar nav { max-width: calc(100vw - 132px); justify-content: center; gap: 13px; padding: 12px 3px; }.topbar nav a { white-space: nowrap; }.topbar nav a:nth-child(2),.topbar nav a:nth-child(3) { display: none; }.nostalgia-toggle { width: 38px; height: 34px; overflow: hidden; padding: 0; font-size: 0; }.nostalgia-toggle span { font-size: 14px; }
+  .topbar { min-height: 64px; grid-template-columns: auto 1fr auto; padding-inline: 14px; }.brand-copy { display: none; }.topbar nav { max-width: calc(100vw - 170px); justify-content: center; gap: 13px; padding: 12px 3px; }.topbar nav a { white-space: nowrap; }.topbar nav a:nth-child(2),.topbar nav a:nth-child(3) { display: none; }.nostalgia-toggle { display:none; }.desktop-switch { width:38px;height:34px;padding:0;justify-content:center;font-size:0}.desktop-switch .windows-panes{width:17px;height:16px}
   .hero { padding-block: 58px 72px; }.hero h1 { font-size: clamp(2.75rem, 13.5vw, 4.7rem); line-height: .86; }.hero h1 span { -webkit-text-stroke-width: 1px; text-shadow: 4px 3px 0 rgba(140,99,255,.55), var(--shadow-pink); }
   .hero-actions { display: grid; grid-template-columns: 1fr; }.game-button { width: 100%; }.quick-stats { gap: 23px; }
   .grid-sky::before { width: 360px; height: 360px; right: -130px; top: 140px; }
@@ -451,6 +454,6 @@ img { display: block; max-width: 100%; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 
-@media print { .nostalgia-layer,.nostalgia-toggle,.memory-badge,.memory-card-trigger,.credits-overlay { display:none!important; } }
+@media print { .nostalgia-layer,.nostalgia-toggle,.desktop-switch,.memory-badge,.memory-card-trigger,.credits-overlay,.mode-switch-overlay { display:none!important; } }
 
 :focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }

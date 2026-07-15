@@ -37,8 +37,8 @@
   }
   </script>
   <link rel="icon" href="img/favicons/favicon.ico">
-  <link rel="stylesheet" href="styles.css?v=7">
-  <script src="app.js?v=4" defer></script>
+  <link rel="stylesheet" href="styles.css?v=8">
+  <script src="app.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -57,6 +57,9 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="top-controls">
+      <button class="desktop-switch" type="button" aria-label="Switch portfolio to Windows XP desktop">
+        <span class="windows-panes" aria-hidden="true"><i></i><i></i><i></i><i></i></span> XP DESKTOP
+      </button>
       <button class="crt-toggle" type="button" aria-pressed="true">
         <span aria-hidden="true"></span> CRT ON
       </button>
@@ -204,10 +207,10 @@
           <span><strong>COD Zombie Slug</strong><small>Fan experiment · credited sprites and physics</small></span>
           <b aria-hidden="true">PLAY ↗</b>
         </a>
-        <a class="side-quest echo-quest" href="https://echo-game-phi.vercel.app/" target="_blank" rel="noopener">
-          <span class="quest-art" aria-hidden="true">ECHO</span>
-          <span><strong>ECHO</strong><small>Three.js · WebGL2 · procedural geometry and audio</small></span>
-          <b aria-hidden="true">ENTER ↗</b>
+        <a class="side-quest eval-flight-quest" href="./eval-flight/">
+          <span class="quest-art eval-ship-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          <span><strong>Eval Flight</strong><small>Interactive AI evaluation mission · judges, evidence and human acceptance</small></span>
+          <b aria-hidden="true">LAUNCH →</b>
         </a>
       </div>
     </section>
@@ -342,6 +345,11 @@
       </div>
     </section>
   </main>
+
+  <div class="mode-switch-overlay" id="mode-switch-overlay" aria-hidden="true">
+    <div class="windows-panes large" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p>LOADING LUIS.OS</p><small>Switching to XP Memory Desktop…</small><span></span>
+  </div>
 
   <div class="nostalgia-layer nostalgia-only" aria-hidden="true">
     <div class="neon-sign"><span>BUILT</span><strong>AFTER DARK</strong><small>USEFUL FIRST · MEMORABLE ALWAYS</small></div>

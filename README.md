@@ -9,8 +9,9 @@ Live site: <https://luisrodriguezdev.netlify.app>
 - Production full-stack engineering across regulated systems, payments, operations, and public-interest tools
 - A human-accountable AI delivery loop built around scoped goals, independent review, correction, regression evidence, and final verification
 - ProofLoop, a deterministic browser-only replay of that workflow with no runtime model calls or inference bill
+- Eval Flight, a Galaga-inspired interactive tour through evaluation criteria, independent AI judges, correction, evidence, and human acceptance
 - Live work including Safe Shores and DevStatus
-- An optional, accessible nostalgia layer inspired by 1990s arcades, neon storefronts, consoles, and early personal-computing interfaces
+- A one-click alternate Windows XP memory desktop with working classic-app interactions and Duke Nukem 3D shareware through js-dos
 
 ## Stack
 
@@ -18,7 +19,7 @@ Live site: <https://luisrodriguezdev.netlify.app>
 - Modern CSS
 - Vanilla JavaScript
 - Native dialog and local preference storage
-- No frontend framework or runtime API dependency
+- No frontend framework or application API dependency
 
 ## Local development
 
@@ -33,13 +34,15 @@ Then open <http://localhost:8000>.
 - Recruiter-first content remains readable without JavaScript
 - Nostalgia mode is optional and never hides professional content
 - Motion respects `prefers-reduced-motion`
-- No copied third-party logos, sprites, or audio
+- Referenced marks and the preserved Duke Nukem shareware bundle are documented with ownership and license notes
 - Resume, social links, and deployed-project links are directly accessible
 
 ## Main routes
 
 - `/` — Portfolio
 - `/agent-review-lab/` — ProofLoop interactive work sample
+- `/eval-flight/` — Eval Flight interactive evaluation mission
+- `/desktop-1995/` — Windows XP memory desktop alternate
 
 ## Contact
 

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#02040b">
+  <meta name="description" content="Eval Flight: an interactive mission through Luis Rodriguez Rivera's evaluation-driven AI development workflow.">
+  <title>Eval Flight // AI Work Must Earn Acceptance</title>
+  <link rel="stylesheet" href="flight.css?v=1">
+  <script src="flight.js?v=1" defer></script>
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="flight-header">
+    <a href="../" aria-label="Return to Luis Rodriguez Rivera portfolio"><span>LR</span><b>EVAL FLIGHT</b></a>
+    <div><span>MISSION / EVALUATION-DRIVEN DEVELOPMENT</span><i>DETERMINISTIC DEMO · NO MODEL CALLS</i></div>
+    <button id="sound-toggle" type="button" aria-pressed="false"><span>◖</span> SOUND OFF</button>
+  </header>
+
+  <main>
+    <section class="mission-intro" aria-labelledby="mission-title">
+      <p>PLAYER 01 · HUMAN IN COMMAND</p>
+      <h1 id="mission-title">AI work must<br><span>earn acceptance.</span></h1>
+      <p>This is not a model pretending to grade itself. Pilot one sanitized engineering change through explicit criteria, independent AI reviewers, correction loops, deterministic evidence, and final human sign-off.</p>
+      <div class="intro-actions"><button id="launch-mission">▶ Launch mission</button><a href="#principles">Read the operating rules</a></div>
+    </section>
+
+    <section class="flight-console" id="console" aria-labelledby="console-title">
+      <header><div><span>COURSE_06.EVAL</span><h2 id="console-title">Acceptance corridor</h2></div><div class="telemetry"><span>SHIP <b>READY</b></span><span>RISK <b id="risk-meter">UNKNOWN</b></span><span>GATE <b id="gate-meter">0 / 6</b></span></div></header>
+
+      <div class="console-grid">
+        <div class="course-panel">
+          <div class="course" id="course">
+            <canvas id="course-lines" aria-hidden="true"></canvas>
+            <div class="player-ship" id="player-ship" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span></span></div>
+            <div class="laser" id="laser" aria-hidden="true"></div>
+            <ol aria-label="Evaluation mission stages">
+              <li><button data-stage="0" aria-current="step"><span>01</span><b>Define</b><small>Goal + gates</small></button></li>
+              <li><button data-stage="1"><span>02</span><b>Generate</b><small>Bounded agent</small></button></li>
+              <li><button data-stage="2"><span>03</span><b>Judge</b><small>Independent review</small></button></li>
+              <li><button data-stage="3"><span>04</span><b>Correct</b><small>Finding → fix</small></button></li>
+              <li><button data-stage="4"><span>05</span><b>Verify</b><small>Evidence</small></button></li>
+              <li><button data-stage="5"><span>06</span><b>Accept</b><small>Human decision</small></button></li>
+            </ol>
+          </div>
+          <div class="flight-controls"><button id="previous-stage" disabled>◀ Previous</button><button id="next-stage">Fly to Generate ▶</button><button id="replay-mission">↻ Replay</button></div>
+        </div>
+
+        <article class="stage-dossier" aria-live="polite">
+          <div class="dossier-label"><span id="stage-code">GATE_01</span><b id="stage-status">REQUIRED</b></div>
+          <h2 id="stage-title">Define the target before asking for code.</h2>
+          <p id="stage-summary">The mission starts with a real problem, constraints, and acceptance criteria. The agent is not allowed to redefine success after seeing its own output.</p>
+          <div class="stage-evidence" id="stage-evidence"></div>
+          <div class="judge-panel" id="judge-panel" hidden>
+            <p>ROLE-SPECIFIC REVIEWERS</p>
+            <div>
+              <button data-judge="domain"><span>DOM</span><b>Domain Judge</b><small>Business invariants</small></button>
+              <button data-judge="security"><span>SEC</span><b>Security Judge</b><small>Trust boundaries</small></button>
+              <button data-judge="tests"><span>TST</span><b>Test Judge</b><small>False confidence</small></button>
+            </div>
+            <aside id="judge-finding">Select a reviewer to inspect its rubric and finding.</aside>
+          </div>
+          <div class="human-stamp" id="human-stamp" hidden><span>HUMAN</span><strong>ACCEPTED</strong><small>Evidence reviewed · responsibility retained</small></div>
+        </article>
+      </div>
+      <footer><span>SCENARIO: PAYMENT RESPONSE CLASSIFICATION</span><span>OUTPUTS ARE SANITIZED · CLAIMS ARE DEMONSTRATED, NOT INFLATED</span></footer>
+    </section>
+
+    <section class="principles" id="principles" aria-labelledby="principles-title">
+      <header><p>FLIGHT MANUAL / WHY THIS LOOP EXISTS</p><h2 id="principles-title">The model is one component.<br>The system earns trust.</h2></header>
+      <div class="principle-grid">
+        <article><span>01</span><h3>Evaluate in context</h3><p>A model is useful only when it works for the application’s intended purpose. Public benchmarks do not replace product-specific criteria and cases.</p></article>
+        <article><span>02</span><h3>Write the guide first</h3><p>Criteria, rubrics, examples, and failure severity are defined before judgment. Otherwise “good” moves whenever the output changes.</p></article>
+        <article><span>03</span><h3>Judge the judges</h3><p>AI reviewers are probabilistic systems. Their prompts, models, agreement with humans, false positives, and misses require evaluation too.</p></article>
+        <article><span>04</span><h3>Keep humans in the loop</h3><p>Automated judges scale review; deterministic tests establish facts; a human owns ambiguity, risk, and the final acceptance decision.</p></article>
+      </div>
+      <aside class="inspiration-note"><div><span>BOOK NOTE</span><strong>Inspired by evaluation principles in Chip Huyen’s <em>AI Engineering</em></strong></div><p>The book covers evaluation methodology, AI-as-a-judge and its limitations, application-specific criteria, and evaluation pipeline design. This interactive flight is Luis’s implementation of those ideas—not a claim that the author prescribed this exact six-stage workflow.</p><div><a href="https://www.oreilly.com/library/view/ai-engineering/9781098166298/ch04.html" target="_blank" rel="noopener">Book chapter ↗</a><a href="https://huyenchip.com/2025/01/16/ai-engineering-pitfalls.html" target="_blank" rel="noopener">Human-evaluation warning ↗</a></div></aside>
+    </section>
+
+    <section class="mission-close"><span>READY FOR ANOTHER MISSION?</span><h2>Reliable AI delivery is a control system, not a prompt trick.</h2><div><a href="../#contact">Contact Luis</a><a href="../">Return to portfolio</a></div></section>
+  </main>
+  <footer class="site-footer"><span>DESIGNED, BUILT & HUMAN-VERIFIED BY LUIS RODRIGUEZ RIVERA</span><span>© <b id="year"></b> · PLAYER 01 RETAINS CONTROL</span></footer>
+</body>
+</html>

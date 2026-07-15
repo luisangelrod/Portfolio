@@ -7,9 +7,9 @@
   <meta name="description" content="Luis Rodriguez Rivera's alternate portfolio: a personal 1995 home page inside a Windows memory desktop.">
   <title>Luis Rodriguez Rivera // Memory Desktop 1995</title>
   <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
-  <link rel="stylesheet" href="desktop.css?v=1">
+  <link rel="stylesheet" href="desktop.css?v=2">
   <script src="https://v8.js-dos.com/latest/js-dos.js" defer></script>
-  <script src="desktop.js?v=1" defer></script>
+  <script src="desktop.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#desktop">Skip to desktop</a>
@@ -36,6 +36,8 @@
       <button class="desktop-icon" data-open="mines"><span class="icon mine-icon">💣</span><b>Minesweeper</b></button>
       <a class="desktop-icon" href="../Luis_Rodriguez_Resume.pdf" target="_blank" rel="noopener"><span class="icon pdf-icon">PDF</span><b>Résumé.pdf</b></a>
       <button class="desktop-icon" data-open="recycle"><span class="icon recycle-icon">♻</span><b>Recycle Bin</b></button>
+      <button class="desktop-icon" data-modern><span class="icon modern-icon">LR</span><b>Modern View</b></button>
+      <a class="desktop-icon" href="../eval-flight/"><span class="icon eval-icon"><i></i><i></i><i></i><i></i><i></i></span><b>Eval Flight</b></a>
     </nav>
 
     <section class="window active-window welcome-window" id="window-welcome" data-app="welcome" style="--x:22%;--y:8%;--w:640px" aria-labelledby="welcome-title">
@@ -53,9 +55,10 @@
           <p class="blink">★ SOFTWARE + AI + HUMAN JUDGMENT ★</p>
           <div class="hero-rule"></div>
           <p>I build production software and operate foundation models as a controlled engineering system. Clear goals go in; reviewed, tested, human-verified work comes out.</p>
-          <div class="web-buttons">
+        <div class="web-buttons">
             <button data-open="internet">[ PROJECTS ]</button>
             <button data-open="computer">[ SKILLS ]</button>
+            <button data-modern>[ MODERN VIEW ]</button>
             <a href="mailto:luisangelrod17@gmail.com">[ EMAIL ME ]</a>
             <a href="https://github.com/luisangelrod" target="_blank" rel="noopener">[ GITHUB ]</a>
           </div>
@@ -146,13 +149,13 @@ github.com/luisangelrod
 
     <div class="start-menu" id="start-menu" hidden>
       <header><span class="avatar">LR</span><strong>Luis Rodriguez Rivera</strong></header>
-      <div class="start-columns"><section><button data-open="internet"><span>🌐</span><b>Internet</b><small>Selected work</small></button><button data-open="notepad"><span>▤</span><b>About Luis</b><small>Notepad</small></button><hr><button data-open="duke"><span>☢</span><b>Duke3D Shareware</b><small>MS-DOS emulator</small></button><button data-open="paint"><span>▨</span><b>Paint</b><small>Make something</small></button><button data-open="mines"><span>💣</span><b>Minesweeper</b><small>Waste time responsibly</small></button></section><aside><button data-open="computer">My Computer</button><a href="../Luis_Rodriguez_Resume.pdf" target="_blank">My Résumé</a><a href="mailto:luisangelrod17@gmail.com">E-mail</a><a href="../">Current Portfolio</a></aside></div>
+        <div class="start-columns"><section><button data-open="internet"><span>🌐</span><b>Internet</b><small>Selected work</small></button><button data-open="notepad"><span>▤</span><b>About Luis</b><small>Notepad</small></button><a class="start-program" href="../eval-flight/"><span>🚀</span><b>Eval Flight</b><small>Evaluation mission</small></a><hr><button data-open="duke"><span>☢</span><b>Duke3D Shareware</b><small>MS-DOS emulator</small></button><button data-open="paint"><span>▨</span><b>Paint</b><small>Make something</small></button><button data-open="mines"><span>💣</span><b>Minesweeper</b><small>Waste time responsibly</small></button></section><aside><button data-open="computer">My Computer</button><a href="../Luis_Rodriguez_Resume.pdf" target="_blank">My Résumé</a><a href="mailto:luisangelrod17@gmail.com">E-mail</a><button data-modern>Modern View</button></aside></div>
       <footer><button id="logoff">🔑 Log Off</button><button id="shutdown">⏻ Turn Off Computer</button></footer>
     </div>
 
     <footer class="taskbar">
       <button class="start-button" id="start-button" aria-expanded="false" aria-controls="start-menu"><span class="windows-mark"><i></i><i></i><i></i><i></i></span><b>start</b></button>
-      <div class="quick-launch"><button data-open="internet" aria-label="Internet">e</button><button data-open="welcome" aria-label="Home">⌂</button></div>
+      <div class="quick-launch"><button data-open="internet" aria-label="Internet">e</button><button data-open="welcome" aria-label="Home">⌂</button><button data-modern aria-label="Return to modern portfolio">LR</button></div>
       <div class="task-buttons" id="task-buttons" aria-label="Open windows"></div>
       <div class="system-tray"><span title="Volume">🔊</span><span title="Network">🖥</span><time id="clock">12:00 PM</time></div>
     </footer>

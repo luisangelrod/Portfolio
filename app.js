@@ -3,6 +3,7 @@
   const body = document.body;
   const crtToggle = document.querySelector('.crt-toggle');
   const nostalgiaToggle = document.querySelector('.nostalgia-toggle');
+  const desktopSwitch = document.querySelector('.desktop-switch');
   const progress = document.querySelector('.page-progress span');
   const navLinks = Array.from(document.querySelectorAll('.topbar nav a'));
   const sections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
@@ -106,6 +107,15 @@
 
   if (nostalgiaToggle) {
     nostalgiaToggle.addEventListener('click', () => setNostalgia(root.dataset.nostalgia !== 'on', true));
+  }
+
+  if (desktopSwitch) {
+    desktopSwitch.addEventListener('click', () => {
+      const overlay = document.getElementById('mode-switch-overlay');
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
+      window.setTimeout(() => { window.location.href = './desktop-1995/'; }, 900);
+    });
   }
 
   [memoryBadge, memoryCardTrigger].filter(Boolean).forEach((trigger) => trigger.addEventListener('click', openMemory));
