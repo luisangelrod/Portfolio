@@ -37,8 +37,8 @@
   }
   </script>
   <link rel="icon" href="img/favicons/favicon.ico">
-  <link rel="stylesheet" href="styles.css?v=6">
-  <script src="app.js?v=3" defer></script>
+  <link rel="stylesheet" href="styles.css?v=7">
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -355,36 +355,46 @@
   </button>
 
   <dialog class="memory-dialog" id="system-memory" aria-labelledby="memory-title">
-    <div class="memory-window" data-memory-skin="pixel">
+    <div class="memory-window">
       <header>
-        <div><span class="memory-logo">LR-16</span><strong id="memory-title">LUIS.OS // SYSTEM MEMORY</strong></div>
+        <div><span class="memory-logo">P3</span><strong id="memory-title">PLAYER 3 // MEMORY CARD</strong></div>
         <button class="memory-close" type="button" aria-label="Close system memory">×</button>
       </header>
-      <div class="memory-toolbar" aria-label="Memory card appearance">
-        <span>DESKTOP SKIN</span>
-        <button type="button" data-skin="pixel" aria-pressed="true">PIXEL 98</button>
-        <button type="button" data-skin="lagoon" aria-pressed="false">LAGOON XP</button>
-        <button type="button" data-skin="aurora" aria-pressed="false">AURORA GLASS</button>
+      <div class="memory-toolbar" aria-label="Memory card status">
+        <span><b>SLOT 01</b> · PERSONAL ARCHIVE</span>
+        <span>BORN 1995</span>
+        <span>YOUNGEST OF THREE</span>
+        <span class="memory-online">● MEMORY ONLINE</span>
       </div>
       <div class="memory-body">
-        <div class="memory-grid" aria-label="1990s inspiration memories">
-          <button type="button" data-memory="neon"><span class="memory-icon neon-icon">CLASSIC</span><small>CHERRY NEON</small></button>
-          <button type="button" data-memory="console"><span class="memory-icon console-icon">LR-16</span><small>16-BIT BOOT</small></button>
-          <button type="button" data-memory="stars"><span class="memory-icon stars-icon">✦✦✦</span><small>STAR PATROL</small></button>
-          <button type="button" data-memory="dots"><span class="memory-icon dots-icon">● · · ·</span><small>DOT RELAY</small></button>
-          <button type="button" data-memory="av"><span class="memory-icon av-icon">A/V</span><small>SYSTEM 1996</small></button>
-          <button type="button" data-memory="prism"><span class="memory-icon prism-icon">◆</span><small>PRISM GUAVA</small></button>
-        </div>
+        <nav class="memory-grid" aria-label="Luis's personal memory archive">
+          <button type="button" data-memory="brothers" aria-pressed="true"><span class="memory-icon brothers-icon"><i>1</i><i>2</i><i>3</i></span><small>00 · PLAYER THREE</small></button>
+          <button type="button" data-memory="playstation" aria-pressed="false"><span class="memory-icon brand-icon ps-icon"><img src="img/memory/playstation-1994.svg" alt=""></span><small>01 · PLAYSTATION</small></button>
+          <button type="button" data-memory="gameboy" aria-pressed="false"><span class="memory-icon brand-icon gameboy-icon"><img src="img/memory/nintendo-1983.svg" alt=""><img src="img/memory/game-boy-logo.svg" alt=""></span><small>02 · GAME BOY</small></button>
+          <button type="button" data-memory="movies" aria-pressed="false"><span class="memory-icon vhs-icon"><i>VHS</i><b>BE KIND<br>REWIND</b></span><small>03 · VIDEO STORE</small></button>
+          <button type="button" data-memory="coke" aria-pressed="false"><span class="memory-icon brand-icon coke-icon"><img src="img/memory/coca-cola-logo.svg" alt=""></span><small>04 · NEON NIGHTS</small></button>
+          <button type="button" data-memory="pc" aria-pressed="false"><span class="memory-icon pc-icon"><i>C:\&gt;_</i><b></b></span><small>05 · BUILD THE PC</small></button>
+        </nav>
         <section class="memory-preview" id="memory-preview" aria-live="polite">
-          <p>MEMORY_01</p>
-          <h2>Software used to feel like a place.</h2>
-          <p>These original easter eggs channel the Coca-Cola Classic neon, Sega-era console graphics, Galaga and Pac-Man arcades, Sony and early Apple design, plus the Windows XP and Vista desktop eras that made technology feel personal.</p>
-          <p class="memory-personal">I still build that way: useful first, carefully engineered, and memorable enough to revisit.</p>
-          <div><a href="./Luis_Rodriguez_Resume.pdf" target="_blank" rel="noopener">Résumé</a><a href="https://github.com/luisangelrod" target="_blank" rel="noopener">GitHub</a><a href="mailto:luisangelrod17@gmail.com">Email</a></div>
-          <small>Original fan-made homages. Referenced trademarks belong to their respective owners; no affiliation or endorsement is implied.</small>
+          <div class="memory-stage" aria-hidden="true">
+            <div class="memory-scene is-active brothers-scene" data-scene="brothers"><span>PORT 1</span><span>PORT 2</span><span class="active">PORT 3</span><strong>THE THIRD CONTROLLER<br>WAS MINE.</strong></div>
+            <div class="memory-scene playstation-scene" data-scene="playstation"><img src="img/memory/playstation-1994.svg" alt=""><span>MEMORY CARD · BLOCK 01</span></div>
+            <div class="memory-scene gameboy-scene" data-scene="gameboy"><div><i>DOT MATRIX<br>WITH STEREO SOUND</i><b>START</b></div><img src="img/memory/nintendo-1983.svg" alt=""><img src="img/memory/game-boy-logo.svg" alt=""></div>
+            <div class="memory-scene movies-scene" data-scene="movies"><span>JURASSIC PARK<small>1993</small></span><span>INDEPENDENCE DAY<small>1996</small></span><span>THE MATRIX<small>1999</small></span><span>TERMINATOR 2<small>1991</small></span></div>
+            <div class="memory-scene coke-scene" data-scene="coke"><div><img src="img/memory/coca-cola-logo.svg" alt=""><span>ICE COLD · AFTER DARK</span></div></div>
+            <div class="memory-scene pc-scene" data-scene="pc"><div class="crt-case"><span>C:\LUIS&gt; BUILD_</span></div><div class="tower-case"><i></i><i></i><b>●</b></div></div>
+          </div>
+          <div class="memory-copy">
+            <p>MEMORY_00 · HOME ERA</p>
+            <h2>The third controller was mine.</h2>
+            <p>Born in 1995 and the youngest of three, I learned games, movies, and computers by watching my older brothers first—then changing the settings, opening the case, and eventually building the machine.</p>
+            <p class="memory-personal">That history still shapes my work: software should feel authored, specific, and worth remembering.</p>
+            <div><a href="./Luis_Rodriguez_Resume.pdf" target="_blank" rel="noopener">Résumé</a><a href="https://github.com/luisangelrod" target="_blank" rel="noopener">GitHub</a><a href="mailto:luisangelrod17@gmail.com">Email</a></div>
+            <small>Personal memory archive. Referenced logos belong to their owners and identify the era; no affiliation or endorsement is implied.</small>
+          </div>
         </section>
       </div>
-      <footer><span>640K PERSONAL MEMORY</span><span>HUMAN VERIFIED</span></footer>
+      <footer><span>SLOT 01 · 06 MEMORY BLOCKS</span><span>BUILT WITH INTENT · HUMAN VERIFIED</span></footer>
     </div>
   </dialog>
 
@@ -394,7 +404,10 @@
 
   <footer class="site-footer">
     <p>DESIGNED & BUILT BY LUIS RODRIGUEZ RIVERA</p>
-    <button class="prism-guava" type="button" aria-label="Open Luis's system memory"><span></span><span></span><span></span><span></span><span></span><span></span></button>
+    <button class="memory-card-trigger" type="button" aria-label="Open Player 3 memory card">
+      <span class="memory-card-shell"><img src="img/memory/playstation-1994.svg" alt=""></span>
+      <span><strong>MEMORY CARD</strong><small>PLAYER 3 · 1995</small></span>
+    </button>
     <p><span>© <span id="year"></span></span> · <button class="credits-trigger" type="button">NO CONTINUES REQUIRED</button></p>
   </footer>
 </body>
