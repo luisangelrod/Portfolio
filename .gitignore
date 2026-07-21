@@ -16,6 +16,10 @@ CLAUDE.md
 .env
 .env.local
 
+# Node / Netlify
+node_modules/
+.netlify/
+
 # Playwright MCP logs
 .playwright-mcp/
 

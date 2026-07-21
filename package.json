@@ -1,0 +1,22 @@
+{
+  "name": "proofloop-agent-review-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ProofLoop: evidence-driven review for agent-written software, powered by GPT-5.6 and human acceptance gates.",
+  "scripts": {
+    "build": "node scripts/check-build.mjs",
+    "test": "node --test",
+    "dev": "netlify dev"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "openai": "^6.48.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "netlify-cli": "^26.2.0"
+  }
+}
