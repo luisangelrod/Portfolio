@@ -355,8 +355,8 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     }
 
     resetRun();
+    const prompt = `Use $proofloop-review to evaluate this supplied evidence.\n\nScenario: ${scenarios[selected].name}\nAcceptance criterion: ${scenarios[selected].acceptance}\n\n${input}`;
     try {
-      const prompt = `Use $proofloop-review to evaluate this supplied evidence.\n\nScenario: ${scenarios[selected].name}\nAcceptance criterion: ${scenarios[selected].acceptance}\n\n${input}`;
       await navigator.clipboard.writeText(prompt);
       setText("run-state", "PROMPT COPIED");
       setText("run-provenance", CODEX_HANDOFF_PROVENANCE);
@@ -364,9 +364,15 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
       appendLog("info", "[COPIED]", "Open Codex in this repository and paste the prompt.");
       appendLog("muted", "[AUTH]", "Choose Sign in with ChatGPT. Do not create, paste, or extract an API key.");
     } catch (error) {
-      setText("run-state", "COPY UNAVAILABLE");
+      reviewInput.value = prompt;
+      updateCount();
       reviewInput.focus();
-      appendLog("fail", "[COPY]", "Clipboard access was blocked. Select the evidence and invoke $proofloop-review in Codex manually.");
+      reviewInput.select();
+      setText("run-state", "PROMPT READY");
+      setText("run-provenance", CODEX_HANDOFF_PROVENANCE);
+      terminal.replaceChildren();
+      appendLog("warn", "[SELECTED]", "Clipboard access was blocked, so the complete Codex prompt is selected in the editor. Press Ctrl+C.");
+      appendLog("muted", "[AUTH]", "Paste it into Codex from this repository using Sign in with ChatGPT.");
     }
   }
 

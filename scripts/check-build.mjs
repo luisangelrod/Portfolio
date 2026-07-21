@@ -23,6 +23,7 @@ const assertions = [
   [page.includes('id="run-live-review"'), "Codex prompt control is missing"],
   [page.includes('id="human-accept"'), "Human decision gate is missing"],
   [client.includes("$proofloop-review"), "Codex subscription workflow is missing"],
+  [client.includes("reviewInput.select()"), "Clipboard fallback is missing"],
   [client.includes("downloadEvidenceReport"), "Evidence export is missing"],
   [skill.includes("name: proofloop-review"), "ProofLoop skill metadata is missing"],
   [skill.includes("EXECUTED"), "Evidence integrity labels are missing"]
