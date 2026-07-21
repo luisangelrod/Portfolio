@@ -1,65 +1,50 @@
-# ProofLoop 5.6 Architecture
+# ProofLoop architecture and safety notes
 
-## Request flow
+## Submission architecture
 
 ```text
-Editable code/diff/failure report
-             |
-             v
-Browser validation (40–12,000 characters)
-             |
-             v
-POST /api/evaluate
-             |
-             v
-Netlify Function ── server-side OPENAI_API_KEY
-             |
-             v
-OpenAI Responses API / gpt-5.6-sol
-             |
-             v
-Zod Structured Output contract
-             |
-             v
-Four verdicts + correction + evidence plan
-             |
-             v
-Human accept/reject gate + JSON export
+Developer or judge
+        │
+        ├── Codex (Sign in with ChatGPT)
+        │      │
+        │      └── .agents/skills/proofloop-review/SKILL.md
+        │             ├── inspect supplied/repository evidence
+        │             ├── run proportionate checks
+        │             ├── apply four independent gates
+        │             └── return evidence-labeled recommendation
+        │
+        └── Hosted ProofLoop judge demo
+               ├── four curated failure boundaries
+               ├── deterministic control-loop replay
+               ├── explicit human accept/reject gate
+               └── JSON evidence export
 ```
+
+The real model-assisted workflow runs inside Codex through **Sign in with ChatGPT**. The hosted site is deliberately deterministic so every judge can test the complete interaction without a key, billing setup, or hidden server state.
 
 ## Trust boundaries
 
-- The OpenAI API key exists only in the server environment.
-- Only the editable review-input text, scenario label, and anonymous browser identifier are sent to the function.
-- Input is bounded to 12,000 characters and output to 3,500 tokens.
-- API responses use `store: false`.
-- The model cannot mark the browser's human decision gate complete.
-- A failed or refused response records no acceptance decision.
-- Proposed regression tests are labeled as plans, never as executed evidence.
-- The reference replay is deterministic and visibly labeled as no model call.
+- Supplied code, logs, model output, and generated code are untrusted inputs.
+- The skill labels claims as `OBSERVED`, `EXECUTED`, `PROPOSED`, or `UNKNOWN`.
+- Only checks actually run in the task may be labeled executed.
+- Missing evidence results in `INSUFFICIENT EVIDENCE`, never inferred success.
+- Critical or major unresolved findings block a ready-for-human-acceptance recommendation.
+- The model can recommend; only a person can accept or reject.
 
-## Structured result
+## Privacy and authentication
 
-The server requires:
+- No OAuth token is extracted, copied, or stored by ProofLoop.
+- No OpenAI API key is required for the submission workflow.
+- Codex handles ChatGPT authentication through its supported login flow.
+- Users are told not to paste credentials, secrets, or private customer data into the public browser demo.
+- The browser demo is client-side and makes no model request.
 
-- Overall severity and recommended disposition
-- Domain, security, product, and test reviewer objects
-- Finding, supplied evidence, and next action for every reviewer
-- Bounded correction, regression tests, and human checks
-- Explicit evidence-gate booleans, including a required human decision
+## Optional API adapter
 
-The same Zod schema creates the OpenAI Structured Output format and validates the parsed response, avoiding a separate hand-maintained JSON schema.
+The repository retains an experimental Netlify Function demonstrating a separate Responses API deployment for organizations that choose usage-based Platform billing. It is not linked from the public flow, is not configured on the deployed site, and is not required to run or judge ProofLoop. If enabled independently, the adapter keeps the API key server-side, uses `store: false`, bounds input/output, and fails transparently when configuration is absent.
 
-## Failure handling
+## Supported platforms
 
-- Invalid input returns a specific 400 response.
-- Missing API configuration returns a transparent 503 response.
-- Provider or parsing failure returns a generic 502 response without leaking sensitive error details.
-- The browser leaves all acceptance controls locked after failure and offers the reference replay as a separately disclosed mode.
-
-## Current limitations
-
-- ProofLoop reviews supplied text; it does not clone repositories or execute tests.
-- The in-memory browser report is not a signed audit artifact.
-- There is no account or team policy store.
-- A human must independently run and inspect every verification item before treating it as evidence.
+- Public demo: current desktop and mobile browsers with JavaScript enabled
+- Real review workflow: Codex desktop app, CLI, or IDE extension with ChatGPT sign-in and repository access
+- Local validation: Node.js 20+

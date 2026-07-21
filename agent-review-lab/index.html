@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07050d">
-  <meta name="description" content="ProofLoop uses GPT-5.6, structured review roles, deterministic evidence gates, and human sign-off to evaluate agent-written software.">
+  <meta name="description" content="ProofLoop is a subscription-native Codex skill and deterministic judge demo for evidence-first review of agent-written software.">
   <title>ProofLoop 5.6 // Make agent-written code earn acceptance</title>
   <link rel="canonical" href="https://luisrodriguezdev.netlify.app/agent-review-lab/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="ProofLoop 5.6 // Agent Review Lab">
-  <meta property="og:description" content="A working acceptance loop for agent-written software: GPT-5.6 review, traceable findings, regression evidence, and human sign-off.">
+  <meta property="og:description" content="A Codex-native acceptance loop for agent-written software: GPT-5.6 review, traceable findings, regression evidence, and human sign-off.">
   <meta property="og:url" content="https://luisrodriguezdev.netlify.app/agent-review-lab/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="../img/favicons/favicon.ico">
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <script src="app.js" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#lab">Skip to lab</a>
   <header class="lab-header">
     <a class="back-link" href="../"><span aria-hidden="true">←</span> Portfolio</a>
     <div class="lab-brand"><span>LR</span><strong>PROOFLOOP // AGENT REVIEW LAB</strong></div>
-    <p><i></i> GPT-5.6 LIVE</p>
+    <p><i></i> CODEX SUBSCRIPTION READY</p>
   </header>
 
   <main id="lab">
@@ -29,7 +29,7 @@
       <div class="hero-copy">
         <p class="eyebrow">OPENAI BUILD WEEK / DEVELOPER TOOLS</p>
         <h1 id="page-title">Make agent-written code <span>earn</span> acceptance.</h1>
-        <p class="lede">ProofLoop turns a code diff or failure report into independent GPT‑5.6 review, a bounded correction plan, regression evidence, and a final decision that only a human can make.</p>
+        <p class="lede">ProofLoop turns a code diff or failure report into independent GPT‑5.6 review in Codex, a bounded correction plan, regression evidence, and a final decision that only a human can make—without an API key.</p>
         <div class="hero-actions">
           <a href="#review-input-section" class="primary-link">Run a review <span aria-hidden="true">↓</span></a>
           <a href="#how-it-works" class="secondary-link">Inspect the control loop</a>
@@ -38,7 +38,7 @@
       <aside class="system-card" aria-label="ProofLoop system contract">
         <div class="system-card-top"><span>ACCEPTANCE.CONTRACT</span><b>READY</b></div>
         <ol>
-          <li><span>01</span><div><strong>GPT‑5.6 Sol</strong><small>Reasoned review</small></div><b>LIVE</b></li>
+          <li><span>01</span><div><strong>GPT‑5.6 in Codex</strong><small>Subscription-native review</small></div><b>READY</b></li>
           <li><span>02</span><div><strong>Structured outputs</strong><small>Schema-bound verdicts</small></div><b>VALID</b></li>
           <li><span>03</span><div><strong>Evidence gates</strong><small>No invented test claims</small></div><b>TRACE</b></li>
           <li><span>04</span><div><strong>Human decision</strong><small>Acceptance never automated</small></div><b>LOCKED</b></li>
@@ -98,7 +98,7 @@
       <div class="run-console">
         <ol class="pipeline" aria-label="Evaluation stages">
           <li data-stage="brief"><span>1</span><strong>Bound</strong><small>Goal + evidence</small></li>
-          <li data-stage="review"><span>2</span><strong>Review</strong><small>GPT‑5.6 panel</small></li>
+          <li data-stage="review"><span>2</span><strong>Review</strong><small>Codex panel</small></li>
           <li data-stage="fix"><span>3</span><strong>Correct</strong><small>Findings → plan</small></li>
           <li data-stage="test"><span>4</span><strong>Gate</strong><small>Regression evidence</small></li>
           <li data-stage="verify"><span>5</span><strong>Decide</strong><small>Human sign-off</small></li>
@@ -107,13 +107,13 @@
           <div class="terminal" aria-live="polite" aria-atomic="false">
             <div class="terminal-top"><span>evaluation.log</span><i></i><i></i><i></i></div>
             <div id="terminal-output">
-              <p><b>READY</b> Evidence loaded. Run GPT‑5.6 or replay the reference evaluation.</p>
-              <p class="muted">A live run sends only the text in the review input to the server-side OpenAI API.</p>
+              <p><b>READY</b> Evidence loaded. Copy the prompt into Codex or run the judge demo.</p>
+              <p class="muted">The repo-scoped $proofloop-review skill uses your Codex subscription; no API key is required.</p>
             </div>
           </div>
           <div class="run-controls">
-            <button class="run-button" id="run-live-review" type="button"><span aria-hidden="true">▶</span> Run GPT‑5.6 review</button>
-            <button class="replay-button" id="run-reference-review" type="button">Replay reference review</button>
+            <button class="run-button" id="run-live-review" type="button"><span aria-hidden="true">⧉</span> Copy Codex review prompt</button>
+            <button class="replay-button" id="run-reference-review" type="button">Run judge demo</button>
             <button class="reset-button" id="reset-review" type="button">Reset</button>
             <p><span id="run-state">WAITING</span><small id="run-progress">0 / 5 gates complete</small></p>
             <div class="run-provenance" id="run-provenance">MODE / NOT STARTED</div>
@@ -178,7 +178,7 @@
         <h2>Reliable AI engineering is a control system.</h2>
       </div>
       <div>
-        <p><strong>GPT‑5.6 provides judgment.</strong> Four review roles return schema-bound findings, evidence, and recommendations through the Responses API.</p>
+        <p><strong>GPT‑5.6 in Codex provides judgment.</strong> The repo-scoped <code>$proofloop-review</code> skill runs four evidence-labeled review gates through a ChatGPT subscription—no API key or runtime API charge required.</p>
         <p><strong>ProofLoop provides constraints.</strong> It limits supplied context, refuses to invent executed tests, makes evidence gaps visible, and preserves the human acceptance boundary.</p>
         <p><strong>Codex provides the build trace.</strong> The working product, tests, documentation, and submission materials were completed as one bounded Build Week implementation.</p>
         <a href="https://github.com/luisangelrod/Portfolio">Inspect the source repository <span aria-hidden="true">→</span></a>
@@ -188,7 +188,7 @@
 
   <footer>
     <p>CONCEPT, CODE & HUMAN VERIFICATION · LUIS RODRIGUEZ RIVERA</p>
-    <p>GPT‑5.6 SOL · STRUCTURED OUTPUTS · HUMAN SIGN-OFF</p>
+    <p>GPT‑5.6 IN CODEX · EVIDENCE GATES · HUMAN SIGN-OFF</p>
   </footer>
 </body>
 </html>

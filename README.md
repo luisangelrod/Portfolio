@@ -1,60 +1,65 @@
 # ProofLoop 5.6 + Luis Rodriguez Rivera Portfolio
 
-ProofLoop is an evidence-driven review system for agent-written software. It uses GPT‑5.6 Sol to produce schema-bound domain, security, product, and test verdicts, then keeps proposed corrections, regression evidence, and final human acceptance visibly separate.
+ProofLoop is an evidence-first acceptance workflow for agent-written software. It combines a repo-scoped Codex skill powered through a ChatGPT subscription with a zero-setup browser demonstration of the same domain, security, product, test, and human-decision gates.
 
-- Live portfolio: <https://luisrodriguezdev.netlify.app>
-- ProofLoop: <https://luisrodriguezdev.netlify.app/agent-review-lab/>
-- Build Week track: **Developer Tools**
+- Live project: <https://luisrodriguezdev.netlify.app/agent-review-lab/>
+- Source: <https://github.com/luisangelrod/Portfolio>
+- OpenAI Build Week track: **Developer Tools**
 
 ## Why ProofLoop exists
 
-Coding agents can generate a plausible implementation before anyone has proved that the business rules, tenant boundaries, failure states, or regression coverage are correct. ProofLoop adds the control loop after generation:
+Coding agents can produce a plausible implementation before anyone has proved that its business rules, tenant boundaries, failure states, or regression coverage are correct. ProofLoop adds the control loop after generation:
 
 1. Bound the goal and supplied evidence.
-2. Ask independent GPT‑5.6 review roles for structured verdicts.
-3. Convert findings into a bounded correction plan.
-4. Keep proposed tests distinct from executed evidence.
-5. Require a human accept/reject decision.
+2. Apply independent domain, security, product, and test review gates.
+3. Label claims as observed, executed, proposed, or unknown.
+4. Convert findings into a bounded correction and regression plan.
+5. Reserve the final accept/reject decision for a human.
 
-The interface also includes a clearly labeled deterministic reference replay. It keeps the product demonstrable when an API is unavailable without presenting canned results as a live model call.
+## Use it with a ChatGPT subscription
 
-## OpenAI implementation
+No OpenAI API key is required.
 
-- OpenAI Responses API
-- `gpt-5.6-sol` with explicit `medium` reasoning effort
-- Structured Outputs through the official JavaScript SDK, Zod, and `zodTextFormat`
-- Server-side API key handling in a Netlify Function
-- Anonymous, browser-generated safety identifier
-- `store: false`, bounded input length, bounded output tokens, and no automatic acceptance
+1. Install the current [Codex CLI](https://learn.chatgpt.com/docs/codex-cli).
+2. Run `codex login` and choose **Sign in with ChatGPT**.
+3. Clone this repository and start Codex from the repository root.
+4. Invoke the checked-in skill:
 
-## Run locally
+```text
+$proofloop-review review this diff and decide whether it is ready for human acceptance
+```
 
-Requirements: Node.js 20+ and an OpenAI API key with GPT‑5.6 access.
+Codex discovers the skill at `.agents/skills/proofloop-review/SKILL.md`. It inspects relevant source and tests, runs proportionate checks, cites evidence, and separates executed verification from proposed work.
+
+## Judge test path (under one minute)
+
+1. Open the [live ProofLoop lab](https://luisrodriguezdev.netlify.app/agent-review-lab/).
+2. Choose any of the four failure boundaries.
+3. Select **Run judge demo**.
+4. Inspect the four verdicts, correction plan, and regression evidence.
+5. Make the required human decision and download the JSON evidence report.
+
+To test the real GPT‑5.6 workflow, select **Copy Codex review prompt** and paste it into Codex from this repository. The browser demo is explicitly labeled as curated evidence and never pretends to be a live model response.
+
+## Technical design
+
+- Repo-scoped Codex skill for the subscription-native GPT‑5.6 workflow
+- Semantic HTML, modern CSS, and vanilla JavaScript for the hosted judge demo
+- Four curated regression scenarios with deterministic evidence output
+- Keyboard-accessible tabs, reduced-motion support, human decision lock, and JSON export
+- Optional server-side Responses API adapter retained for teams that separately choose API billing; it is not enabled or required by the public submission
+
+## Validate locally
+
+Requirements: Node.js 20+. No credential is needed for the public demo.
 
 ```bash
 npm install
-copy .env.example .env
-# Add OPENAI_API_KEY to .env
-npm run dev
-```
-
-Netlify Dev serves the static portfolio and the `/api/evaluate` function together.
-
-## Validate
-
-```bash
 npm test
 npm run build
 ```
 
-## Deploy
-
-Configure these environment variables in Netlify:
-
-- `OPENAI_API_KEY` — required for live reviews
-- `OPENAI_MODEL` — optional; defaults to `gpt-5.6-sol`
-
-Then deploy the repository with `netlify.toml` at the repository root.
+For local hosting, run `npm run dev`. The static site is also deployable directly with `netlify.toml`.
 
 ## Submission materials
 

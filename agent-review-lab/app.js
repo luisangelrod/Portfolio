@@ -1,3 +1,5 @@
+import { CODEX_HANDOFF_PROVENANCE, evaluationLanguage } from "./provenance.mjs";
+
 (function () {
   const scenarios = {
     payment: {
@@ -192,21 +194,6 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     setText("input-count", reviewInput.value.length.toLocaleString());
   }
 
-  function getSafetyIdentifier() {
-    try {
-      const key = "proofloop-anonymous-id";
-      let value = localStorage.getItem(key);
-      if (!value) {
-        const id = window.crypto?.randomUUID?.() || Math.random().toString(36).slice(2) + Date.now().toString(36);
-        value = `proofloop_${id}`;
-        localStorage.setItem(key, value);
-      }
-      return value;
-    } catch {
-      return `proofloop_${Math.random().toString(36).slice(2)}${Date.now().toString(36)}`;
-    }
-  }
-
   function appendLog(className, label, message) {
     const line = document.createElement("p");
     if (className) line.className = className;
@@ -254,8 +241,8 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     setText("run-progress", "0 / 5 gates complete");
     setText("run-provenance", "MODE / NOT STARTED");
     terminal.replaceChildren();
-    appendLog("", "READY", options.reason || "Evidence loaded. Run GPT‑5.6 or replay the reference evaluation.");
-    appendLog("muted", "PRIVACY", "A live run sends only the review-input text to the server-side OpenAI API.");
+    appendLog("", "READY", options.reason || "Evidence loaded. Copy the review prompt into Codex or run the judge demo.");
+    appendLog("muted", "AUTH", "The repo-scoped $proofloop-review skill uses Codex subscription access; no API key is required.");
     stageItems.forEach((stage) => stage.classList.remove("active", "done"));
     resetCards();
     setText("fix-title", "Run a review to reveal the correction plan.");
@@ -306,14 +293,15 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     });
   }
 
-  function renderEvidence(evaluation) {
+  function renderEvidence(evaluation, mode) {
+    const language = evaluationLanguage(mode);
     setText("fix-title", evaluation.proposedFix.title);
     setText("fix-copy", evaluation.proposedFix.rationale);
     replaceList("change-list", evaluation.proposedFix.changes);
     replaceList("test-list", evaluation.proposedFix.regressionTests);
     replaceList("human-list", evaluation.proposedFix.humanChecks);
     document.querySelector(".evidence-layout").classList.add("complete");
-    setText("decision-title", `MODEL RECOMMENDATION / ${evaluation.decision}`);
+    setText("decision-title", `${language.recommendationLabel} / ${evaluation.decision}`);
     setText("decision-summary", evaluation.summary);
   }
 
@@ -322,15 +310,16 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
   }
 
   async function finishEvaluation(evaluation, meta) {
+    const language = evaluationLanguage(meta.mode);
     setStage(1, 0);
-    appendLog("info", "[REVIEW]", `Four schema-bound verdicts returned. Overall severity: ${evaluation.overallSeverity}.`);
+    appendLog("info", "[REVIEW]", `${language.reviewLog}. Overall severity: ${evaluation.overallSeverity}.`);
     renderVerdicts(evaluation);
     setText("run-progress", "2 / 5 gates complete");
     await briefPause();
 
     setStage(2, 1);
     appendLog("warn", "[CORRECT]", evaluation.proposedFix.title);
-    renderEvidence(evaluation);
+    renderEvidence(evaluation, meta.mode);
     setText("run-progress", "3 / 5 gates complete");
     await briefPause();
 
@@ -344,7 +333,7 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     currentRun = { evaluation, meta, scenario: scenarios[selected].name, reviewInput: reviewInput.value };
     setStage(4, 3);
     setText("run-state", "HUMAN REQUIRED");
-    appendLog("", "[HUMAN]", "Model recommendation recorded. Acceptance remains locked until a person decides.");
+    appendLog("", "[HUMAN]", `${language.humanLog}. Acceptance remains locked until a person decides.`);
     acceptButton.disabled = false;
     rejectButton.disabled = false;
     downloadButton.disabled = false;
@@ -353,11 +342,11 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     rejectButton.disabled = false;
     downloadButton.disabled = false;
 
-    const modelLabel = meta.mode === "live" ? `${meta.model} / ${meta.responseId}` : "REFERENCE REPLAY / NO MODEL CALL";
+    const modelLabel = meta.mode === "live" ? `${meta.model} / ${meta.responseId}` : "JUDGE DEMO / CURATED EVIDENCE";
     setText("run-provenance", modelLabel);
   }
 
-  async function runLiveReview() {
+  async function copyCodexPrompt() {
     const input = reviewInput.value.trim();
     if (input.length < 40) {
       reviewInput.focus();
@@ -366,34 +355,18 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     }
 
     resetRun();
-    setBusy(true);
-    terminal.replaceChildren();
-    setText("run-state", "RUNNING GPT‑5.6");
-    setText("run-provenance", "MODE / LIVE RESPONSES API");
-    setStage(0, -1);
-    appendLog("info", "[BOUND]", `${input.length.toLocaleString()} characters loaded with explicit acceptance evidence.`);
-    setText("run-progress", "1 / 5 gates complete");
-
     try {
-      const response = await fetch("/api/evaluate", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          scenario: scenarios[selected].name,
-          reviewInput: input,
-          safetyIdentifier: getSafetyIdentifier()
-        })
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(payload.error?.message || `Evaluation failed with status ${response.status}.`);
-      await finishEvaluation(payload.evaluation, { mode: "live", ...payload.meta });
+      const prompt = `Use $proofloop-review to evaluate this supplied evidence.\n\nScenario: ${scenarios[selected].name}\nAcceptance criterion: ${scenarios[selected].acceptance}\n\n${input}`;
+      await navigator.clipboard.writeText(prompt);
+      setText("run-state", "PROMPT COPIED");
+      setText("run-provenance", CODEX_HANDOFF_PROVENANCE);
+      terminal.replaceChildren();
+      appendLog("info", "[COPIED]", "Open Codex in this repository and paste the prompt.");
+      appendLog("muted", "[AUTH]", "Choose Sign in with ChatGPT. Do not create, paste, or extract an API key.");
     } catch (error) {
-      setBusy(false);
-      stageItems.forEach((stage) => stage.classList.remove("active"));
-      setText("run-state", "LIVE RUN FAILED");
-      setText("run-provenance", "MODE / LIVE ERROR");
-      appendLog("fail", "[STOP]", error.message || "The live review could not complete.");
-      appendLog("muted", "[SAFE]", "No acceptance decision was recorded. The reference replay remains available.");
+      setText("run-state", "COPY UNAVAILABLE");
+      reviewInput.focus();
+      appendLog("fail", "[COPY]", "Clipboard access was blocked. Select the evidence and invoke $proofloop-review in Codex manually.");
     }
   }
 
@@ -408,11 +381,11 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     resetRun();
     setBusy(true);
     terminal.replaceChildren();
-    setText("run-state", "REFERENCE REPLAY");
-    setText("run-provenance", "MODE / REFERENCE · NO MODEL CALL");
+    setText("run-state", "JUDGE DEMO");
+    setText("run-provenance", "MODE / CURATED EVIDENCE");
     setStage(0, -1);
-    appendLog("info", "[BOUND]", "Curated scenario loaded for a deterministic workflow replay.");
-    appendLog("muted", "[DISCLOSE]", "This run does not call GPT‑5.6 and is labeled separately from live output.");
+    appendLog("info", "[BOUND]", "Curated scenario loaded for a deterministic, zero-setup workflow demonstration.");
+    appendLog("muted", "[DISCLOSE]", "This browser demo uses curated evidence. Actual reviews run via $proofloop-review in Codex.");
     setText("run-progress", "1 / 5 gates complete");
     await briefPause();
     await finishEvaluation(scenarios[selected].reference, {
@@ -433,7 +406,8 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     stageItems.forEach((stage) => { stage.classList.remove("active"); stage.classList.add("done"); });
     setText("run-state", decision === "ACCEPTED" ? "ACCEPTED BY HUMAN" : "REJECTED BY HUMAN");
     setText("run-progress", "5 / 5 gates complete");
-    appendLog(decision === "ACCEPTED" ? "" : "fail", "[DECISION]", `${decision} by human review. Model recommendation was ${currentRun.evaluation.decision}.`);
+    const language = evaluationLanguage(currentRun.meta.mode);
+    appendLog(decision === "ACCEPTED" ? "" : "fail", "[DECISION]", `${decision} by human review. ${language.decisionSource} was ${currentRun.evaluation.decision}.`);
     const stamp = document.getElementById("decision-stamp");
     stamp.className = `decision-stamp ${decision === "ACCEPTED" ? "accepted" : "rejected"}`;
     stamp.querySelector("span").textContent = decision;
@@ -489,7 +463,7 @@ Failure evidence: When the upstream NWS request times out, the UI renders "No ac
     updateCount();
     if (currentRun) resetRun({ reason: "Input changed. Previous findings were invalidated." });
   });
-  liveButton.addEventListener("click", runLiveReview);
+  liveButton.addEventListener("click", copyCodexPrompt);
   replayButton.addEventListener("click", runReferenceReview);
   resetButton.addEventListener("click", () => resetRun());
   acceptButton.addEventListener("click", () => recordHumanDecision("ACCEPTED"));

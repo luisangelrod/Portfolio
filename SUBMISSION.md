@@ -20,37 +20,38 @@
 
 Coding agents are good at producing a plausible first implementation. The harder production question is what happens next: Who checks the business invariant? Who tests the tenant boundary? Who catches a reassuring failure state? What evidence is required before a human accepts the work?
 
-ProofLoop packages the evaluation-driven workflow I use professionally into a working developer tool.
+ProofLoop packages the evaluation-driven workflow I use professionally into a reusable Codex developer tool.
 
 ## What it does
 
-Users choose a sanitized failure scenario or paste their own code, diff, or failure report. ProofLoop sends only that supplied text to GPT‑5.6 Sol and renders four structured review perspectives:
+ProofLoop has two honest, complementary surfaces:
 
-- Domain correctness
-- Security and tenancy
-- Product behavior and accessibility
-- Tests and regression evidence
+- A checked-in `$proofloop-review` Codex skill performs real GPT‑5.6 review through the user's ChatGPT subscription. It inspects the repository, runs proportionate checks, cites file evidence, and returns independent Domain, Security, Product, and Tests verdicts.
+- A public, zero-setup browser demo lets judges explore four curated failure boundaries, trace the same review contract, make the required human decision, and export the evidence record as JSON.
 
-The model returns traceable findings, evidence, recommendations, and a bounded correction plan. ProofLoop then exposes the regression plan and human verification checklist without falsely claiming that proposed tests were executed. The fifth gate stays locked until a person explicitly accepts or rejects the result. Users can export the full evidence record as JSON.
+Every important claim is labeled as observed, executed, proposed, or unknown. Proposed tests are never presented as executed, and the fifth gate stays locked until a person explicitly accepts or rejects the result.
 
 ## How it was built
 
-The frontend uses semantic HTML, modern CSS, and vanilla JavaScript. A Netlify Function calls the OpenAI Responses API with `gpt-5.6-sol`, explicit medium reasoning, and Structured Outputs generated from a Zod schema. The function bounds input and output, keeps the API key server-side, disables response storage, handles refusals and failures without recording acceptance, and returns token usage plus response provenance for the evidence report.
+The reusable workflow lives in `.agents/skills/proofloop-review/SKILL.md`, so Codex discovers it automatically when launched from the repository. It works with **Sign in with ChatGPT** and does not require an OpenAI API key.
 
-Codex was used to inspect the existing deterministic ProofLoop work sample, redesign it as a live developer tool, implement the GPT‑5.6 integration, create validation tests, preserve accessible keyboard behavior, verify the deployed interaction, and prepare the submission and demo materials.
+The hosted judge experience uses semantic HTML, modern CSS, and vanilla JavaScript. It contains deterministic reference evidence rather than pretending that the deployment made a live model call. An optional server-side Responses API adapter remains in the repository for teams that separately choose API billing, but it is not enabled or required for this submission.
+
+Codex with GPT‑5.6 was used meaningfully to inspect the earlier portfolio work sample, redesign ProofLoop as a reusable developer workflow, implement the interface and skill, create validation tests, preserve accessible keyboard behavior, verify the deployment, and prepare the submission materials.
 
 ## Challenges
 
-The central challenge was not asking a model for “a code review.” It was creating an honest boundary between model judgment, deterministic product constraints, proposed regression checks, and evidence that a human still needs to collect. The interface must remain useful during an API failure without passing a canned result off as live output, so reference replay and live GPT‑5.6 review are visibly distinct modes.
+The core challenge was not prompting a model for “a code review.” It was defining an honest boundary between model judgment, deterministic product constraints, executed verification, proposed regression checks, and evidence that a human still needs to collect. The second challenge was making the project judgeable without requiring anyone to provision an API key.
 
 ## Accomplishments
 
-- One structured contract across four independent review roles
-- Evidence and recommendations remain traceable to supplied input
-- Proposed tests are never displayed as executed tests
-- Live and deterministic modes are explicitly labeled
-- Human acceptance cannot be automated by the model response
-- Exportable run provenance, findings, usage, evidence plan, and human decision
+- Subscription-native GPT‑5.6 workflow with no extracted OAuth token or API key
+- One reusable contract across four independent review gates
+- Findings and recommendations traceable to supplied or repository evidence
+- Executed checks kept visibly separate from proposed tests
+- Zero-setup deterministic judge path that never impersonates a live model run
+- Human acceptance cannot be automated by model output
+- Exportable findings, evidence plan, provenance, and human decision
 
 ## What is next
 
@@ -58,15 +59,17 @@ The central challenge was not asking a model for “a code review.” It was cre
 - Attach CI results and coverage artifacts as verified evidence
 - Add organization-specific review policies and acceptance criteria
 - Compare reviewer consistency across a maintained evaluation set
-- Write signed evidence reports back to a pull request or ticket
+- Optionally write signed evidence reports back to a pull request or ticket
 
 ## Final submission checklist
 
-- [ ] Deploy with `OPENAI_API_KEY` configured
-- [ ] Run one live GPT‑5.6 review and confirm response provenance
+- [x] Deploy a working, zero-setup public judge demo
+- [x] Publish the repo-scoped Codex skill and installation instructions
+- [x] Document how Codex and GPT‑5.6 were used
+- [x] Provide an easy judge test path and supported platform details
 - [ ] Record and upload the public demo video under three minutes
 - [ ] Add the YouTube URL above and in Devpost
 - [ ] Run `/feedback` in the primary Codex build task
 - [ ] Add the returned session ID above and in Devpost
-- [ ] Confirm repository visibility or share a private repository with the judging addresses
-- [ ] Submit before the Devpost deadline
+- [ ] Complete the Devpost account profile fields
+- [ ] Submit before July 21, 2026 at 5:00 PM PDT

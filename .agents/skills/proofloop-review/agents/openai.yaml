@@ -1,0 +1,4 @@
+interface:
+  display_name: "ProofLoop Review"
+  short_description: "Review software with evidence-first gates"
+  default_prompt: "Use $proofloop-review to evaluate this change and produce an evidence-backed acceptance report."
