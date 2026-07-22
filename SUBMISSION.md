@@ -14,7 +14,7 @@
 
 **Demo video:** _Add the public YouTube URL after recording._
 
-**Codex `/feedback` session ID:** _Add the session ID from the Codex task that produced this Build Week implementation._
+**Codex `/feedback` session ID:** `019f8485-3fc1-78b0-84b0-4170d8b5d0ca`
 
 ## Inspiration
 
@@ -69,7 +69,7 @@ The core challenge was not prompting a model for “a code review.” It was def
 - [x] Provide an easy judge test path and supported platform details
 - [ ] Record and upload the public demo video under three minutes
 - [ ] Add the YouTube URL above and in Devpost
-- [ ] Run `/feedback` in the primary Codex build task
-- [ ] Add the returned session ID above and in Devpost
+- [x] Identify the primary Codex build task session ID
+- [x] Add the session ID above for Devpost
 - [ ] Complete the Devpost account profile fields
 - [ ] Submit before July 21, 2026 at 5:00 PM PDT

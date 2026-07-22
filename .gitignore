@@ -26,6 +26,7 @@ node_modules/
 # Test artifacts
 test-results/
 .chrome-headless/
+submission-assets/
 
 # Dev screenshots (root-level previews)
 *.png
