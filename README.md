@@ -49,6 +49,13 @@ To test the real GPT‑5.6 workflow, select **Copy Codex review prompt** and pas
 - Keyboard-accessible tabs, reduced-motion support, human decision lock, and JSON export
 - Optional server-side Responses API adapter retained for teams that separately choose API billing; it is not enabled or required by the public submission
 
+## Accessibility
+
+`styles-a11y.css` carries additive accessibility overrides, loaded after `styles.css`:
+
+- `body { min-width: 280px }` so the layout reflows below a 320px viewport (WCAG 1.4.10)
+- A `forced-colors: active` block that restores the hero and credits headings, which are drawn with a transparent fill plus a text stroke and would otherwise render invisible in Windows High Contrast mode
+
 ## Validate locally
 
 Requirements: Node.js 20+. No credential is needed for the public demo.
@@ -77,4 +84,4 @@ For local hosting, run `npm run dev`. The static site is also deployable directl
 
 ## Author
 
-Luis Rodriguez Rivera — [GitHub](https://github.com/luisangelrod) · [LinkedIn](https://www.linkedin.com/in/luis-rodriguez-515858bb/) · [Email](mailto:luisangelrod17@gmail.com)
+Luis Rodriguez Rivera — [GitHub](https://github.com/luisangelrod) · [LinkedIn](https://www.linkedin.com/in/luisrodriguez515) · [Email](mailto:luisangelrod17@gmail.com)

@@ -1,0 +1,40 @@
+/* ==========================================================================
+   styles-a11y.css — accessibility hardening
+   Additive overrides. Loaded AFTER styles.css so plain (non-!important)
+   declarations win on cascade order alone. Nothing here changes the visual
+   design in a default browser; both rules only take effect in edge cases.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Allow reflow below a 320px viewport.
+
+   styles.css sets `body { min-width: 320px }`, so at a 304px viewport the
+   document renders 320px wide and the page scrolls horizontally. Affects the
+   Galaxy Fold cover screen and small phones at 200% zoom (WCAG 1.4.10 Reflow).
+   -------------------------------------------------------------------------- */
+body {
+  min-width: 280px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Restore text in Windows High Contrast / forced-colors mode.
+
+   The hero headline and the credits name are drawn with a transparent fill
+   plus a -webkit-text-stroke outline. forced-colors mode discards the stroke
+   and the text shadow, leaving transparent text on a solid background — i.e.
+   the name and the tagline both disappeared entirely.
+
+   Restoring an explicit system color keeps them readable. CanvasText is a CSS
+   system color, so it follows whichever contrast theme the user has chosen.
+   -------------------------------------------------------------------------- */
+@media (forced-colors: active) {
+  #hero-title,
+  #hero-title span,
+  .credits-overlay h2,
+  .kicker span {
+    color: CanvasText;
+    -webkit-text-fill-color: CanvasText;
+    -webkit-text-stroke: 0;
+    text-shadow: none;
+  }
+}
