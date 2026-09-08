@@ -1,0 +1,11 @@
+CC0 1.0 Universal
+
+The original procedural geometry, vertex colors, asset metadata, and generator source in this directory are dedicated to the public domain under CC0 1.0 Universal.
+
+To the extent possible under law, the author has waived all copyright and related or neighboring rights to these original educational assets. You may copy, modify, distribute, and use them, including commercially, without asking permission or providing attribution.
+
+Full legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+This dedication covers the original files in this directory. Three.js is a separate MIT-licensed dependency and is not redistributed here.
+
+The assets are provided without warranty. They are simplified, unbranded educational representations, not manufacturing drawings, electrical schematics, calibrated thermal models, or representations of a commercial computer.

@@ -1,0 +1,111 @@
+{
+  "retrieved_at_utc": "2026-09-06T17:29:24.861186+00:00",
+  "publisher": "Poly Haven",
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "api_terms_url": "https://github.com/Poly-Haven/Public-API/blob/master/ToS.md",
+  "discovery": "Published Poly Haven API files endpoint; user agent LuisPortfolio-RelayAssetStudy/1.0. Powered by Poly Haven. No ongoing runtime API dependency.",
+  "assets": [
+    {
+      "path": "fern_02/fern_02_1k.gltf",
+      "asset": "fern_02",
+      "source_page": "https://polyhaven.com/a/fern_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/fern_02/fern_02_1k.gltf",
+      "bytes": 6899,
+      "md5": "cf276874d37bfb73c299504a6b355b77",
+      "sha256": "33974295ee19670af4877705fc7d91f33f42d6302f0d44a625e072271223031f",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "fern_02/textures/fern_02_arm_1k.jpg",
+      "asset": "fern_02",
+      "source_page": "https://polyhaven.com/a/fern_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_arm_1k.jpg",
+      "bytes": 280359,
+      "md5": "1bbb2b22951f450720d28e17d93a2987",
+      "sha256": "ebfb5d76ce9cbdaec20bcd22dce9b755f0b1b8650ef29ca13555e3e6961025d7",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "fern_02/textures/fern_02_diff_1k.jpg",
+      "asset": "fern_02",
+      "source_page": "https://polyhaven.com/a/fern_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_diff_1k.jpg",
+      "bytes": 315705,
+      "md5": "82c18a6cfd5ae91c37c0e078f591181c",
+      "sha256": "a828a6e7b4c01c826911e2eac4b3afc7457dab7b3b392a31c681ed88b7d50029",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "fern_02/textures/fern_02_nor_gl_1k.jpg",
+      "asset": "fern_02",
+      "source_page": "https://polyhaven.com/a/fern_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/fern_02/fern_02_nor_gl_1k.jpg",
+      "bytes": 367222,
+      "md5": "43aed63dff79554f6064627515afd9d7",
+      "sha256": "45bce132c6e96a0864bc89ab5da51361ab3f4afa83a6669ae499ab5ca811f621",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "fern_02/fern_02.bin",
+      "asset": "fern_02",
+      "source_page": "https://polyhaven.com/a/fern_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/fern_02/fern_02.bin",
+      "bytes": 176176,
+      "md5": "c061e9255f7d36ae9ce0e92ef3e100b2",
+      "sha256": "fe1abb762bcbbc7ad9e86925c8080437a62add257d9280e9142fdc85c226e64c",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "fern_02/textures/fern_02_alpha_1k.png",
+      "asset": "fern_02",
+      "source_page": "https://polyhaven.com/a/fern_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/fern_02/fern_02_alpha_1k.png",
+      "bytes": 114589,
+      "md5": "1421e5e36946c23a7ddcc907de89025c",
+      "sha256": "ea3c64284c7ebdeedf484d2d816eae92825ec526140c3bb83859ddc7a64001f9",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "fern_02/fern_02_1k.fbx",
+      "asset": "fern_02",
+      "source_page": "https://polyhaven.com/a/fern_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/1k/fern_02/fern_02_1k.fbx",
+      "bytes": 223596,
+      "md5": "65fd395dca9867cfa5e4d91e3fcc38df",
+      "sha256": "6d8238b9cc1bbb5f5766396c2db26f2219c0d0e5ca226fb81dcc44bdb35045e8",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "forest_floor/forest_floor_diff_1k.jpg",
+      "asset": "forest_floor",
+      "source_page": "https://polyhaven.com/a/forest_floor",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_floor/forest_floor_diff_1k.jpg",
+      "bytes": 1329853,
+      "md5": "d67f308e4b8be6a65989e8dc76ec40fe",
+      "sha256": "f12e5adea1741f9eb7a528bfc621f8267885b9530b74c3a8afdb823899bdbf0b",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "forest_floor/forest_floor_nor_dx_1k.jpg",
+      "asset": "forest_floor",
+      "source_page": "https://polyhaven.com/a/forest_floor",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_floor/forest_floor_nor_dx_1k.jpg",
+      "bytes": 1379960,
+      "md5": "8453a1d5ff2590b564dcf3eccbd90f39",
+      "sha256": "d06df3ff9f49436cfd7313db1191a69333e6fe0146fe822e02c487f47570b087",
+      "modifications": "none; original publisher file"
+    },
+    {
+      "path": "forest_floor/forest_floor_rough_1k.jpg",
+      "asset": "forest_floor",
+      "source_page": "https://polyhaven.com/a/forest_floor",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_floor/forest_floor_rough_1k.jpg",
+      "bytes": 736353,
+      "md5": "446092b42424c7bcf15994d651949546",
+      "sha256": "ece0b331f08c03f3edcd8ab6815b74a5ae20768beef64cd4f96a5b2fa26e116e",
+      "modifications": "none; original publisher file"
+    }
+  ],
+  "downloaded_bytes": 4930712
+}

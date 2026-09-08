@@ -1,0 +1,7 @@
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+
+To the extent possible under law, the creators waive all copyright and related rights to the original Vector Hero model, materials, animation, and procedural build script.
+
+This work is provided without warranty.
+
+https://creativecommons.org/publicdomain/zero/1.0/legalcode

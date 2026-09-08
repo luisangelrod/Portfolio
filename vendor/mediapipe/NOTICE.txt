@@ -1,0 +1,8 @@
+MediaPipe Tasks Vision 1.0.1 — Google / MediaPipe Authors — Apache License 2.0.
+https://github.com/google-ai-edge/mediapipe
+https://www.apache.org/licenses/LICENSE-2.0
+The hand landmark model is obtained from the model link in Google's Hand Landmarker guide, accessed 2026-09-06:
+https://developers.google.com/edge/mediapipe/solutions/vision/hand_landmarker
+https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task
+Model card (license and limitations): https://storage.googleapis.com/mediapipe-assets/Model%20Card%20Hand%20Tracking%20(Lite_Full)%20with%20Fairness%20Oct%202021.pdf
+Bundled artifacts are unmodified. They load only when the user explicitly starts local hand tracking. Camera video is not sent to Google or a backend.

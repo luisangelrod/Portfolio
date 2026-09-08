@@ -1,0 +1,9 @@
+{
+  "package": "@mediapipe/tasks-vision",
+  "version": "1.0.1",
+  "modelSource": "https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task",
+  "retrievedAt": "2026-09-06",
+  "sha256": "fbc2a30080c3c557093b5ddfc334698132eb341044ccee322ccf8bcf3607cde1",
+  "bytes": 7819105,
+  "license": "Apache-2.0"
+}

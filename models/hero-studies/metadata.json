@@ -1,0 +1,73 @@
+{
+  "name": "Vector Hero",
+  "version": "1.0.0",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "authorship": "Original procedural character geometry and animation created for this project. No third-party character models, logos, images, or textures are included.",
+  "files": [
+    "vector-hero.glb",
+    "build-hero.mjs",
+    "metadata.json",
+    "README.md",
+    "LICENSE.txt"
+  ],
+  "units": "meters",
+  "upAxis": "+Y",
+  "forwardAxis": "+Z",
+  "nominalStandingHeightMeters": 1.92,
+  "ropeAttachment": {
+    "node": "Grip",
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "notes": "Fixed root origin. Rope endpoint attaches here. All moving body parts hang below this point."
+  },
+  "neutralBounds": {
+    "min": [
+      -0.7195307152405876,
+      -2.1408495968161096,
+      -0.3011281844296878
+    ],
+    "max": [
+      0.37641653466075997,
+      0.037000000000000005,
+      0.3620620216115079
+    ],
+    "size": [
+      1.0959472499013476,
+      2.1778495968161096,
+      0.6631902060411957
+    ]
+  },
+  "animation": {
+    "name": "Swing",
+    "durationSeconds": 3.2,
+    "loop": true,
+    "samples": 49,
+    "tracks": 13,
+    "description": "Raised arm holds the rope with analytic IK while torso rocks, head counters, free arm reaches, and knees alternate kick and recoil.",
+    "maxWristAttachmentErrorMeters": 8.997886258556757e-16
+  },
+  "technical": {
+    "format": "glTF 2.0 binary",
+    "bytes": 150540,
+    "triangles": 16574,
+    "meshes": 74,
+    "materials": 8,
+    "externalResources": 0,
+    "skinned": false,
+    "animationType": "Named articulated mesh pivots; ordinary node quaternion and position tracks"
+  },
+  "validated": {
+    "magic": true,
+    "version": true,
+    "declaredLengthMatches": true,
+    "hasGrip": true,
+    "hasSwing": true,
+    "under1MB": true,
+    "under50kTriangles": true,
+    "noExternalUris": true
+  }
+}

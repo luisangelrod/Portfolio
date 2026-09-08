@@ -1,0 +1,843 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-09-07T00:37:04.567061+00:00",
+  "dataSource": "Wikidata Action API; bounded search and one 22-entity batch",
+  "license": "CC0-1.0",
+  "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+  "notes": [
+    "Data contains 12 Puerto Rico and 10 global records.",
+    "Coordinates are Wikidata statements with their declared precision, not independently surveyed points. Preserve precision rather than implying precision from decimal count.",
+    "Official page links are references; their text and photographs are not covered by Wikidata CC0.",
+    "Wikimedia Commons images, OSM footprints and third-party CAD require their own rights records.",
+    "No live visitor queries, geocoding or tile requests are required to use this seed.",
+    "Nine linked schematics are original normalized drawings. Metadata and coordinates do not establish model accuracy."
+  ],
+  "records": [
+    {
+      "id": "Q550502",
+      "name": "El Morro",
+      "labels": {
+        "es": "Fortaleza colosal de San Felipe del Morro",
+        "en": "Castillo San Felipe del Morro"
+      },
+      "descriptions": {
+        "en": "colossal fortress in San Juan, Puerto Rico",
+        "es": "fortaleza en San Juan, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.47111,
+        "longitude": -66.12444,
+        "precisionDegrees": 0.0001,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2315984842,
+      "modified": "2025-02-24T01:37:39Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q550502",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q550502&oldid=2315984842",
+      "officialUrl": "https://www.nps.gov/saju/learn/historyculture/el-morro.htm",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "el-morro",
+        "status": "implemented original schematic",
+        "note": "Stepped masonry terraces, a harbor-side escarpment and a garita contour; authored schematic, not survey geometry. HABS provides measured reference for its lighthouse."
+      },
+      "additionalSources": [
+        {
+          "url": "https://www.loc.gov/resource/hhh.pr1465.sheet?st=gallery",
+          "description": "Five measured drawings of the El Morro lighthouse, HABS PR-48-A",
+          "rights": "No known restrictions on images made by the US Government; copied-source images may be restricted. Check sheet credits."
+        }
+      ],
+      "geometryStatus": "schematic",
+      "geometryId": "el-morro"
+    },
+    {
+      "id": "Q3748608",
+      "name": "Castillo San Cristóbal",
+      "labels": {
+        "en": "Castillo San Cristóbal",
+        "es": "Castillo San Cristóbal"
+      },
+      "descriptions": {
+        "en": "fortress in San Juan, Puerto Rico",
+        "es": "fortaleza en San Juan, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.467222,
+        "longitude": -66.111111,
+        "precisionDegrees": 0.00027777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2485608830,
+      "modified": "2026-04-29T15:16:00Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3748608",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q3748608&oldid=2485608830",
+      "officialUrl": "https://www.nps.gov/saju/planyourvisit/index.htm",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q1638733",
+      "name": "La Fortaleza",
+      "labels": {
+        "en": "La Fortaleza",
+        "es": "La Fortaleza"
+      },
+      "descriptions": {
+        "en": "official residence and office of the Governor of Puerto Rico",
+        "es": "residencia oficial y oficina del Gobernador de Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.464106050821062,
+        "longitude": -66.11923220505656,
+        "precisionDegrees": 0.0094699959754368,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2485626883,
+      "modified": "2026-04-29T16:19:29Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1638733",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q1638733&oldid=2485626883",
+      "officialUrl": "https://www.fortaleza.pr.gov/recorrido-la-fortaleza",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q3366011",
+      "name": "Parque de Bombas",
+      "labels": {
+        "en": "Parque de Bombas",
+        "es": "Parque de Bombas"
+      },
+      "descriptions": {
+        "en": "historic fire station in Ponce, Puerto Rico",
+        "es": "estación de bomberos histórica ubicada en Ponce, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.013611,
+        "longitude": -66.614167,
+        "precisionDegrees": 0.001,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2540793594,
+      "modified": "2026-09-06T02:45:28Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3366011",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q3366011&oldid=2540793594",
+      "officialUrl": "https://www.discoverpuertorico.com/profile/parque-de-bombas/8527",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "parque-de-bombas",
+        "status": "implemented original schematic",
+        "note": "Twin flanking towers and a gabled central volume with red/black bands; schematic silhouette, not measured building geometry."
+      },
+      "geometryStatus": "schematic",
+      "geometryId": "parque-bombas"
+    },
+    {
+      "id": "Q44547",
+      "name": "Arecibo radio telescope (historical)",
+      "labels": {
+        "es": "Radiotelescopio de Arecibo",
+        "en": "Arecibo Radio Telescope"
+      },
+      "descriptions": {
+        "es": "radiotelescopio en Arecibo, Puerto Rico",
+        "en": "former radio telescope in the municipality of Arecibo, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.344166666666666,
+        "longitude": -66.75277777777778,
+        "precisionDegrees": 0.0002777777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2540109242,
+      "modified": "2026-09-04T14:16:30Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q44547",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q44547&oldid=2540109242",
+      "officialUrl": "https://www.nsf.gov/news/media-toolkits/arecibo",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [
+        "http://www.naic.edu"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "arecibo",
+        "status": "implemented original schematic",
+        "note": "Historical spherical-cap reflector with three support towers and a suspended receiver; do not substitute a parabolic dish or imply it is still operational."
+      },
+      "historicalNotice": "The 305-meter telescope collapsed on December 1, 2020. Any intact model is a historical reconstruction. Observatory campus is separately identified by Q102327045.",
+      "additionalSources": [
+        {
+          "url": "https://www.naic.edu/arecibo/phil/hardware/telescope/envImpactStatement2017/FEIS.pdf",
+          "description": "NSF environmental impact statement identifies a fixed 305-meter spherical reflector.",
+          "rights": "Scientific reference; check individual image credits before image reuse."
+        }
+      ],
+      "geometryStatus": "schematic",
+      "geometryId": "arecibo"
+    },
+    {
+      "id": "Q2375961",
+      "name": "El Yunque National Forest",
+      "labels": {
+        "es": "Bosque nacional El Yunque",
+        "en": "El Yunque National Forest"
+      },
+      "descriptions": {
+        "en": "rainforest in near Río Grande, Puerto Rico",
+        "es": "bosque cerca de Río Grande, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.31666667,
+        "longitude": -65.78333333,
+        "precisionDegrees": 0.016666666666667,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2539128492,
+      "modified": "2026-09-01T17:28:01Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2375961",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q2375961&oldid=2539128492",
+      "officialUrl": "https://www.fs.usda.gov/r08/elyunque/recreation/el-portal-de-el-yunque-visitor-center",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q2882515",
+      "name": "Camuy River Caverns",
+      "labels": {
+        "es": "Parque nacional de las Cavernas del Río Camuy",
+        "en": "Camuy River Caverns National Park"
+      },
+      "descriptions": {
+        "en": "cave system in Camuy, Puerto Rico",
+        "es": "sistema de cuevas de Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.325555555556,
+        "longitude": -66.838055555556,
+        "precisionDegrees": 0.00027777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2539559106,
+      "modified": "2026-09-02T23:09:50Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2882515",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q2882515&oldid=2539559106",
+      "officialUrl": "https://www.discoverpuertorico.com/es/articulo/explora-el-parque-de-las-cavernas-de-camuy",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [
+        "http://www.parquesnacionalespr.com/"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q5192632",
+      "name": "Cueva Ventana",
+      "labels": {
+        "en": "Cueva Ventana",
+        "es": "Cueva Ventana"
+      },
+      "descriptions": {
+        "en": "cave in Arecibo, Puerto Rico",
+        "es": "cueva en Arecibo, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.371666666667,
+        "longitude": -66.691666666667,
+        "precisionDegrees": 0.00027777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2316852792,
+      "modified": "2025-02-25T16:55:02Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q5192632",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q5192632&oldid=2316852792",
+      "officialUrl": "https://www.cuevaventanapr.com",
+      "officialUrlStatus": "listed in Wikidata; not independently verified",
+      "wikidataOfficialUrls": [
+        "https://www.cuevaventanapr.com"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q6682981",
+      "name": "Faro Los Morrillos",
+      "labels": {
+        "en": "Faro Los Morrillos de Cabo Rojo",
+        "es": "Faro Los Morrilos"
+      },
+      "descriptions": {
+        "en": "lighthouse in Cabo Rojo, Puerto Rico",
+        "es": "faro situado en Cabo Rojo, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 17.93366667,
+        "longitude": -67.19219444,
+        "precisionDegrees": 2.777777777778e-05,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2522533430,
+      "modified": "2026-07-25T15:15:26Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q6682981",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q6682981&oldid=2522533430",
+      "officialUrl": "https://www.discoverpuertorico.com/profile/faro-los-morrillos-de-cabo-rojo/8058",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "los-morrillos",
+        "status": "implemented original schematic",
+        "note": "Hexagonal lighthouse tower, keeper building and limestone headland silhouette; the NPS National Register nomination verifies the hexagonal tower. Schematic rather than surveyed geometry."
+      },
+      "additionalSources": [
+        {
+          "url": "https://npgallery.nps.gov/pdfhost/docs/NRHP/Text/81000685.pdf",
+          "description": "NPS National Register nomination describes the massive hexagonal tower of Cabo Rojo lighthouse.",
+          "rights": "Reference document; review item-level rights before reusing scanned images."
+        }
+      ],
+      "geometryStatus": "schematic",
+      "geometryId": "los-morrillos"
+    },
+    {
+      "id": "Q7260562",
+      "name": "Faro de Punta Tuna",
+      "labels": {
+        "en": "Punta Tuna Light",
+        "es": "Faro de Punta Tuna"
+      },
+      "descriptions": {
+        "en": "lighthouse in Maunabo, Puerto Rico",
+        "es": "faro situado en Maunabo, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 17.98830556,
+        "longitude": -65.88541667,
+        "precisionDegrees": 2.777777777778e-05,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2522534437,
+      "modified": "2026-07-25T15:17:57Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7260562",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q7260562&oldid=2522534437",
+      "officialUrl": "https://www.discoverpuertorico.com/es/profile/faro-de-punta-tuna/8575",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q3991131",
+      "name": "Centro Ceremonial Indígena de Tibes",
+      "labels": {
+        "en": "Tibes Indigenous Ceremonial Center",
+        "es": "Centro Ceremonial Indígena de Tibes"
+      },
+      "descriptions": {
+        "en": "indigenous historic site in Ponce municipality, Puerto Rico",
+        "es": "sitio histórico indígena ubicada en Ponce, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.042236111111,
+        "longitude": -66.621780555556,
+        "precisionDegrees": 2.7777777777778e-06,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2503598382,
+      "modified": "2026-06-09T00:20:50Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3991131",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q3991131&oldid=2503598382",
+      "officialUrl": "https://www.discoverpuertorico.com/profile/centro-ceremonial-indigena-de-tibes/8493",
+      "officialUrlStatus": "page reviewed in this research",
+      "wikidataOfficialUrls": [
+        "http://ponce.inter.edu/tibes/tibes.html"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q3137182",
+      "name": "Museo de Arte de Ponce",
+      "labels": {
+        "en": "Museo de Arte de Ponce",
+        "es": "Museo de Arte de Ponce"
+      },
+      "descriptions": {
+        "en": "art museum in Ponce, Puerto Rico",
+        "es": "museo de arte en Ponce, Puerto Rico"
+      },
+      "region": "Puerto Rico",
+      "coordinates": {
+        "latitude": 18.003888888889,
+        "longitude": -66.616944444444,
+        "precisionDegrees": 0.00027777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2516918981,
+      "modified": "2026-07-13T05:12:10Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3137182",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q3137182&oldid=2516918981",
+      "officialUrl": "http://www.museoarteponce.org",
+      "officialUrlStatus": "listed in Wikidata; not independently verified",
+      "wikidataOfficialUrls": [
+        "http://www.museoarteponce.org",
+        "https://museoarteponce.org/"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q243",
+      "name": "Eiffel Tower",
+      "labels": {
+        "es": "torre Eiffel",
+        "en": "Eiffel Tower"
+      },
+      "descriptions": {
+        "es": "monumento en París, Francia",
+        "en": "tower located on the Champ de Mars in Paris, France"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": 48.858296,
+        "longitude": 2.294479,
+        "precisionDegrees": 2.777777777778e-06,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2539625700,
+      "modified": "2026-09-03T05:19:05Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q243",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q243&oldid=2539625700",
+      "officialUrl": "https://www.toureiffel.paris/en/the-monument/key-figures",
+      "officialUrlStatus": "existing portfolio reference; not revalidated in this dataset task",
+      "wikidataOfficialUrls": [
+        "https://www.toureiffel.paris",
+        "https://www.toureiffel.paris/en",
+        "https://www.toureiffel.paris/it"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "eiffel",
+        "status": "implemented original schematic",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "schematic",
+      "geometryId": "eiffel"
+    },
+    {
+      "id": "Q45178",
+      "name": "Sydney Opera House",
+      "labels": {
+        "es": "Ópera de Sídney",
+        "en": "Sydney Opera House"
+      },
+      "descriptions": {
+        "en": "multi-venue performing arts centre in Sydney, New South Wales, Australia",
+        "es": "edificio de Nueva Gales del Sur, Australia"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": -33.857058,
+        "longitude": 151.214897,
+        "precisionDegrees": 1e-05,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2540580002,
+      "modified": "2026-09-05T17:12:14Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q45178",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q45178&oldid=2540580002",
+      "officialUrl": "https://www.sydneyoperahouse.com/our-story/the-spherical-solution",
+      "officialUrlStatus": "existing portfolio reference; not revalidated in this dataset task",
+      "wikidataOfficialUrls": [
+        "https://sydneyoperahouse.com"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "opera",
+        "status": "implemented original schematic",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "schematic",
+      "geometryId": "opera"
+    },
+    {
+      "id": "Q37200",
+      "name": "Great Pyramid of Giza",
+      "labels": {
+        "es": "Gran pirámide de Giza",
+        "en": "Great Pyramid of Giza"
+      },
+      "descriptions": {
+        "en": "oldest and largest of the three pyramids in the Giza Necropolis; one of the seven ancient wonders of the world",
+        "es": "construcción de bloques de piedra del Antiguo Egipto y parte de las siete maravillas del mundo antiguo"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": 29.97915,
+        "longitude": 31.13422,
+        "precisionDegrees": 1e-05,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2532462516,
+      "modified": "2026-08-17T19:24:41Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q37200",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q37200&oldid=2532462516",
+      "officialUrl": "https://egymonuments.gov.eg/en/monuments/the-great-pyramid",
+      "officialUrlStatus": "existing portfolio reference; not revalidated in this dataset task",
+      "wikidataOfficialUrls": [],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "pyramid",
+        "status": "implemented original schematic",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "schematic",
+      "geometryId": "pyramid"
+    },
+    {
+      "id": "Q44440",
+      "name": "Golden Gate Bridge",
+      "labels": {
+        "es": "puente Golden Gate",
+        "en": "Golden Gate Bridge"
+      },
+      "descriptions": {
+        "en": "suspension bridge on the San Francisco Bay",
+        "es": "puente colgante situado en la bahía de San Francisco, California, Estados Unidos"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": 37.819722222222,
+        "longitude": -122.47861111111,
+        "precisionDegrees": 0.00027777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2517112355,
+      "modified": "2026-07-13T16:39:02Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q44440",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q44440&oldid=2517112355",
+      "officialUrl": "https://www.goldengate.org/bridge/history-research/statistics-data/design-construction-stats/",
+      "officialUrlStatus": "existing portfolio reference; not revalidated in this dataset task",
+      "wikidataOfficialUrls": [
+        "https://www.goldengate.org/bridge/"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "golden-gate",
+        "status": "implemented original schematic",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "schematic",
+      "geometryId": "golden-gate"
+    },
+    {
+      "id": "Q12495",
+      "name": "Burj Khalifa",
+      "labels": {
+        "en": "Burj Khalifa",
+        "es": "Burj Khalifa"
+      },
+      "descriptions": {
+        "en": "skyscraper in Dubai, United Arab Emirates",
+        "es": "rascacielos más alto del mundo, ubicado en la ciudad de Dubái, Emiratos Árabes Unidos"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": 25.197222222222223,
+        "longitude": 55.274166666666666,
+        "precisionDegrees": 0.0002777777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2517789814,
+      "modified": "2026-07-15T15:07:44Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q12495",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q12495&oldid=2517789814",
+      "officialUrl": "https://www.som.com/projects/burj-khalifa/",
+      "officialUrlStatus": "existing portfolio reference; not revalidated in this dataset task",
+      "wikidataOfficialUrls": [
+        "http://www.burjkhalifa.ae"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": "burj",
+        "status": "implemented original schematic",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "schematic",
+      "geometryId": "burj"
+    },
+    {
+      "id": "Q9141",
+      "name": "Taj Mahal",
+      "labels": {
+        "es": "Taj Mahal",
+        "en": "Taj Mahal"
+      },
+      "descriptions": {
+        "en": "marble mausoleum in Agra, India",
+        "es": "complejo de edificios construido entre 1631 y 1654 en la ciudad de Agra, India y una de las 7 maravillas del mundo moderno"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": 27.175,
+        "longitude": 78.04194444444444,
+        "precisionDegrees": 0.0002777777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2532470442,
+      "modified": "2026-08-17T19:43:30Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q9141",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q9141&oldid=2532470442",
+      "officialUrl": "https://www.tajmahal.gov.in/",
+      "officialUrlStatus": "listed in Wikidata; not independently verified",
+      "wikidataOfficialUrls": [
+        "https://www.tajmahal.gov.in/"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q10285",
+      "name": "Colosseum",
+      "labels": {
+        "en": "Colosseum",
+        "es": "Coliseo"
+      },
+      "descriptions": {
+        "en": "ancient Roman amphitheatre, a landmark of Rome, Italy",
+        "es": "anfiteatro en Roma, Italia y una de las 7 maravillas del mundo moderno"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": 41.890277777778,
+        "longitude": 12.492222222222,
+        "precisionDegrees": 0.000277778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2540578932,
+      "modified": "2026-09-05T17:09:23Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q10285",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q10285&oldid=2540578932",
+      "officialUrl": "https://colosseo.it/area/colosseo/",
+      "officialUrlStatus": "listed in Wikidata; not independently verified",
+      "wikidataOfficialUrls": [
+        "https://colosseo.it/area/colosseo/",
+        "https://colosseo.it/en/area/the-colosseum/"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q48435",
+      "name": "Sagrada Família",
+      "labels": {
+        "es": "Templo Expiatorio de la Sagrada Familia",
+        "en": "Basilica and Expiatory Church of the Holy Family"
+      },
+      "descriptions": {
+        "en": "basilica under construction since 1882 in Barcelona, Spain",
+        "es": "basílica católica de estilo modernista catalán en construcción en Barcelona, Cataluña, España"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": 41.40369,
+        "longitude": 2.17433,
+        "precisionDegrees": 1e-05,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2541329820,
+      "modified": "2026-09-06T21:47:55Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q48435",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q48435&oldid=2541329820",
+      "officialUrl": "https://sagradafamilia.org/",
+      "officialUrlStatus": "listed in Wikidata; not independently verified",
+      "wikidataOfficialUrls": [
+        "https://sagradafamilia.org/",
+        "https://sagradafamilia.org/es/home",
+        "https://sagradafamilia.org/en/home"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q676203",
+      "name": "Machu Picchu",
+      "labels": {
+        "en": "Machu Picchu",
+        "es": "Machu Picchu"
+      },
+      "descriptions": {
+        "en": "15th-century Inca citadel in the Peruvian Andes and UNESCO World Heritage Site",
+        "es": "antigua ciudad del imperio inca en Cuzco, Perú y una de las 7 maravillas del mundo moderno"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": -13.163333333333334,
+        "longitude": -72.54555555555555,
+        "precisionDegrees": 0.0002777777777777778,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2539829901,
+      "modified": "2026-09-03T22:18:12Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q676203",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q676203&oldid=2539829901",
+      "officialUrl": "http://www.machupicchu.gob.pe/",
+      "officialUrlStatus": "listed in Wikidata; not independently verified",
+      "wikidataOfficialUrls": [
+        "http://www.machupicchu.gob.pe/"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    },
+    {
+      "id": "Q79961",
+      "name": "Christ the Redeemer",
+      "labels": {
+        "es": "Cristo Redentor",
+        "en": "Christ the Redeemer"
+      },
+      "descriptions": {
+        "en": "colossal statue of Jesus in Rio de Janeiro, Brazil",
+        "es": "estatua gigante de Jesucristo en Río de Janeiro, Brasil y una de las 7 maravillas del mundo moderno"
+      },
+      "region": "World",
+      "coordinates": {
+        "latitude": -22.951915648887244,
+        "longitude": -43.21046412278801,
+        "precisionDegrees": 1e-07,
+        "globe": "Earth",
+        "scope": "representative landmark point, not survey or navigation geometry"
+      },
+      "revision": 2540599641,
+      "modified": "2026-09-05T18:20:46Z",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q79961",
+      "revisionUrl": "https://www.wikidata.org/w/index.php?title=Q79961&oldid=2540599641",
+      "officialUrl": "http://www.corcovado.com.br/",
+      "officialUrlStatus": "listed in Wikidata; not independently verified",
+      "wikidataOfficialUrls": [
+        "http://www.corcovado.com.br/"
+      ],
+      "dataLicense": "CC0-1.0",
+      "shapeMapping": {
+        "id": null,
+        "status": "no geometry selected",
+        "note": "Coordinates and identity do not provide a 3D model."
+      },
+      "geometryStatus": "none",
+      "geometryId": null
+    }
+  ]
+}

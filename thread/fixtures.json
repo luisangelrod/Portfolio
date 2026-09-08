@@ -1,0 +1,246 @@
+[
+  {
+    "id": "uncertain-total",
+    "name": "The wrong total",
+    "document": {
+      "id": "PR-1042",
+      "version": "1",
+      "tenantId": "isla-studio",
+      "operationId": "synthetic-1042"
+    },
+    "extraction": {
+      "totalCents": 180000,
+      "currency": "USD",
+      "sourceRef": "total-1"
+    },
+    "blocks": [
+      {
+        "id": "total-1",
+        "documentId": "PR-1042",
+        "documentVersion": "1",
+        "operationId": "synthetic-1042",
+        "text": "$1,800.00",
+        "confidence": 63,
+        "page": 1,
+        "box": {
+          "left": 0.59,
+          "top": 0.72,
+          "width": 0.32,
+          "height": 0.08
+        }
+      }
+    ],
+    "oracle": {
+      "printedTotalCents": 130000
+    },
+    "expected": "review",
+    "purpose": "Uncertain OCR must reach a person before acceptance."
+  },
+  {
+    "id": "reliable-total",
+    "name": "A reliable extraction",
+    "document": {
+      "id": "PR-1043",
+      "version": "1",
+      "tenantId": "isla-studio",
+      "operationId": "synthetic-1043"
+    },
+    "extraction": {
+      "totalCents": 130000,
+      "currency": "USD",
+      "sourceRef": "total-1"
+    },
+    "blocks": [
+      {
+        "id": "total-1",
+        "documentId": "PR-1043",
+        "documentVersion": "1",
+        "operationId": "synthetic-1043",
+        "text": "$1,300.00",
+        "confidence": 99,
+        "page": 1,
+        "box": {
+          "left": 0.59,
+          "top": 0.72,
+          "width": 0.32,
+          "height": 0.08
+        }
+      }
+    ],
+    "oracle": {
+      "printedTotalCents": 130000
+    },
+    "expected": "accepted",
+    "purpose": "Reliable evidence should still pass."
+  },
+  {
+    "id": "missing-source",
+    "name": "Missing source evidence",
+    "document": {
+      "id": "PR-1044",
+      "version": "1",
+      "tenantId": "isla-studio",
+      "operationId": "synthetic-1044"
+    },
+    "extraction": {
+      "totalCents": 130000,
+      "currency": "USD",
+      "sourceRef": null
+    },
+    "blocks": [],
+    "oracle": {
+      "printedTotalCents": 130000
+    },
+    "expected": "review",
+    "purpose": "A plausible value without its source needs review."
+  },
+  {
+    "id": "stale-source",
+    "name": "A source from another version",
+    "document": {
+      "id": "PR-1045",
+      "version": "2",
+      "tenantId": "isla-studio",
+      "operationId": "synthetic-1045-v2"
+    },
+    "extraction": {
+      "totalCents": 130000,
+      "currency": "USD",
+      "sourceRef": "total-1"
+    },
+    "blocks": [
+      {
+        "id": "total-1",
+        "documentId": "PR-1045",
+        "documentVersion": "1",
+        "operationId": "synthetic-1045-v1",
+        "text": "$1,300.00",
+        "confidence": 99,
+        "page": 1,
+        "box": {
+          "left": 0.59,
+          "top": 0.72,
+          "width": 0.32,
+          "height": 0.08
+        }
+      }
+    ],
+    "oracle": {
+      "printedTotalCents": 130000
+    },
+    "expected": "review",
+    "purpose": "Evidence from an earlier operation cannot support this version."
+  },
+  {
+    "id": "tenant-boundary",
+    "name": "The tenant boundary",
+    "document": {
+      "id": "PR-1046",
+      "version": "1",
+      "tenantId": "other-studio",
+      "operationId": "synthetic-1046"
+    },
+    "extraction": {
+      "totalCents": 130000,
+      "currency": "USD",
+      "sourceRef": "total-1"
+    },
+    "blocks": [
+      {
+        "id": "total-1",
+        "documentId": "PR-1046",
+        "documentVersion": "1",
+        "operationId": "synthetic-1046",
+        "text": "$1,300.00",
+        "confidence": 99,
+        "page": 1,
+        "box": {
+          "left": 0.59,
+          "top": 0.72,
+          "width": 0.32,
+          "height": 0.08
+        }
+      }
+    ],
+    "oracle": {
+      "printedTotalCents": 130000
+    },
+    "expected": "denied",
+    "purpose": "The supplied trusted context must match the document owner."
+  },
+  {
+    "id": "confident-mistake",
+    "name": "The confidence blind spot",
+    "document": {
+      "id": "PR-1047",
+      "version": "1",
+      "tenantId": "isla-studio",
+      "operationId": "synthetic-1047"
+    },
+    "extraction": {
+      "totalCents": 180000,
+      "currency": "USD",
+      "sourceRef": "total-1"
+    },
+    "blocks": [
+      {
+        "id": "total-1",
+        "documentId": "PR-1047",
+        "documentVersion": "1",
+        "operationId": "synthetic-1047",
+        "text": "$1,800.00",
+        "confidence": 99,
+        "page": 1,
+        "box": {
+          "left": 0.59,
+          "top": 0.72,
+          "width": 0.32,
+          "height": 0.08
+        }
+      }
+    ],
+    "oracle": {
+      "printedTotalCents": 130000
+    },
+    "expected": "accepted",
+    "purpose": "A confident mistake can pass this rule. Arithmetic or independent review would be needed.",
+    "limitation": true
+  },
+  {
+    "id": "normalization-drift",
+    "name": "A changed normalized amount",
+    "document": {
+      "id": "PR-1048",
+      "version": "1",
+      "tenantId": "isla-studio",
+      "operationId": "synthetic-1048"
+    },
+    "extraction": {
+      "totalCents": 180000,
+      "currency": "USD",
+      "sourceRef": "total-1"
+    },
+    "blocks": [
+      {
+        "id": "total-1",
+        "documentId": "PR-1048",
+        "documentVersion": "1",
+        "operationId": "synthetic-1048",
+        "text": "$1,300.00",
+        "confidence": 99,
+        "page": 1,
+        "box": {
+          "left": 0.59,
+          "top": 0.72,
+          "width": 0.32,
+          "height": 0.08
+        }
+      }
+    ],
+    "oracle": {
+      "printedTotalCents": 130000
+    },
+    "expected": "review",
+    "purpose": "The normalized total must match the amount in the referenced source block."
+  }
+]

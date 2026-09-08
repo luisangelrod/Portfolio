@@ -1,0 +1,33 @@
+{
+  "loadedWith": "THREE.GLTFLoader",
+  "fileBytes": 150540,
+  "meshes": 74,
+  "triangles": 16574,
+  "animations": [
+    {
+      "name": "Swing",
+      "duration": 3.200000047683716,
+      "tracks": 13
+    }
+  ],
+  "samples": 241,
+  "allTransformsFinite": true,
+  "fixedGripOrigin": [
+    0,
+    0,
+    0
+  ],
+  "maxInterpolatedWristErrorMeters": 0.00032261025553153953,
+  "animationSweptBounds": {
+    "min": [
+      -0.890106717034,
+      -2.1661989283885084,
+      -0.6240384121533584
+    ],
+    "max": [
+      0.3916305963121035,
+      0.037000000000000005,
+      0.39477697916682786
+    ]
+  }
+}

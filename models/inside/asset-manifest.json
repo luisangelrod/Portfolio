@@ -1,0 +1,209 @@
+{
+  "title": "Inside — Compact Workstation",
+  "license": "CC0-1.0",
+  "description": "A simplified, unbranded desktop computer assembly. Component shapes and spatial relationships are illustrative; this is not a manufacturing drawing or thermal simulation.",
+  "axes": {
+    "up": "+Y",
+    "front": "+Z"
+  },
+  "bounds": {
+    "min": [
+      -0.8799999952316284,
+      0.014999999199062586,
+      -0.6150000095367432
+    ],
+    "max": [
+      0.8799999952316284,
+      2.765000104904175,
+      0.6485000252723694
+    ],
+    "size": [
+      1.7599999904632568,
+      2.750000105705112,
+      1.2635000348091125
+    ],
+    "center": [
+      0,
+      1.3900000520516187,
+      0.01675000786781311
+    ]
+  },
+  "files": {
+    "model": "inside-compact-workstation.glb",
+    "modelBytes": 867260,
+    "fixture": "nested-bolted-bracket.glb",
+    "fixtureBytes": 15112
+  },
+  "partCount": 28,
+  "groups": [
+    {
+      "name": "Chassis",
+      "parts": [
+        {
+          "name": "Base and isolation feet",
+          "role": null
+        },
+        {
+          "name": "Rear structural spine",
+          "role": null
+        },
+        {
+          "name": "Front corner uprights",
+          "role": null
+        },
+        {
+          "name": "Upper structural frame",
+          "role": null
+        }
+      ]
+    },
+    {
+      "name": "Enclosure",
+      "parts": [
+        {
+          "name": "Left smoked service panel",
+          "role": null
+        },
+        {
+          "name": "Right smoked service panel",
+          "role": null
+        },
+        {
+          "name": "Front vented fascia",
+          "role": null
+        },
+        {
+          "name": "Top service lid",
+          "role": null
+        }
+      ]
+    },
+    {
+      "name": "Mainboard",
+      "parts": [
+        {
+          "name": "Mainboard circuit substrate",
+          "role": null
+        },
+        {
+          "name": "Etched circuit pathways",
+          "role": null
+        },
+        {
+          "name": "Rear input output connectors",
+          "role": null
+        },
+        {
+          "name": "Expansion and power sockets",
+          "role": null
+        }
+      ]
+    },
+    {
+      "name": "Processor",
+      "parts": [
+        {
+          "name": "Processor package",
+          "role": "cpu"
+        },
+        {
+          "name": "CPU metal heat spreader",
+          "role": "cpu"
+        }
+      ]
+    },
+    {
+      "name": "Thermal assembly",
+      "parts": [
+        {
+          "name": "Copper cooler contact plate",
+          "role": "thermal"
+        },
+        {
+          "name": "Four copper heat pipes",
+          "role": "thermal"
+        },
+        {
+          "name": "Eighteen aluminum cooling fins",
+          "role": "heatsink"
+        }
+      ]
+    },
+    {
+      "name": "Cooling fan",
+      "parts": [
+        {
+          "name": "Square fan housing",
+          "role": "fan"
+        },
+        {
+          "name": "Seven blade fan rotor",
+          "role": "fan"
+        },
+        {
+          "name": "Protective fan grille",
+          "role": "fan"
+        }
+      ]
+    },
+    {
+      "name": "Memory & storage",
+      "parts": [
+        {
+          "name": "Memory module A",
+          "role": null
+        },
+        {
+          "name": "Memory module B",
+          "role": null
+        },
+        {
+          "name": "Solid state storage module",
+          "role": null
+        },
+        {
+          "name": "Storage mounting rail",
+          "role": null
+        }
+      ]
+    },
+    {
+      "name": "Power & fasteners",
+      "parts": [
+        {
+          "name": "Power supply enclosure",
+          "role": null
+        },
+        {
+          "name": "Routed power cable bundle",
+          "role": null
+        },
+        {
+          "name": "Captive case and board fasteners",
+          "role": null
+        },
+        {
+          "name": "Power supply intake grille",
+          "role": null
+        }
+      ]
+    }
+  ],
+  "heatTour": {
+    "cpu": "Processor",
+    "thermal": "Thermal assembly",
+    "fan": "Cooling fan"
+  },
+  "fixture": {
+    "meshInstances": 6,
+    "uniqueMeshes": 3,
+    "sharedBoltInstances": 4,
+    "nestedGroups": 3,
+    "transformFeatures": [
+      "translation",
+      "rotation",
+      "nonuniform scale",
+      "shared geometry instances"
+    ]
+  }
+}
