@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "runId": "run-fa09efe867ba4494a93682ea54e26e40",
+  "parentRunId": null,
+  "createdAt": "2026-09-14T00:28:59.041307+00:00",
+  "engine": "Python · source comparison",
+  "engineVersion": "1.0.0",
+  "synthetic": true,
+  "inputHash": "e01cd254e25bc72a1c7b1f15b2699ce33fe88f0b2cf3a27eb02088e4a3a0e69e",
+  "durationMs": 10.019167,
+  "documents": [
+    {
+      "id": "intake",
+      "name": "01 · Intake form.txt",
+      "kind": "Intake form",
+      "text": "SYNTHETIC TRAINING DOCUMENT — NO REAL CLAIM\nEQUIPMENT DAMAGE · INTAKE FORM\n\nCase reference: PR-1042\nLocation: San Juan, Puerto Rico\nIncident date: 2026-08-14\nRequested total: $1,250.00\n\nEquipment: Exhibition lighting controller\nReported issue: Water entered the controller during an evening event.\nSubmitted by: Sample event coordinator\nNote: Intake was transcribed from a telephone report.\n\nThis fictional document is for demonstrating evidence review only."
+    },
+    {
+      "id": "report",
+      "name": "02 · Incident report.txt",
+      "kind": "Incident report",
+      "text": "SYNTHETIC TRAINING DOCUMENT — NO REAL CLAIM\nEQUIPMENT DAMAGE · INCIDENT REPORT\n\nCase reference: PR-1042\nLocation: San Juan, Puerto Rico\nIncident date: 2026-08-15\nRequested total: USD 1250.00\n\nEquipment: Exhibition lighting controller\nObservation: Moisture was visible at the cable entry after the event.\nReport prepared by: Sample facilities technician\nNote: This report records the date stated in the event log.\n\nThis fictional document does not establish which date is correct."
+    },
+    {
+      "id": "invoice",
+      "name": "03 · Repair estimate.txt",
+      "kind": "Repair estimate",
+      "text": "SYNTHETIC TRAINING DOCUMENT — NO REAL CLAIM\nEQUIPMENT DAMAGE · REPAIR ESTIMATE\n\nCase reference: PR-1042\nIncident date: August 15, 2026\nTotal: 1,250.00\n\nEquipment: Exhibition lighting controller\nReplacement controller: $950.00\nInspection and installation: $300.00\nCurrency: USD\nNote: The incident date was copied from the supplied report.\n\nThis is a fictional estimate, not a real invoice or authorization to pay."
+    }
+  ],
+  "excludedDocumentIds": [],
+  "passages": [
+    {
+      "id": "intake:line-4:case-reference",
+      "documentId": "intake",
+      "line": 4,
+      "text": "Case reference: PR-1042",
+      "field": "case-reference",
+      "value": "PR-1042"
+    },
+    {
+      "id": "intake:line-6:incident-date",
+      "documentId": "intake",
+      "line": 6,
+      "text": "Incident date: 2026-08-14",
+      "field": "incident-date",
+      "value": "2026-08-14"
+    },
+    {
+      "id": "intake:line-7:requested-total",
+      "documentId": "intake",
+      "line": 7,
+      "text": "Requested total: $1,250.00",
+      "field": "requested-total",
+      "value": "1250.00"
+    },
+    {
+      "id": "report:line-4:case-reference",
+      "documentId": "report",
+      "line": 4,
+      "text": "Case reference: PR-1042",
+      "field": "case-reference",
+      "value": "PR-1042"
+    },
+    {
+      "id": "report:line-6:incident-date",
+      "documentId": "report",
+      "line": 6,
+      "text": "Incident date: 2026-08-15",
+      "field": "incident-date",
+      "value": "2026-08-15"
+    },
+    {
+      "id": "report:line-7:requested-total",
+      "documentId": "report",
+      "line": 7,
+      "text": "Requested total: USD 1250.00",
+      "field": "requested-total",
+      "value": "1250.00"
+    },
+    {
+      "id": "invoice:line-4:case-reference",
+      "documentId": "invoice",
+      "line": 4,
+      "text": "Case reference: PR-1042",
+      "field": "case-reference",
+      "value": "PR-1042"
+    },
+    {
+      "id": "invoice:line-5:incident-date",
+      "documentId": "invoice",
+      "line": 5,
+      "text": "Incident date: August 15, 2026",
+      "field": "incident-date",
+      "value": "2026-08-15"
+    },
+    {
+      "id": "invoice:line-6:requested-total",
+      "documentId": "invoice",
+      "line": 6,
+      "text": "Total: 1,250.00",
+      "field": "requested-total",
+      "value": "1250.00"
+    }
+  ],
+  "findings": [
+    {
+      "id": "incident-date",
+      "label": "Incident date",
+      "status": "conflict",
+      "value": null,
+      "values": [
+        "2026-08-14",
+        "2026-08-15"
+      ],
+      "passageIds": [
+        "intake:line-6:incident-date",
+        "report:line-6:incident-date",
+        "invoice:line-5:incident-date"
+      ],
+      "explanation": "Source passages disagree: 2 distinct values. A majority is not proof; review the original lines."
+    },
+    {
+      "id": "requested-total",
+      "label": "Requested total",
+      "status": "supported",
+      "value": "1250.00",
+      "values": [
+        "1250.00"
+      ],
+      "passageIds": [
+        "intake:line-7:requested-total",
+        "report:line-7:requested-total",
+        "invoice:line-6:requested-total"
+      ],
+      "explanation": "All 3 included documents state the same value. This is cross-document agreement, not independent proof that the claim is true."
+    },
+    {
+      "id": "case-reference",
+      "label": "Case reference",
+      "status": "supported",
+      "value": "PR-1042",
+      "values": [
+        "PR-1042"
+      ],
+      "passageIds": [
+        "intake:line-4:case-reference",
+        "report:line-4:case-reference",
+        "invoice:line-4:case-reference"
+      ],
+      "explanation": "All 3 included documents state the same value. This is cross-document agreement, not independent proof that the claim is true."
+    }
+  ],
+  "stages": [
+    {
+      "id": "intake",
+      "label": "Preserve sources",
+      "status": "completed",
+      "durationMs": 0.048709,
+      "inputIds": [
+        "intake",
+        "report",
+        "invoice"
+      ],
+      "outputIds": [
+        "intake",
+        "report",
+        "invoice"
+      ],
+      "detail": "Validated 3 immutable text sources; 0 excluded in this scenario. SHA-256 covers the complete inputs and exclusion set."
+    },
+    {
+      "id": "extract",
+      "label": "Read source lines",
+      "status": "completed",
+      "durationMs": 9.860542,
+      "inputIds": [
+        "intake",
+        "report",
+        "invoice"
+      ],
+      "outputIds": [
+        "intake:line-4:case-reference",
+        "intake:line-6:incident-date",
+        "intake:line-7:requested-total",
+        "report:line-4:case-reference",
+        "report:line-6:incident-date",
+        "report:line-7:requested-total",
+        "invoice:line-4:case-reference",
+        "invoice:line-5:incident-date",
+        "invoice:line-6:requested-total"
+      ],
+      "detail": "Read 9 explicitly labeled passages with original document IDs and one-based line numbers. Dates and USD totals are normalized; ambiguous values are not guessed."
+    },
+    {
+      "id": "compare",
+      "label": "Compare the evidence",
+      "status": "attention",
+      "durationMs": 0.009833,
+      "inputIds": [
+        "intake:line-4:case-reference",
+        "intake:line-6:incident-date",
+        "intake:line-7:requested-total",
+        "report:line-4:case-reference",
+        "report:line-6:incident-date",
+        "report:line-7:requested-total",
+        "invoice:line-4:case-reference",
+        "invoice:line-5:incident-date",
+        "invoice:line-6:requested-total"
+      ],
+      "outputIds": [
+        "incident-date",
+        "requested-total",
+        "case-reference"
+      ],
+      "detail": "Compared normalized source values using deterministic rules. Conflicting, invalid, absent and uncorroborated values remain reviewable; there is no model confidence score."
+    }
+  ],
+  "limits": [
+    "Plain text with explicit field labels only; no OCR, PDF parsing or inferred facts.",
+    "USD totals only. Dates must be ISO YYYY-MM-DD or an English month name with a four-digit year.",
+    "Source agreement is not authentication, fraud detection, legal advice or payment approval.",
+    "Deterministic Python comparison; no Textract, Bedrock or other cloud/model call occurs.",
+    "Stage durations measure this Python process only; browser, transfer and process startup time are excluded.",
+    "This response is not stored by the Python worker. Browser exports may contain the supplied document text."
+  ]
+}
