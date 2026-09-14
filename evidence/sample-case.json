@@ -1,0 +1,25 @@
+{
+  "id": "pr-1042",
+  "title": "One case. Three documents. One detail that does not agree.",
+  "description": "A fictional equipment-damage request in San Juan. Check the incident date, requested total and case reference before recording your review.",
+  "documents": [
+    {
+      "id": "intake",
+      "name": "01 · Intake form.txt",
+      "kind": "Intake form",
+      "text": "SYNTHETIC TRAINING DOCUMENT — NO REAL CLAIM\nEQUIPMENT DAMAGE · INTAKE FORM\n\nCase reference: PR-1042\nLocation: San Juan, Puerto Rico\nIncident date: 2026-08-14\nRequested total: $1,250.00\n\nEquipment: Exhibition lighting controller\nReported issue: Water entered the controller during an evening event.\nSubmitted by: Sample event coordinator\nNote: Intake was transcribed from a telephone report.\n\nThis fictional document is for demonstrating evidence review only."
+    },
+    {
+      "id": "report",
+      "name": "02 · Incident report.txt",
+      "kind": "Incident report",
+      "text": "SYNTHETIC TRAINING DOCUMENT — NO REAL CLAIM\nEQUIPMENT DAMAGE · INCIDENT REPORT\n\nCase reference: PR-1042\nLocation: San Juan, Puerto Rico\nIncident date: 2026-08-15\nRequested total: USD 1250.00\n\nEquipment: Exhibition lighting controller\nObservation: Moisture was visible at the cable entry after the event.\nReport prepared by: Sample facilities technician\nNote: This report records the date stated in the event log.\n\nThis fictional document does not establish which date is correct."
+    },
+    {
+      "id": "invoice",
+      "name": "03 · Repair estimate.txt",
+      "kind": "Repair estimate",
+      "text": "SYNTHETIC TRAINING DOCUMENT — NO REAL CLAIM\nEQUIPMENT DAMAGE · REPAIR ESTIMATE\n\nCase reference: PR-1042\nIncident date: August 15, 2026\nTotal: 1,250.00\n\nEquipment: Exhibition lighting controller\nReplacement controller: $950.00\nInspection and installation: $300.00\nCurrency: USD\nNote: The incident date was copied from the supplied report.\n\nThis is a fictional estimate, not a real invoice or authorization to pay."
+    }
+  ]
+}

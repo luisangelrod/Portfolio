@@ -1,6 +1,13 @@
 {
-  "source": "luisangelrod/open-laboratory",
-  "sourceCommit": "b396626",
-  "release": "corrected-2022-require-technology-and-four-years",
-  "staticFiles": 283
+  "release": "recruiter-focus-20260914",
+  "bcposTitle": "Mid-Level Software Developer",
+  "updatedRoutes": [
+    "/",
+    "/work/",
+    "/lab/evidence/"
+  ],
+  "preserved": "Existing laboratory routes, legacy apps, Netlify functions and configuration",
+  "homepageSha256": "8d22038d63d666989dd8128ab4c65d8e7b2d58176de9d67366f699367aa1a6c8",
+  "resumeSha256": "06b58651e2946d484b7f5ec19fbfb067280ca69ee3d62690899b616230a2f853",
+  "offlineVersion": "40f80f4f35fea3c4"
 }
