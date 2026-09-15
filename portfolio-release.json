@@ -1,13 +1,11 @@
 {
-  "release": "recruiter-focus-20260914",
+  "release": "remove-education-line-20260914",
   "bcposTitle": "Mid-Level Software Developer",
   "updatedRoutes": [
-    "/",
-    "/work/",
-    "/lab/evidence/"
+    "/"
   ],
   "preserved": "Existing laboratory routes, legacy apps, Netlify functions and configuration",
-  "homepageSha256": "8d22038d63d666989dd8128ab4c65d8e7b2d58176de9d67366f699367aa1a6c8",
+  "homepageSha256": "b12497eb61d16c8e1f02122db7c7360e65faff6c1f4af0a21797706dfddf1323",
   "resumeSha256": "06b58651e2946d484b7f5ec19fbfb067280ca69ee3d62690899b616230a2f853",
-  "offlineVersion": "40f80f4f35fea3c4"
+  "offlineVersion": "85a78f0a5408d483"
 }
