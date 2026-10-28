@@ -1,106 +1,566 @@
-%PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%PDF-1.3
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R
+/PageMode /UseNone
+/Pages 2 0 R
+/Type /Catalog
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Count 1
+/Kids [ 3 0 R ]
+/Type /Pages
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R ]
+/Contents 8 0 R
+/MediaBox [ 0 0 612 792 ]
+/Parent 2 0 R
+/Resources <<
+/Font 9 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
 >>
 endobj
 4 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (mailto:luisangelrod17@gmail.com)
->> /Border [ 0 0 0 ] /Rect [ 103.857 684.8 206.486 695 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (mailto\072luisangelrod17\100gmail\056com)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 103.857 684.8 206.486 695 ]
+/Subtype /Link
+/Type /Annot
 >>
 endobj
 5 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://www.linkedin.com/in/luisrodriguez515)
->> /Border [ 0 0 0 ] /Rect [ 213.422 684.8 245.552 695 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (https\072\057\057www\056linkedin\056com\057in\057luisrodriguez515)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 213.422 684.8 245.552 695 ]
+/Subtype /Link
+/Type /Annot
 >>
 endobj
 6 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/luisangelrod)
->> /Border [ 0 0 0 ] /Rect [ 252.488 684.8 278.94 695 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (https\072\057\057github\056com\057luisangelrod)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 252.488 684.8 278.94 695 ]
+/Subtype /Link
+/Type /Annot
 >>
 endobj
 7 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://luisrodriguezdev.netlify.app)
->> /Border [ 0 0 0 ] /Rect [ 285.876 684.8 317.054 695 ] /Subtype /Link /Type /Annot
+/S /URI
+/Type /Action
+/URI (https\072\057\057luisrodriguezdev\056netlify\056app)
+>>
+/Border [ 0 0 0 ]
+/Rect [ 285.876 684.8 317.054 695 ]
+/Subtype /Link
+/Type /Annot
 >>
 endobj
 8 0 obj
 <<
-/Annots [ 4 0 R 5 0 R 6 0 R 7 0 R ] /Contents 12 0 R /MediaBox [ 0 0 612 792 ] /Parent 11 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 
-  /Trans <<
-
->> /Type /Page
+/Length 6193
 >>
+stream
+1 0 0 1 0 0 cm
+BT
+/F1 12 Tf
+14.4 TL
+ET
+q
+1 0 0 1 44 731 cm
+q
+0.078431 0.176471 0.211765 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 23 Tf
+26 TL
+(Luis Rodriguez) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 713 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 4 Tm
+/F1 11 Tf
+15 TL
+(Full\055Stack Software Engineer \174 C\043 \057 \056NET\054 React\054 Angular) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 683 cm
+q
+BT
+1 0 0 1 0 15.5 Tm
+12 TL
+/F1 8.5 Tf
+0 0 0 rg
+(Open to remote work and relocation \174 U\056S\056 citizen\054 no sponsorship required) Tj
+T*
+(787\055980\0555868 \174 ) Tj
+(luisangelrod17\100gmail\056com) Tj
+( \174 ) Tj
+(LinkedIn) Tj
+( \174 ) Tj
+(GitHub) Tj
+( \174 ) Tj
+(Portfolio) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 661 cm
+q
+0.129412 0.321569 0.392157 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 9 Tf
+12 TL
+(PROFESSIONAL SUMMARY) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 617.2 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 28.6 Tm
+/F1 9.2 Tf
+12.6 TL
+(Bilingual full\055stack software engineer building and supporting production systems for POS\054 payments\054 medical transport\054) Tj
+T*
+(government\054 and public health\056 Covers requirements\054 frontend and backend development\054 deployment\054 production) Tj
+T*
+(troubleshooting\054 and user education\056 Brings nine years of earlier customer\055facing sales and support experience\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 595.2 cm
+q
+0.129412 0.321569 0.392157 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 9 Tf
+12 TL
+(TECHNICAL SKILLS) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 538.8 cm
+q
+BT
+1 0 0 1 0 41.2 Tm
+12.6 TL
+/F2 9.2 Tf
+0 0 0 rg
+(Core\072) Tj
+/F1 9.2 Tf
+( C\043\057\056NET\054 React\054 Angular\054 TypeScript\054 Node\056js\054 Ionic\054 REST APIs\054 SQL Server\054 PostgreSQL\056) Tj
+T*
+/F2 9.2 Tf
+(Delivery\072) Tj
+/F1 9.2 Tf
+( Azure Static Web Apps\054 Azure DevOps\054 Document Intelligence\054 Blob Storage\054 GitHub Actions\054 GitLab CI\057CD\054) Tj
+T*
+(Playwright\054 Cypress\054 WebSockets\056 Python \050intermediate\051\056) Tj
+T*
+/F2 9.2 Tf
+(Languages\072) Tj
+/F1 9.2 Tf
+( Spanish \050native\051\054 English \050professional working proficiency\051\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 516.8 cm
+q
+0.129412 0.321569 0.392157 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 9 Tf
+12 TL
+(SELECTED PROFESSIONAL EXPERIENCE) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 497.8 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 10 Tf
+13 TL
+(Mid\055Level Software Developer \174 Business Computer POS \050BCPOS\051) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 484.8 cm
+q
+0.313725 0.345098 0.376471 rg
+BT
+1 0 0 1 0 2.5 Tm
+/F1 8.5 Tf
+11 TL
+(Sep 2025 \055 Present) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 455.6 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 10 16 Tm
+/F1 9.2 Tf
+12.6 TL
+-8 0 Td
+(\055 Build and support web\054 mobile\054 kiosk\054 and backend systems for POS\054 payments\054 and medical\055transport clients using C\043\057\056NET\054) Tj
+T*
+8 0 Td
+(React\054 Angular\054 Ionic\054 SQL Server\054 and PostgreSQL\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 426.4 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 10 16 Tm
+/F1 9.2 Tf
+12.6 TL
+-8 0 Td
+(\055 Shipped a bilingual React driver PWA on Azure Static Web Apps with WebSocket dispatch\054 adaptive polling\054 offline sync\054 200\053) Tj
+T*
+8 0 Td
+(automated tests\054 and a CI\057CD pipeline\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 397.2 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 10 16 Tm
+/F1 9.2 Tf
+12.6 TL
+-8 0 Td
+(\055 Built a Node\056js\057TypeScript bridge for Epson\054 Star\054 and TSC printers and barcode scanners over USB\054 serial\054 and Ethernet\056) Tj
+T*
+8 0 Td
+(Verified a payments database migration with a 17\055table smoke test\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 379.2 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 10 Tf
+13 TL
+(Frontend Engineer \050Contract\051 \174 Vaco by Highspring\054 via Tech First) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 366.2 cm
+q
+0.313725 0.345098 0.376471 rg
+BT
+1 0 0 1 0 2.5 Tm
+/F1 8.5 Tf
+11 TL
+(May 2025 \055 Sep 2025) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 337 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 10 16 Tm
+/F1 9.2 Tf
+12.6 TL
+-8 0 Td
+(\055 Built Angular\057TypeScript workflows for a document\055driven investigation platform using Azure Document Intelligence and Blob) Tj
+T*
+8 0 Td
+(Storage\056 Created reusable UI components and validated APIs against Docker and Oracle environments\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 319 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 10 Tf
+13 TL
+(Software Developer \050Direct Contract\051 \174 Puerto Rico Department of Health) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 306 cm
+q
+0.313725 0.345098 0.376471 rg
+BT
+1 0 0 1 0 2.5 Tm
+/F1 8.5 Tf
+11 TL
+(Jun 2024 \055 Mar 2025) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 276.8 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 10 16 Tm
+/F1 9.2 Tf
+12.6 TL
+-8 0 Td
+(\055 Shipped Angular\057TypeScript features for the Bioportal public\055health platform in the Epidemiology Division\072 JWT\055secured) Tj
+T*
+8 0 Td
+(workflows\054 SQL\055backed forms\054 and GitLab CI\057CD with shared\055monorepo code review\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 258.8 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 10 Tf
+13 TL
+(Developer I \174 Truenorth Corporation) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 245.8 cm
+q
+0.313725 0.345098 0.376471 rg
+BT
+1 0 0 1 0 2.5 Tm
+/F1 8.5 Tf
+11 TL
+(Feb 2023 \055 Mar 2025) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 216.6 cm
+q
+0 0 0 rg
+BT
+1 0 0 1 10 16 Tm
+/F1 9.2 Tf
+12.6 TL
+-8 0 Td
+(\055 Delivered government\055facing C\043\057\056NET and SQL Server applications from requirements through release and maintenance in) Tj
+T*
+8 0 Td
+(Azure DevOps\056 Partnered with product\054 QA\054 and business users to reproduce defects and explain technical constraints\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 194.6 cm
+q
+0.129412 0.321569 0.392157 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 9 Tf
+12 TL
+(EARLIER CUSTOMER\055FACING EXPERIENCE) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 150.8 cm
+q
+BT
+1 0 0 1 0 28.6 Tm
+12.6 TL
+/F2 9.2 Tf
+0 0 0 rg
+(T\055Mobile\054 Mobile Expert) Tj
+/F1 9.2 Tf
+( \050Jul 2019 \055 Nov 2021\051\073 ) Tj
+/F2 9.2 Tf
+(AT) Tj
+(\046) Tj
+(T and customer support roles) Tj
+/F1 9.2 Tf
+( \0502015 \055 2019\051\073 ) Tj
+/F2 9.2 Tf
+(earlier sales and) Tj
+T*
+(customer service) Tj
+/F1 9.2 Tf
+( \0502012 \055 2015\051\056 Consultative sales\054 product demonstrations\054 technical troubleshooting\054 and customer) Tj
+T*
+(education\056) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 128.8 cm
+q
+0.129412 0.321569 0.392157 rg
+BT
+1 0 0 1 0 3 Tm
+/F2 9 Tf
+12 TL
+(EDUCATION) Tj
+T*
+ET
+Q
+Q
+q
+1 0 0 1 44 110.2 cm
+q
+BT
+1 0 0 1 0 3.4 Tm
+12.6 TL
+/F2 9.2 Tf
+0 0 0 rg
+(University of Puerto Rico at Bayam\363n) Tj
+/F1 9.2 Tf
+( \055 Computer Science studies \174 2012\0552016) Tj
+T*
+ET
+Q
+Q
+
+endstream
 endobj
 9 0 obj
 <<
-/PageMode /UseNone /Pages 11 0 R /Type /Catalog
+/F1 10 0 R
+/F2 11 0 R
 >>
 endobj
 10 0 obj
 <<
-/Author (Luis Rodriguez) /CreationDate (D:20260914150100-04'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260914150100-04'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (\(unspecified\)) /Title (Luis Rodriguez - Full-Stack Software Engineer) /Trapped /False
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 11 0 obj
 <<
-/Count 1 /Kids [ 8 0 R ] /Type /Pages
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 12 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2551
+/Author (Luis Rodriguez)
+/CreationDate (D\07220260914150100\05504\04700\047)
+/Creator (\050unspecified\051)
+/Keywords ()
+/ModDate (D\07220260914150100\05504\04700\047)
+/Producer (ReportLab PDF Library \055 \050opensource\051)
+/Subject (Professional resume)
+/Title (Luis Rodriguez \055 Full Stack Software Engineer)
+/Trapped /False
 >>
-stream
-Gatm<D0+^X&cTMZU8q1W_?lA;n(`<t#5OPmIT[oQ-<:%#8-@(=dc`M#%U8c!H"J<&B!M%fhK"m87\fCCm\c]FQ:!8%3Te'u&RB[(H0p^B->u=JfC"e\-eJ7b`s8Ntg$R4\j'X[om+,Rs`Js6nqV;1TD$Rh%Pcd59OL(;0+YSH&2RPVMDS**K2WhPHoH8ccXE4C&K"U!_qjUX[$%K,n3h8TGbH.7lmhXnk[U[PL)=c=((g;iVq9QF0X6bP:SD8?@@a7pK02;F4QXo!b?BZEio<Td'j)lEK[*Fd4YVbF+I]$iQZjGH%F(<9f0<D*-QPuH+1_)=mV#-[[RA:)H93C_o+CA[=$]gbk92^V*Pt]^t,Qp12*am<"_ILG5.?A#Z.?u&X`^jrX@k\m)ULD@2%JrM/2@g]L>g)+a%oX?*K7BsI-:6IR;=SbCD(ag\*mEW-j^1FL0jgM'hTI`[a\^&^s7@gP3:0QZrieJ$Vq3$L3l6rogW15"a;G4@mN:l"h8NiHG<;DFipl/Cr:'/YXj4_"f)_[1[/1S-7Ws@M[U#Qq8q[7sB-FB6@$C\NWW9pe^asO=#1uHt%S5\Q!dEk_"<Pke9ZWUN:1ZOc[#uloh^t:]Y[,3-9Jn9YJaf?W93J@gX3KolNO@R41tMPm7WsqJ6fHLKZS:.d1sq@!@fJqN!.[Dk.[>"nZ!"iGKYdM/^pcFj8KfP@8LSf%mt6IDV-,:AL9$;uq@nYG>iD1m>FF>`doD8qMIJPqG+?AU\KY9GJUN!M1)]W3=tsC]5r"0WFq4'B,Wlf(p:4HF]\]Sg"n,`in_D7,gY"t>k+B!UHr6rN1UMpM'"R=AE(#%l(``cd%]MRQ.K@L\5Cuf9HuaLm9q(/1'#*j6O^R][#2K1u&Y-sFpt4mb4<!,'Yd4$,bB\tYK-R27eg\Y&]he8F>8gE]$>eLg0k:,-#Ac\Q)*mh^056q%OBsJ6q=[S@9r4ItCsWSE$:D)L;/4NZ.$o0YVJM7(Jd#h(OJC%uS1SG1]:;P*n@]@cmKF$5_<E;Y,ioA;Tm%Z2b"UK1^WSN+Ni.V^Y#HbMbP9Q*q1Hq[:;o(lB25m+==hr+P%#DK$Q2[`k@(V"OKY;rVBX8kAGTOXk=YLfK=ab9>DR7p'dDLg_M('q-_<Dr<ugB%le[&W\[N6]cA(b#:t]fZ`qC=AQ;Q<i.W7^_c#rFrb1s@s!`S9bEeOWs$;;'Y3C9CL#nFS9i;.OmCXB;tG=op?%,*j(UYBRDL:A!6s!sru.cF56e2:AjL*tJg6%VQ"!"$GBX1?hL#/9=/SDSUMd&eJ"GQBZQ*$(RJMN_BA&nEP[+p>]RKiHCC<ubC2iHe^"j49gAaTi^C0ki#=pDd!MXYT"&'$BQ*:3eGj2!s1@::lS$m(L\ITZ9UM?SG[O/"j/2d#`*%9KnLDM0kObkXB$O6^gpr<5LD?K6%/HdFh*J$q!rsjD#Fp&u'P(cJ3<FrdO,RQD9[p'`uOfWdN%uVP-C'>eaY3P0U#7"8EA=A5HO:o]:Y7Bpjidbmc;\6qMK9n44ETD_V:A(j]+,RSk4O8GOfsoqJVJB_ANsKG#e;=M3g/)cV9Xfr+iE%@^D8`2:Bn"Y=.VVDq"RSXKUc`.3t+Yja&o\k##+j2-+L%7^$HdWq:lY'Q+V&,h/Z(aBdnm-+R>o,C%e]A1e('Eb31J_4lE,EM^@\e_9Fc1k&K^Ma52b;D4p=)gr'412(MK-(5e1;T$&UJ&uaPV33<0FGtNCRH`38]4g99WX/6-6Ya?SOOotPZ@Tc[5J<="oAurAc5*]Qu\Bh.F49qa5`+4!arl!JC<n)=XX?X8bX@GekF"3dgD]Z?bPJ0i=0oK]G67;JRUdPSC.'ulV-,\C/!%CJrF#%m!*]Bnq<j-nI+(!O/?3c[B.pY61F_.O#<fGJCb6'^Bq+;TO1dO^QYhH5\u-6""+8h^aX@OUb5CboO=2lMIGLp/eOS$DB]-'#oUnYNi$89FSk\DrVG3R'_`b+3!InTc),_gVJHH?DcF%9EKaK9PhI7cJJH9DI<-US0Or87K"oeZWSJNm5MaZe68JV]961TV0EYTBI):oATX.h6]cYhr>bbC&*1]<P'==G$ms3('!)Y`bQIUpp[O3CuLYdYcOoQcI2+ipqdApsp8AVO?hI&)!\cA-fM!8pr1JL7]5"3T`Y^lfTBc7qK$m*Q*Zq6n0Aa`VVW-\GB`J9I_'?:s%!XTQOKm>Fa)S)doZ'hJ;(^tErh]a@Ze?(k1Y3+R]5Kmd."&0gQhVF1g?sSg@ZeJjdA:*e;>%`W9lJk;"d-4[lA_1*jajnj_p@X[B"F:E+2=Ri(7V8]0k<*&J9]ajCX>T^/%m,7m/d3f+Z$tRb+20Y(W.>:]@'ul<ii<Rnq[Wf+On#(Hp_,i@6[HA+hS\EOX+8@1bfkKh`;O<X?mI4@:sQ$FI%:/X;/+pWF84`l)nkt7LCB",oPlY[0G`4hF';R"oNJ!Fr?bD`A"EWlA34'5O"2R#k_eb0o[N,Liienj*@A^YR@-&J/5I#4Up%O.``Bl0T(&BHPYa8Am8M?YL]7B3%P7J~>endstream
 endobj
 xref
 0 13
 0000000000 65535 f 
-0000000061 00000 n 
-0000000102 00000 n 
-0000000209 00000 n 
-0000000321 00000 n 
-0000000494 00000 n 
-0000000680 00000 n 
-0000000852 00000 n 
-0000001030 00000 n 
-0000001261 00000 n 
-0000001330 00000 n 
-0000001644 00000 n 
-0000001704 00000 n 
+0000000015 00000 n 
+0000000083 00000 n 
+0000000142 00000 n 
+0000000367 00000 n 
+0000000549 00000 n 
+0000000756 00000 n 
+0000000943 00000 n 
+0000001136 00000 n 
+0000007381 00000 n 
+0000007424 00000 n 
+0000007532 00000 n 
+0000007645 00000 n 
 trailer
 <<
-/ID 
-[<e2debbfd51aff3ec01a11838909fffb5><e2debbfd51aff3ec01a11838909fffb5>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 10 0 R
-/Root 9 0 R
 /Size 13
+/Root 1 0 R
+/Info 12 0 R
+/ID [ <e2debbfd51aff3ec01a11838909fffb5> <e2debbfd51aff3ec01a11838909fffb5> ]
 >>
 startxref
-4347
+7998
 %%EOF
